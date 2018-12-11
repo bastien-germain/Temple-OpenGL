@@ -2,7 +2,8 @@
 #ifndef __VAO_HPP__
 #define __VAO_HPP__
 
-class VAO {
+class VAO 
+{
 
 private:
 	GLuint _id;

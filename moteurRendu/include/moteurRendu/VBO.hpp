@@ -4,7 +4,8 @@
 
 #include "VAO.hpp"
 
-class VBO {
+class VBO 
+{
 
 private:
 	GLuint _id;
