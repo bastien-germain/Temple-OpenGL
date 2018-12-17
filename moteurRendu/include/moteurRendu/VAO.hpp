@@ -11,12 +11,15 @@ class VAO
 
 private:
 	GLuint _id;
-	std::vector<GLuint> _lAttribute;
+	const GLuint _VERTEX_POSITION;
+	const GLuint _VERTEX_NORMAL;
+	const GLuint _VERTEX_TEXTURE;
+
 	
 public:
 	VAO();
 
-	VAO(const std::vector<GLuint> &lAttribute);
+	//VAO(const std::vector<GLuint> &lAttribute);
 		// glGenVertexArrays; glBindVertexArray glBufferData;
 	~VAO();
 		// deleteVertexArrays
@@ -24,6 +27,7 @@ public:
 	void specifyAttributes() const;
 	void debind() const;
 	void bind() const;
+	void deleteBuf();
 
 };
 

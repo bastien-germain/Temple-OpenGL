@@ -33,6 +33,8 @@ public:
 	void bind() const;
 	void debind() const;
 	void specifyVAO() const;
+	void sendData() const;
+	void deleteBuf();
 
 };
 

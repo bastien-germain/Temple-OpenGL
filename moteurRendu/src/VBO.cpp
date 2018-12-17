@@ -33,6 +33,16 @@ void VBO::specifyVAO() const
 
 }
 
+void VBO::sendData() const
+{
+	bind();
+	glBufferData(GL_ARRAY_BUFFER,  _nbVertices * sizeof(glimac::ShapeVertex), &_vertices[0], GL_STATIC_DRAW);
+	debind();
+}
 
+void VBO::deleteBuf()
+{
+	glDeleteBuffers(1, &_id);
+}
 
 

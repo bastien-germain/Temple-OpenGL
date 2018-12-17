@@ -4,6 +4,8 @@
 #include <fstream>
 #include <cstdlib>
 #include <iostream>
+#include "moteurRendu/VBO.hpp"
+#include "moteurRendu/VAO.hpp"
 
 using namespace glimac;
 
@@ -25,32 +27,55 @@ int main(int argc, char** argv) {
      * HERE SHOULD COME THE INITIALIZATION CODE
      *********************************/
 
-    GLuint vbo;
-    glGenBuffers(1, &vbo);
-    glBindBuffer(GL_ARRAY_BUFFER, vbo);
+    std::vector<ShapeVertex> v ;
 
-    // Tableau des sommets du triangle
-    GLfloat vertices[] = { -0.5f, -0.5f, 0.5f, -0.5f, 0.0f, 0.5f };
-
-    // Envoi des données à la carte graphique
-    glBufferData(GL_ARRAY_BUFFER, 6 * sizeof(GLfloat),vertices, GL_STATIC_DRAW);
-
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    ShapeVertex vertex;
     
-    GLuint vao;
-    glGenVertexArrays(1, &vao);
-    glBindVertexArray(vao);
+    vertex.texCoords.x = 0;
+    vertex.texCoords.y = 0;
 
-    // L'attribut position a pour index 0 
-    const GLuint VERTEX_ATTR_POSITION = 0;
-    glEnableVertexAttribArray(VERTEX_ATTR_POSITION);
+    vertex.normal.x = 0;
+    vertex.normal.y = 0;
+    vertex.normal.z = 0;
 
-    glBindBuffer(GL_ARRAY_BUFFER, vbo);
-    // Spécification des données envoyées pour l'attribut position
-    glVertexAttribPointer(VERTEX_ATTR_POSITION, 2, GL_FLOAT, GL_FALSE, 2*sizeof(GLfloat), 0);
-    glBindBuffer(GL_ARRAY_BUFFER, 0);
+    vertex.position.x = -0.5f;
+    vertex.position.y = -0.5f;
+    v.push_back(vertex);
+
+    vertex.texCoords.x = 0;
+    vertex.texCoords.y = 0;
+
+    vertex.normal.x = 0;
+    vertex.normal.y = 0;
+    vertex.normal.z = 0;
+
+    vertex.position.x = 0.5f;
+    vertex.position.y = -0.5f;
+    v.push_back(vertex);
+
+    vertex.texCoords.x = 0;
+    vertex.texCoords.y = 0;
+
+    vertex.normal.x = 0;
+    vertex.normal.y = 0;
+    vertex.normal.z = 0;
+
+    vertex.position.x = 0.0f;
+    vertex.position.y = 0.5f;
+    v.push_back(vertex);
+      
+
+    VBO triangle(v);
+    triangle.sendData();
+
     
-    glBindVertexArray(0);
+    VAO traingle;
+    triangle.bind();
+    traingle.bind();
+    traingle.specifyAttributes();
+    traingle.debind();
+    triangle.debind();
+
 
     // Application loop:
     bool done = false;
@@ -68,15 +93,15 @@ int main(int argc, char** argv) {
          *********************************/
         glClear(GL_COLOR_BUFFER_BIT);
 
-        glBindVertexArray(vao);
+        traingle.bind();
         glDrawArrays(GL_TRIANGLES, 0, 3); //Dessin des triangles
-        glBindVertexArray(0);
+        traingle.debind();
         // Update the display
         windowManager.swapBuffers();
     }
 
-    glDeleteBuffers(1, &vbo);
-    glDeleteVertexArrays(1, &vao);
+    triangle.deleteBuf();
+    traingle.deleteBuf();
 
     return EXIT_SUCCESS;
 }
