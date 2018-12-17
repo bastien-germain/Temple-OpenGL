@@ -1,1 +1,0 @@
-#include "moteurRendu/Texture.hpp"

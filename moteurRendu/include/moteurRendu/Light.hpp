@@ -1,6 +1,6 @@
 #pragma once
-#ifndef __TEXTURE_HPP__
-#define __TEXTURE_HPP__
+#ifndef __LIGHT_HPP__
+#define __LIGHT_HPP__
 
 #include "VAO.hpp"
 #include <vector>
@@ -10,14 +10,16 @@
 #include "glimac/common.hpp"
 
 
-class Texture 
+class Light 
 {
 
-private:
-
+private:	
+	
 public:
-	Texture();
-	~Texture();
+	Light();
+	
+	~Light();
+		// deleteBuffers
 
 };
 

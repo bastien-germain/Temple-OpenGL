@@ -2,8 +2,12 @@
 #ifndef __MODEL_HPP__
 #define __MODEL_HPP__
 
+#include "../../moteurRendu/include/moteurRendu/VAO.hpp"
+#include "../../moteurRendu/include/moteurRendu/VBO.hpp"
+#include "../../moteurRendu/include/moteurRendu/Light.hpp"
+#include "../../moteurRendu/include/moteurRendu/Texture.hpp"
 /// \class Model
-/// \brief Class defining a Model : 
+/// \brief Class defining a Model
 ///  - A Model represents a 3D entity that will be displayed ;
 class Model 
 {
@@ -15,6 +19,8 @@ private:
 	Texture _texture; /*! The Texture used for this Model */
 	
 public:
+	Model();
+
 	/// \brief Constructor from a VBO, a VAO, a Light, and a Texture
 	/// \param vbo : the vbo of the model
 	/// \param vao : the vao of the model
@@ -27,7 +33,7 @@ public:
 	Model(const Model &copied);
 
 	/// \brief Destructor
-	~Destructor();
+	~Model();
 
 };
 
