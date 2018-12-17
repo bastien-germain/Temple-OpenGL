@@ -1,8 +1,8 @@
-#include <moteurJeu/Jeu.hpp>
+#include <moteurJeu/Game.hpp>
 #include <glimac/SDLWindowManager.hpp>
 
 int main (int argc, char **argv)
 {
-	Jeu jeu;
+	Game game;
 	return 0;
 }
