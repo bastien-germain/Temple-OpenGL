@@ -7,6 +7,7 @@ VBO::VBO()
 VBO::VBO(const std::vector<glimac::ShapeVertex> &vertices): _vertices(vertices), _nbVertices(vertices.size())
 {
 	glGenBuffers(1,&_id);
+	_vao = VAO();
 	// glGenBuffers; glBindBuffer; glBufferData; glVertexAttribPointer
 }
 
@@ -42,7 +43,15 @@ void VBO::sendData() const
 
 void VBO::deleteBuf()
 {
+
+	_vao.deleteBuf();
 	glDeleteBuffers(1, &_id);
 }
 
 
+void VBO::draw() const
+{
+	_vao.bind();
+    glDrawArrays(GL_TRIANGLES, 0, _nbVertices); //Dessin des triangles
+    _vao.debind();
+}

@@ -11,9 +11,9 @@ class VAO
 
 private:
 	GLuint _id;
-	const GLuint _VERTEX_POSITION;
-	const GLuint _VERTEX_NORMAL;
-	const GLuint _VERTEX_TEXTURE;
+	GLuint _VERTEX_POSITION;
+	GLuint _VERTEX_NORMAL;
+	GLuint _VERTEX_TEXTURE;
 
 	
 public:

@@ -67,14 +67,7 @@ int main(int argc, char** argv) {
 
     VBO triangle(v);
     triangle.sendData();
-
-    
-    VAO traingle;
-    triangle.bind();
-    traingle.bind();
-    traingle.specifyAttributes();
-    traingle.debind();
-    triangle.debind();
+    triangle.specifyVAO();
 
 
     // Application loop:
@@ -93,15 +86,12 @@ int main(int argc, char** argv) {
          *********************************/
         glClear(GL_COLOR_BUFFER_BIT);
 
-        traingle.bind();
-        glDrawArrays(GL_TRIANGLES, 0, 3); //Dessin des triangles
-        traingle.debind();
+        triangle.draw();
         // Update the display
         windowManager.swapBuffers();
     }
 
     triangle.deleteBuf();
-    traingle.deleteBuf();
 
     return EXIT_SUCCESS;
 }

@@ -35,6 +35,7 @@ public:
 	void specifyVAO() const;
 	void sendData() const;
 	void deleteBuf();
+	void draw() const;
 
 };
 
