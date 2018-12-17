@@ -6,12 +6,13 @@
 #include <iostream>
 #include "moteurRendu/VBO.hpp"
 #include "moteurRendu/VAO.hpp"
+#include "glimac/Sphere.hpp"
 
 using namespace glimac;
 
 int main(int argc, char** argv) {
      // Initialize SDL and open a window
-    SDLWindowManager windowManager(800, 600, "GLImac");
+    SDLWindowManager windowManager(800, 800, "GLImac");
 
     // Initialize glew for OpenGL3+ support
     GLenum glewInitError = glewInit();
@@ -30,7 +31,7 @@ int main(int argc, char** argv) {
     std::vector<ShapeVertex> v ;
 
     ShapeVertex vertex;
-    
+    /*
     vertex.texCoords.x = 0;
     vertex.texCoords.y = 0;
 
@@ -62,9 +63,12 @@ int main(int argc, char** argv) {
 
     vertex.position.x = 0.0f;
     vertex.position.y = 0.5f;
-    v.push_back(vertex);
+    v.push_back(vertex);*/
       
-
+    /*Sphere sphere(1, 50, 25);
+    const ShapeVertex* s = sphere.getDataPointer();
+    for (int i = 0; i < 1250*3*2*2 ; i++)
+        v.push_back(s[i]);*/
     VBO triangle(v);
     triangle.sendData();
     triangle.specifyVAO();

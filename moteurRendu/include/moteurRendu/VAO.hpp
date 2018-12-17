@@ -6,6 +6,8 @@
 #include <cstdlib>
 #include <GL/glew.h>
 
+/// \class VAO
+/// \brief Specifies the buffer array
 class VAO 
 {
 
@@ -18,13 +20,12 @@ private:
 	
 public:
 	VAO();
-
-	//VAO(const std::vector<GLuint> &lAttribute);
-		// glGenVertexArrays; glBindVertexArray glBufferData;
 	~VAO();
-		// deleteVertexArrays
 
+	/// \brief Gives spefications for the buffer
 	void specifyAttributes() const;
+
+
 	void debind() const;
 	void bind() const;
 	void deleteBuf();

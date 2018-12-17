@@ -11,7 +11,8 @@
 
 
 
-
+/// \class VBO
+/// \brief Contain the vertices of an object
 class VBO 
 {
 
@@ -23,19 +24,32 @@ private:
 	
 	
 public:
-	VBO();
-	
+	/// \param vertices: Vector of a structure containing vertex, normal, texture
 	VBO(const std::vector<glimac::ShapeVertex> &vertices);
 		// glGenBuffers; glBindBuffer; glBufferData; glVertexAttribPointer
 	~VBO();
 		// deleteBuffers
 
+	/// \brief Allows to bind the buffer array
 	void bind() const;
+
+	/// \brief  Unbinds the buffer
 	void debind() const;
+
+	/// \brief Binds buffer and vertex arrays, specifies the buffer array
 	void specifyVAO() const;
+
+	/// \brief Sends the vertices to the GPU
 	void sendData() const;
+
+	/// \brief Deletes the buffer array
 	void deleteBuf();
+
+	/// \brief Draws the object with triangles
 	void draw() const;
+
+private:
+	VBO();
 
 };
 
