@@ -6,6 +6,7 @@
 #include "../../moteurRendu/include/moteurRendu/VBO.hpp"
 #include "../../moteurRendu/include/moteurRendu/Light.hpp"
 #include "../../moteurRendu/include/moteurRendu/Texture.hpp"
+
 /// \class Model
 /// \brief Class defining a Model
 ///  - A Model represents a 3D entity that will be displayed ;
@@ -19,6 +20,7 @@ private:
 	Texture _texture; /*! The Texture used for this Model */
 	
 public:
+	/// \brief Default constructor
 	Model();
 
 	/// \brief Constructor from a VBO, a VAO, a Light, and a Texture

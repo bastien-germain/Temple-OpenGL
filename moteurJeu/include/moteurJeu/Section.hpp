@@ -17,15 +17,13 @@ private:
 	glm::vec2 _position; /*! Position of the Section in the Section matrix */
 	float _size; /*! Size of the Section (const) */
 	Model _model; /*! Model used for the Section */
-	Obstacle _obstacle; /*! The Obstacle present in the Section */
-
 public:
-	/// \brief Constructor from a position and size
+		/// \brief Constructor from a position and size
 	/// \param position : the position of the Section
 	/// \param size : the size of the Section
 	/// \param model : the model used for the Section
 	/// \param obstacle : the Obstacle present in the Section
-	Section(const Model &model, const Obstacle &obstacle, const glm::vec2 &position = glm::vec2(0.0), const float &size = 0.0);
+	Section(const Model &model, const glm::vec2 &position = glm::vec2(0.0), const float &size = 0.0);
 
 	/// \brief Destructor
 	~Section();
@@ -46,12 +44,6 @@ public:
 	inline Model model() const 
 	{
 		return _model;
-	}
-
-	/// \brief Getter : Obstacle getter 
-	inline Obstacle obstacle() const 
-	{
-		return _obstacle;
 	}
 
 
