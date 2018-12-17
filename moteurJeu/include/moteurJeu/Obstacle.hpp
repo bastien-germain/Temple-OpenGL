@@ -14,6 +14,9 @@ private:
 	float _size; /*! Size of the Obstacle */
 	
 public:
+	/// \brief Default constructor
+	Obstacle();
+
 	/// \brief Constructor from a position and a size
 	/// \param position : the position of the Obstacle
 	/// \param size : the size of the Obstacle
@@ -25,6 +28,18 @@ public:
 
 	/// \brief Destructor
 	~Obstacle();
+
+	/// \brief Getter : size getter
+	inline float size() const 
+	{
+		return _size;
+	}
+
+	/// \brief Getter : position getter
+	inline glm::vec3 position() const 
+	{
+		return _position;
+	}
 
 };
 

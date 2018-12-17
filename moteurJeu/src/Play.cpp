@@ -1,6 +1,6 @@
 #include "moteurJeu/Play.hpp"
 
-Play::Play() : _score(0), _distance(0), _coins(0), _speed(1)
+Play::Play() : _score(0), _distance(0), _coins(0), _speed(0), _player(Player())
 {
 
 }
@@ -8,6 +8,11 @@ Play::Play() : _score(0), _distance(0), _coins(0), _speed(1)
 Play::~Play() 
 {
 
+}
+
+void Play::start() 
+{
+	_speed = 1;
 }
 
 void Play::speedUp() 

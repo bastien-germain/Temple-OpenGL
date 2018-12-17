@@ -9,8 +9,8 @@ class Player
 {
 
 private:
-	unsigned int _posX; //!< -1 : left; 0 : middle; 1: right
-	unsigned int _posY; //!< -1 : down; 0 : regular; 1: up
+	unsigned int _posX; // -1 : left; 0 : middle; 1: right
+	unsigned int _posY; // -1 : down; 0 : regular; 1: up
 
 public:
 	/// \brief Constructor
