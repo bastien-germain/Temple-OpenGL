@@ -3,6 +3,14 @@
 #define __VBO_HPP__
 
 #include "VAO.hpp"
+#include <vector>
+#include <cstdlib>
+#include <GL/glew.h>
+#include "glimac/glm.hpp"
+#include "glimac/common.hpp"
+
+
+
 
 class VBO 
 {
@@ -10,15 +18,21 @@ class VBO
 private:
 	GLuint _id;
 	VAO _vao;
-	size_t _nbSommets;
+	size_t _nbVertices;
+	std::vector<glimac::ShapeVertex> _vertices;
+	
 	
 public:
 	VBO();
-	// On passe un vetceur de point (3c oord)
-	VBO(GLuint id, std::vector<glm::vec3> points);
+	
+	VBO(const std::vector<glimac::ShapeVertex> &vertices);
 		// glGenBuffers; glBindBuffer; glBufferData; glVertexAttribPointer
 	~VBO();
 		// deleteBuffers
+
+	void bind() const;
+	void debind() const;
+	void specifyVAO() const;
 
 };
 
