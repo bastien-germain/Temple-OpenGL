@@ -1,4 +1,4 @@
-#include "Model.hpp"
+#include "moteurJeu/Model.hpp"
 
 Model::Model(const VBO &vbo , const VAO &vao, const Light &light, const Texture &texture) 
 	:_vbo(vbo), _vao(vao), _light(light), _texture(texture)
