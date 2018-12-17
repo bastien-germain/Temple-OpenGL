@@ -23,7 +23,11 @@ public:
 	/// \brief Constructor from a position and size
 	/// \param position : the position of the Section
 	/// \param position : the size of the Section
-	//Section(const glm::vec2 &position = glm::vec2(0.0), const float &size = 0.0, const Model &model, const Obstacle &obstacle);
+	Section(const glm::vec2 &position = glm::vec2(0.0), const float &size = 0.0, const Model &model, const Obstacle &obstacle);
+
+	/// \brief Copy constructor using another Section
+	/// \param copied : the copied Section
+	Section(const Section &copied);
 
 	/// \brief Destructor
 	//~Section();

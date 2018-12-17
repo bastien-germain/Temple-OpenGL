@@ -19,7 +19,7 @@ public:
 	/// \param size : the size of the Obstacle
 	Obstacle(const glm::vec3 &position = glm::vec3(0.0), const float &size = 0.0);
 
-	/// \brief Copy constructor from another Obstacle
+	/// \brief Copy constructor using another Obstacle
 	/// \param copied : the copied Obstacle
 	Obstacle(const Obstacle &copied);
 
