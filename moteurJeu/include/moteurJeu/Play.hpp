@@ -3,9 +3,12 @@
 #define __PLAY_HPP__
 
 #include "moteurJeu/Player.hpp"
+#include "moteurJeu/Enemy.hpp"
+#include "moteurJeu/Section.hpp"
+#include <vector>
 
-/// \class Player
-/// \brief Character played by users
+/// \class Play
+/// \brief One try a the game
 class Play 
 {
 
@@ -15,7 +18,10 @@ private:
 	unsigned int _distance; // distance travelled 
 	unsigned int _coins; // number of coins collected
 	unsigned int _speed; // current speed
+	unsigned int _pausedSpeed; // contains current play speed when play is paused
 	Player _player;
+	Enemy _enemy;
+	std::vector<std::vector<Section>> _sections;
 	
 public:
 	Play();
@@ -43,11 +49,12 @@ public:
 	/// \param quantity : number of coins to be added
 	void addCoins(const unsigned int quantity);
 
-	/// \return Current play speed
-	const unsigned int pause();
+	void pause();
 
-	/// \param speed : resume the game at that speed
-	void resume(const unsigned int speed);		
+	void resume();
+
+	/// \brief test end of play
+	bool isOver();		
 
 };
 

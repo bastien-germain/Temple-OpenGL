@@ -1,6 +1,6 @@
 #include "moteurJeu/Play.hpp"
 
-Play::Play() : _score(0), _distance(0), _coins(0), _speed(0), _player(Player())
+Play::Play() : _score(0), _distance(0), _coins(0), _speed(0), _pausedSpeed(0), _player(Player()), _enemy(Enemy())
 {
 
 }
@@ -37,15 +37,22 @@ void Play::addCoins(const unsigned int quantity)
 	updateScore();
 }
 
-const unsigned int Play::pause() 
+void Play::pause() 
 {
-	unsigned int currentSpeed = _speed;
+	_pausedSpeed = _speed;
 	// stop the game
 	_speed = 0;
-
-	return currentSpeed;
 }
 
-void Play::resume(const unsigned int speed) {
-	_speed = speed;
+void Play::resume() 
+{
+	_speed = _pausedSpeed;
+}
+
+bool Play::isOver()
+{
+	if(_enemy.distanceToPlayer() == 0)
+		return true;
+	else 
+		return false;
 }

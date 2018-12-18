@@ -5,26 +5,23 @@
 #include <glimac/glm.hpp>
 
 /// \class Enemy
-/// \brief Class defining an Enemy
+/// \brief Enemy pursuing the player
 class Enemy 
 {
 
 private:
-	glm::vec3 _position; /* Position of the Enemy */
-	float _size; /*! Size of the Enemy */
+	unsigned int _distanceToPlayer; // si = 0 --> fin de partie
+	//float _size; // à voir si ça sert
 	
 public:
-	/// \brief Constructor from a position and a size
-	/// \param position : the position of the Enemy
-	/// \param size : the size of the Enemy
-	Enemy(const glm::vec3 &position = glm::vec3(0.0), const float &size = 0.0);
-
-	/// \brief Copy constructor using another Enemy
-	/// \param copied : the copied Enemy
-	Enemy(const Enemy &copied);
-
-	/// \brief Destructor
+	Enemy();
 	~Enemy();
+
+	/// \brief Getter score
+	inline unsigned int distanceToPlayer() const 
+	{
+		return _distanceToPlayer;
+	}
 
 };
 
