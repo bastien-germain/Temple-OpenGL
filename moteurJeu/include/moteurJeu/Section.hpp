@@ -2,19 +2,18 @@
 #ifndef __SECTION_HPP__
 #define __SECTION_HPP__
 
-#include <moteurJeu/Obstacle.hpp>
 #include <moteurJeu/Model.hpp>
 
 /// \class Section
-/// \brief Class defining a Section
-///  - A Section is an area that can be crossed by the player ;
-///  - Each Section contains only one Obstacle ;
+/// \brief part of the path crossed by the player 
+
 class Section 
 {
 
 protected:
-	Model _model; /*! Model used for the Section */
+	Model _model;
 	bool _isT; /*! Tells wether the Section is a TSection or not */
+
 public:
 	/// \brief Default  constructor
 	Section();
@@ -26,13 +25,13 @@ public:
 	/// \brief Destructor
 	virtual ~Section();
 
-	/// \brief Getter : Model getter 
+	/// \brief Model getter 
 	inline Model model() const 
 	{
 		return _model;
 	}
 
-	/// \brief Getter : isT getter 
+	/// \brief isT getter 
 	inline bool isT() const 
 	{
 		return _isT;

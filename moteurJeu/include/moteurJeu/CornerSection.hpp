@@ -6,8 +6,7 @@
 #include "Exception.hpp"
 
 /// \class CornerSection
-/// \brief Class defining a CornerSection 
-/// 	- A specific type of Section which looks like a corner/curve ;
+/// \brief specific type of Section in which the player need to go in a specific side (right or left)
 class CornerSection : public Section
 {
 

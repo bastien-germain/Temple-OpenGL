@@ -3,19 +3,21 @@
 #define __CORRIDOR_SECTION_HPP__
 
 #include <moteurJeu/Section.hpp>
+#include <moteurJeu/Obstacle.hpp>
+#include <moteurJeu/Coin.hpp>
+#include <vector>
 
 /// \class CorridorSection
-/// \brief Class defining a CorridorSection
-///  - A CorridorSection is an area that can be crossed by the player ;
-///  - Each CorridorSection contains only one Obstacle ;
+/// \brief Section that can contains an obstacle and coin
 class CorridorSection : public Section
 {
 
 private:
 	Obstacle _obstacle; /*! The Obstacle present in the CorridorSection */
+	std::vector<Coin> _coins; 
 
 public:
-		/// \brief Constructor from a position and size
+	/// \brief Constructor from a position and size
 	/// \param model : the Model used for the CorridorSection
 	/// \param obstacle : the Obstacle present in the CorridorSection
 	CorridorSection(const Model &model, const Obstacle &obstacle);

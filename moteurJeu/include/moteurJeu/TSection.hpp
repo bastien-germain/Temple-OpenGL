@@ -5,8 +5,7 @@
 #include "Section.hpp"
 
 /// \class TSection
-/// \brief Class defining a TSection 
-///  - A specific type of Section in which the player can choose to turn left or right ;
+/// \brief specific type of Section in which the player can choose to turn left or right
 class TSection : public Section
 {
 

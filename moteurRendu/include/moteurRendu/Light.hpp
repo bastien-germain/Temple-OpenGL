@@ -18,9 +18,7 @@ private:
 public:
 	Light() {}
 	
-	~Light() {
-		// deleteBuffers
-	}
+	~Light() {}
 
 };
 
