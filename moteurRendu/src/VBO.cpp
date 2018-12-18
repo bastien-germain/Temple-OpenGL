@@ -11,6 +11,11 @@ VBO::VBO(const std::vector<glimac::ShapeVertex> &vertices): _vertices(vertices),
 	// glGenBuffers; glBindBuffer; glBufferData; glVertexAttribPointer
 }
 
+VBO::VBO(const VBO &copied) 
+{
+
+}
+
 VBO::~VBO()
 {}
 

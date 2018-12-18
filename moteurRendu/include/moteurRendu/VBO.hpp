@@ -24,8 +24,12 @@ private:
 	
 	
 public:
+	VBO();
 	/// \param vertices: Vector of a structure containing vertex, normal, texture
 	VBO(const std::vector<glimac::ShapeVertex> &vertices);
+
+	/// \param copied : The VBO to copy into the current object
+	VBO(const VBO &copied);
 		// glGenBuffers; glBindBuffer; glBufferData; glVertexAttribPointer
 	~VBO();
 		// deleteBuffers
@@ -49,7 +53,6 @@ public:
 	void draw() const;
 
 private:
-	VBO();
 
 };
 

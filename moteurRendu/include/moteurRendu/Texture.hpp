@@ -22,8 +22,12 @@ private:
 
 public:
 	static Textures *_lTextures;
+	Texture();
 	Texture(unsigned int id );
 	//glGenTextures, glBindTexture, glTexImage2D 	
+
+	/// \param copied : the Texture to copy into the current object
+	Texture(const Texture &copied);
 
 	~Texture();
 

@@ -1,8 +1,18 @@
 #include "moteurRendu/Texture.hpp"
 
+Texture::Texture()
+{
+
+}
+
 Texture::Texture(unsigned int id) :_id(id)
 {
 	//glGenTextures()
+}
+
+Texture::Texture(const Texture &copied) 
+{
+
 }
 
 Texture::~Texture()
