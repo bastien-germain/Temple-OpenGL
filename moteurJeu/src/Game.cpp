@@ -18,14 +18,25 @@ void Game::launchPlay()
 
 void Game::endPlay()
 {
-	// do something
 	updateMaxScore();
+	_menu.show();
+	// do something to end the play
 }
 
 void Game::updateMaxScore() 
 {
 	if (_currentPlay.score() > _maxScore) 
-	{
-		_maxScore = _currentPlay.score();
-	}
+		_maxScore = _currentPlay.score();	
+}
+
+void Game::pause()
+{
+	_currentPlay.pause();
+	_menu.show();
+}
+
+void Game::resume()
+{
+	_menu.hide();
+	_currentPlay.resume();
 }

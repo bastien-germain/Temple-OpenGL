@@ -16,11 +16,9 @@ private:
 
 public:
 		/// \brief Constructor from a position and size
-	/// \param position : the position of the CorridorSection
-	/// \param size : the size of the CorridorSection
-	/// \param model : the model used for the CorridorSection
+	/// \param model : the Model used for the CorridorSection
 	/// \param obstacle : the Obstacle present in the CorridorSection
-	CorridorSection(const Model &model, const Obstacle &obstacle, const glm::vec2 &position = glm::vec2(0.0), const float &size = 0.0);
+	CorridorSection(const Model &model, const Obstacle &obstacle);
 
 	/// \brief Destructor
 	~CorridorSection();

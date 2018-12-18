@@ -1,11 +1,6 @@
 #include "moteurJeu/Obstacle.hpp"
 
-Obstacle::Obstacle() 
-{
-
-}
-
-Obstacle::Obstacle(const glm::vec3 &position, const float &size) : _position(position), _size(size)
+Obstacle::Obstacle(const unsigned int position, const unsigned int size) : _position(position), _size(size)
 {
 
 }

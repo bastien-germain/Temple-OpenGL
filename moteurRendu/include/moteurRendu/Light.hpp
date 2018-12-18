@@ -16,10 +16,11 @@ class Light
 private:	
 	
 public:
-	Light();
+	Light() {}
 	
-	~Light();
+	~Light() {
 		// deleteBuffers
+	}
 
 };
 

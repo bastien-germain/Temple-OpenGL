@@ -27,8 +27,12 @@ public:
 	void endPlay();
 
 	void updateMaxScore();
+
+	void pause();
 	
-	// PAS FAIT
+	void resume();
+	
+	// PAS FAIT; pour quitter le programme
 	void exitGame(); 
 		
 

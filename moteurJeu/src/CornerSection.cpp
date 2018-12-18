@@ -1,7 +1,7 @@
 #include "moteurJeu/CornerSection.hpp"	
 
-CornerSection::CornerSection(const Model &model, const int &cornerDirection, const glm::vec2 &position, const float &size) 
-				: Section(model, position, size)
+CornerSection::CornerSection(const Model &model, const int &cornerDirection) 
+				: Section(model)
 {
 	if((cornerDirection != -1) || (cornerDirection != 1)) 
 	{
@@ -9,10 +9,11 @@ CornerSection::CornerSection(const Model &model, const int &cornerDirection, con
 	}
 
 	_cornerDirection = cornerDirection;
+	_isT = false;
 }
 
 CornerSection::CornerSection(const CornerSection &copied) 
-				: Section(copied.model(), copied.position(), copied.size())
+				: Section(copied.model())
 {
 }
 
