@@ -13,37 +13,30 @@
 class Section 
 {
 
-private:
-	glm::vec2 _position; /*! Position of the Section in the Section matrix */
-	float _size; /*! Size of the Section (const) */
+protected:
 	Model _model; /*! Model used for the Section */
+	bool _isT; /*! Tells wether the Section is a TSection or not */
 public:
-		/// \brief Constructor from a position and size
-	/// \param position : the position of the Section
-	/// \param size : the size of the Section
+	/// \brief Default  constructor
+	Section();
+
+	/// \brief Constructor from a position and size
 	/// \param model : the model used for the Section
-	/// \param obstacle : the Obstacle present in the Section
-	Section(const Model &model, const glm::vec2 &position = glm::vec2(0.0), const float &size = 0.0);
+	Section(const Model &model);
 
 	/// \brief Destructor
-	~Section();
-
-	/// \brief Getter : position getter 
-	inline glm::vec2 position() const 
-	{
-		return _position;
-	}
-
-	/// \brief Getter : size getter 
-	inline float size() const 
-	{
-		return _size;
-	}
+	virtual ~Section();
 
 	/// \brief Getter : Model getter 
 	inline Model model() const 
 	{
 		return _model;
+	}
+
+	/// \brief Getter : isT getter 
+	inline bool isT() const 
+	{
+		return _isT;
 	}
 
 

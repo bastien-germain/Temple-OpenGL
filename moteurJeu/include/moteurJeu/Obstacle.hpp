@@ -10,17 +10,14 @@ class Obstacle
 {
 
 private:
-	glm::vec3 _position; /* Position of the Obstacle */
-	float _size; /*! Size of the Obstacle */
+	unsigned int _position; /* Position of the Obstacle */
+	unsigned int _size; /*! Size of the Obstacle */
 	
 public:
-	/// \brief Default constructor
-	Obstacle();
-
 	/// \brief Constructor from a position and a size
 	/// \param position : the position of the Obstacle
 	/// \param size : the size of the Obstacle
-	Obstacle(const glm::vec3 &position = glm::vec3(0.0), const float &size = 0.0);
+	Obstacle(const unsigned int position = 0, const unsigned int size = 0);
 
 	/// \brief Copy constructor using another Obstacle
 	/// \param copied : the copied Obstacle
@@ -36,7 +33,7 @@ public:
 	}
 
 	/// \brief Getter : position getter
-	inline glm::vec3 position() const 
+	inline unsigned int position() const 
 	{
 		return _position;
 	}

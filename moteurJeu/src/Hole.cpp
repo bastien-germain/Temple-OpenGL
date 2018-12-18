@@ -1,6 +1,6 @@
 #include "moteurJeu/Hole.hpp"
 
-Hole::Hole(const glm::vec3 &position, const float &size) : Obstacle(position, size)
+Hole::Hole(const unsigned int position, const unsigned int size) : Obstacle(position, size)
 {
 
 }

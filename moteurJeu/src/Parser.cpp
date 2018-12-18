@@ -8,8 +8,9 @@ Parser::~Parser()
 {
 }
 
-void Parser::parse(const char * filePath) const 
+const std::vector<std::string> Parser::parse(const char * filePath) const 
 {
+	std::vector<std::string> out;
 	std::string line;
 
   	std::ifstream file(filePath);
@@ -18,7 +19,8 @@ void Parser::parse(const char * filePath) const
   	{
     	while (std::getline(file,line))
     	{
-     	std::cout << line << std::endl;
+    		out.push_back(line);
+  
    		}
     	file.close();
   	}

@@ -15,7 +15,7 @@ public:
 	/// \brief Constructor from a position and a size
 	/// \param position : the position of the Hole
 	/// \param size : the size of the Hole
-	Hole(const glm::vec3 &position = glm::vec3(0.0), const float &size = 0.0);
+	Hole(const unsigned int position = 0, const unsigned int size = 0);
 
 	/// \brief Destructor
 	~Hole();
