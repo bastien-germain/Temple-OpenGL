@@ -21,7 +21,7 @@ public:
 	Section();
 
 	/// \brief Constructor from a position and size
-	/// \param model : the model used for the Section
+	/// \param model : the Model used for the Section
 	Section(const Model &model);
 
 	/// \brief Destructor

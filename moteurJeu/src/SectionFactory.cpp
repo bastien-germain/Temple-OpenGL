@@ -13,7 +13,6 @@ Section SectionFactory::create(const std::string &key) const
 	// A CHANGER AVEC LES MODELES CORRESPONDANTS
 	Model model;
 	Obstacle obstacle;
-	Section section;
 	unsigned int obstaclePosition;
 
 	switch (key[2])
@@ -60,31 +59,31 @@ Section SectionFactory::create(const std::string &key) const
 		case 'H':
 		{
 			std::cout << "Large Hole" << std::endl;
-			Hole obstacle(obstaclePosition, 3);
+			obstacle = Hole(obstaclePosition, 3);
 			break;
 		}
 		case 'b':
 		{
 			std::cout << "Simple Barrier" << std::endl;
-			Barrier obstacle(obstaclePosition, 1);
+			obstacle = Barrier(obstaclePosition, 1);
 			break;
 		}
 		case 'B':
 		{
 			std::cout << "Large Barrier" << std::endl;
-			Barrier obstacle(obstaclePosition, 3);
+			obstacle = Barrier(obstaclePosition, 3);
 			break;
 		}
 		case 'r':
 		{
 			std::cout << "Simple Rock" << std::endl;
-			Rock obstacle(obstaclePosition, 1);
+			obstacle = Rock(obstaclePosition, 1);
 			break;
 		}
 		case 'R':
 		{
 			std::cout << "Large Rock" << std::endl;
-			Rock obstacle(obstaclePosition, 3);
+			obstacle = Rock(obstaclePosition, 3);
 			break;
 		}
 		default:
@@ -97,34 +96,25 @@ Section SectionFactory::create(const std::string &key) const
 		case 'I':
 		{
 			std::cout << "CorridorSection" << std::endl;
-			CorridorSection section(model, obstacle);
-			return section;
-			break;
+			return CorridorSection(model, obstacle);
 		}
 		case 'J':
 		{
 			std::cout << "Left CornerSection" << std::endl;
-			CornerSection section(model, -1);
-			return section;
-			break;
+			return CornerSection(model, -1);
 		}
 		case 'L':
 		{
 			std::cout << "Right CornerSection" << std::endl;
-			CornerSection section(model, 1);
-			return section;
-			break;
+			return CornerSection(model, 1);
 		}
 		case 'T':
 		{
 			std::cout << "TSection" << std::endl;
-			TSection section(model);
-			return section;
-			break;
+			return TSection(model);
 		}	
 		default:
 			THROW_EXCEPTION("FILE_READING_ERROR : Parser --> Invalid character for Section describing");
 		break;
 	}
-	std::cout << std::endl;
 }

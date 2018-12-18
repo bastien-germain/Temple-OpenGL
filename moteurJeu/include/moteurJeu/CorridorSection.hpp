@@ -16,7 +16,7 @@ private:
 
 public:
 		/// \brief Constructor from a position and size
-	/// \param model : the model used for the CorridorSection
+	/// \param model : the Model used for the CorridorSection
 	/// \param obstacle : the Obstacle present in the CorridorSection
 	CorridorSection(const Model &model, const Obstacle &obstacle);
 
