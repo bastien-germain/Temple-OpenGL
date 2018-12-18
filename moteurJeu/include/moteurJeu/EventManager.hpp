@@ -4,6 +4,7 @@
 
 #include <SDL/SDL.h>
 #include <glimac/glm.hpp>
+#include <iostream>
 
 class EventManager
 {
