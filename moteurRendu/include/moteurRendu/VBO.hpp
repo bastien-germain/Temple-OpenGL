@@ -21,6 +21,7 @@ private:
 	VAO _vao;
 	size_t _nbVertices;
 	std::vector<glimac::ShapeVertex> _vertices;
+
 	
 	
 public:
@@ -36,6 +37,11 @@ public:
 
 	/// \brief Allows to bind the buffer array
 	void bind() const;
+
+	inline VAO vao() const
+	{
+		return _vao;
+	}
 
 	/// \brief  Unbinds the buffer
 	void debind() const;

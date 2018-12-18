@@ -20,12 +20,22 @@ private:
 
 public:
 	ListTextures();
-	ListTextures(unsigned int &size);
+	ListTextures(const unsigned int &size);
 	// ListTextures(const std::vector<glimac::Image> &map);
 	~ListTextures();
 	inline unsigned int length() const
 	{
 		return _length;
+	};
+
+	inline GLuint* texturesArray() const
+	{
+		return _texturesArray;
+	};
+
+	inline std::vector<glimac::Image> usedTextures() const
+	{
+		return _usedTextures;
 	};
 	void addTexture(const glimac::Image &texture);
 	void generateTexture() const ; 

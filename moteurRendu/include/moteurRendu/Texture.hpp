@@ -38,6 +38,7 @@ public:
 
 
 	void paramTexture() const;
+	void activateTexture(GLenum text) const;
 
 
 };

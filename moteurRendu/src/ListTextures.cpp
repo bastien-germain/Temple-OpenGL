@@ -1,6 +1,6 @@
 #include "moteurRendu/ListTextures.hpp"
 
-ListTextures::ListTextures(unsigned int &size) : _length(0)
+ListTextures::ListTextures(const unsigned int &size) : _length(0)
 {	
 	
 	_texturesArray = new GLuint[ size ];
