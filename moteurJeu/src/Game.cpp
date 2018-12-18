@@ -97,16 +97,11 @@ void Game::fillSectionMat()
 
 void Game::updateSectionMat(const bool isLeft)
 {
-	if (isLeft)
-	{	
-		// left
-		_sectionMat[0] = _sectionMat[1];
-		_sectionMat[1].clear();
-	}
-	else
-	{	
-		// right
-		_sectionMat[0] = _sectionMat[2];
-		_sectionMat[2].clear();
-	}	
+	if (isLeft) 
+		_sectionMat[0] = _sectionMat[1]; // left
+	else 
+		_sectionMat[0] = _sectionMat[2]; // right
+
+	_sectionMat[1].clear();
+	_sectionMat[2].clear();
 }

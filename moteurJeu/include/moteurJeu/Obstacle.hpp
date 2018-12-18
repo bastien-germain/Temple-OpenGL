@@ -3,21 +3,23 @@
 #define __OBSTACLE_HPP__
 
 #include <glimac/glm.hpp>
+#include <moteurJeu/Observable.hpp>
 
 /// \class Obstacle
 /// \brief Class defining an Obstacle
-class Obstacle 
+class Obstacle : public Observable
 {
 
 private:
-	unsigned int _position; /* Position of the Obstacle */
+	unsigned int _posX; /* X position of the Obstacle */
+	float _posZ; /* Z position of the Obstacle */
 	unsigned int _size; /*! Size of the Obstacle */
 	
 public:
 	/// \brief Constructor from a position and a size
 	/// \param position : the position of the Obstacle
 	/// \param size : the size of the Obstacle
-	Obstacle(const unsigned int position = 0, const unsigned int size = 0);
+	Obstacle(const unsigned int posX = 0, const float posZ = 0, const unsigned int size = 0);
 
 	/// \brief Copy constructor using another Obstacle
 	/// \param copied : the copied Obstacle
@@ -32,10 +34,20 @@ public:
 		return _size;
 	}
 
-	/// \brief Getter : position getter
-	inline unsigned int position() const 
+	/// \brief Getter : posX getter
+	inline unsigned int posX() const 
 	{
-		return _position;
+		return _posX;
+	}
+
+	/// \brief Getter : posZ getter
+	inline unsigned int posZ() const 
+	{
+		return _posZ;
+	}
+
+	void proress(const float &delta) {
+		_posZ += delta;
 	}
 
 };
