@@ -2,7 +2,6 @@
 #ifndef __SECTION_HPP__
 #define __SECTION_HPP__
 
-#include <glimac/glm.hpp>
 #include <moteurJeu/Obstacle.hpp>
 #include <moteurJeu/Model.hpp>
 
