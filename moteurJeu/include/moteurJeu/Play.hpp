@@ -54,7 +54,11 @@ public:
 	void resume();
 
 	/// \brief test end of play
-	bool isOver();		
+	bool isOver() const;
+
+	/// \brief fill the section matrix with return form the factory
+	void fillSections(const Section &newSec);
+
 
 };
 
