@@ -7,8 +7,9 @@
 #include <cstdlib>
 #include <glimac/Image.hpp>
 #include <GL/glew.h>
-//#include "moteurRendu/Textures.hpp"
+#include "moteurRendu/ListTextures.hpp"
 #include <memory>
+
 
 #include <iostream>
 /// \class Texture
@@ -18,11 +19,13 @@ class Texture
 private:
 
 	unsigned int _id;
+	ListTextures* _lText;
+
 
 public:
 	// static Textures _lTextures;
 	Texture();
-	Texture(unsigned int id );
+	Texture(unsigned int id, ListTextures &lText );
 	//glGenTextures, glBindTexture, glTexImage2D 	
 
 	/// \param copied : the Texture to copy into the current object

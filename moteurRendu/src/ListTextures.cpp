@@ -1,8 +1,14 @@
 #include "moteurRendu/ListTextures.hpp"
 
-ListTextures::ListTextures() 
+ListTextures::ListTextures(unsigned int &size) : _length(0)
 {	
 	
+	_texturesArray = new GLuint[ size ];
+}
+
+ListTextures::ListTextures()
+{
+
 }
 
 // ListTextures::ListTextures(const std::vector<glimac::Image> &map)
@@ -16,11 +22,16 @@ ListTextures::ListTextures()
 
 ListTextures::~ListTextures()
 {
-
+	delete[] _texturesArray;
 }
 
 void ListTextures::addTexture(const glimac::Image &texture)
 {
 	_usedTextures.push_back(texture);
-	//_size ++;
+	_length ++;
+}
+
+void ListTextures::generateTexture() const
+{
+	glGenTextures(_length, _texturesArray);
 }

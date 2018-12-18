@@ -5,9 +5,9 @@ Texture::Texture()
 
 }
 
-Texture::Texture(unsigned int id) :_id(id)
+Texture::Texture(unsigned int id, ListTextures &lText) :_id(id)
 {
-	//glGenTextures()
+	_lText = &lText;
 }
 
 Texture::Texture(const Texture &copied) 
@@ -17,7 +17,7 @@ Texture::Texture(const Texture &copied)
 
 Texture::~Texture()
 {
-
+	delete _lText;
 }
 
 void Texture::bind() const
