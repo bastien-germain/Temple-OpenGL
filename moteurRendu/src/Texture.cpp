@@ -37,3 +37,5 @@ void Texture::paramTexture() const
 	debind();	
 }
 
+
+

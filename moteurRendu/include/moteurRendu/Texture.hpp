@@ -7,7 +7,7 @@
 #include <cstdlib>
 #include <glimac/Image.hpp>
 #include <GL/glew.h>
-#include "moteurRendu/Textures.hpp"
+//#include "moteurRendu/Textures.hpp"
 #include <memory>
 
 #include <iostream>
@@ -17,11 +17,10 @@ class Texture
 {
 private:
 
-	std::unique_ptr<glimac::Image> _imageTexture;
 	unsigned int _id;
 
 public:
-	static Textures *_lTextures;
+	// static Textures _lTextures;
 	Texture();
 	Texture(unsigned int id );
 	//glGenTextures, glBindTexture, glTexImage2D 	
@@ -36,7 +35,6 @@ public:
 
 
 	void paramTexture() const;
-
 
 
 };

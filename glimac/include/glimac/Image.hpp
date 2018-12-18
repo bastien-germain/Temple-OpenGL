@@ -19,6 +19,12 @@ public:
         m_nWidth(width), m_nHeight(height), m_Pixels(new glm::vec4[width * height]) {
     }
 
+    Image(const Image &copied): 
+    m_nWidth(copied.m_nWidth), m_nHeight(copied.m_nHeight), m_Pixels(new glm::vec4[copied.m_nWidth * copied.m_nHeight]) 
+    {
+
+    }
+
     unsigned int getWidth() const {
         return m_nWidth;
     }

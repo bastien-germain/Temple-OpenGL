@@ -1,4 +1,7 @@
-/*Textures* Textures::instance()
+
+#include "moteurRendu/Textures.hpp"
+
+Textures* Textures::instance()
 {
     if (_instance == 0)
     {
@@ -10,4 +13,7 @@
 
 Textures::Textures()
 {}
-*/
+
+/*Textures::addTexture(const Texture &text)
+{
+}*/
