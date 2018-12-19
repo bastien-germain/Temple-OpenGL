@@ -1,4 +1,6 @@
 #pragma once
+#ifndef __TRACKBALL_CAMERA_HPP__
+#define __TRACKBALL_CAMERA_HPP__
 
 #include <SDL/SDL.h>
 #include "glimac/glm.hpp"
@@ -14,7 +16,7 @@ private:
 public:
 
 	TrackballCamera();
-   ~TrackballCamera();
+    ~TrackballCamera();
 
     void moveFront(float delta); // delta > 0 --> camera goes forward
     void rotateLeft(float degree); 
@@ -22,3 +24,4 @@ public:
     glm::mat4 getViewMatrix() const;
 };
 
+#endif
