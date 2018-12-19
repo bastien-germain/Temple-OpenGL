@@ -18,7 +18,7 @@ class GameManager : public PositionObserver
 {
 
 private:
-	const char * _sectionsDataFilePath = "../../sectionsData/sectionsData.txt";
+	const char * _sectionsDataFilePath = "../Temple-OpenGL/moteurJeu/sectionsData/sectionsData.txt";
 	Player _player;
 	Enemy _enemy;
 	Parser _parser; 
@@ -36,6 +36,10 @@ public:
 
 	inline Player player() const {
 		return _player;
+	}
+
+	inline std::vector<std::vector<Section>> sectionMat() const {
+		return _sectionMat;
 	}
 
 	/// \brief test end of game

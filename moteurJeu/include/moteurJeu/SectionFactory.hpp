@@ -13,7 +13,7 @@
 #include <moteurJeu/Barrier.hpp>
 
 /// \class SectionFactory
-/// \nrief Creates Section from input s
+/// \brief Creates Section from input s
 class SectionFactory 
 {
 

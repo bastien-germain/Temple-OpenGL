@@ -2,7 +2,6 @@
 
 IBO::IBO(): _id(0)
 {
-	glGenBuffers(1, &_id);
 }
 
 IBO::IBO(const size_t &size, const GLuint &id): _id(id), _size(size)

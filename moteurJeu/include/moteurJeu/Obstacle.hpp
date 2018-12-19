@@ -38,7 +38,7 @@ public:
 	float posZ() const;
 
 	/// \brief posZ modifier when the Obstalce progresses along Z axis
-	void proress(const float &delta);
+	void progress(const float &delta);
 
 };
 

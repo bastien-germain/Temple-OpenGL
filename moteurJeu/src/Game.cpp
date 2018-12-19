@@ -55,3 +55,7 @@ bool Game::isOver() const
 	else
 		return false;
 }
+
+GameManager Game::gameManager() const {
+	return _manager;
+}

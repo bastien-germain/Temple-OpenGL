@@ -10,15 +10,23 @@ SectionFactory::~SectionFactory()
 
 Section SectionFactory::create(const std::string &key, PositionObserver *observer) const 
 {
-	// A CHANGER AVEC LES MODELES CORRESPONDANTS
+	std::cout << "SECTION_FACTORY.CREATE STARTS..." << "\n\n\n" << std::endl;
+
+	std::cout << "--- SECTION_FACTORY.CREATE MODEL DECLARATION" << std::endl;
 	Model model;
+	std::cout << "--- SECTION_FACTORY.CREATE OBSTACLE DECLARATION" << std::endl;
 	Obstacle obstacle;
+	std::cout << "--- SECTION_FACTORY.CREATE OBSTACLE_POSITION DECLARATION" << std::endl;
 	unsigned int obstaclePosition;
 
+	std::cout << "--- SECTION_FACTORY.CREATE BEFORE OBSERVER ADDING" << std::endl;
 	obstacle.addPositionObserver(observer);
+	std::cout << "--- SECTION_FACTORY.CREATE BEFORE OBSERVABLE ADDING" << std::endl;
 	observer->addPositionObservable(&obstacle);
 
-	// Need ajout observer sur l'obstacle (paramètre factory ?)!! 
+	std::cout << "--- SECTION_FACTORY.CREATE BEFORE SWITCH 1" << std::endl;
+	
+	std::cout << key << std::endl;
 
 	switch (key[2])
 	{
@@ -47,6 +55,8 @@ Section SectionFactory::create(const std::string &key, PositionObserver *observe
 		break;
 	}
 
+	std::cout << "--- SECTION_FACTORY.CREATE BEFORE SWITCH 2" << std::endl;
+	
 	switch (key[1])
 	{
 		case 'X':
@@ -96,6 +106,8 @@ Section SectionFactory::create(const std::string &key, PositionObserver *observe
 		break;
 	}
 
+	std::cout << "--- SECTION_FACTORY.CREATE BEFORE SWITCH 3" << std::endl;
+
 	switch (key[0])
 	{
 		case 'I':
@@ -122,4 +134,5 @@ Section SectionFactory::create(const std::string &key, PositionObserver *observe
 			THROW_EXCEPTION("FILE_READING_ERROR : Parser --> Invalid character for Section describing");
 		break;
 	}
+	std::cout << "SECTION_FACTORY.CREATE ENDS" << std::endl;
 }

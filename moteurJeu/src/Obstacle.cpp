@@ -30,8 +30,9 @@ float Obstacle::posZ() const
 	return _posZ;
 }
 
-void Obstacle::proress(const float &delta) 
+void Obstacle::progress(const float &delta) 
 {
+	std::cout << "*** OBSTACLE PROGRESS" << std::endl;
 	_posZ += delta;
 	notify();
 }

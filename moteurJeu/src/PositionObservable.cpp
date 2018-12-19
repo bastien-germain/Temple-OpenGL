@@ -9,7 +9,8 @@ PositionObservable::~PositionObservable()
 }
 
 void PositionObservable::addPositionObserver(PositionObserver *observer) 
-{
+{	
+	std::cout << "POSITION_OBSERVER ADDING STARTS..." << std::endl;
 	_observers.push_back(observer);	
 }
 

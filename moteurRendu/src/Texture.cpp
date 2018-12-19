@@ -2,7 +2,6 @@
 
 Texture::Texture()
 {
-
 }
 
 Texture::Texture(unsigned int id, ListTextures &lText) :_id(id)
@@ -12,7 +11,6 @@ Texture::Texture(unsigned int id, ListTextures &lText) :_id(id)
 
 Texture::Texture(const Texture &copied) 
 {
-
 }
 
 Texture::~Texture()

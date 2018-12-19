@@ -5,6 +5,7 @@
 #include <vector>
 #include <cstdlib>
 #include <GL/glew.h>
+#include <iostream>
 
 /// \class VAO
 /// \brief Specifies the buffer array of the class VBO
@@ -20,6 +21,7 @@ private:
 	
 public:
 	VAO();
+	VAO(const GLuint &id);
 	~VAO();
 
 	/// \brief Gives spefications for the buffer

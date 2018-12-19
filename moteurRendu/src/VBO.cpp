@@ -1,14 +1,16 @@
 #include "moteurRendu/VBO.hpp"
 
-VBO::VBO()
-{}
+VBO::VBO() : _id(0)
+{
+	std::cout << " *** VBO DEFAULT CONSTRUCTOR" << std::endl;
+}
 
 // On passe un vetceur de point (3c oord)
 VBO::VBO(const std::vector<glimac::ShapeVertex> &vertices, const GLuint &id, const size_t size, uint32_t* indexes)
 : _vertices(vertices), _nbVertices(vertices.size()), _id(id)
 {
 	glGenBuffers(1,&_id);
-	_vao = VAO();
+	_vao = VAO(_id);
 	_ibo = IBO(size, indexes, id);
 	
 }
