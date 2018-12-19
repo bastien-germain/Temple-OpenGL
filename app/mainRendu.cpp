@@ -12,6 +12,7 @@
 #include "moteurRendu/Texture.hpp"
 #include "moteurRendu/ListTextures.hpp"
 #include "glimac/Sphere.hpp"
+#include "glimac/Geometry.hpp"
 
 using namespace glimac;
 
@@ -39,8 +40,10 @@ int main(int argc, char** argv) {
     GLint uMVPMatrix = glGetUniformLocation(program.getGLId(), "uMVPMatrix");
     GLint uNormalMatrix = glGetUniformLocation(program.getGLId(), "uNormalMatrix");
     GLint uTexture = glGetUniformLocation(program.getGLId(), "uTexture");
+
     glEnable(GL_DEPTH_TEST);
-    ListTextures c(50);
+
+    ListTextures textureManager(50);
     // std::unique_ptr<Image> earth = loadImage(applicationPath.dirPath() + "../../GLImac-Template/assets/textures/EarthMap.jpg");
     Image* earth = ImageManager::loadImage(applicationPath.dirPath() + "/assets/EarthMap.jpg");
     if(earth == NULL) {
@@ -48,7 +51,7 @@ int main(int argc, char** argv) {
     }
 
 
-    c.addTexture( earth);
+    textureManager.addTexture( earth);
 
     std::cout << "OpenGL Version : " << glGetString(GL_VERSION) << std::endl;
     std::cout << "GLEW Version : " << glewGetString(GLEW_VERSION) << std::endl;
@@ -60,56 +63,72 @@ int main(int argc, char** argv) {
     /*********************************
      * HERE SHOULD COME THE INITIALIZATION CODE
      *********************************/
-    Texture t(0,c);
+    Texture t(0,textureManager);
 
 
     std::vector<ShapeVertex> v ;
 
     ShapeVertex vertex;
     
-    // vertex.texCoords.x = 1;
-    // vertex.texCoords.y = 0;
+    vertex.texCoords.x = 0;
+    vertex.texCoords.y = 0;
 
-    // vertex.normal.x = 0;
-    // vertex.normal.y = 0;
-    // vertex.normal.z = 0;
+    vertex.normal.x = 0;
+    vertex.normal.y = 0;
+    vertex.normal.z = 0;
 
-    // vertex.position.x = -0.5f;
-    // vertex.position.y = -0.5f;
-    // v.push_back(vertex);
+    vertex.position.x = -0.5f;
+    vertex.position.y = -0.5f;
+    v.push_back(vertex);
 
-    // vertex.texCoords.x = 0;
-    // vertex.texCoords.y = 0;
+    vertex.texCoords.x = 0;
+    vertex.texCoords.y = 1;
 
-    // vertex.normal.x = 0;
-    // vertex.normal.y = 0;
-    // vertex.normal.z = 0;
+    vertex.normal.x = 0;
+    vertex.normal.y = 0;
+    vertex.normal.z = 0;
 
-    // vertex.position.x = 0.5f;
-    // vertex.position.y = -0.5f;
-    // v.push_back(vertex);
+    vertex.position.x = 0.5f;
+    vertex.position.y = -0.5f;
+    v.push_back(vertex);
 
-    // vertex.texCoords.x = 0;
-    // vertex.texCoords.y = 1;
+    vertex.texCoords.x = 1;
+    vertex.texCoords.y = 1;
 
-    // vertex.normal.x = 0;
-    // vertex.normal.y = 0;
-    // vertex.normal.z = 0;
+    vertex.normal.x = 0;
+    vertex.normal.y = 0;
+    vertex.normal.z = 0;
 
-    // vertex.position.x = 0.0f;
-    // vertex.position.y = 0.5f;
-    // v.push_back(vertex);
-      
-    Sphere sphere(1, 50, 25);
+    vertex.position.x = 0.5f;
+    vertex.position.y = 0.5f;
+    v.push_back(vertex);
+    
+
+    vertex.texCoords.x = 1;
+    vertex.texCoords.y = 0;
+
+    vertex.normal.x = 0;
+    vertex.normal.y = 0;
+    vertex.normal.z = 0;
+
+    vertex.position.x = -0.5f;
+    vertex.position.y = 0.5f;
+    v.push_back(vertex);
+
+    /*Sphere sphere(1, 50, 25);
     const ShapeVertex* s = sphere.getDataPointer();
     for (int i = 0; i < sphere.getVertexCount() ; i++)
-        v.push_back(s[i]);
-    VBO triangle(v);
+        v.push_back(s[i]);*/
+
+    uint32_t indices[]  = {
+        0, 1, 2, 0, 2, 3
+    };
+    VBO triangle(v,0,6,indices);
     triangle.sendData();
     triangle.specifyVAO();
 
 
-    c.generateTexture();
+    textureManager.generateTexture();
     t.bind();
     t.paramTexture();
     t.debind();

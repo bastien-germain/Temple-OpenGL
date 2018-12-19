@@ -3,6 +3,7 @@
 #define __VBO_HPP__
 
 #include "VAO.hpp"
+#include "IBO.hpp"
 #include <vector>
 #include <cstdlib>
 #include <GL/glew.h>
@@ -19,6 +20,7 @@ class VBO
 private:
 	GLuint _id;
 	VAO _vao;
+	IBO _ibo;
 	size_t _nbVertices;
 	std::vector<glimac::ShapeVertex> _vertices;
 
@@ -27,7 +29,7 @@ private:
 public:
 	VBO();
 	/// \param vertices: Vector of a structure containing vertex, normal, texture
-	VBO(const std::vector<glimac::ShapeVertex> &vertices);
+	VBO(const std::vector<glimac::ShapeVertex> &vertices, const GLuint &id, const size_t size, uint32_t* indexes);
 
 	/// \param copied : The VBO to copy into the current object
 	VBO(const VBO &copied);
@@ -41,6 +43,11 @@ public:
 	inline VAO vao() const
 	{
 		return _vao;
+	}
+
+	inline IBO ibo() const
+	{
+		return _ibo;
 	}
 
 	/// \brief  Unbinds the buffer
