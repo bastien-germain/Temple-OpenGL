@@ -1,6 +1,6 @@
 #include "moteurJeu/Player.hpp"
 
-Player::Player() : _posX(0), _posY(0)
+Player::Player() : _posX(0), _posY(0), _posZ(0.0)
 {
 
 }

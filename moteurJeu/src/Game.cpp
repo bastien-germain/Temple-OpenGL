@@ -1,12 +1,7 @@
 #include "moteurJeu/Game.hpp"
 
-Game::Game() : _score(0), _distance(0), _coins(0), _speed(0), _pausedSpeed(0), _player(Player()), _enemy(Enemy()) 
+Game::Game() : _score(0), _distance(0), _coins(0), _speed(0), _pausedSpeed(0), _manager()
 {
-	for (unsigned int i = 0; i < 3; i++)
-	{	
-		std::vector<Section> temp;
-		_sectionMat.push_back(temp);
-	}
 }
 
 Game::~Game() 
@@ -55,53 +50,8 @@ void Game::resume()
 
 bool Game::isOver() const
 {
-	if(_enemy.distanceToPlayer() == 0)
+	if(_manager.enemy().distanceToPlayer() == 0)
 		return true;
-	else 
+	else
 		return false;
-}
-
-void Game::fillSectionVec(const Section &newSec)
-{	
-	_sectionVec.push_back(newSec);
-}
-
-void Game::fillSectionMat()
-{	
-	for (unsigned int i = 0; i < _sectionVec.size(); i++) 
-	{
-		_sectionMat[0].push_back(_sectionVec[i]);
-
-		if (_sectionVec[i].isT())
-		{	
-			// TESTER S'IL RESTE AU MOINS 6 SECTIONS !
-
-			// On passe les 3 d'après à la deuxième ligne (côté gauche)
-			for (unsigned int j = i + 1; j < i + 4; j++)
-			{
-				_sectionMat[1].push_back(_sectionVec[j]);
-			}
-
-			i+=3;
-
-			// On passe les 3 encore d'après à la troisième ligne (côté droit)
-			for (unsigned int j = i + 1; j < i + 4; j++)
-			{
-				_sectionMat[2].push_back(_sectionVec[j]);
-			}
-
-			i+=3;
-		}
-	}	
-}
-
-void Game::updateSectionMat(const bool isLeft)
-{
-	if (isLeft) 
-		_sectionMat[0] = _sectionMat[1]; // left
-	else 
-		_sectionMat[0] = _sectionMat[2]; // right
-
-	_sectionMat[1].clear();
-	_sectionMat[2].clear();
 }

@@ -5,11 +5,9 @@
 #include <iostream>
 #include <string>
 #include <moteurJeu/Exception.hpp>
-#include <moteurJeu/Section.hpp>
 #include <moteurJeu/CornerSection.hpp>
 #include <moteurJeu/CorridorSection.hpp>
 #include <moteurJeu/TSection.hpp>
-#include <moteurJeu/Obstacle.hpp>
 #include <moteurJeu/Hole.hpp>
 #include <moteurJeu/Rock.hpp>
 #include <moteurJeu/Barrier.hpp>
@@ -29,8 +27,7 @@ public:
 	~SectionFactory();
 
 	/// \brief 
-	Section create(const std::string &key) const;
-
+	Section create(const std::string &key, PositionObserver *observer) const;
 
 };
 

@@ -14,3 +14,24 @@ Obstacle::~Obstacle()
 {
 
 }
+
+float Obstacle::size() const
+{
+	return _size;
+}
+
+unsigned int Obstacle::posX() const
+{
+	return _posX;
+}
+
+float Obstacle::posZ() const
+{
+	return _posZ;
+}
+
+void Obstacle::proress(const float &delta) 
+{
+	_posZ += delta;
+	notify();
+}

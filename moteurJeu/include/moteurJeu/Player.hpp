@@ -11,6 +11,7 @@ class Player
 private:
 	unsigned int _posX; // -1 : left; 0 : middle; 1: right
 	unsigned int _posY; // -1 : down; 0 : regular; 1: up
+	float _posZ; // position of the player, to which the obstacle posZ will be compared
 
 public:
 	/// \brief Constructor
@@ -23,6 +24,10 @@ public:
 	void goLeft();
 	void jump();
 	void bendDown();
+
+	inline float posZ() const {
+		return _posZ;
+	}
 };
 
 #endif

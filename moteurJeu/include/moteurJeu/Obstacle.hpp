@@ -3,11 +3,11 @@
 #define __OBSTACLE_HPP__
 
 #include <glimac/glm.hpp>
-#include <moteurJeu/Observable.hpp>
+#include <moteurJeu/PositionObservable.hpp>
 
 /// \class Obstacle
 /// \brief Class defining an Obstacle
-class Obstacle : public Observable
+class Obstacle : public PositionObservable
 {
 
 private:
@@ -29,26 +29,16 @@ public:
 	~Obstacle();
 
 	/// \brief Getter : size getter
-	inline float size() const 
-	{
-		return _size;
-	}
+	float size() const; 
 
 	/// \brief Getter : posX getter
-	inline unsigned int posX() const 
-	{
-		return _posX;
-	}
+	unsigned int posX() const;
 
 	/// \brief Getter : posZ getter
-	inline unsigned int posZ() const 
-	{
-		return _posZ;
-	}
+	float posZ() const;
 
-	void proress(const float &delta) {
-		_posZ += delta;
-	}
+	/// \brief posZ modifier when the Obstalce progresses along Z axis
+	void proress(const float &delta);
 
 };
 

@@ -8,12 +8,17 @@ SectionFactory::~SectionFactory()
 {
 }
 
-Section SectionFactory::create(const std::string &key) const 
+Section SectionFactory::create(const std::string &key, PositionObserver *observer) const 
 {
 	// A CHANGER AVEC LES MODELES CORRESPONDANTS
 	Model model;
 	Obstacle obstacle;
 	unsigned int obstaclePosition;
+
+	obstacle.addPositionObserver(observer);
+	observer->addPositionObservable(&obstacle);
+
+	// Need ajout observer sur l'obstacle (paramètre factory ?)!! 
 
 	switch (key[2])
 	{
