@@ -1,7 +1,9 @@
 #include "moteurRendu/VBO.hpp"
 
-VBO::VBO()
-{}
+VBO::VBO() : _id(0)
+{
+	std::cout << " *** VBO DEFAULT CONSTRUCTOR" << std::endl;
+}
 
 // On passe un vetceur de point (3c oord)
 VBO::VBO(const std::vector<glimac::ShapeVertex> &vertices, const GLuint &id, const size_t size, const uint32_t* indexes, const glimac::Geometry g)

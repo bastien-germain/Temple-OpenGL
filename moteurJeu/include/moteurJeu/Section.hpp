@@ -3,6 +3,8 @@
 #define __SECTION_HPP__
 
 #include <moteurJeu/Model.hpp>
+#include <moteurJeu/Obstacle.hpp>
+
 
 /// \class Section
 /// \brief part of the path crossed by the player 
@@ -36,6 +38,12 @@ public:
 	{
 		return _isT;
 	}
+
+	inline Obstacle obstacle() const 
+	{
+	}
+
+
 
 
 

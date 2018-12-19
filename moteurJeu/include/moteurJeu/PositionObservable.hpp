@@ -6,6 +6,8 @@
 #include <algorithm>
 #include <moteurJeu/PositionObserver.hpp>
 #include <moteurJeu/Exception.hpp>
+#include <iostream>
+
 
 
 class PositionObserver;

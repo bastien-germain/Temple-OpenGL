@@ -1,8 +1,13 @@
 #include "moteurRendu/VAO.hpp"
 
-
-VAO::VAO(): _VERTEX_POSITION(0), _VERTEX_NORMAL(1), _VERTEX_TEXTURE(2)
+VAO::VAO(): _id(0), _VERTEX_POSITION(0), _VERTEX_NORMAL(1), _VERTEX_TEXTURE(2)
 {
+}
+
+VAO::VAO(const GLuint &id): _id(id), _VERTEX_POSITION(0), _VERTEX_NORMAL(1), _VERTEX_TEXTURE(2)
+{
+	std::cout << _id << std::endl;
+	std::cout << &_id << std::endl;
 	glGenVertexArrays(1,&_id);
 }
 

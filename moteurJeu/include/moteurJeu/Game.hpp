@@ -49,6 +49,8 @@ public:
 
 	/// \brief test end of game
 	bool isOver() const;
+
+	GameManager gameManager() const;
 };
 
 #endif

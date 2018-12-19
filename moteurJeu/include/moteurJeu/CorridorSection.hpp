@@ -3,7 +3,6 @@
 #define __CORRIDOR_SECTION_HPP__
 
 #include <moteurJeu/Section.hpp>
-#include <moteurJeu/Obstacle.hpp>
 #include <moteurJeu/Coin.hpp>
 #include <vector>
 

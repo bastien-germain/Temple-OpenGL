@@ -8,22 +8,28 @@ Parser::~Parser()
 {
 }
 
-const std::vector<std::string> Parser::parse(const char * filePath) const 
+std::vector<std::string> Parser::parse(const char * filePath) const 
 {
-	std::vector<std::string> out;
-	std::string line;
 
-  	std::ifstream file(filePath);
+  std::cout << "FILE PARSING STARTS..." << std::endl;
 
-  	if (file.is_open())
-  	{
-    	while (std::getline(file,line))
-    	{
-    		out.push_back(line);
+  std::vector<std::string> out;
+  std::string line;
+
+  std::ifstream file(filePath);
+
+    if (file.is_open())
+    {
+      while (std::getline(file,line))
+      {
+        out.push_back(line);
   
-   		}
-    	file.close();
-  	}
+      }
+      file.close();
+      std::cout << "FILE PARSING ENDS" << std::endl;
+      return out;
+    }
 
-  	else THROW_EXCEPTION("FILE_OPENING_ERROR : Check file name");	
+  else THROW_EXCEPTION("FILE_OPENING_ERROR : Check file name"); 
+  
 }
