@@ -24,6 +24,10 @@ public:
 	/// \param model : the Model used for the Section
 	Section(const Model &model);
 
+	/// \brief Copy constructor
+	/// \param copied : the Section copied
+	Section(const Section &copied);
+
 	/// \brief Destructor
 	virtual ~Section();
 

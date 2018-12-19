@@ -15,10 +15,11 @@ CornerSection::CornerSection(const Model &model, const int &cornerDirection)
 }
 
 CornerSection::CornerSection(const CornerSection &copied) 
-				: Section(copied.model())
+				: Section(copied.model()), _cornerDirection(copied._cornerDirection)
 {
 }
 
 CornerSection::~CornerSection() 
 {
 }
+

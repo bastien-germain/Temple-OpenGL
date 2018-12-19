@@ -6,7 +6,7 @@ TSection::TSection(const Model &model) : Section(model)
 }
 
 TSection::TSection(const TSection &copied) 
-				: Section(copied.model())
+				: Section(copied)
 {
 }
 

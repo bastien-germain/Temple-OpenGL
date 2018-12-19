@@ -50,7 +50,9 @@ public:
 	/// \brief test end of game
 	bool isOver() const;
 
-	GameManager gameManager() const;
+	inline GameManager gameManager() const {
+		return _manager;
+	}
 };
 
 #endif

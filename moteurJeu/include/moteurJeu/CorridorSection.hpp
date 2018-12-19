@@ -21,6 +21,11 @@ public:
 	/// \param obstacle : the Obstacle present in the CorridorSection
 	CorridorSection(const Model &model, const Obstacle &obstacle);
 
+	/// \brief Constructor from a position and size
+	/// \param model : the Model used for the CorridorSection
+	/// \param obstacle : the Obstacle present in the CorridorSection
+	CorridorSection(const CorridorSection &copied);
+
 	/// \brief Destructor
 	~CorridorSection();
 

@@ -6,7 +6,6 @@ Game::Game() : _score(0), _distance(0), _coins(0), _speed(0), _pausedSpeed(0), _
 
 Game::~Game() 
 {
-
 }
 
 void Game::start() 
@@ -54,8 +53,4 @@ bool Game::isOver() const
 		return true;
 	else
 		return false;
-}
-
-GameManager Game::gameManager() const {
-	return _manager;
 }

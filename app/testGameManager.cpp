@@ -7,11 +7,16 @@ int main(int argc, char const *argv[])
 	Game game;
 	game.gameManager().loadSections();
 
+	std::vector<std::vector<Section>> mat = game.gameManager().sectionMat();
 	std::cout << game.gameManager().sectionMat().size() << std::endl;
 
-	std::cout << "0 ---  "<<  game.gameManager().sectionMat()[0].size() << std::endl;
-	std::cout <<"1 ---  "<<  game.gameManager().sectionMat()[1].size() << std::endl;
-	std::cout <<"2 ---  "<<  game.gameManager().sectionMat()[2].size() << std::endl;
+	std::cout << "0 ---  " <<  game.gameManager().sectionMat()[0].size() << std::endl;
+	std::cout << "1 ---  " <<  game.gameManager().sectionMat()[1].size() << std::endl;
+	std::cout << "2 ---  " <<  game.gameManager().sectionMat()[2].size() << std::endl;
+
+	std::cout << "0 ---  " <<  mat[0].size() << std::endl;
+	std::cout << "1 ---  " <<  mat[1].size() << std::endl;
+	std::cout << "2 ---  " <<  mat[2].size() << std::endl;
 
 	for (unsigned int i = 0; i < game.gameManager().sectionMat().size(); ++i)
 	{

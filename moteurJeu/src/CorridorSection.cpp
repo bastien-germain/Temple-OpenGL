@@ -6,6 +6,10 @@ CorridorSection::CorridorSection(const Model &model, const Obstacle &obstacle)
 	_isT = false;
 }
 
+CorridorSection::CorridorSection(const CorridorSection &copied) : Section(copied), _obstacle(copied._obstacle)
+{
+}
+
 CorridorSection::~CorridorSection() 
 {
 }
