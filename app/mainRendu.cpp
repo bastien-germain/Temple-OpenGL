@@ -39,16 +39,16 @@ int main(int argc, char** argv) {
     GLint uMVPMatrix = glGetUniformLocation(program.getGLId(), "uMVPMatrix");
     GLint uNormalMatrix = glGetUniformLocation(program.getGLId(), "uNormalMatrix");
     GLint uTexture = glGetUniformLocation(program.getGLId(), "uTexture");
-
+    glEnable(GL_DEPTH_TEST);
     ListTextures c(50);
     // std::unique_ptr<Image> earth = loadImage(applicationPath.dirPath() + "../../GLImac-Template/assets/textures/EarthMap.jpg");
-    std::unique_ptr<Image> earth = loadImage(applicationPath.dirPath() + "/assets/EarthMap.jpg");
+    Image* earth = ImageManager::loadImage(applicationPath.dirPath() + "/assets/EarthMap.jpg");
     if(earth == NULL) {
         std::cerr << "error load image" << std::endl;
     }
 
 
-    c.addTexture( *earth);
+    c.addTexture( earth);
 
     std::cout << "OpenGL Version : " << glGetString(GL_VERSION) << std::endl;
     std::cout << "GLEW Version : " << glewGetString(GLEW_VERSION) << std::endl;
@@ -66,39 +66,39 @@ int main(int argc, char** argv) {
     std::vector<ShapeVertex> v ;
 
     ShapeVertex vertex;
-    /*
-    vertex.texCoords.x = 0;
-    vertex.texCoords.y = 0;
+    
+    // vertex.texCoords.x = 1;
+    // vertex.texCoords.y = 0;
 
-    vertex.normal.x = 0;
-    vertex.normal.y = 0;
-    vertex.normal.z = 0;
+    // vertex.normal.x = 0;
+    // vertex.normal.y = 0;
+    // vertex.normal.z = 0;
 
-    vertex.position.x = -0.5f;
-    vertex.position.y = -0.5f;
-    v.push_back(vertex);
+    // vertex.position.x = -0.5f;
+    // vertex.position.y = -0.5f;
+    // v.push_back(vertex);
 
-    vertex.texCoords.x = 0;
-    vertex.texCoords.y = 0;
+    // vertex.texCoords.x = 0;
+    // vertex.texCoords.y = 0;
 
-    vertex.normal.x = 0;
-    vertex.normal.y = 0;
-    vertex.normal.z = 0;
+    // vertex.normal.x = 0;
+    // vertex.normal.y = 0;
+    // vertex.normal.z = 0;
 
-    vertex.position.x = 0.5f;
-    vertex.position.y = -0.5f;
-    v.push_back(vertex);
+    // vertex.position.x = 0.5f;
+    // vertex.position.y = -0.5f;
+    // v.push_back(vertex);
 
-    vertex.texCoords.x = 0;
-    vertex.texCoords.y = 0;
+    // vertex.texCoords.x = 0;
+    // vertex.texCoords.y = 1;
 
-    vertex.normal.x = 0;
-    vertex.normal.y = 0;
-    vertex.normal.z = 0;
+    // vertex.normal.x = 0;
+    // vertex.normal.y = 0;
+    // vertex.normal.z = 0;
 
-    vertex.position.x = 0.0f;
-    vertex.position.y = 0.5f;
-    v.push_back(vertex);*/
+    // vertex.position.x = 0.0f;
+    // vertex.position.y = 0.5f;
+    // v.push_back(vertex);
       
     Sphere sphere(1, 50, 25);
     const ShapeVertex* s = sphere.getDataPointer();
@@ -108,13 +108,7 @@ int main(int argc, char** argv) {
     triangle.sendData();
     triangle.specifyVAO();
 
-    // GLuint texturesArray[1]; //
-    // glGenTextures(1, texturesArray);
-    // glBindTexture(GL_TEXTURE_2D, texturesArray[0]);
-    // glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, earth->getWidth(), earth->getHeight(), 0, GL_RGBA, GL_FLOAT, earth->getPixels());
-    // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-    // glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-    // glBindTexture(GL_TEXTURE_2D,0);
+
     c.generateTexture();
     t.bind();
     t.paramTexture();
@@ -166,16 +160,14 @@ int main(int argc, char** argv) {
         /*********************************
          * HERE SHOULD COME THE RENDERING CODE
          *********************************/
-        glClear(GL_COLOR_BUFFER_BIT);
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 
 
         triangle.vao().bind();
         
-        // glUniform1i(uTexture,0);
-        // glActiveTexture(GL_TEXTURE0);
-        // glBindTexture(GL_TEXTURE_2D, texturesArray[0]);
-        // t.bind();
+        glUniform1i(uTexture,0);
+        t.bind();
 
         glm::mat4 earthMVMatrix = glm::rotate(globalMVMatrix, windowManager.getTime(), glm::vec3(0,1,0));
         glUniformMatrix4fv(uMVMatrix , 1, GL_FALSE, glm::value_ptr(earthMVMatrix));
@@ -184,10 +176,8 @@ int main(int argc, char** argv) {
 
         triangle.draw();
 
-        // glActiveTexture(GL_TEXTURE0);
-        // glBindTexture(GL_TEXTURE_2D,0);
 
-        // t.debind();
+        t.debind();
         triangle.vao().debind();
         // Update the display
         windowManager.swapBuffers();

@@ -9,5 +9,6 @@ out vec3 fFragColor;
 uniform sampler2D uTexture;
 
 void main() {
-	fFragColor = vNormal.rgb;
+	fFragColor = texture(uTexture,vTexCoords).rgb;
+//	fFragColor = vNormal.rgb;
 };

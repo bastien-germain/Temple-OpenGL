@@ -13,31 +13,37 @@
 
 #include <iostream>
 /// \class Texture
-/// \brief Contains the texture on the object
+/// \brief Contains the texture of one object, there is one link to the unique object ListTextures which contains all the textures Image
 class Texture
 {
 private:
 
 	unsigned int _id;
+	//Lien vers l'object unique de l'application ListTextures
 	ListTextures* _lText;
 
 
 public:
-	// static Textures _lTextures;
 	Texture();
 	Texture(unsigned int id, ListTextures &lText );
-	//glGenTextures, glBindTexture, glTexImage2D 	
 
 	/// \param copied : the Texture to copy into the current object
 	Texture(const Texture &copied);
 
+	inline unsigned int id() const
+	{
+		return _id;
+	}
+
 	~Texture();
+
 
 	void bind() const;
 	void debind() const;
 
-
-	void paramTexture() const;
+	/// \brief Gives all the parameters for the texture, how to wrap the object into it
+	void paramTexture( ) const;
+	/// \brief Activate the texture 
 	void activateTexture(GLenum text) const;
 
 

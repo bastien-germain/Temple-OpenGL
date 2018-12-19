@@ -30,7 +30,7 @@ std::unique_ptr<Image> loadImage(const FilePath& filepath) {
 
 std::unordered_map<FilePath, std::unique_ptr<Image>> ImageManager::m_ImageMap;
 
-const Image* ImageManager::loadImage(const FilePath& filepath) {
+ Image* ImageManager::loadImage(const FilePath& filepath) {
     auto it = m_ImageMap.find(filepath);
     if(it != std::end(m_ImageMap)) {
         return (*it).second.get();

@@ -25,9 +25,14 @@ ListTextures::~ListTextures()
 	delete[] _texturesArray;
 }
 
-void ListTextures::addTexture(const glimac::Image &texture)
+void ListTextures::addTexture(glimac::Image* texture)
 {
+
+	//_usedTextures.push_back(texture));
+	//glimac::Image* t;
+	//std::move(texture,t);
 	_usedTextures.push_back(texture);
+
 	_length ++;
 }
 
