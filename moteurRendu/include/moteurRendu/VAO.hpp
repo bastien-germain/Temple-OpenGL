@@ -7,7 +7,7 @@
 #include <GL/glew.h>
 
 /// \class VAO
-/// \brief Specifies the buffer array
+/// \brief Specifies the buffer array of the class VBO
 class VAO 
 {
 

@@ -48,7 +48,7 @@ class ImageManager {
 private:
     static std::unordered_map<FilePath, std::unique_ptr<Image>> m_ImageMap;
 public:
-    static const Image* loadImage(const FilePath& filepath);
+    static  Image* loadImage(const FilePath& filepath);
 };
 
 }

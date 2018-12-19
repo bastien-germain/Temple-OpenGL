@@ -56,7 +56,10 @@ void VBO::deleteBuf()
 
 void VBO::draw() const
 {
-	_vao.bind();
+	// _vao.bind();
+	// glBindTexture(GL_TEXTURE_2D, texturesArray[0]);
+ //    glUniform1i(uTexture,0);	
     glDrawArrays(GL_TRIANGLES, 0, _nbVertices); //Dessin des triangles
-    _vao.debind();
+    // glBindTexture(GL_TEXTURE_2D,0);
+    // _vao.debind();
 }
