@@ -3,6 +3,7 @@
 #include <glm/glm.hpp>
 #include <vector>
 #include <string>
+#include "common.hpp"
 #include "Image.hpp"
 #include "FilePath.hpp"
 #include "BBox.hpp"
@@ -44,7 +45,7 @@ public:
     };
 
 private:
-    std::vector<Vertex> m_VertexBuffer;
+    std::vector<ShapeVertex> m_VertexBuffer;
     std::vector<unsigned int> m_IndexBuffer;
     std::vector<Mesh> m_MeshBuffer;
     std::vector<Material> m_Materials;
@@ -53,7 +54,7 @@ private:
     void generateNormals(unsigned int meshIndex);
 
 public:
-    const Vertex* getVertexBuffer() const {
+    const ShapeVertex* getVertexBuffer() const {
         return m_VertexBuffer.data();
     }
 

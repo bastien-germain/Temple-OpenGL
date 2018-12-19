@@ -4,11 +4,11 @@ VBO::VBO()
 {}
 
 // On passe un vetceur de point (3c oord)
-VBO::VBO(const std::vector<glimac::ShapeVertex> &vertices, const GLuint &id, const size_t size, uint32_t* indexes)
-: _vertices(vertices), _nbVertices(vertices.size()), _id(id)
+VBO::VBO(const std::vector<glimac::ShapeVertex> &vertices, const GLuint &id, const size_t size, const uint32_t* indexes, const glimac::Geometry g)
+: _vertices(vertices), _nbVertices(vertices.size()), _id(id), _geo(g)
 {
 	glGenBuffers(1,&_id);
-	_vao = VAO();
+	_vao = VAO(_id);
 	_ibo = IBO(size, indexes, id);
 	
 }
@@ -46,8 +46,12 @@ void VBO::specifyVAO() const
 void VBO::sendData() const
 {
 	bind();
-	glBufferData(GL_ARRAY_BUFFER,  _nbVertices * sizeof(glimac::ShapeVertex), &_vertices[0], GL_STATIC_DRAW);
+	// glBufferData(GL_ARRAY_BUFFER,  _nbVertices * sizeof(glimac::ShapeVertex), &_vertices[0], GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER,  _geo.getVertexCount() * sizeof(glimac::ShapeVertex), _geo.getVertexBuffer(), GL_STATIC_DRAW);
+// 
 	debind();
+
+	specifyVAO();
 }
 
 void VBO::deleteBuf()
@@ -60,7 +64,5 @@ void VBO::deleteBuf()
 
 void VBO::draw() const
 {
-    // glDrawArrays(GL_TRIANGLES, 0, _nbVertices); //Dessin des triangles
-
-    glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, 0);
+    glDrawElements(GL_TRIANGLES, _geo.getIndexCount(), GL_UNSIGNED_INT, 0);
 }

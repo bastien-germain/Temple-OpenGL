@@ -34,14 +34,14 @@ void Sphere::build(GLfloat r, GLsizei discLat, GLsizei discLong) {
         for(GLsizei i = 0; i <= discLat; ++i) {
             ShapeVertex vertex;
             
-            vertex.texCoords.x = i * rcpLat;
-            vertex.texCoords.y = 1.f - j * rcpLong;
+            vertex.m_TexCoords.x = i * rcpLat;
+            vertex.m_TexCoords.y = 1.f - j * rcpLong;
 
-            vertex.normal.x = sin(i * dPhi) * cosTheta;
-            vertex.normal.y = sinTheta;
-            vertex.normal.z = cos(i * dPhi) * cosTheta;
+            vertex.m_Normal.x = sin(i * dPhi) * cosTheta;
+            vertex.m_Normal.y = sinTheta;
+            vertex.m_Normal.z = cos(i * dPhi) * cosTheta;
             
-            vertex.position = r * vertex.normal;
+            vertex.m_Position = r * vertex.m_Normal;
             
             data.push_back(vertex);
         }

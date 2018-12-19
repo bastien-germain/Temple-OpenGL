@@ -12,7 +12,8 @@ IBO::IBO(const size_t &size, const GLuint &id): _id(id), _size(size)
 
 }
 
-IBO::IBO(const size_t &size, uint32_t* &index, const GLuint &id):  _id(id), _indexes(index), _size(size)
+IBO::IBO(const size_t &size, const uint32_t* &index, const GLuint &id):  
+_id(id), _indexes(index), _size(size)
 {
 	glGenBuffers(1, &_id);
 }

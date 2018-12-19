@@ -16,6 +16,40 @@
 
 using namespace glimac;
 
+std::vector<ShapeVertex> transformIntoVector( const ShapeVertex* data, size_t length)
+{
+    std::vector<ShapeVertex> v;
+    std::cout << "length" << std::endl;
+    std::cout << length << std::endl;
+    for (size_t i =0; i < length; i ++)
+    {
+        std::cout<< data[i].m_Position.x << std::endl;
+        // ShapeVertex s ;
+
+        // s.m_Position.x = data[i];
+        // s.m_Position.y = data[i+1];
+        // s.m_Position.y = data[i+2];
+
+        // s.m_Normal.x = data[i+3];
+        // s.m_Normal.y = data[i+4];
+        // s.m_Normal.z = data[i+5];
+        v.push_back(data[i]);
+    }
+    std::vector<ShapeVertex>::iterator it;
+   /* for(it = v.begin(); it != v.end(); it++)
+    {
+        std::cout << "*it.m_Position" << std::endl;
+
+        std::cout << &it << std::endl;
+        std::cout << it->m_Position << std::endl;
+        std::cout << it->m_TexCoords << std::endl;
+        std::cout << it->m_Normal << std::endl;
+    }*/
+
+
+    return v;
+}
+
 int main(int argc, char** argv) {
      // Initialize SDL and open a window
     SDLWindowManager windowManager(800, 800, "GLImac");
@@ -45,7 +79,7 @@ int main(int argc, char** argv) {
 
     ListTextures textureManager(50);
     // std::unique_ptr<Image> earth = loadImage(applicationPath.dirPath() + "../../GLImac-Template/assets/textures/EarthMap.jpg");
-    Image* earth = ImageManager::loadImage(applicationPath.dirPath() + "/assets/EarthMap.jpg");
+    Image* earth = ImageManager::loadImage(applicationPath.dirPath() + "/assets/textures/EarthMap.jpg");
     if(earth == NULL) {
         std::cerr << "error load image" << std::endl;
     }
@@ -70,49 +104,49 @@ int main(int argc, char** argv) {
 
     ShapeVertex vertex;
     
-    vertex.texCoords.x = 0;
-    vertex.texCoords.y = 0;
+    vertex.m_TexCoords.x = 0;
+    vertex.m_TexCoords.y = 0;
 
-    vertex.normal.x = 0;
-    vertex.normal.y = 0;
-    vertex.normal.z = 0;
+    vertex.m_Normal.x = 0;
+    vertex.m_Normal.y = 0;
+    vertex.m_Normal.z = 0;
 
-    vertex.position.x = -0.5f;
-    vertex.position.y = -0.5f;
+    vertex.m_Position.x = -0.5f;
+    vertex.m_Position.y = -0.5f;
     v.push_back(vertex);
 
-    vertex.texCoords.x = 0;
-    vertex.texCoords.y = 1;
+    vertex.m_TexCoords.x = 0;
+    vertex.m_TexCoords.y = 1;
 
-    vertex.normal.x = 0;
-    vertex.normal.y = 0;
-    vertex.normal.z = 0;
+    vertex.m_Normal.x = 0;
+    vertex.m_Normal.y = 0;
+    vertex.m_Normal.z = 0;
 
-    vertex.position.x = 0.5f;
-    vertex.position.y = -0.5f;
+    vertex.m_Position.x = 0.5f;
+    vertex.m_Position.y = -0.5f;
     v.push_back(vertex);
 
-    vertex.texCoords.x = 1;
-    vertex.texCoords.y = 1;
+    vertex.m_TexCoords.x = 1;
+    vertex.m_TexCoords.y = 1;
 
-    vertex.normal.x = 0;
-    vertex.normal.y = 0;
-    vertex.normal.z = 0;
+    vertex.m_Normal.x = 0;
+    vertex.m_Normal.y = 0;
+    vertex.m_Normal.z = 0;
 
-    vertex.position.x = 0.5f;
-    vertex.position.y = 0.5f;
+    vertex.m_Position.x = 0.5f;
+    vertex.m_Position.y = 0.5f;
     v.push_back(vertex);
     
 
-    vertex.texCoords.x = 1;
-    vertex.texCoords.y = 0;
+    vertex.m_TexCoords.x = 1;
+    vertex.m_TexCoords.y = 0;
 
-    vertex.normal.x = 0;
-    vertex.normal.y = 0;
-    vertex.normal.z = 0;
+    vertex.m_Normal.x = 0;
+    vertex.m_Normal.y = 0;
+    vertex.m_Normal.z = 0;
 
-    vertex.position.x = -0.5f;
-    vertex.position.y = 0.5f;
+    vertex.m_Position.x = -0.5f;
+    vertex.m_Position.y = 0.5f;
     v.push_back(vertex);
 
     /*Sphere sphere(1, 50, 25);
@@ -123,15 +157,38 @@ int main(int argc, char** argv) {
     uint32_t indices[]  = {
         0, 1, 2, 0, 2, 3
     };
-    VBO triangle(v,0,6,indices);
+
+    Geometry g;
+
+    g.loadOBJ(applicationPath.dirPath() + "/assets/models/a.obj",
+        applicationPath.dirPath() + "/assets/models/a.mtl",true);
+    std::cout << "g.getVertexCount()" << std::endl;
+    std::cout << g.getVertexCount() << std::endl;
+
+    std::cout << "g.getVertexBuffer()" << std::endl;
+    std::cout << g.getVertexBuffer()->m_Position.x << std::endl;
+
+    std::cout << "g.getIndexCount()" << std::endl;
+    std::cout << g.getIndexCount() << std::endl;
+
+    std::cout << "g.getIndexBuffer()" << std::endl;
+    std::cout << g.getIndexBuffer() << std::endl;
+
+
+
+    VBO triangle(transformIntoVector(
+            g.getVertexBuffer(), 
+            g.getVertexCount()),
+            0,
+            g.getIndexCount(),
+            g.getIndexBuffer(),
+            g
+        );
     triangle.sendData();
-    triangle.specifyVAO();
 
 
     textureManager.generateTexture();
-    t.bind();
     t.paramTexture();
-    t.debind();
 
 
 
@@ -184,7 +241,6 @@ int main(int argc, char** argv) {
 
 
         triangle.vao().bind();
-        
         glUniform1i(uTexture,0);
         t.bind();
 

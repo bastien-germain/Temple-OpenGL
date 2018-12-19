@@ -9,6 +9,7 @@
 #include <GL/glew.h>
 #include "glimac/glm.hpp"
 #include "glimac/common.hpp"
+#include "glimac/Geometry.hpp"
 
 
 
@@ -21,6 +22,7 @@ private:
 	GLuint _id;
 	VAO _vao;
 	IBO _ibo;
+	glimac::Geometry _geo;
 	size_t _nbVertices;
 	std::vector<glimac::ShapeVertex> _vertices;
 
@@ -29,7 +31,7 @@ private:
 public:
 	VBO();
 	/// \param vertices: Vector of a structure containing vertex, normal, texture
-	VBO(const std::vector<glimac::ShapeVertex> &vertices, const GLuint &id, const size_t size, uint32_t* indexes);
+	VBO(const std::vector<glimac::ShapeVertex> &vertices, const GLuint &id, const size_t size, const uint32_t* indexes, const glimac::Geometry g);
 
 	/// \param copied : The VBO to copy into the current object
 	VBO(const VBO &copied);
@@ -39,6 +41,8 @@ public:
 
 	/// \brief Allows to bind the buffer array
 	void bind() const;
+
+
 
 	inline VAO vao() const
 	{

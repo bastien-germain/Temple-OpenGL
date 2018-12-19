@@ -20,6 +20,7 @@ private:
 	
 public:
 	VAO();
+	VAO(const GLuint id);
 	~VAO();
 
 	/// \brief Gives spefications for the buffer

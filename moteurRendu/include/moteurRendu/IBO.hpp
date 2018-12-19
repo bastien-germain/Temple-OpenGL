@@ -18,7 +18,7 @@ class IBO
 
 private:
 	GLuint _id;
-	uint32_t* _indexes;
+	const uint32_t* _indexes;
 	size_t _size;
 	
 	
@@ -28,7 +28,7 @@ public:
 
 	IBO(const size_t &size, const GLuint &id);
 
-	IBO(const size_t &size, uint32_t* &index, const GLuint &id);
+	IBO(const size_t &size, const uint32_t* &index, const GLuint &id);
 
 	/// \param copied : The VBO to copy into the current object
 	IBO(const IBO &copied);
@@ -46,10 +46,10 @@ public:
 		return _size;
 	}
 
-	inline uint32_t* indexes() const
+	/*inline uint32_t* indexes() const
 	{
 		return _indexes;
-	};
+	};*/
 
 	inline void indexes( uint32_t* ind) 
 	{

@@ -51,12 +51,12 @@ void Texture::paramTexture( ) const
 
 	// std::cout<< earth.getHeight() << std::endl;
 	// std::cout<< img->getHeight() << std::endl;
-
+	bind();
     glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, _lText->usedTextures()[_id]->getWidth(), _lText->usedTextures()[_id]->getHeight(), 0, GL_RGBA, GL_FLOAT, _lText->usedTextures()[_id]->getPixels());
     // glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, earth->getWidth(), earth->getHeight(), 0, GL_RGBA, GL_FLOAT, earth->getPixels());
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-	// debind();	
+	debind();	
 }
 
 void Texture::activateTexture(GLenum text) const
