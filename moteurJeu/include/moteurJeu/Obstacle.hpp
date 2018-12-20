@@ -19,11 +19,23 @@ public:
 	/// \brief Constructor from a position and a size
 	/// \param position : the position of the Obstacle
 	/// \param size : the size of the Obstacle
-	Obstacle(const unsigned int posX = 0, const float posZ = 0, const unsigned int size = 0);
+	Obstacle(PositionObserver *observer = NULL, const unsigned int posX = 0, const float posZ = 0, const unsigned int size = 0);
 
 	/// \brief Copy constructor using another Obstacle
 	/// \param copied : the copied Obstacle
 	Obstacle(const Obstacle &copied);
+
+	inline Obstacle &operator = (const Obstacle &toAssign) {
+
+		if (&toAssign != 	this) 
+		{	
+			_posX = toAssign._posX;
+			_posZ = toAssign._posZ;
+			_size = toAssign._size;
+		}
+
+		return *this;
+	}
 
 	/// \brief Destructor
 	~Obstacle();

@@ -1,6 +1,6 @@
 #include "moteurJeu/GameManager.hpp"
 
-GameManager::GameManager() : _player(Player()), _enemy(Enemy()), _parser(Parser()) 
+GameManager::GameManager(const float &obstacleInitialPosZ) : _player(Player()), _enemy(Enemy()), _parser(Parser()), _game(Game()), _factory(obstacleInitialPosZ)
 {
 	for (unsigned int i = 0; i < 3; i++)
  	{	
@@ -28,8 +28,16 @@ void GameManager::fillSectionVec(std::vector<std::string> &sectionDataStrings)
 
 	std::vector<std::string>::iterator it;
 	
-	for (it = sectionDataStrings.begin(); it != sectionDataStrings.end(); it++)
-		_sectionVec.push_back(_factory.create(*it, this));
+	for (int i = 0; i < sectionDataStrings.size(); ++i)
+	{	
+		_sectionVec.push_back(_factory.create(sectionDataStrings[i], this));
+		
+		if (_sectionVec[i].isCorridor()) 
+		{
+			std::cout << "FillSection observers size :  " << _sectionVec[i].obstacle().observers().size() << std::endl;	
+			std::cout << "FillSection observables size :  " << _observables.size() << std::endl;	
+		}
+	}
 
 	std::cout << "SECTION_VEC FILLING ENDS" << std::endl;
 }
@@ -96,9 +104,18 @@ void GameManager::loadSections()
 void GameManager::observerUpdate(const PositionObservable *observable) const 
 {
 	
-	std::cout << "observable position : " << observable->posZ() << std::endl;
+	std::cout << "*** OBSERVER UPDATE : SIZE : " << observable->posZ() << std::endl;
 
 	if (observable->posZ() == _player.posZ()) 
 	{
+		std::cout << "*** OBSERVER UPDATE : OBSTACLE REACHED PLAYER POS_Z : " << std::endl;
 	}
+}
+
+bool GameManager::isOver() const
+{
+	if(_enemy.distanceToPlayer() == 0)
+		return true;
+	else
+		return false;
 }

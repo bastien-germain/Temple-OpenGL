@@ -12,9 +12,7 @@ class CorridorSection : public Section
 {
 
 private:
-	Obstacle _obstacle; /*! The Obstacle present in the CorridorSection */
 	std::vector<Coin> _coins; 
-
 public:
 	/// \brief Constructor from a position and size
 	/// \param model : the Model used for the CorridorSection
@@ -28,14 +26,19 @@ public:
 
 	/// \brief Destructor
 	~CorridorSection();
+	
+	inline CorridorSection &operator = (const CorridorSection &toAssign) {
 
-	/// \brief Getter : Obstacle getter 
-	inline Obstacle obstacle() const 
-	{
-		return _obstacle;
+		if (&toAssign != this) 
+		{
+		_obstacle = toAssign._obstacle;
+		_coins = toAssign._coins;
+		_model = toAssign._model;
+		}
+
+		return *this;
+
 	}
-
-
 
 };
 

@@ -12,7 +12,8 @@ PositionObserver::~PositionObserver()
 
 void PositionObserver::addPositionObservable(PositionObservable *observable) 
 {
-	_observables.push_back(observable);	
+	if(observable)
+		_observables.push_back(observable);	
 }
 
 void PositionObserver::removePositionObservable(const PositionObservable *observable) 
@@ -29,4 +30,5 @@ void PositionObserver::removePositionObservable(const PositionObservable *observ
 
 void PositionObserver::observerUpdate(const PositionObservable *observable) const 
 {
+	std::cout << "*** OBSERVER UPDATE " << std::endl;	
 }

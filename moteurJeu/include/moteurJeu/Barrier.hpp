@@ -15,7 +15,7 @@ public:
 	/// \brief Constructor from a position and a size
 	/// \param position : the position of the Barrier
 	/// \param size : the size of the Barrier
-	Barrier(const unsigned int position = 0, const unsigned int size = 0);
+	Barrier(PositionObserver *observer = NULL, const unsigned int posX = 0, const float posZ = 0, const unsigned int size = 0);
 
 	/// \brief Destructor
 	~Barrier();

@@ -11,9 +11,6 @@ VAO::VAO(const GLuint &id): _id(id), _VERTEX_POSITION(0), _VERTEX_NORMAL(1), _VE
 	glGenVertexArrays(1,&_id);
 }
 
-
-
-
 VAO::~VAO()
 {}
 

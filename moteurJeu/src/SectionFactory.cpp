@@ -1,6 +1,6 @@
 #include <moteurJeu/SectionFactory.hpp>
 
-SectionFactory::SectionFactory() 
+SectionFactory::SectionFactory(const float &obstacleInitialPosZ) : _obstacleInitialPosZ(obstacleInitialPosZ) 
 {
 }
 
@@ -8,25 +8,10 @@ SectionFactory::~SectionFactory()
 {
 }
 
-Section SectionFactory::create(const std::string &key, PositionObserver *observer) const 
-{
-	std::cout << "SECTION_FACTORY.CREATE STARTS..." << "\n\n\n" << std::endl;
+Obstacle SectionFactory::obstacleBuiler(const std::string &key, PositionObserver *observer) const {
 
-	std::cout << "--- SECTION_FACTORY.CREATE MODEL DECLARATION" << std::endl;
-	Model model;
-	std::cout << "--- SECTION_FACTORY.CREATE OBSTACLE DECLARATION" << std::endl;
-	Obstacle obstacle;
-	std::cout << "--- SECTION_FACTORY.CREATE OBSTACLE_POSITION DECLARATION" << std::endl;
+	std::cout << "SECTION_FACTORY.OBSTALCE_BUILDER STARTS..." << std::endl;
 	unsigned int obstaclePosition;
-
-	std::cout << "--- SECTION_FACTORY.CREATE BEFORE OBSERVER ADDING" << std::endl;
-	obstacle.addPositionObserver(observer);
-	std::cout << "--- SECTION_FACTORY.CREATE BEFORE OBSERVABLE ADDING" << std::endl;
-	observer->addPositionObservable(&obstacle);
-
-	std::cout << "--- SECTION_FACTORY.CREATE BEFORE SWITCH 1" << std::endl;
-	
-	std::cout << key << std::endl;
 
 	switch (key[2])
 	{
@@ -49,90 +34,94 @@ Section SectionFactory::create(const std::string &key, PositionObserver *observe
 			obstaclePosition = 3;
 			break;
 		}
-
 		default:
 			THROW_EXCEPTION("FILE_READING_ERROR : Parser --> Invalid character for Position describing");
 		break;
 	}
-
-	std::cout << "--- SECTION_FACTORY.CREATE BEFORE SWITCH 2" << std::endl;
 	
 	switch (key[1])
 	{
 		case 'X':
 		{
 			std::cout << "No Obstacle" << std::endl;
-			obstacle = Obstacle(0, 0);
-			break;
+			return Obstacle();
 		}
 		case 'h':
 		{
 			std::cout << "Simple Hole" << std::endl;
-			obstacle = Hole(obstaclePosition, 1);
-			break;
+			return Hole(observer, obstaclePosition, _obstacleInitialPosZ, 1);
 		}
 		case 'H':
 		{
 			std::cout << "Large Hole" << std::endl;
-			obstacle = Hole(obstaclePosition, 3);
-			break;
+			return Hole(observer, obstaclePosition, _obstacleInitialPosZ, 3);
 		}
 		case 'b':
 		{
 			std::cout << "Simple Barrier" << std::endl;
-			obstacle = Barrier(obstaclePosition, 1);
-			break;
+			return Barrier(observer, obstaclePosition, _obstacleInitialPosZ, 1);
 		}
 		case 'B':
 		{
 			std::cout << "Large Barrier" << std::endl;
-			obstacle = Barrier(obstaclePosition, 3);
-			break;
+			return Barrier(observer, obstaclePosition,_obstacleInitialPosZ, 3);
 		}
 		case 'r':
 		{
 			std::cout << "Simple Rock" << std::endl;
-			obstacle = Rock(obstaclePosition, 1);
-			break;
+			return Rock(observer, obstaclePosition,_obstacleInitialPosZ, 1);
 		}
 		case 'R':
 		{
 			std::cout << "Large Rock" << std::endl;
-			obstacle = Rock(obstaclePosition, 3);
-			break;
+			return Rock(observer, obstaclePosition, _obstacleInitialPosZ, 3);
 		}
 		default:
 			THROW_EXCEPTION("FILE_READING_ERROR : Parser --> Invalid character for Obstacle describing");
 		break;
 	}
+	std::cout << "SECTION_FACTORY.OBSTALCE_BUILDER ENDS" << std::endl;
 
-	std::cout << "--- SECTION_FACTORY.CREATE BEFORE SWITCH 3" << std::endl;
+}
+
+Section SectionFactory::create(const std::string &key, PositionObserver *observer) const 
+{
+	std::cout << "SECTION_FACTORY.CREATE STARTS..." << std::endl;
+
+	Model model;
+		
+	std::cout << key << std::endl;
 
 	switch (key[0])
 	{
 		case 'I':
 		{
 			std::cout << "CorridorSection" << std::endl;
+			Obstacle obstacle(obstacleBuiler(key, observer));
+			std::cout << "SECTION_FACTORY.CREATE OBSTALCE_SIZE : " << obstacle.size() << "\n\n\n" << std::endl;
+			std::cout << "SECTION_FACTORY.CREATE ENDS" << "\n\n\n" << std::endl;
 			return CorridorSection(model, obstacle);
 		}
 		case 'J':
 		{
 			std::cout << "Left CornerSection" << std::endl;
+			std::cout << "SECTION_FACTORY.CREATE ENDS" << "\n\n\n" << std::endl;
 			return CornerSection(model, -1);
 		}
 		case 'L':
 		{
 			std::cout << "Right CornerSection" << std::endl;
+			std::cout << "SECTION_FACTORY.CREATE ENDS" << "\n\n\n" << std::endl;
 			return CornerSection(model, 1);
 		}
 		case 'T':
 		{
 			std::cout << "TSection" << std::endl;
+			std::cout << "SECTION_FACTORY.CREATE ENDS" << "\n\n\n" << std::endl;
 			return TSection(model);
 		}	
 		default:
 			THROW_EXCEPTION("FILE_READING_ERROR : Parser --> Invalid character for Section describing");
 		break;
 	}
-	std::cout << "SECTION_FACTORY.CREATE ENDS" << std::endl;
 }
