@@ -6,7 +6,7 @@
 #include <fstream>
 #include <cstdlib>
 #include <iostream>
-#include <glimac/TrackballCamera.hpp>
+#include "moteurRendu/TrackballCamera.hpp"
 #include "moteurRendu/VBO.hpp"
 #include "moteurRendu/VAO.hpp"
 #include "moteurRendu/Texture.hpp"
@@ -19,8 +19,6 @@ using namespace glimac;
 std::vector<ShapeVertex> transformIntoVector( const ShapeVertex* data, size_t length)
 {
     std::vector<ShapeVertex> v;
-    std::cout << "length" << std::endl;
-    std::cout << length << std::endl;
     for (size_t i =0; i < length; i ++)
     {
         std::cout<< data[i].m_Position.x << std::endl;
@@ -67,13 +65,20 @@ int main(int argc, char** argv) {
     FilePath applicationPath(argv[0]);
 
     Program program = loadProgram(applicationPath.dirPath() + "shaders/3D.vs.glsl",
-                              applicationPath.dirPath() + "shaders/tex3D.fs.glsl");
+                              applicationPath.dirPath() + "shaders/directionallight.fs.glsl");
     program.use();
 
     GLint uMVMatrix = glGetUniformLocation(program.getGLId(), "uMVMatrix");
     GLint uMVPMatrix = glGetUniformLocation(program.getGLId(), "uMVPMatrix");
     GLint uNormalMatrix = glGetUniformLocation(program.getGLId(), "uNormalMatrix");
     GLint uTexture = glGetUniformLocation(program.getGLId(), "uTexture");
+
+    GLint uKd = glGetUniformLocation(program.getGLId(), "uKd");
+    GLint uKs = glGetUniformLocation(program.getGLId(), "uKs");
+    GLint uShininess = glGetUniformLocation(program.getGLId(), "uShininess");
+    GLint uLightDir_vs = glGetUniformLocation(program.getGLId(), "uLightDir_vs");
+    GLint uLightIntensity = glGetUniformLocation(program.getGLId(), "uLightIntensity");
+    
 
     glEnable(GL_DEPTH_TEST);
 
@@ -244,10 +249,14 @@ int main(int argc, char** argv) {
         glUniform1i(uTexture,0);
         t.bind();
 
+        triangle.sendLightShader(uKd, uKs, uShininess, uLightDir_vs, uLightIntensity, track);
+
         glm::mat4 earthMVMatrix = glm::rotate(globalMVMatrix, windowManager.getTime(), glm::vec3(0,1,0));
         glUniformMatrix4fv(uMVMatrix , 1, GL_FALSE, glm::value_ptr(earthMVMatrix));
         glUniformMatrix4fv(uNormalMatrix , 1, GL_FALSE, glm::value_ptr(NormalMatrix));
         glUniformMatrix4fv(uMVPMatrix , 1, GL_FALSE, glm::value_ptr(ProjMatrix * earthMVMatrix));
+
+        
 
         triangle.draw();
 

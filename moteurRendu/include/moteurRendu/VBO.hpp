@@ -4,6 +4,8 @@
 
 #include "VAO.hpp"
 #include "IBO.hpp"
+#include "Texture.hpp"
+#include "TrackballCamera.hpp"
 #include <vector>
 #include <cstdlib>
 #include <GL/glew.h>
@@ -64,7 +66,10 @@ public:
 	void sendData() const;
 
 	/// \brief Deletes the buffer array
-	void deleteBuf();
+	void deleteBuf() const ;
+
+	void sendLightShader(GLint &uKd, GLint &uKs, GLint &uShininess, GLint &uLightDir_vs, GLint &uLightIntensity, TrackballCamera &track) const;
+	
 
 	/// \brief Draws the object with triangles
 	void draw() const;

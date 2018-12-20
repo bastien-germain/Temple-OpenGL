@@ -30,7 +30,7 @@ public:
 
 	void debind() const;
 	void bind() const;
-	void deleteBuf();
+	void deleteBuf() const;
 
 };
 

@@ -39,7 +39,7 @@ void VAO::specifyAttributes() const
 }
 
 
-void VAO::deleteBuf()
+void VAO::deleteBuf() const
 {
 	glDeleteVertexArrays(1, &_id);
 
