@@ -1,2 +1,4 @@
 OUTPUT_DIRECTORY       = @CMAKE_CURRENT_BINARY_DIR@/doc_doxygen/
 INPUT                  = @CMAKE_CURRENT_SOURCE_DIR@/../moteurJeu/include/moteurJeu/ @CMAKE_CURRENT_SOURCE_DIR@/../moteurRendu/include/moteurRendu @CMAKE_CURRENT_SOURCE_DIR@/../doc
+
+GENERATE_LATEX         = NO
