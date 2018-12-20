@@ -6,12 +6,12 @@ IBO::IBO(): _id(0)
 
 IBO::IBO(const size_t &size, const GLuint &id): _id(id), _size(size)
 {
-	_indexes = new uint32_t[ size ];
+	_indexes = new unsigned int[ size ];
 	glGenBuffers(1, &_id);
 
 }
 
-IBO::IBO(const size_t &size, const uint32_t* &index, const GLuint &id):  
+IBO::IBO(const size_t &size, const unsigned int* index, const GLuint &id):  
 _id(id), _indexes(index), _size(size)
 {
 	glGenBuffers(1, &_id);
@@ -43,6 +43,6 @@ void IBO::debind() const
 void IBO::fillIbo() const 
 {
 	bind();
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, _size * sizeof(uint32_t), _indexes, GL_STATIC_DRAW);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, _size * sizeof(unsigned int), _indexes, GL_STATIC_DRAW);
 	debind();
 }

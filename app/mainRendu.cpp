@@ -21,7 +21,6 @@ std::vector<ShapeVertex> transformIntoVector( const ShapeVertex* data, size_t le
     std::vector<ShapeVertex> v;
     for (size_t i =0; i < length; i ++)
     {
-        std::cout<< data[i].m_Position.x << std::endl;
         // ShapeVertex s ;
 
         // s.m_Position.x = data[i];
@@ -33,16 +32,7 @@ std::vector<ShapeVertex> transformIntoVector( const ShapeVertex* data, size_t le
         // s.m_Normal.z = data[i+5];
         v.push_back(data[i]);
     }
-    std::vector<ShapeVertex>::iterator it;
-   /* for(it = v.begin(); it != v.end(); it++)
-    {
-        std::cout << "*it.m_Position" << std::endl;
-
-        std::cout << &it << std::endl;
-        std::cout << it->m_Position << std::endl;
-        std::cout << it->m_TexCoords << std::endl;
-        std::cout << it->m_Normal << std::endl;
-    }*/
+   
 
 
     return v;
@@ -65,7 +55,7 @@ int main(int argc, char** argv) {
     FilePath applicationPath(argv[0]);
 
     Program program = loadProgram(applicationPath.dirPath() + "shaders/3D.vs.glsl",
-                              applicationPath.dirPath() + "shaders/directionallight.fs.glsl");
+                              applicationPath.dirPath() + "shaders/triangle.fs.glsl");
     program.use();
 
     GLint uMVMatrix = glGetUniformLocation(program.getGLId(), "uMVMatrix");
@@ -105,90 +95,73 @@ int main(int argc, char** argv) {
     Texture t(0,textureManager);
 
 
-    std::vector<ShapeVertex> v ;
+    // std::vector<ShapeVertex> v ;
 
-    ShapeVertex vertex;
+    // ShapeVertex vertex;
     
-    vertex.m_TexCoords.x = 0;
-    vertex.m_TexCoords.y = 0;
+    // vertex.m_TexCoords.x = 0;
+    // vertex.m_TexCoords.y = 0;
 
-    vertex.m_Normal.x = 0;
-    vertex.m_Normal.y = 0;
-    vertex.m_Normal.z = 0;
+    // vertex.m_Normal.x = 0;
+    // vertex.m_Normal.y = 0;
+    // vertex.m_Normal.z = 0;
 
-    vertex.m_Position.x = -0.5f;
-    vertex.m_Position.y = -0.5f;
-    v.push_back(vertex);
+    // vertex.m_Position.x = -0.5f;
+    // vertex.m_Position.y = -0.5f;
+    // v.push_back(vertex);
 
-    vertex.m_TexCoords.x = 0;
-    vertex.m_TexCoords.y = 1;
+    // vertex.m_TexCoords.x = 0;
+    // vertex.m_TexCoords.y = 1;
 
-    vertex.m_Normal.x = 0;
-    vertex.m_Normal.y = 0;
-    vertex.m_Normal.z = 0;
+    // vertex.m_Normal.x = 0;
+    // vertex.m_Normal.y = 0;
+    // vertex.m_Normal.z = 0;
 
-    vertex.m_Position.x = 0.5f;
-    vertex.m_Position.y = -0.5f;
-    v.push_back(vertex);
+    // vertex.m_Position.x = 0.5f;
+    // vertex.m_Position.y = -0.5f;
+    // v.push_back(vertex);
 
-    vertex.m_TexCoords.x = 1;
-    vertex.m_TexCoords.y = 1;
+    // vertex.m_TexCoords.x = 1;
+    // vertex.m_TexCoords.y = 1;
 
-    vertex.m_Normal.x = 0;
-    vertex.m_Normal.y = 0;
-    vertex.m_Normal.z = 0;
+    // vertex.m_Normal.x = 0;
+    // vertex.m_Normal.y = 0;
+    // vertex.m_Normal.z = 0;
 
-    vertex.m_Position.x = 0.5f;
-    vertex.m_Position.y = 0.5f;
-    v.push_back(vertex);
+    // vertex.m_Position.x = 0.5f;
+    // vertex.m_Position.y = 0.5f;
+    // v.push_back(vertex);
     
 
-    vertex.m_TexCoords.x = 1;
-    vertex.m_TexCoords.y = 0;
+    // vertex.m_TexCoords.x = 1;
+    // vertex.m_TexCoords.y = 0;
 
-    vertex.m_Normal.x = 0;
-    vertex.m_Normal.y = 0;
-    vertex.m_Normal.z = 0;
+    // vertex.m_Normal.x = 0;
+    // vertex.m_Normal.y = 0;
+    // vertex.m_Normal.z = 0;
 
-    vertex.m_Position.x = -0.5f;
-    vertex.m_Position.y = 0.5f;
-    v.push_back(vertex);
+    // vertex.m_Position.x = -0.5f;
+    // vertex.m_Position.y = 0.5f;
+    // v.push_back(vertex);
 
     /*Sphere sphere(1, 50, 25);
     const ShapeVertex* s = sphere.getDataPointer();
     for (int i = 0; i < sphere.getVertexCount() ; i++)
         v.push_back(s[i]);*/
 
-    uint32_t indices[]  = {
-        0, 1, 2, 0, 2, 3
-    };
+    // uint32_t indices[]  = {
+    //     0, 1, 2, 0, 2, 3
+    // };
 
     Geometry g;
 
     g.loadOBJ(applicationPath.dirPath() + "/assets/models/a.obj",
         applicationPath.dirPath() + "/assets/models/a.mtl",true);
-    std::cout << "g.getVertexCount()" << std::endl;
-    std::cout << g.getVertexCount() << std::endl;
-
-    std::cout << "g.getVertexBuffer()" << std::endl;
-    std::cout << g.getVertexBuffer()->m_Position.x << std::endl;
-
-    std::cout << "g.getIndexCount()" << std::endl;
-    std::cout << g.getIndexCount() << std::endl;
-
-    std::cout << "g.getIndexBuffer()" << std::endl;
-    std::cout << g.getIndexBuffer() << std::endl;
 
 
+    
 
-    VBO triangle(transformIntoVector(
-            g.getVertexBuffer(), 
-            g.getVertexCount()),
-            0,
-            g.getIndexCount(),
-            g.getIndexBuffer(),
-            g
-        );
+    VBO triangle(0,g);
     triangle.sendData();
 
 
@@ -251,7 +224,8 @@ int main(int argc, char** argv) {
 
         triangle.sendLightShader(uKd, uKs, uShininess, uLightDir_vs, uLightIntensity, track);
 
-        glm::mat4 earthMVMatrix = glm::rotate(globalMVMatrix, windowManager.getTime(), glm::vec3(0,1,0));
+        // glm::mat4 earthMVMatrix = glm::rotate(trackMat*globalMVMatrix, windowManager.getTime(), glm::vec3(0,1,0));
+        glm::mat4 earthMVMatrix = glm::rotate(trackMat*globalMVMatrix, 0*windowManager.getTime(), glm::vec3(0,1,0));
         glUniformMatrix4fv(uMVMatrix , 1, GL_FALSE, glm::value_ptr(earthMVMatrix));
         glUniformMatrix4fv(uNormalMatrix , 1, GL_FALSE, glm::value_ptr(NormalMatrix));
         glUniformMatrix4fv(uMVPMatrix , 1, GL_FALSE, glm::value_ptr(ProjMatrix * earthMVMatrix));

@@ -1,23 +1,29 @@
 #include "moteurRendu/VBO.hpp"
 
+
 VBO::VBO() : _id(0)
 {
 	std::cout << " *** VBO DEFAULT CONSTRUCTOR" << std::endl;
 }
 
-// On passe un vetceur de point (3c oord)
-VBO::VBO(const std::vector<glimac::ShapeVertex> &vertices, const GLuint &id, const size_t size, const uint32_t* indexes, const glimac::Geometry g)
-: _vertices(vertices), _nbVertices(vertices.size()), _id(id), _geo(g)
+
+
+VBO::VBO(const GLuint &id, const glimac::Geometry &g)
+: _nbVertices(g.getVertexCount()),_id(id), _geo(g)
 {
+    for (size_t i =0; i < _nbVertices; i ++)
+    {
+        _vertices.push_back(g.getVertexBuffer()[i]);
+    }
+
 	glGenBuffers(1,&_id);
 	_vao = VAO(_id);
-	_ibo = IBO(size, indexes, id);
-	
+	_ibo = IBO(g.getIndexCount(), g.getIndexBuffer(), id);
 }
 
 VBO::VBO(const VBO &copied) : _id(copied._id), _vao(copied._vao)
 {
-
+ 
 }
 
 VBO::~VBO()
@@ -48,8 +54,8 @@ void VBO::specifyVAO() const
 void VBO::sendData() const
 {
 	bind();
-	// glBufferData(GL_ARRAY_BUFFER,  _nbVertices * sizeof(glimac::ShapeVertex), &_vertices[0], GL_STATIC_DRAW);
-	glBufferData(GL_ARRAY_BUFFER,  _geo.getVertexCount() * sizeof(glimac::ShapeVertex), _geo.getVertexBuffer(), GL_STATIC_DRAW);
+	glBufferData(GL_ARRAY_BUFFER,  _nbVertices * sizeof(glimac::ShapeVertex), &_vertices[0], GL_STATIC_DRAW);
+	// glBufferData(GL_ARRAY_BUFFER,  _geo.getVertexCount() * sizeof(glimac::ShapeVertex), _geo.getVertexBuffer(), GL_STATIC_DRAW);
 // 
 	debind();
 
@@ -66,7 +72,8 @@ void VBO::deleteBuf() const
 
 void VBO::draw() const
 {
-    glDrawElements(GL_TRIANGLES, _geo.getIndexCount(), GL_UNSIGNED_INT, 0);
+    // glDrawElements(GL_TRIANGLES, _geo.getIndexCount(), GL_UNSIGNED_INT, 0);
+    glDrawElements(GL_TRIANGLES, _ibo.size(), GL_UNSIGNED_INT, 0);
 }
 
 
