@@ -21,11 +21,7 @@ private:
 	
 public:
 	VAO();
-<<<<<<< HEAD
-	VAO(const GLuint id);
-=======
 	VAO(const GLuint &id);
->>>>>>> f376191bbe1c06e3e090b8d8aa06d8d15cd183dd
 	~VAO();
 
 	/// \brief Gives spefications for the buffer
@@ -34,7 +30,7 @@ public:
 
 	void debind() const;
 	void bind() const;
-	void deleteBuf();
+	void deleteBuf() const;
 
 };
 

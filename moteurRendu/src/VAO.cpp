@@ -12,10 +12,7 @@ VAO::VAO(const GLuint &id): _id(id), _VERTEX_POSITION(0), _VERTEX_NORMAL(1), _VE
 }
 
 
-VAO::VAO(const GLuint id): _id(id) , _VERTEX_POSITION(0), _VERTEX_NORMAL(1), _VERTEX_TEXTURE(2)
-{
 
-}
 
 VAO::~VAO()
 {}
@@ -45,7 +42,7 @@ void VAO::specifyAttributes() const
 }
 
 
-void VAO::deleteBuf()
+void VAO::deleteBuf() const
 {
 	glDeleteVertexArrays(1, &_id);
 
