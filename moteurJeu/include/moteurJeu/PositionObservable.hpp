@@ -27,6 +27,11 @@ public:
 	virtual float posZ() const;
 	virtual unsigned int posX() const;
 
+	inline std::vector<PositionObserver*> observers() const 
+	{
+		return _observers;
+	}
+
 	void notify();
 };
 

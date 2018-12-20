@@ -14,7 +14,9 @@ class Section
 
 protected:
 	Model _model;
+	Obstacle _obstacle; /*! The Obstacle present in the CorridorSection */
 	bool _isT; /*! Tells wether the Section is a TSection or not */
+	bool _isCorridor; /*! Tells wether the Section is a TSection or not */
 
 public:
 	/// \brief Default  constructor
@@ -22,7 +24,7 @@ public:
 
 	/// \brief Constructor from a position and size
 	/// \param model : the Model used for the Section
-	Section(const Model &model);
+	Section(const Model &model, const Obstacle &obstacle = Obstacle());
 
 	/// \brief Copy constructor
 	/// \param copied : the Section copied
@@ -43,8 +45,15 @@ public:
 		return _isT;
 	}
 
+	/// \brief isT getter 
+	inline bool isCorridor() const 
+	{
+		return _isCorridor;
+	}
+
 	inline Obstacle obstacle() const 
 	{
+		return _obstacle;
 	}
 
 

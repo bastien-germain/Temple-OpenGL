@@ -2,6 +2,7 @@
 #ifndef __GAME_MANAGER_HPP__
 #define __GAME_MANAGER_HPP__
 
+#include "moteurJeu/Game.hpp"
 #include "moteurJeu/Player.hpp"
 #include "moteurJeu/Enemy.hpp"
 #include "moteurJeu/Section.hpp"
@@ -19,6 +20,7 @@ class GameManager : public PositionObserver
 
 private:
 	const char * _sectionsDataFilePath = "../Temple-OpenGL/moteurJeu/sectionsData/sectionsData.txt";
+	Game _game;
 	Player _player;
 	Enemy _enemy;
 	Parser _parser; 
@@ -27,7 +29,7 @@ private:
 	std::vector<std::vector<Section>> _sectionMat;
 	
 public:
-	GameManager();
+	GameManager(const float &obstacleInitialPosZ = 0.0);
 	~GameManager();
 
 	inline Enemy enemy() const {
@@ -42,9 +44,9 @@ public:
 		return _sectionMat;
 	}
 
-	/// \brief test end of game
-	bool isOver() const;
-
+	inline Game game() const {
+		return _game;
+	}
 
 	/// \brief fill the section vector with returns from the factory
 	void fillSectionVec(std::vector<std::string> &sectionDataStrings);
@@ -60,6 +62,9 @@ public:
 	void loadSections();
 
 	void observerUpdate(const PositionObservable *observable) const;	
+
+	/// \brief test end of game
+	bool isOver() const;
 };
 
 #endif

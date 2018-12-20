@@ -23,6 +23,11 @@ public:
 
 	virtual void observerUpdate(const PositionObservable *observable) const;
 
+	inline std::vector<PositionObservable*> observables() const 
+	{
+		return _observables;
+	}
+
 };
 
 #endif

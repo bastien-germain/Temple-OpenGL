@@ -12,6 +12,7 @@ CornerSection::CornerSection(const Model &model, const int &cornerDirection)
 
 	_cornerDirection = cornerDirection;
 	_isT = false;
+	_isCorridor = false;
 }
 
 CornerSection::CornerSection(const CornerSection &copied) 

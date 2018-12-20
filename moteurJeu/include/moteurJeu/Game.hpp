@@ -2,15 +2,12 @@
 #ifndef __GAME_HPP__
 #define __GAME_HPP__
 
-#include "moteurJeu/GameManager.hpp"
-
 /// \class Game
 /// \brief One try a the game
 class Game 
 {
 
 private:
-	GameManager _manager;
 	unsigned int _score;
 	unsigned int _distance; // distance travelled 
 	unsigned int _coins; // number of coins collected
@@ -47,12 +44,6 @@ public:
 
 	void resume();
 
-	/// \brief test end of game
-	bool isOver() const;
-
-	inline GameManager gameManager() const {
-		return _manager;
-	}
 };
 
 #endif

@@ -18,13 +18,19 @@ class SectionFactory
 {
 
 private:
-
+ 	float _obstacleInitialPosZ;
 public:
 	/// \brief Default constructor
-	SectionFactory();
+	SectionFactory(const float &obstacleInitialPosZ = 0.0);
 
 	/// \brief Destructor
 	~SectionFactory();
+
+	inline const float obstacleInitialPosZ() const {
+		return _obstacleInitialPosZ;
+	}
+
+	Obstacle obstacleBuiler(const std::string &key, PositionObserver *observer) const;
 
 	/// \brief 
 	Section create(const std::string &key, PositionObserver *observer) const;
