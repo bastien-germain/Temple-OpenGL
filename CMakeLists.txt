@@ -9,7 +9,6 @@ set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/CMake)
 find_package(SDL REQUIRED)
 find_package(OpenGL REQUIRED)
 find_package(GLEW REQUIRED)
-find_package(Freetype REQUIRED)
 
 # Pour gérer un bug a la fac, a supprimer sur machine perso:
 set(OPENGL_LIBRARIES /usr/lib/x86_64-linux-gnu/libGL.so.1)

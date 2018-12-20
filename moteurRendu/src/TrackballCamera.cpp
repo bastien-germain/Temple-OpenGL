@@ -17,13 +17,13 @@ void TrackballCamera::moveFront(float delta)
 
 void TrackballCamera::rotateLeft(float degree) 
 {
-    _fAngleY = degree / 180 * M_PI;
+    _fAngleY += degree / 180 * M_PI;
      std::cout << "rotate left by " << degree << std::endl;
 }
 
 void TrackballCamera::rotateUp(float degree)
 {
-    _fAngleX = degree / 180 * M_PI;
+    _fAngleX += degree / 180 * M_PI;
      std::cout << "rotate up by " << degree << std::endl;
 }
 

@@ -50,6 +50,7 @@ public:
 	};
 
 	inline void indexes(std::vector<uint32_t> ind) 
+
 	{
 		_indexes = ind;
 	};
