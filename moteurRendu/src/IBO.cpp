@@ -1,18 +1,15 @@
 #include "moteurRendu/IBO.hpp"
 
-IBO::IBO(): _id(0)
+IBO::IBO(): _id(0), _size(0)
 {
 }
 
-IBO::IBO(const size_t &size, const GLuint &id): _id(id), _size(size)
+IBO::IBO(const GLuint &id): _id(id)
 {
-	_indexes = new uint32_t[ size ];
 	glGenBuffers(1, &_id);
-
 }
 
-IBO::IBO(const size_t &size, const uint32_t* &index, const GLuint &id):  
-_id(id), _indexes(index), _size(size)
+IBO::IBO(const std::vector<uint32_t> &index, const GLuint &id) : _id(id), _indexes(index), _size(_indexes.size())
 {
 	glGenBuffers(1, &_id);
 }
@@ -43,6 +40,6 @@ void IBO::debind() const
 void IBO::fillIbo() const 
 {
 	bind();
-    glBufferData(GL_ELEMENT_ARRAY_BUFFER, _size * sizeof(uint32_t), _indexes, GL_STATIC_DRAW);
+    glBufferData(GL_ELEMENT_ARRAY_BUFFER, _size * sizeof(uint32_t), _indexes.data(), GL_STATIC_DRAW);
 	debind();
 }

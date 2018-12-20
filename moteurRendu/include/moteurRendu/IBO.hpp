@@ -18,17 +18,15 @@ class IBO
 
 private:
 	GLuint _id;
-	const uint32_t* _indexes;
+	std::vector<uint32_t> _indexes;
 	size_t _size;
-	
-	
 public:
 	IBO();
 	/// \param vertices: Vector of a structure containing vertex, normal, texture
 
-	IBO(const size_t &size, const GLuint &id);
+	IBO(const GLuint &id);
 
-	IBO(const size_t &size, const uint32_t* &index, const GLuint &id);
+	IBO(const std::vector<uint32_t> &index, const GLuint &id);
 
 	/// \param copied : The VBO to copy into the current object
 	IBO(const IBO &copied);
@@ -43,15 +41,15 @@ public:
 
 	inline size_t size() const
 	{
-		return _size;
+		return _indexes.size();
 	}
 
-	/*inline uint32_t* indexes() const
+	inline std::vector<uint32_t> indexes() const
 	{
 		return _indexes;
-	};*/
+	};
 
-	inline void indexes( uint32_t* ind) 
+	inline void indexes(std::vector<uint32_t> ind) 
 	{
 		_indexes = ind;
 	};

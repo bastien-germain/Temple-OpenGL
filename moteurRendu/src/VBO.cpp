@@ -5,15 +5,20 @@ VBO::VBO() : _id(0)
 	std::cout << " *** VBO DEFAULT CONSTRUCTOR" << std::endl;
 }
 
-// On passe un vetceur de point (3c oord)
-VBO::VBO(const std::vector<glimac::ShapeVertex> &vertices, const GLuint &id, const size_t size, const uint32_t* indexes, const glimac::Geometry g)
-: _vertices(vertices), _nbVertices(vertices.size()), _id(id), _geo(g)
+VBO::VBO(const GLuint &id, const OBJ &obj) : _id(id) 
 {
-	glGenBuffers(1,&_id);
+    std::cout << "------------" << std::endl;
+	glGenBuffers(1, &_id);
+    std::cout << "gen buffers ok" << std::endl;
 	_vao = VAO(_id);
-	_ibo = IBO(size, indexes, id);
-	
+    std::cout << "vaO created" << std::endl;
+	_ibo = IBO();
+    std::cout << "ibO created" << std::endl;
+	obj.loadAssimp(_ibo.indexes(), _vertices);
+    std::cout << "load assimp ok" << std::endl;
+	_nbVertices = _vertices.size();
 }
+
 
 VBO::VBO(const VBO &copied) : _id(copied._id), _vao(copied._vao)
 {

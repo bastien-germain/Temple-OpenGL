@@ -180,18 +180,17 @@ int main(int argc, char** argv) {
     std::cout << g.getIndexBuffer() << std::endl;
 
 
-
+/*
     VBO triangle(transformIntoVector(
             g.getVertexBuffer(), 
             g.getVertexCount()),
             0,
-            g.getIndexCount(),
             g.getIndexBuffer(),
             g
         );
     triangle.sendData();
 
-
+*/
     textureManager.generateTexture();
     t.paramTexture();
 
@@ -245,11 +244,11 @@ int main(int argc, char** argv) {
 
 
 
-        triangle.vao().bind();
+        //triangle.vao().bind();
         glUniform1i(uTexture,0);
         t.bind();
 
-        triangle.sendLightShader(uKd, uKs, uShininess, uLightDir_vs, uLightIntensity, track);
+        //triangle.sendLightShader(uKd, uKs, uShininess, uLightDir_vs, uLightIntensity, track);
 
         glm::mat4 earthMVMatrix = glm::rotate(globalMVMatrix, windowManager.getTime(), glm::vec3(0,1,0));
         glUniformMatrix4fv(uMVMatrix , 1, GL_FALSE, glm::value_ptr(earthMVMatrix));
@@ -258,16 +257,16 @@ int main(int argc, char** argv) {
 
         
 
-        triangle.draw();
+       // triangle.draw();
 
 
         t.debind();
-        triangle.vao().debind();
+        //triangle.vao().debind();
         // Update the display
         windowManager.swapBuffers();
     }
 
-    triangle.deleteBuf();
+   // triangle.deleteBuf();
 
     return EXIT_SUCCESS;
 }
