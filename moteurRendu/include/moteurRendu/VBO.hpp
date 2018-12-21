@@ -34,7 +34,11 @@ private:
 public:
 	VBO();
 	/// \param vertices: Vector of a structure containing vertex, normal, texture
+	//NE sert pas 
 	VBO(const std::vector<glimac::ShapeVertex> &vertices, const GLuint &id, const size_t size, const uint32_t* indexes, const glimac::Geometry g);
+
+
+	//A utiliser pour afficher les obj
 	VBO(const GLuint &id,const glimac::Geometry &g);
 
 	/// \param copied : The VBO to copy into the current object

@@ -55,7 +55,7 @@ int main(int argc, char** argv) {
     FilePath applicationPath(argv[0]);
 
     Program program = loadProgram(applicationPath.dirPath() + "shaders/3D.vs.glsl",
-                              applicationPath.dirPath() + "shaders/triangle.fs.glsl");
+                              applicationPath.dirPath() + "shaders/normals.fs.glsl");
     program.use();
 
     GLint uMVMatrix = glGetUniformLocation(program.getGLId(), "uMVMatrix");
@@ -153,19 +153,21 @@ int main(int argc, char** argv) {
     //     0, 1, 2, 0, 2, 3
     // };
 
+    //Création d'un objet Géométry et chargement du modèle, fichier obj, mtl et activation de la texture
     Geometry g;
-
     g.loadOBJ(applicationPath.dirPath() + "/assets/models/a.obj",
         applicationPath.dirPath() + "/assets/models/a.mtl",true);
 
 
     
-
+    //Chargement des sommets dans l'objet vbo, ibo et vao
     VBO triangle(0,g);
+    //Envoi à la carte graphique
     triangle.sendData();
 
-
+    //Génération des textures non fonctionnel sur les obj (seulement sur les formes de bases mais il faut changer le shader)
     textureManager.generateTexture();
+
     t.paramTexture();
 
 
@@ -219,9 +221,10 @@ int main(int argc, char** argv) {
 
 
         triangle.vao().bind();
-        glUniform1i(uTexture,0);
+        glUniform1i(uTexture,0); //texture
         t.bind();
 
+        //Envoie des valeurs de la geométry au shader (ne marche pas / valeurs randoms au chargement du mtl)
         triangle.sendLightShader(uKd, uKs, uShininess, uLightDir_vs, uLightIntensity, track);
 
         // glm::mat4 earthMVMatrix = glm::rotate(trackMat*globalMVMatrix, windowManager.getTime(), glm::vec3(0,1,0));
@@ -230,8 +233,8 @@ int main(int argc, char** argv) {
         glUniformMatrix4fv(uNormalMatrix , 1, GL_FALSE, glm::value_ptr(NormalMatrix));
         glUniformMatrix4fv(uMVPMatrix , 1, GL_FALSE, glm::value_ptr(ProjMatrix * earthMVMatrix));
 
+            
         
-
         triangle.draw();
 
 
