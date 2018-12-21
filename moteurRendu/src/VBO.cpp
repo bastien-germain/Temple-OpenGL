@@ -6,20 +6,7 @@ VBO::VBO() : _id(0)
 	std::cout << " *** VBO DEFAULT CONSTRUCTOR" << std::endl;
 }
 
-VBO::VBO(const GLuint &id, const OBJ &obj) : _id(id) 
-{
-    std::cout << "------------" << std::endl;
-	glGenBuffers(1, &_id);
-    std::cout << "gen buffers ok" << std::endl;
-	_vao = VAO(_id);
-    std::cout << "vaO created" << std::endl;
-	_ibo = IBO();
-    std::cout << "ibO created" << std::endl;
-	obj.loadAssimp(_ibo.indexes(), _vertices);
-    std::cout << "load assimp ok" << std::endl;
-	_nbVertices = _vertices.size();
 
-}
 
 VBO::VBO(const GLuint &id, const glimac::Geometry &g)
 : _nbVertices(g.getVertexCount()),_id(id), _geo(g)
@@ -33,7 +20,6 @@ VBO::VBO(const GLuint &id, const glimac::Geometry &g)
 	_vao = VAO(_id);
 	_ibo = IBO(g.getIndexCount(), g.getIndexBuffer(), id);
 }
-
 
 VBO::VBO(const VBO &copied) : _id(copied._id), _vao(copied._vao)
 {

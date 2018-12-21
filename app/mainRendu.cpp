@@ -157,19 +157,14 @@ int main(int argc, char** argv) {
 
     g.loadOBJ(applicationPath.dirPath() + "/assets/models/a.obj",
         applicationPath.dirPath() + "/assets/models/a.mtl",true);
-/*
-    VBO triangle(transformIntoVector(
-            g.getVertexBuffer(), 
-            g.getVertexCount()),
-            0,
-            g.getIndexBuffer(),
-            g
-        );    
+
+
+    
 
     VBO triangle(0,g);
     triangle.sendData();
 
-*/
+
     textureManager.generateTexture();
     t.paramTexture();
 
@@ -223,11 +218,11 @@ int main(int argc, char** argv) {
 
 
 
-        //triangle.vao().bind();
+        triangle.vao().bind();
         glUniform1i(uTexture,0);
         t.bind();
 
-        //triangle.sendLightShader(uKd, uKs, uShininess, uLightDir_vs, uLightIntensity, track);
+        triangle.sendLightShader(uKd, uKs, uShininess, uLightDir_vs, uLightIntensity, track);
 
         // glm::mat4 earthMVMatrix = glm::rotate(trackMat*globalMVMatrix, windowManager.getTime(), glm::vec3(0,1,0));
         glm::mat4 earthMVMatrix = glm::rotate(trackMat*globalMVMatrix, 0*windowManager.getTime(), glm::vec3(0,1,0));
@@ -237,16 +232,16 @@ int main(int argc, char** argv) {
 
         
 
-       // triangle.draw();
+        triangle.draw();
 
 
         t.debind();
-        //triangle.vao().debind();
+        triangle.vao().debind();
         // Update the display
         windowManager.swapBuffers();
     }
 
-   // triangle.deleteBuf();
+    triangle.deleteBuf();
 
     return EXIT_SUCCESS;
 }

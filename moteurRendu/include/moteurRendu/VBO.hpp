@@ -4,11 +4,7 @@
 
 #include "VAO.hpp"
 #include "IBO.hpp"
-<<<<<<< HEAD
-#include "OBJ.hpp"
-=======
 #include "VBO.hpp"
->>>>>>> d657ee242a9915666abede95018997f3a19b02a7
 #include "Texture.hpp"
 #include "TrackballCamera.hpp"
 #include <vector>
@@ -37,9 +33,8 @@ private:
 	
 public:
 	VBO();
-
-	VBO(const GLuint &id, const OBJ &obj);
-	
+	/// \param vertices: Vector of a structure containing vertex, normal, texture
+	VBO(const std::vector<glimac::ShapeVertex> &vertices, const GLuint &id, const size_t size, const uint32_t* indexes, const glimac::Geometry g);
 	VBO(const GLuint &id,const glimac::Geometry &g);
 
 	/// \param copied : The VBO to copy into the current object
