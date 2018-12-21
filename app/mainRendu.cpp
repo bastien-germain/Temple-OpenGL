@@ -155,8 +155,8 @@ int main(int argc, char** argv) {
 
     //Création d'un objet Géométry et chargement du modèle, fichier obj, mtl et activation de la texture
     Geometry g;
-    g.loadOBJ(applicationPath.dirPath() + "/assets/models/a.obj",
-        applicationPath.dirPath() + "/assets/models/a.mtl",true);
+    g.loadOBJ(applicationPath.dirPath() + "/assets/models/corner.obj",
+        applicationPath.dirPath() + "/assets/models/corner.mtl",true);
 
 
     
@@ -234,7 +234,7 @@ int main(int argc, char** argv) {
         glUniformMatrix4fv(uMVPMatrix , 1, GL_FALSE, glm::value_ptr(ProjMatrix * earthMVMatrix));
 
             
-        
+
         triangle.draw();
 
 
