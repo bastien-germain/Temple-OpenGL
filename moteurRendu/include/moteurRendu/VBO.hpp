@@ -4,11 +4,8 @@
 
 #include "VAO.hpp"
 #include "IBO.hpp"
-<<<<<<< HEAD
 #include "OBJ.hpp"
-=======
 #include "VBO.hpp"
->>>>>>> d657ee242a9915666abede95018997f3a19b02a7
 #include "Texture.hpp"
 #include "TrackballCamera.hpp"
 #include <vector>
@@ -38,8 +35,6 @@ private:
 public:
 	VBO();
 
-	VBO(const GLuint &id, const OBJ &obj);
-	
 	VBO(const GLuint &id,const glimac::Geometry &g);
 
 	/// \param copied : The VBO to copy into the current object

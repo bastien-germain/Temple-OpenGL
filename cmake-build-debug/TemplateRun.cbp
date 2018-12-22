@@ -1,0 +1,963 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="TemplateRun"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\glimac\;CMake Files\moteurJeu\;CMake Files\moteurRendu\;CMake Files\app\;CMake Files\doc\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="glimac">
+				<Option output="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/glimac/libglimacd.so" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/glimac"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/SDL"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/glimac/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/third-party/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurRendu/include"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/glimac/Makefile&quot;  VERBOSE=1 glimac"/>
+					<CompileFile command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/glimac/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/glimac/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/glimac/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="glimac/fast">
+				<Option output="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/glimac/libglimacd.so" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/glimac"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/SDL"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/glimac/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/third-party/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurRendu/include"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/glimac/Makefile&quot;  VERBOSE=1 glimac/fast"/>
+					<CompileFile command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/glimac/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/glimac/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/glimac/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="moteurJeu">
+				<Option output="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/moteurJeu/libmoteurJeud.so" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/moteurJeu"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/SDL"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/glimac/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/third-party/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurRendu/include"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/moteurJeu/Makefile&quot;  VERBOSE=1 moteurJeu"/>
+					<CompileFile command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/moteurJeu/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/moteurJeu/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/moteurJeu/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="moteurJeu/fast">
+				<Option output="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/moteurJeu/libmoteurJeud.so" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/moteurJeu"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/SDL"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/glimac/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/third-party/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurRendu/include"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/moteurJeu/Makefile&quot;  VERBOSE=1 moteurJeu/fast"/>
+					<CompileFile command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/moteurJeu/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/moteurJeu/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/moteurJeu/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="moteurRendu">
+				<Option output="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/moteurRendu/libmoteurRendud.so" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/moteurRendu"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/SDL"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/glimac/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/third-party/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurRendu/include"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/moteurRendu/Makefile&quot;  VERBOSE=1 moteurRendu"/>
+					<CompileFile command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/moteurRendu/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/moteurRendu/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/moteurRendu/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="moteurRendu/fast">
+				<Option output="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/moteurRendu/libmoteurRendud.so" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/moteurRendu"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/SDL"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/glimac/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/third-party/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurRendu/include"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/moteurRendu/Makefile&quot;  VERBOSE=1 moteurRendu/fast"/>
+					<CompileFile command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/moteurRendu/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/moteurRendu/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/moteurRendu/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="testGameManager">
+				<Option output="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/testGameManager" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/SDL"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/glimac/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/third-party/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurRendu/include"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/Makefile&quot;  VERBOSE=1 testGameManager"/>
+					<CompileFile command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="testGameManager/fast">
+				<Option output="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/testGameManager" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/SDL"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/glimac/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/third-party/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurRendu/include"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/Makefile&quot;  VERBOSE=1 testGameManager/fast"/>
+					<CompileFile command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="testEventManager">
+				<Option output="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/testEventManager" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/SDL"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/glimac/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/third-party/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurRendu/include"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/Makefile&quot;  VERBOSE=1 testEventManager"/>
+					<CompileFile command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="testEventManager/fast">
+				<Option output="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/testEventManager" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/SDL"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/glimac/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/third-party/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurRendu/include"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/Makefile&quot;  VERBOSE=1 testEventManager/fast"/>
+					<CompileFile command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="mainRendu">
+				<Option output="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/mainRendu" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/SDL"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/glimac/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/third-party/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurRendu/include"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/Makefile&quot;  VERBOSE=1 mainRendu"/>
+					<CompileFile command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="mainRendu/fast">
+				<Option output="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/mainRendu" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/SDL"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/glimac/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/third-party/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurRendu/include"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/Makefile&quot;  VERBOSE=1 mainRendu/fast"/>
+					<CompileFile command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="testCamManager">
+				<Option output="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/testCamManager" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/SDL"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/glimac/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/third-party/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurRendu/include"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/Makefile&quot;  VERBOSE=1 testCamManager"/>
+					<CompileFile command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="testCamManager/fast">
+				<Option output="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/testCamManager" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/SDL"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/glimac/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/third-party/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurRendu/include"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/Makefile&quot;  VERBOSE=1 testCamManager/fast"/>
+					<CompileFile command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="mainRenduTestAssimp">
+				<Option output="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/mainRenduTestAssimp" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/SDL"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/glimac/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/third-party/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurRendu/include"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/Makefile&quot;  VERBOSE=1 mainRenduTestAssimp"/>
+					<CompileFile command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="mainRenduTestAssimp/fast">
+				<Option output="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/mainRenduTestAssimp" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/SDL"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/glimac/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/third-party/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurRendu/include"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/Makefile&quot;  VERBOSE=1 mainRenduTestAssimp/fast"/>
+					<CompileFile command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="testLectureFichier">
+				<Option output="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/testLectureFichier" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/SDL"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/glimac/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/third-party/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurRendu/include"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/Makefile&quot;  VERBOSE=1 testLectureFichier"/>
+					<CompileFile command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="testLectureFichier/fast">
+				<Option output="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/testLectureFichier" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/SDL"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/glimac/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/third-party/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurRendu/include"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/Makefile&quot;  VERBOSE=1 testLectureFichier/fast"/>
+					<CompileFile command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="templateRun">
+				<Option output="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/templateRun" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/SDL"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/glimac/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/third-party/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurRendu/include"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/Makefile&quot;  VERBOSE=1 templateRun"/>
+					<CompileFile command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="templateRun/fast">
+				<Option output="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/templateRun" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/usr/include/SDL"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/glimac/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/third-party/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurRendu/include"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/Makefile&quot;  VERBOSE=1 templateRun/fast"/>
+					<CompileFile command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/app/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="doc_doxygen">
+				<Option working_dir="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/doc"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/doc/Makefile&quot;  VERBOSE=1 doc_doxygen"/>
+					<CompileFile command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/doc/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/doc/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/doc/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/app/mainRendu.cpp">
+			<Option target="mainRendu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/app/mainRenduTestAssimp.cpp">
+			<Option target="mainRenduTestAssimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/app/shaders/3D.vs.glsl">
+			<Option target="testGameManager"/>
+			<Option target="testEventManager"/>
+			<Option target="mainRendu"/>
+			<Option target="testCamManager"/>
+			<Option target="mainRenduTestAssimp"/>
+			<Option target="testLectureFichier"/>
+			<Option target="templateRun"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/app/shaders/directionallight.fs.glsl">
+			<Option target="testGameManager"/>
+			<Option target="testEventManager"/>
+			<Option target="mainRendu"/>
+			<Option target="testCamManager"/>
+			<Option target="mainRenduTestAssimp"/>
+			<Option target="testLectureFichier"/>
+			<Option target="templateRun"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/app/shaders/multiTex3D.fs.glsl">
+			<Option target="testGameManager"/>
+			<Option target="testEventManager"/>
+			<Option target="mainRendu"/>
+			<Option target="testCamManager"/>
+			<Option target="mainRenduTestAssimp"/>
+			<Option target="testLectureFichier"/>
+			<Option target="templateRun"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/app/shaders/tex3D.fs.glsl">
+			<Option target="testGameManager"/>
+			<Option target="testEventManager"/>
+			<Option target="mainRendu"/>
+			<Option target="testCamManager"/>
+			<Option target="mainRenduTestAssimp"/>
+			<Option target="testLectureFichier"/>
+			<Option target="templateRun"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/app/shaders/triangle.fs.glsl">
+			<Option target="testGameManager"/>
+			<Option target="testEventManager"/>
+			<Option target="mainRendu"/>
+			<Option target="testCamManager"/>
+			<Option target="mainRenduTestAssimp"/>
+			<Option target="testLectureFichier"/>
+			<Option target="templateRun"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/app/shaders/triangle.vs.glsl">
+			<Option target="testGameManager"/>
+			<Option target="testEventManager"/>
+			<Option target="mainRendu"/>
+			<Option target="testCamManager"/>
+			<Option target="mainRenduTestAssimp"/>
+			<Option target="testLectureFichier"/>
+			<Option target="templateRun"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/app/templateRun.cpp">
+			<Option target="templateRun"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/app/testCamManager.cpp">
+			<Option target="testCamManager"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/app/testEventManager.cpp">
+			<Option target="testEventManager"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/app/testGameManager.cpp">
+			<Option target="testGameManager"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/app/testLectureFichier.cpp">
+			<Option target="testLectureFichier"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/glimac/include/glimac/BBox.hpp">
+			<Option target="glimac"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/glimac/include/glimac/Cone.hpp">
+			<Option target="glimac"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/glimac/include/glimac/FilePath.hpp">
+			<Option target="glimac"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/glimac/include/glimac/Geometry.hpp">
+			<Option target="glimac"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/glimac/include/glimac/Image.hpp">
+			<Option target="glimac"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/glimac/include/glimac/Program.hpp">
+			<Option target="glimac"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/glimac/include/glimac/SDLWindowManager.hpp">
+			<Option target="glimac"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/glimac/include/glimac/Shader.hpp">
+			<Option target="glimac"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/glimac/include/glimac/Sphere.hpp">
+			<Option target="glimac"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/glimac/include/glimac/TrackballCamera.hpp">
+			<Option target="glimac"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/glimac/include/glimac/common.hpp">
+			<Option target="glimac"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/glimac/include/glimac/glm.hpp">
+			<Option target="glimac"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/glimac/src/Cone.cpp">
+			<Option target="glimac"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/glimac/src/Geometry.cpp">
+			<Option target="glimac"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/glimac/src/Image.cpp">
+			<Option target="glimac"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/glimac/src/Program.cpp">
+			<Option target="glimac"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/glimac/src/SDLWindowManager.cpp">
+			<Option target="glimac"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/glimac/src/Shader.cpp">
+			<Option target="glimac"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/glimac/src/Sphere.cpp">
+			<Option target="glimac"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/glimac/src/TrackballCamera.cpp">
+			<Option target="glimac"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/glimac/src/tiny_obj_loader.cpp">
+			<Option target="glimac"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/glimac/src/tiny_obj_loader.h">
+			<Option target="glimac"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/include/moteurJeu/App.hpp">
+			<Option target="moteurJeu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/include/moteurJeu/Barrier.hpp">
+			<Option target="moteurJeu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/include/moteurJeu/CameraManager.hpp">
+			<Option target="moteurJeu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/include/moteurJeu/Coin.hpp">
+			<Option target="moteurJeu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/include/moteurJeu/CornerSection.hpp">
+			<Option target="moteurJeu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/include/moteurJeu/CorridorSection.hpp">
+			<Option target="moteurJeu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/include/moteurJeu/Enemy.hpp">
+			<Option target="moteurJeu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/include/moteurJeu/EventManager.hpp">
+			<Option target="moteurJeu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/include/moteurJeu/Exception.hpp">
+			<Option target="moteurJeu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/include/moteurJeu/Game.hpp">
+			<Option target="moteurJeu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/include/moteurJeu/GameManager.hpp">
+			<Option target="moteurJeu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/include/moteurJeu/Hole.hpp">
+			<Option target="moteurJeu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/include/moteurJeu/Menu.hpp">
+			<Option target="moteurJeu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/include/moteurJeu/Model.hpp">
+			<Option target="moteurJeu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/include/moteurJeu/Obstacle.hpp">
+			<Option target="moteurJeu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/include/moteurJeu/Parser.hpp">
+			<Option target="moteurJeu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/include/moteurJeu/Player.hpp">
+			<Option target="moteurJeu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/include/moteurJeu/PositionObservable.hpp">
+			<Option target="moteurJeu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/include/moteurJeu/PositionObserver.hpp">
+			<Option target="moteurJeu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/include/moteurJeu/Rock.hpp">
+			<Option target="moteurJeu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/include/moteurJeu/Section.hpp">
+			<Option target="moteurJeu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/include/moteurJeu/SectionFactory.hpp">
+			<Option target="moteurJeu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/include/moteurJeu/TSection.hpp">
+			<Option target="moteurJeu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/src/App.cpp">
+			<Option target="moteurJeu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/src/Barrier.cpp">
+			<Option target="moteurJeu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/src/CameraManager.cpp">
+			<Option target="moteurJeu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/src/Coin.cpp">
+			<Option target="moteurJeu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/src/CornerSection.cpp">
+			<Option target="moteurJeu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/src/CorridorSection.cpp">
+			<Option target="moteurJeu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/src/Enemy.cpp">
+			<Option target="moteurJeu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/src/EventManager.cpp">
+			<Option target="moteurJeu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/src/Game.cpp">
+			<Option target="moteurJeu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/src/GameManager.cpp">
+			<Option target="moteurJeu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/src/Hole.cpp">
+			<Option target="moteurJeu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/src/Menu.cpp">
+			<Option target="moteurJeu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/src/Model.cpp">
+			<Option target="moteurJeu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/src/Obstacle.cpp">
+			<Option target="moteurJeu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/src/Parser.cpp">
+			<Option target="moteurJeu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/src/Player.cpp">
+			<Option target="moteurJeu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/src/PositionObservable.cpp">
+			<Option target="moteurJeu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/src/PositionObserver.cpp">
+			<Option target="moteurJeu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/src/Rock.cpp">
+			<Option target="moteurJeu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/src/Section.cpp">
+			<Option target="moteurJeu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/src/SectionFactory.cpp">
+			<Option target="moteurJeu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/src/TSection.cpp">
+			<Option target="moteurJeu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurRendu/include/moteurRendu/IBO.hpp">
+			<Option target="moteurRendu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurRendu/include/moteurRendu/Light.hpp">
+			<Option target="moteurRendu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurRendu/include/moteurRendu/ListTextures.hpp">
+			<Option target="moteurRendu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurRendu/include/moteurRendu/OBJ.hpp">
+			<Option target="moteurRendu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurRendu/include/moteurRendu/Texture.hpp">
+			<Option target="moteurRendu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurRendu/include/moteurRendu/TrackballCamera.hpp">
+			<Option target="moteurRendu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurRendu/include/moteurRendu/VAO.hpp">
+			<Option target="moteurRendu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurRendu/include/moteurRendu/VBO.hpp">
+			<Option target="moteurRendu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurRendu/include/moteurRendu/VisionCamera.hpp">
+			<Option target="moteurRendu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurRendu/src/IBO.cpp">
+			<Option target="moteurRendu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurRendu/src/Light.cpp">
+			<Option target="moteurRendu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurRendu/src/ListTextures.cpp">
+			<Option target="moteurRendu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurRendu/src/OBJ.cpp">
+			<Option target="moteurRendu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurRendu/src/Texture.cpp">
+			<Option target="moteurRendu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurRendu/src/TrackballCamera.cpp">
+			<Option target="moteurRendu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurRendu/src/VAO.cpp">
+			<Option target="moteurRendu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurRendu/src/VBO.cpp">
+			<Option target="moteurRendu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurRendu/src/VisionCamera.cpp">
+			<Option target="moteurRendu"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/glimac/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\glimac\"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\moteurJeu\"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurRendu/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\moteurRendu\"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/app/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\app\"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/doc/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\doc\"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/doc/Doxyfile.in">
+			<Option virtualFolder="CMake Files\doc\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>

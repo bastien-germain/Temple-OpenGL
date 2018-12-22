@@ -1,0 +1,2428 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Assimp"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;CMake Files\assimp\;CMake Files\assimp\include\;CMake Files\assimp\include\assimp\;CMake Files\assimp\cmake-modules\;CMake Files\assimp\contrib\;CMake Files\assimp\contrib\irrXML\;CMake Files\assimp\code\;CMake Files\assimp\tools\;CMake Files\assimp\tools\assimp_cmd\;CMake Files\assimp\tools\assimp_qt_viewer\;CMake Files\assimp\test\;CMake Files\assimp\test\headercheck\;CMake Files\..\;CMake Files\..\..\;CMake Files\..\..\..\;CMake Files\..\..\..\..\;CMake Files\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\;CMake Files\..\..\..\..\..\..\usr\;CMake Files\..\..\..\..\..\..\usr\lib\;CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\;CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\;CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Widgets\;CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\;CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\;CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5OpenGL\;CMake Files\glimac\;CMake Files\moteurJeu\;CMake Files\moteurRendu\;CMake Files\app\;CMake Files\doc\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="uninstall">
+				<Option working_dir="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/Makefile&quot;  VERBOSE=1 uninstall"/>
+					<CompileFile command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="IrrXML">
+				<Option output="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/contrib/irrXML/libIrrXMLd.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/contrib/irrXML"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DOPENDDL_NO_USE_CPP11"/>
+					<Add option="-DASSIMP_BUILD_NO_OWN_ZLIB"/>
+					<Add option="-DASSIMP_BUILD_NO_C4D_IMPORTER"/>
+					<Add directory="/usr/include/SDL"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/glimac/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/third-party/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurRendu/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/."/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/include"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/contrib/irrXML/Makefile&quot;  VERBOSE=1 IrrXML"/>
+					<CompileFile command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/contrib/irrXML/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/contrib/irrXML/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/contrib/irrXML/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="IrrXML/fast">
+				<Option output="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/contrib/irrXML/libIrrXMLd.a" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/contrib/irrXML"/>
+				<Option object_output="./"/>
+				<Option type="2"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DOPENDDL_NO_USE_CPP11"/>
+					<Add option="-DASSIMP_BUILD_NO_OWN_ZLIB"/>
+					<Add option="-DASSIMP_BUILD_NO_C4D_IMPORTER"/>
+					<Add directory="/usr/include/SDL"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/glimac/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/third-party/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurRendu/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/."/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/include"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/contrib/irrXML/Makefile&quot;  VERBOSE=1 IrrXML/fast"/>
+					<CompileFile command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/contrib/irrXML/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/contrib/irrXML/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/contrib/irrXML/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="assimp">
+				<Option output="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/code/libassimpd.so" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/code"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DOPENDDL_NO_USE_CPP11"/>
+					<Add option="-DASSIMP_BUILD_NO_OWN_ZLIB"/>
+					<Add option="-DASSIMP_BUILD_NO_C4D_IMPORTER"/>
+					<Add option="-DASSIMP_IMPORTER_GLTF_USE_OPEN3DGC=1"/>
+					<Add option="-DASSIMP_BUILD_DLL_EXPORT"/>
+					<Add option="-DOPENDDLPARSER_BUILD"/>
+					<Add directory="/usr/include/SDL"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/glimac/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/third-party/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurRendu/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/."/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/../contrib/rapidjson/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/../contrib"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/../contrib/unzip"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/irrXML"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/../contrib/openddlparser/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/.."/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/code/Makefile&quot;  VERBOSE=1 assimp"/>
+					<CompileFile command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/code/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/code/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/code/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="assimp/fast">
+				<Option output="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/code/libassimpd.so" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/code"/>
+				<Option object_output="./"/>
+				<Option type="3"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DOPENDDL_NO_USE_CPP11"/>
+					<Add option="-DASSIMP_BUILD_NO_OWN_ZLIB"/>
+					<Add option="-DASSIMP_BUILD_NO_C4D_IMPORTER"/>
+					<Add option="-DASSIMP_IMPORTER_GLTF_USE_OPEN3DGC=1"/>
+					<Add option="-DASSIMP_BUILD_DLL_EXPORT"/>
+					<Add option="-DOPENDDLPARSER_BUILD"/>
+					<Add directory="/usr/include/SDL"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/glimac/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/third-party/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurRendu/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/."/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/../contrib/rapidjson/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/../contrib"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/../contrib/unzip"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/irrXML"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/../contrib/openddlparser/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/.."/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/code/Makefile&quot;  VERBOSE=1 assimp/fast"/>
+					<CompileFile command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/code/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/code/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/code/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="assimp_cmd">
+				<Option output="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/tools/assimp_cmd/assimpd" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/tools/assimp_cmd"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DOPENDDL_NO_USE_CPP11"/>
+					<Add option="-DASSIMP_BUILD_NO_OWN_ZLIB"/>
+					<Add option="-DASSIMP_BUILD_NO_C4D_IMPORTER"/>
+					<Add directory="/usr/include/SDL"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/glimac/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/third-party/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurRendu/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/."/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/tools/assimp_cmd/Makefile&quot;  VERBOSE=1 assimp_cmd"/>
+					<CompileFile command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/tools/assimp_cmd/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/tools/assimp_cmd/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/tools/assimp_cmd/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="assimp_cmd/fast">
+				<Option output="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/tools/assimp_cmd/assimpd" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/tools/assimp_cmd"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DOPENDDL_NO_USE_CPP11"/>
+					<Add option="-DASSIMP_BUILD_NO_OWN_ZLIB"/>
+					<Add option="-DASSIMP_BUILD_NO_C4D_IMPORTER"/>
+					<Add directory="/usr/include/SDL"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/glimac/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/third-party/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurRendu/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/."/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/tools/assimp_cmd/Makefile&quot;  VERBOSE=1 assimp_cmd/fast"/>
+					<CompileFile command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/tools/assimp_cmd/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/tools/assimp_cmd/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/tools/assimp_cmd/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="assimp_qt_viewer">
+				<Option output="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/tools/assimp_qt_viewer/assimp_qt_viewerd" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/tools/assimp_qt_viewer"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DQT_WIDGETS_LIB"/>
+					<Add option="-DQT_GUI_LIB"/>
+					<Add option="-DQT_CORE_LIB"/>
+					<Add option="-DQT_OPENGL_LIB"/>
+					<Add option="-DOPENDDL_NO_USE_CPP11"/>
+					<Add option="-DASSIMP_BUILD_NO_OWN_ZLIB"/>
+					<Add option="-DASSIMP_BUILD_NO_C4D_IMPORTER"/>
+					<Add directory="/usr/include/SDL"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/glimac/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/third-party/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurRendu/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/."/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/tools/assimp_qt_viewer"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL"/>
+					<Add directory="/usr/include/IL"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5/QtWidgets"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5/QtGui"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5/QtCore"/>
+					<Add directory="/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5/QtOpenGL"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/tools/assimp_qt_viewer/Makefile&quot;  VERBOSE=1 assimp_qt_viewer"/>
+					<CompileFile command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/tools/assimp_qt_viewer/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/tools/assimp_qt_viewer/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/tools/assimp_qt_viewer/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="assimp_qt_viewer/fast">
+				<Option output="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/tools/assimp_qt_viewer/assimp_qt_viewerd" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/tools/assimp_qt_viewer"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DQT_WIDGETS_LIB"/>
+					<Add option="-DQT_GUI_LIB"/>
+					<Add option="-DQT_CORE_LIB"/>
+					<Add option="-DQT_OPENGL_LIB"/>
+					<Add option="-DOPENDDL_NO_USE_CPP11"/>
+					<Add option="-DASSIMP_BUILD_NO_OWN_ZLIB"/>
+					<Add option="-DASSIMP_BUILD_NO_C4D_IMPORTER"/>
+					<Add directory="/usr/include/SDL"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/glimac/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/third-party/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurRendu/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/."/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/tools/assimp_qt_viewer"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL"/>
+					<Add directory="/usr/include/IL"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5/QtWidgets"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5/QtGui"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5/QtCore"/>
+					<Add directory="/usr/lib/x86_64-linux-gnu/qt5/mkspecs/linux-g++"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/qt5/QtOpenGL"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/tools/assimp_qt_viewer/Makefile&quot;  VERBOSE=1 assimp_qt_viewer/fast"/>
+					<CompileFile command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/tools/assimp_qt_viewer/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/tools/assimp_qt_viewer/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/tools/assimp_qt_viewer/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="unit">
+				<Option output="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/test/unit" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/test"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DOPENDDL_NO_USE_CPP11"/>
+					<Add option="-DASSIMP_BUILD_NO_OWN_ZLIB"/>
+					<Add option="-DASSIMP_BUILD_NO_C4D_IMPORTER"/>
+					<Add option="-DASSIMP_TEST_MODELS_DIR=&quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/models&quot;"/>
+					<Add directory="/usr/include/SDL"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/glimac/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/third-party/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurRendu/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/."/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/../contrib/gtest/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/../contrib/gtest"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/test/Makefile&quot;  VERBOSE=1 unit"/>
+					<CompileFile command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/test/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/test/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/test/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="unit/fast">
+				<Option output="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/test/unit" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/test"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add option="-DOPENDDL_NO_USE_CPP11"/>
+					<Add option="-DASSIMP_BUILD_NO_OWN_ZLIB"/>
+					<Add option="-DASSIMP_BUILD_NO_C4D_IMPORTER"/>
+					<Add option="-DASSIMP_TEST_MODELS_DIR=&quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/models&quot;"/>
+					<Add directory="/usr/include/SDL"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/glimac/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/third-party/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurRendu/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/."/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/../contrib/gtest/include"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/../contrib/gtest"/>
+					<Add directory="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code"/>
+					<Add directory="/usr/include/c++/7"/>
+					<Add directory="/usr/include/x86_64-linux-gnu/c++/7"/>
+					<Add directory="/usr/include/c++/7/backward"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/usr/lib/gcc/x86_64-linux-gnu/7/include-fixed"/>
+					<Add directory="/usr/include/x86_64-linux-gnu"/>
+					<Add directory="/usr/include"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/test/Makefile&quot;  VERBOSE=1 unit/fast"/>
+					<CompileFile command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/test/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/test/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/test/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Nightly">
+				<Option working_dir="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/test"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/test/Makefile&quot;  VERBOSE=1 Nightly"/>
+					<CompileFile command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/test/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/test/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/test/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Continuous">
+				<Option working_dir="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/test"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/test/Makefile&quot;  VERBOSE=1 Continuous"/>
+					<CompileFile command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/test/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/test/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/test/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Experimental">
+				<Option working_dir="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/test"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/test/Makefile&quot;  VERBOSE=1 Experimental"/>
+					<CompileFile command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/test/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/test/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -f &quot;/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/test/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/3DSConverter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/3DSExporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/3DSExporter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/3DSHelper.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/3DSLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/3DSLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/3MFXmlTags.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/ACLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/ACLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/AMFImporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/AMFImporter.hpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/AMFImporter_Geometry.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/AMFImporter_Macro.hpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/AMFImporter_Material.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/AMFImporter_Node.hpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/AMFImporter_Postprocess.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/ASELoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/ASELoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/ASEParser.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/ASEParser.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/AssbinExporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/AssbinExporter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/AssbinLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/AssbinLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/Assimp.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/AssimpCExport.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/AssxmlExporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/AssxmlExporter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/B3DImporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/B3DImporter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/BVHLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/BVHLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/BaseImporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/BaseImporter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/BaseProcess.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/BaseProcess.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/Bitmap.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/Bitmap.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/BlenderBMesh.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/BlenderBMesh.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/BlenderDNA.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/BlenderDNA.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/BlenderDNA.inl">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/BlenderIntermediate.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/BlenderLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/BlenderLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/BlenderModifier.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/BlenderModifier.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/BlenderScene.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/BlenderScene.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/BlenderSceneGen.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/BlenderTessellator.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/BlenderTessellator.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/BlobIOSystem.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/ByteSwapper.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/CInterfaceIOWrapper.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/CInterfaceIOWrapper.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/COBLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/COBLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/COBScene.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/CSMLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/CSMLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/CalcTangentsProcess.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/CalcTangentsProcess.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/ColladaExporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/ColladaExporter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/ColladaHelper.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/ColladaLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/ColladaLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/ColladaParser.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/ColladaParser.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/ComputeUVMappingProcess.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/ComputeUVMappingProcess.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/ConvertToLHProcess.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/ConvertToLHProcess.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/CreateAnimMesh.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/CreateAnimMesh.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/D3MFExporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/D3MFExporter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/D3MFImporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/D3MFImporter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/D3MFOpcPackage.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/D3MFOpcPackage.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/DXFHelper.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/DXFLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/DXFLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/DeboneProcess.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/DeboneProcess.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/DefaultIOStream.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/DefaultIOSystem.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/DefaultLogger.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/DefaultProgressHandler.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/Exporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/FBXAnimation.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/FBXBinaryTokenizer.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/FBXCompileConfig.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/FBXConverter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/FBXConverter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/FBXDeformer.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/FBXDocument.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/FBXDocument.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/FBXDocumentUtil.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/FBXDocumentUtil.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/FBXImportSettings.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/FBXImporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/FBXImporter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/FBXMaterial.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/FBXMeshGeometry.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/FBXMeshGeometry.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/FBXModel.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/FBXNodeAttribute.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/FBXParser.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/FBXParser.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/FBXProperties.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/FBXProperties.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/FBXTokenizer.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/FBXTokenizer.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/FBXUtil.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/FBXUtil.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/FIReader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/FIReader.hpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/FileLogStream.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/FindDegenerates.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/FindDegenerates.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/FindInstancesProcess.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/FindInstancesProcess.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/FindInvalidDataProcess.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/FindInvalidDataProcess.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/FixNormalsStep.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/FixNormalsStep.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/GenFaceNormalsProcess.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/GenFaceNormalsProcess.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/GenVertexNormalsProcess.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/GenVertexNormalsProcess.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/GenericProperty.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/HMPFileData.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/HMPLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/HMPLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/HalfLifeFileData.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/Hash.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/IFCBoolean.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/IFCCurve.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/IFCGeometry.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/IFCLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/IFCLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/IFCMaterial.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/IFCOpenings.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/IFCProfile.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/IFCReaderGen.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/IFCReaderGen1.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/IFCReaderGen2.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/IFCUtil.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/IFCUtil.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/IFF.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/IOStreamBuffer.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/IRRLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/IRRLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/IRRMeshLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/IRRMeshLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/IRRShared.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/IRRShared.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/Importer.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/Importer.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/ImporterRegistry.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/ImproveCacheLocality.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/ImproveCacheLocality.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/JoinVerticesProcess.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/JoinVerticesProcess.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/LWOAnimation.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/LWOAnimation.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/LWOBLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/LWOFileData.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/LWOLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/LWOLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/LWOMaterial.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/LWSLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/LWSLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/LimitBoneWeightsProcess.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/LimitBoneWeightsProcess.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/LineSplitter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/LogAux.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/MD2FileData.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/MD2Loader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/MD2Loader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/MD2NormalTable.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/MD3FileData.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/MD3Loader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/MD3Loader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/MD5Loader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/MD5Loader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/MD5Parser.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/MD5Parser.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/MDCFileData.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/MDCLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/MDCLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/MDCNormalTable.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/MDLDefaultColorMap.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/MDLFileData.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/MDLLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/MDLLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/MDLMaterialLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/MMDCpp14.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/MMDImporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/MMDImporter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/MMDPmdParser.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/MMDPmxParser.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/MMDPmxParser.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/MMDVmdParser.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/MS3DLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/MS3DLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/MakeVerboseFormat.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/MakeVerboseFormat.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/MaterialSystem.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/MaterialSystem.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/MemoryIOWrapper.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/NDOLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/NDOLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/NFFLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/NFFLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/OFFLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/OFFLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/ObjExporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/ObjExporter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/ObjFileData.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/ObjFileImporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/ObjFileImporter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/ObjFileMtlImporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/ObjFileMtlImporter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/ObjFileParser.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/ObjFileParser.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/ObjTools.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/OgreBinarySerializer.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/OgreBinarySerializer.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/OgreImporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/OgreImporter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/OgreMaterial.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/OgreParsingUtils.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/OgreStructs.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/OgreStructs.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/OgreXmlSerializer.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/OgreXmlSerializer.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/OpenGEXExporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/OpenGEXExporter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/OpenGEXImporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/OpenGEXImporter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/OpenGEXStructs.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/OptimizeGraph.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/OptimizeGraph.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/OptimizeMeshes.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/OptimizeMeshes.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/ParsingUtils.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/PlyExporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/PlyExporter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/PlyLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/PlyLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/PlyParser.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/PlyParser.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/PolyTools.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/PostStepRegistry.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/PretransformVertices.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/PretransformVertices.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/ProcessHelper.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/ProcessHelper.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/Profiler.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/Q3BSPFileData.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/Q3BSPFileImporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/Q3BSPFileImporter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/Q3BSPFileParser.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/Q3BSPFileParser.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/Q3BSPZipArchive.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/Q3BSPZipArchive.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/Q3DLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/Q3DLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/RawLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/RawLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/RemoveComments.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/RemoveComments.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/RemoveRedundantMaterials.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/RemoveRedundantMaterials.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/RemoveVCProcess.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/RemoveVCProcess.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/SGSpatialSort.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/SGSpatialSort.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/SIBImporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/SIBImporter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/SMDLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/SMDLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/STEPFile.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/STEPFileEncoding.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/STEPFileEncoding.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/STEPFileReader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/STEPFileReader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/STLExporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/STLExporter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/STLLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/STLLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/ScaleProcess.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/ScaleProcess.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/SceneCombiner.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/ScenePreprocessor.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/ScenePreprocessor.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/ScenePrivate.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/SkeletonMeshBuilder.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/SkeletonMeshBuilder.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/SmoothingGroups.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/SortByPTypeProcess.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/SortByPTypeProcess.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/SpatialSort.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/SpatialSort.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/SplitByBoneCountProcess.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/SplitByBoneCountProcess.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/SplitLargeMeshes.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/SplitLargeMeshes.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/StandardShapes.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/StandardShapes.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/StdOStreamLogStream.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/StepExporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/StepExporter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/StreamReader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/StreamWriter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/StringComparison.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/StringUtils.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/Subdivision.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/Subdivision.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/TargetAnimation.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/TargetAnimation.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/TerragenLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/TerragenLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/TextureTransform.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/TextureTransform.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/TinyFormatter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/TriangulateProcess.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/TriangulateProcess.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/UnrealLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/UnrealLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/ValidateDataStructure.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/ValidateDataStructure.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/Version.cpp">
+			<Option target="assimp"/>
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/Vertex.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/VertexTriangleAdjacency.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/VertexTriangleAdjacency.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/Win32DebugLogStream.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/X3DExporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/X3DExporter.hpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/X3DImporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/X3DImporter.hpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/X3DImporter_Geometry2D.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/X3DImporter_Geometry3D.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/X3DImporter_Group.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/X3DImporter_Light.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/X3DImporter_Macro.hpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/X3DImporter_Metadata.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/X3DImporter_Networking.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/X3DImporter_Node.hpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/X3DImporter_Postprocess.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/X3DImporter_Rendering.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/X3DImporter_Shape.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/X3DImporter_Texturing.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/X3DVocabulary.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/XFileExporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/XFileExporter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/XFileHelper.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/XFileImporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/XFileImporter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/XFileParser.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/XFileParser.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/XGLLoader.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/XGLLoader.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/XMLTools.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/fast_atof.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/glTF2Asset.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/glTF2Asset.inl">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/glTF2AssetWriter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/glTF2AssetWriter.inl">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/glTF2Exporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/glTF2Exporter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/glTF2Importer.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/glTF2Importer.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/glTFAsset.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/glTFAsset.inl">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/glTFAssetWriter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/glTFAssetWriter.inl">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/glTFExporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/glTFExporter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/glTFImporter.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/glTFImporter.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/irrXMLWrapper.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/qnan.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/scene.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/Open3DGC/o3dgcAdjacencyInfo.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/Open3DGC/o3dgcArithmeticCodec.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/Open3DGC/o3dgcArithmeticCodec.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/Open3DGC/o3dgcBinaryStream.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/Open3DGC/o3dgcCommon.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/Open3DGC/o3dgcDVEncodeParams.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/Open3DGC/o3dgcDynamicVector.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/Open3DGC/o3dgcDynamicVectorDecoder.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/Open3DGC/o3dgcDynamicVectorDecoder.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/Open3DGC/o3dgcDynamicVectorEncoder.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/Open3DGC/o3dgcDynamicVectorEncoder.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/Open3DGC/o3dgcFIFO.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/Open3DGC/o3dgcIndexedFaceSet.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/Open3DGC/o3dgcIndexedFaceSet.inl">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/Open3DGC/o3dgcSC3DMCDecoder.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/Open3DGC/o3dgcSC3DMCDecoder.inl">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/Open3DGC/o3dgcSC3DMCEncodeParams.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/Open3DGC/o3dgcSC3DMCEncoder.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/Open3DGC/o3dgcSC3DMCEncoder.inl">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/Open3DGC/o3dgcTimer.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/Open3DGC/o3dgcTools.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/Open3DGC/o3dgcTriangleFans.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/Open3DGC/o3dgcTriangleFans.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/Open3DGC/o3dgcTriangleListDecoder.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/Open3DGC/o3dgcTriangleListDecoder.inl">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/Open3DGC/o3dgcTriangleListEncoder.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/Open3DGC/o3dgcTriangleListEncoder.inl">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/Open3DGC/o3dgcVector.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/Open3DGC/o3dgcVector.inl">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/clipper/clipper.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/clipper/clipper.hpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/gtest/src/gtest-all.cc">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/irrXML/CXMLReaderImpl.h">
+			<Option target="IrrXML"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/irrXML/heapsort.h">
+			<Option target="IrrXML"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/irrXML/irrArray.h">
+			<Option target="IrrXML"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/irrXML/irrString.h">
+			<Option target="IrrXML"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/irrXML/irrTypes.h">
+			<Option target="IrrXML"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/irrXML/irrXML.cpp">
+			<Option target="IrrXML"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/irrXML/irrXML.h">
+			<Option target="IrrXML"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/openddlparser/code/DDLNode.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/openddlparser/code/OpenDDLCommon.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/openddlparser/code/OpenDDLExport.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/openddlparser/code/OpenDDLParser.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/openddlparser/code/OpenDDLStream.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/openddlparser/code/Value.cpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/openddlparser/include/openddlparser/DDLNode.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/openddlparser/include/openddlparser/OpenDDLCommon.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/openddlparser/include/openddlparser/OpenDDLExport.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/openddlparser/include/openddlparser/OpenDDLParser.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/openddlparser/include/openddlparser/OpenDDLParserUtils.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/openddlparser/include/openddlparser/OpenDDLStream.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/openddlparser/include/openddlparser/Value.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/poly2tri/poly2tri/common/shapes.cc">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/poly2tri/poly2tri/common/shapes.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/poly2tri/poly2tri/common/utils.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/poly2tri/poly2tri/sweep/advancing_front.cc">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/poly2tri/poly2tri/sweep/advancing_front.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/poly2tri/poly2tri/sweep/cdt.cc">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/poly2tri/poly2tri/sweep/cdt.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/poly2tri/poly2tri/sweep/sweep.cc">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/poly2tri/poly2tri/sweep/sweep.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/poly2tri/poly2tri/sweep/sweep_context.cc">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/poly2tri/poly2tri/sweep/sweep_context.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/unzip/crypt.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/unzip/ioapi.c">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/unzip/ioapi.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/unzip/unzip.c">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/unzip/unzip.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/zip/src/miniz.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/zip/src/zip.c">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/zip/src/zip.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/include/assimp/Compiler/poppack1.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/include/assimp/Compiler/pstdint.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/include/assimp/Compiler/pushpack1.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/include/assimp/DefaultIOStream.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/include/assimp/DefaultIOSystem.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/include/assimp/DefaultLogger.hpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/include/assimp/Defines.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/include/assimp/Exporter.hpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/include/assimp/IOStream.hpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/include/assimp/IOSystem.hpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/include/assimp/Importer.hpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/include/assimp/LogStream.hpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/include/assimp/Logger.hpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/include/assimp/NullLogger.hpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/include/assimp/ProgressHandler.hpp">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/include/assimp/SceneCombiner.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/include/assimp/ai_assert.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/include/assimp/anim.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/include/assimp/camera.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/include/assimp/cexport.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/include/assimp/cfileio.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/include/assimp/cimport.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/include/assimp/color4.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/include/assimp/color4.inl">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/include/assimp/defs.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/include/assimp/importerdesc.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/include/assimp/light.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/include/assimp/material.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/include/assimp/material.inl">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/include/assimp/matrix3x3.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/include/assimp/matrix3x3.inl">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/include/assimp/matrix4x4.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/include/assimp/matrix4x4.inl">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/include/assimp/mesh.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/include/assimp/metadata.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/include/assimp/postprocess.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/include/assimp/quaternion.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/include/assimp/quaternion.inl">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/include/assimp/scene.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/include/assimp/texture.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/include/assimp/types.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/include/assimp/vector2.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/include/assimp/vector2.inl">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/include/assimp/vector3.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/include/assimp/vector3.inl">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/include/assimp/version.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/AbstractImportExportBase.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/AbstractImportExportBase.h">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/AssimpAPITest.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/CCompilerTest.c">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/Main.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/SceneDiffer.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/SceneDiffer.h">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/TestIOSystem.h">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/TestModelFactory.h">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/UTLogStream.h">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/ut3DImportExport.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/ut3DSImportExport.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utACImportExport.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utAMFImportExport.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utASEImportExport.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utAnim.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utB3DImportExport.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utBVHImportExport.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utBatchLoader.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utBlendImportAreaLight.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utBlendImportMaterials.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utBlenderImportExport.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utBlenderIntermediate.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utCSMImportExport.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utColladaExportCamera.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utColladaExportLight.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utColladaImportExport.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utD3MFImportExport.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utDXFImporterExporter.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utDefaultIOStream.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utFBXImporterExporter.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utFastAtof.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utFindDegenerates.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utFindInvalidData.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utFixInfacingNormals.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utGenNormals.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utHMPImportExport.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utIFCImportExport.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utIOStreamBuffer.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utIOSystem.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utImporter.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utImproveCacheLocality.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utIssues.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utJoinVertices.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utLWSImportExport.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utLimitBoneWeights.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utMaterialSystem.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utMatrix3x3.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utMatrix4x4.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utMetadata.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utObjImportExport.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utObjTools.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utOpenGEXImportExport.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utPLYImportExport.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utPMXImporter.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utPretransformVertices.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utProfiler.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utQ3DImportExport.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utRemoveComments.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utRemoveComponent.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utRemoveRedundantMaterials.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utRemoveVCProcess.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utSIBImporter.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utSMDImportExport.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utSTLImportExport.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utScaleProcess.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utSceneCombiner.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utScenePreprocessor.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utSharedPPData.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utSortByPType.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utSplitLargeMeshes.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utStringUtils.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utTargetAnimation.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utTextureTransform.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utTriangulate.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utTypes.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utVector3.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utVersion.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utVertexTriangleAdjacency.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utX3DImportExport.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utXImporterExporter.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utglTF2ImportExport.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/unit/utglTFImportExport.cpp">
+			<Option target="unit"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/tools/assimp_cmd/CompareDump.cpp">
+			<Option target="assimp_cmd"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/tools/assimp_cmd/Export.cpp">
+			<Option target="assimp_cmd"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/tools/assimp_cmd/ImageExtractor.cpp">
+			<Option target="assimp_cmd"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/tools/assimp_cmd/Info.cpp">
+			<Option target="assimp_cmd"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/tools/assimp_cmd/Main.cpp">
+			<Option target="assimp_cmd"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/tools/assimp_cmd/Main.h">
+			<Option target="assimp_cmd"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/tools/assimp_cmd/WriteDumb.cpp">
+			<Option target="assimp_cmd"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/tools/assimp_cmd/assimp_cmd.rc">
+			<Option target="assimp_cmd"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/tools/assimp_cmd/resource.h">
+			<Option target="assimp_cmd"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/tools/assimp_qt_viewer/glview.cpp">
+			<Option target="assimp_qt_viewer"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/tools/assimp_qt_viewer/glview.hpp">
+			<Option target="assimp_qt_viewer"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/tools/assimp_qt_viewer/loggerview.cpp">
+			<Option target="assimp_qt_viewer"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/tools/assimp_qt_viewer/loggerview.hpp">
+			<Option target="assimp_qt_viewer"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/tools/assimp_qt_viewer/main.cpp">
+			<Option target="assimp_qt_viewer"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/tools/assimp_qt_viewer/mainwindow.cpp">
+			<Option target="assimp_qt_viewer"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/tools/assimp_qt_viewer/mainwindow.hpp">
+			<Option target="assimp_qt_viewer"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/tools/assimp_qt_viewer/mainwindow.ui">
+			<Option target="assimp_qt_viewer"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/include/assimp/config.h">
+			<Option target="assimp"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/tools/assimp_qt_viewer/moc_glview.cpp">
+			<Option target="assimp_qt_viewer"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/tools/assimp_qt_viewer/moc_glview.cpp.rule">
+			<Option target="assimp_qt_viewer"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/tools/assimp_qt_viewer/moc_mainwindow.cpp">
+			<Option target="assimp_qt_viewer"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/tools/assimp_qt_viewer/moc_mainwindow.cpp.rule">
+			<Option target="assimp_qt_viewer"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/assimp/tools/assimp_qt_viewer/ui_mainwindow.h">
+			<Option target="assimp_qt_viewer"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\assimp\"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/assimp-config-version.cmake.in">
+			<Option virtualFolder="CMake Files\assimp\"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/assimp-config.cmake.in">
+			<Option virtualFolder="CMake Files\assimp\"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/assimp.pc.in">
+			<Option virtualFolder="CMake Files\assimp\"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/revision.h.in">
+			<Option virtualFolder="CMake Files\assimp\"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/include/assimp/config.h.in">
+			<Option virtualFolder="CMake Files\assimp\include\assimp\"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/cmake-modules/FindDevIL.cmake">
+			<Option virtualFolder="CMake Files\assimp\cmake-modules\"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/cmake-modules/FindDirectX.cmake">
+			<Option virtualFolder="CMake Files\assimp\cmake-modules\"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/cmake-modules/FindPkgMacros.cmake">
+			<Option virtualFolder="CMake Files\assimp\cmake-modules\"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/cmake-modules/FindRT.cmake">
+			<Option virtualFolder="CMake Files\assimp\cmake-modules\"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/cmake-modules/FindZLIB.cmake">
+			<Option virtualFolder="CMake Files\assimp\cmake-modules\"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/cmake-modules/PrecompiledHeader.cmake">
+			<Option virtualFolder="CMake Files\assimp\cmake-modules\"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/cmake-modules/cmake_uninstall.cmake.in">
+			<Option virtualFolder="CMake Files\assimp\cmake-modules\"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\assimp\contrib\"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/contrib/irrXML/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\assimp\contrib\irrXML\"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/code/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\assimp\code\"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/tools/assimp_cmd/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\assimp\tools\assimp_cmd\"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/tools/assimp_qt_viewer/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\assimp\tools\assimp_qt_viewer\"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\assimp\test\"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/assimp/test/headercheck/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\assimp\test\headercheck\"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Widgets/Qt5WidgetsConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Widgets\"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Widgets/Qt5WidgetsConfigExtras.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Widgets\"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Widgets/Qt5WidgetsConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Widgets\"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Widgets/Qt5WidgetsMacros.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Widgets\"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5GuiConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5GuiConfigExtras.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Gui/Qt5GuiConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Gui\"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreConfigExtras.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreConfigExtrasMkspecDir.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5Core/Qt5CoreMacros.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5Core\"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5OpenGL/Qt5OpenGLConfig.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5OpenGL\"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/../../../../../../usr/lib/x86_64-linux-gnu/cmake/Qt5OpenGL/Qt5OpenGLConfigVersion.cmake">
+			<Option virtualFolder="CMake Files\..\..\..\..\..\..\usr\lib\x86_64-linux-gnu\cmake\Qt5OpenGL\"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/glimac/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\glimac\"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurJeu/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\moteurJeu\"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/moteurRendu/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\moteurRendu\"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/app/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\app\"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/doc/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\doc\"/>
+		</Unit>
+		<Unit filename="/media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/doc/Doxyfile.in">
+			<Option virtualFolder="CMake Files\doc\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
