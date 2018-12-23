@@ -1,4 +1,0 @@
-OUTPUT_DIRECTORY       = /media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/cmake-build-debug/doc/doc_doxygen/
-INPUT                  = /media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/doc/../moteurJeu/include/moteurJeu/ /media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/doc/../moteurRendu/include/moteurRendu /media/julian/DATA/IMAC/OPENGL/Temple-OpenGL/doc/../doc
-
-GENERATE_LATEX         = NO
