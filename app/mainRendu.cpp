@@ -55,7 +55,7 @@ int main(int argc, char** argv) {
     FilePath applicationPath(argv[0]);
 
     Program program = loadProgram(applicationPath.dirPath() + "shaders/3D.vs.glsl",
-                              applicationPath.dirPath() + "shaders/directionallight.fs.glsl");
+                              applicationPath.dirPath() + "shaders/multiTex3D.fs.glsl");
     program.use();
 
     GLint uMVMatrix = glGetUniformLocation(program.getGLId(), "uMVMatrix");
