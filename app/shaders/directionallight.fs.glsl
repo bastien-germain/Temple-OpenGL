@@ -1,4 +1,7 @@
-#version 330 core
+#version 320 es
+
+precision mediump float;
+precision mediump int;
 
 in vec3 vPosition;
 in vec3 vNormal;

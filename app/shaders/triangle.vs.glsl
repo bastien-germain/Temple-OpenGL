@@ -1,4 +1,4 @@
-#version 330
+#version 320 es
 
 layout(location = 3) in vec2 aVertexPosition;
 layout(location = 8) in vec3 aVertexColor;
