@@ -26,6 +26,7 @@
 #include <vector>
 #include <map>
 #include <fstream>
+#include <iostream>
 #include <sstream>
 
 #include "tiny_obj_loader.h"
@@ -284,6 +285,8 @@ std::string LoadMtl (
   std::vector<material_t>& materials,
   std::istream& inStream)
 {
+
+  std::cout << "Load MTL " << std::endl;
   material_map.clear();
   std::stringstream err;
 
@@ -291,7 +294,16 @@ std::string LoadMtl (
   
   int maxchars = 8192;  // Alloc enough size.
   std::vector<char> buf(maxchars);  // Alloc enough size.
+
+  if ( (inStream.rdstate() & std::ifstream::failbit ) != 0 )
+    std::cerr << "Error opening 'test.txt'\n";
+
+  std::cout << inStream.rdstate() << std::endl;
+  std::cout << inStream.peek() << std::endl;
   while (inStream.peek() != -1) {
+
+    std::cout << "tiny_obj_loader : LoadMtl : in while " << std::endl;
+
     inStream.getline(&buf[0], maxchars);
 
     std::string linebuf(&buf[0]);
@@ -312,6 +324,8 @@ std::string LoadMtl (
     // Skip leading space.
     const char* token = linebuf.c_str();
     token += strspn(token, " \t");
+
+    std::cout << "token : " << token << std::endl;
 
     assert(token);
     if (token[0] == '\0') continue; // empty line
@@ -351,6 +365,7 @@ std::string LoadMtl (
     
     // diffuse
     if (token[0] == 'K' && token[1] == 'd' && isSpace((token[2]))) {
+      std::cout << "tiny_obj_loader : Kd line found." << std::endl;
       token += 2;
       float r, g, b;
       parseFloat3(r, g, b, token);
@@ -469,6 +484,7 @@ std::string LoadMtl (
   // flush last material.
   material_map.insert(std::pair<std::string, int>(material.name, materials.size()));
   materials.push_back(material);
+  std::cout << "Kd in tiny_obj_loader :   "<< material.diffuse[0] << ",  " << material.diffuse[1] << ",  " << material.diffuse[2] << std::endl;
 
   return err.str();
 }
@@ -480,11 +496,15 @@ std::string MaterialFileReader::operator() (
 {
   std::string filepath;
 
-  if (!m_mtlBasePath.empty()) {
-    filepath = std::string(m_mtlBasePath) + matId;
-  } else {
+  if (!m_mtlBasePath.empty()) 
+  {
+    filepath = std::string(m_mtlBasePath);
+    //filepath = std::string(m_mtlBasePath) + matId;
+  } 
+  else {
     filepath = matId;
   }
+  std::cout << "tiny_obj_loader operator () : filepath : " << filepath << std::endl;
 
   std::ifstream matIStream(filepath.c_str());
   return LoadMtl(matMap, materials, matIStream);

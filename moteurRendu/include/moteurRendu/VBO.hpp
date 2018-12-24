@@ -62,6 +62,10 @@ public:
 		return _ibo;
 	}
 
+	inline glimac::Geometry geometry() const {
+		return _geo;
+	}
+
 	/// \brief  Unbinds the buffer
 	void debind() const;
 

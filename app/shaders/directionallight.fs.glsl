@@ -19,7 +19,8 @@ uniform vec3 uLightIntensity;
 
 vec3 blinnPhong()
 {
-	return uLightIntensity*(uKd*(dot(normalize(uLightDir_vs), vNormal)) + uKs*pow(dot(normalize(-vPosition), vNormal), uShininess));
+	//return uLightIntensity*(uKd*(dot(normalize(uLightDir_vs), vNormal)) + uKs*pow(dot(normalize(-vPosition), vNormal), uShininess));
+	return (uKd*(dot(normalize(uLightDir_vs), vNormal)) + uKs*pow(dot(normalize(-vPosition), vNormal), uShininess));
 };
 
 

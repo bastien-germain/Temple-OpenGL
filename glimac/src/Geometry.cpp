@@ -37,6 +37,7 @@ bool Geometry::loadOBJ(const FilePath& filepath, const FilePath& mtlBasePath, bo
     }
 
     std::clog << "Load materials" << std::endl;
+
     m_Materials.reserve(m_Materials.size() + materials.size());
     for(auto& material: materials) {
         m_Materials.emplace_back();
@@ -44,7 +45,9 @@ bool Geometry::loadOBJ(const FilePath& filepath, const FilePath& mtlBasePath, bo
 
         m.m_Ka = glm::vec3(material.ambient[0], material.ambient[1], material.ambient[2]);
         m.m_Kd = glm::vec3(material.diffuse[0], material.diffuse[1], material.diffuse[2]);
+        std::cout << "Kd:  " << m.m_Kd << std::endl;
         m.m_Ks = glm::vec3(material.specular[0], material.specular[1], material.specular[2]);
+        std::cout << "Ks:  " << m.m_Ks << std::endl;
         m.m_Tr = glm::vec3(material.transmittance[0], material.transmittance[1], material.transmittance[2]);
         m.m_Le = glm::vec3(material.emission[0], material.emission[1], material.emission[2]);
         m.m_Shininess = material.shininess;

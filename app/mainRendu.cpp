@@ -55,7 +55,7 @@ int main(int argc, char** argv) {
     FilePath applicationPath(argv[0]);
 
     Program program = loadProgram(applicationPath.dirPath() + "shaders/3D.vs.glsl",
-                              applicationPath.dirPath() + "shaders/normals.fs.glsl");
+                              applicationPath.dirPath() + "shaders/directionallight.fs.glsl");
     program.use();
 
     GLint uMVMatrix = glGetUniformLocation(program.getGLId(), "uMVMatrix");
@@ -155,8 +155,14 @@ int main(int argc, char** argv) {
 
     //Création d'un objet Géométry et chargement du modèle, fichier obj, mtl et activation de la texture
     Geometry g;
-    g.loadOBJ(applicationPath.dirPath() + "/assets/models/corner.obj",
-        applicationPath.dirPath() + "/assets/models/corner.mtl",true);
+    bool loaded = g.loadOBJ(applicationPath.dirPath() + "/assets/models/cubeVert.obj",
+        applicationPath.dirPath() + "/assets/models/cubeVert.mtl",true);
+
+    if(!loaded) 
+    {
+        std::cout << "ERROR LOADING" << std::endl;
+        return EXIT_FAILURE;
+    }
 
 
     
@@ -174,6 +180,7 @@ int main(int argc, char** argv) {
 
     // Application loop:
     bool done = false;
+
     while(!done) {
         // Event loop:
         SDL_Event e;
@@ -189,22 +196,22 @@ int main(int argc, char** argv) {
             switch(e.key.keysym.sym)
             {
                 case SDLK_q:
-                    track.rotateLeft(0.5f);
+                    track.rotateLeft(0.05f);
                     break;
                 case SDLK_d:
-                    track.rotateLeft(-0.5f);
+                    track.rotateLeft(-0.05f);
                     break;
                 case SDLK_z:
-                    track.rotateUp(0.5f);
+                    track.rotateUp(0.05f);
                     break;
                 case SDLK_s:
-                    track.rotateUp(-0.5f);
+                    track.rotateUp(-0.05f);
                     break;
                 case SDLK_a:
-                    track.moveFront(0.5f);
+                    track.moveFront(0.005f);
                     break;
                 case SDLK_e:
-                    track.moveFront(-0.5f);
+                    track.moveFront(-0.005f);
                     break;
 
                 default: 
@@ -224,6 +231,9 @@ int main(int argc, char** argv) {
         glUniform1i(uTexture,0); //texture
         t.bind();
 
+        std::cout << "triangle Kd in main : " << triangle.geometry().getMaterials().m_Kd << std::endl;
+        std::cout << "triangle Kd in main : " << triangle.geometry().getMaterials().m_Ks << std::endl;
+        std::cout << "triangle Kd in main : " << triangle.geometry().getMaterials().m_Shininess << std::endl << std::endl;
         //Envoie des valeurs de la geométry au shader (ne marche pas / valeurs randoms au chargement du mtl)
         triangle.sendLightShader(uKd, uKs, uShininess, uLightDir_vs, uLightIntensity, track);
 

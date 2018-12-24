@@ -78,8 +78,14 @@ void VBO::draw() const
 
 
 void VBO::sendLightShader(GLint &uKd, GLint &uKs, GLint &uShininess, GLint &uLightDir_vs, GLint &uLightIntensity, TrackballCamera &track) const 
-{
-	_geo.getMaterials();
+{	
+
+	std::cout << "VBO : " << std::endl;
+	std::cout << "Kd : " << _geo.getMaterials().m_Kd << std::endl;
+	std::cout << "Ks : " <<_geo.getMaterials().m_Ks << std::endl;
+	std::cout << "Shininess : " << _geo.getMaterials().m_Shininess << std::endl;
+	std::cout << "Le : " << _geo.getMaterials().m_Le << std::endl;
+
 	glUniform3f(uKd,_geo.getMaterials().m_Kd.x,_geo.getMaterials().m_Kd.y,_geo.getMaterials().m_Kd.z); //Couleur des boules
     glUniform3f(uKs, _geo.getMaterials().m_Ks.x,_geo.getMaterials().m_Ks.y,_geo.getMaterials().m_Ks.z);
     glUniform1f(uShininess, _geo.getMaterials().m_Shininess);
