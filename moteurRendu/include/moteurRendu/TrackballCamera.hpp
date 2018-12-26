@@ -22,10 +22,6 @@ public:
     void rotateLeft(float degree); 
     void rotateUp(float degree); 
     glm::mat4 getViewMatrix() const;
-    glm::mat4 getViewMatrixWithoutTranslate() const;
-
-    glm::vec3 applyTo(const glm::vec3 &vec) const;
-    glm::vec3 applyToWithoutTranslate(const glm::vec3 &vec) const;
     
 };
 

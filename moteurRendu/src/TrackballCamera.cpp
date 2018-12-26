@@ -37,22 +37,3 @@ glm::mat4 TrackballCamera::getViewMatrix() const
 
     return matrixMoveFront * matrixRotateLeft * matrixRotateUp;
 }
-
-glm::mat4 TrackballCamera::getViewMatrixWithoutTranslate() const
-{
-    glm::mat4 MatrixId = glm::mat4(1.0);
-    glm::mat4 matrixRotateLeft = glm::rotate( MatrixId, _fAngleY, glm::vec3(1, 0, 0) ); // y rotate
-    glm::mat4 matrixRotateUp = glm::rotate( MatrixId, _fAngleX, glm::vec3(0, 1, 0) ); // x rotate
-
-    return matrixRotateLeft * matrixRotateUp;
-}
-
-glm::vec3 TrackballCamera::applyTo(const glm::vec3 &vec) const 
-{
-    return glm::vec3(getViewMatrix()*glm::vec4(vec, 1.0));
-}
-
-glm::vec3 TrackballCamera::applyToWithoutTranslate(const glm::vec3 &vec) const 
-{
-    return glm::vec3(getViewMatrixWithoutTranslate()*glm::vec4(vec, 1.0));
-}
