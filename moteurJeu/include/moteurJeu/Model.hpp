@@ -34,6 +34,19 @@ public:
 	/// \param copied : the copied Model
 	Model(const Model &copied);
 
+	inline Model &operator = (const Model &toAssign) {
+
+		if (&toAssign != this) 
+		{
+			_vbo = toAssign._vbo;
+			_vao = toAssign._vao;
+			_light = toAssign._light;
+			_texture = toAssign._texture;
+		}
+
+		return *this;
+	}
+
 	/// \brief Destructor
 	~Model();
 

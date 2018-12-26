@@ -75,29 +75,3 @@ void VBO::draw() const
     // glDrawElements(GL_TRIANGLES, _geo.getIndexCount(), GL_UNSIGNED_INT, 0);
     glDrawElements(GL_TRIANGLES, _ibo.size(), GL_UNSIGNED_INT, 0);
 }
-
-
-void VBO::sendLightShader(GLint &uKd, GLint &uKs, GLint &uShininess, GLint &uLightDir_vs, GLint &uLightIntensity, TrackballCamera &track) const 
-{	
-
-	std::cout << "VBO : " << std::endl;
-	std::cout << "Kd : " << _geo.getMaterials().m_Kd << std::endl;
-	std::cout << "Ks : " <<_geo.getMaterials().m_Ks << std::endl;
-	std::cout << "Shininess : " << _geo.getMaterials().m_Shininess << std::endl;
-	std::cout << "Le : " << _geo.getMaterials().m_Le << std::endl;
-
-	glUniform3f(uKd,_geo.getMaterials().m_Kd.x,_geo.getMaterials().m_Kd.y,_geo.getMaterials().m_Kd.z); //Couleur des boules
-    glUniform3f(uKs, _geo.getMaterials().m_Ks.x,_geo.getMaterials().m_Ks.y,_geo.getMaterials().m_Ks.z);
-    glUniform1f(uShininess, _geo.getMaterials().m_Shininess);
-    glm::vec4 LightDir = track.getViewMatrix() * glm::vec4(1.0, 1.0, 1.0, 0.0);
-    glUniform3f(uLightDir_vs, LightDir.x, LightDir.y, LightDir.z);
-    glUniform3f(uLightIntensity,_geo.getMaterials().m_Le.x,_geo.getMaterials().m_Le.y,_geo.getMaterials().m_Le.z);
-
-    // glUniform3f(uKd, 0.1, 0.2, 0.3); //Couleur des boules
-    // glUniform3f(uKs, 0.5, 0.0, 0.0);
-    // glUniform1f(uShininess, 32.0);
-    // glm::vec4 LightDir = fly.getViewMatrix() * glm::vec4(1.0, 1.0, 1.0, 0.0);
-    // glUniform3f(uLightDir_vs, LightDir.x, LightDir.y, LightDir.z);
-    // glUniform3f(uLightIntensi
-
-}

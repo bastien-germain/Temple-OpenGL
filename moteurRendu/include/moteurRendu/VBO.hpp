@@ -5,16 +5,16 @@
 #include "VAO.hpp"
 #include "IBO.hpp"
 #include "VBO.hpp"
+#include "Light.hpp"
 #include "Texture.hpp"
 #include "TrackballCamera.hpp"
 #include <vector>
 #include <cstdlib>
+#include <string>
 #include <GL/glew.h>
 #include "glimac/glm.hpp"
 #include "glimac/common.hpp"
 #include "glimac/Geometry.hpp"
-
-
 
 /// \class VBO
 /// \brief Contain the vertices of an object
@@ -77,9 +77,6 @@ public:
 
 	/// \brief Deletes the buffer array
 	void deleteBuf() const ;
-
-	void sendLightShader(GLint &uKd, GLint &uKs, GLint &uShininess, GLint &uLightDir_vs, GLint &uLightIntensity, TrackballCamera &track) const;
-	
 
 	/// \brief Draws the object with triangles
 	void draw() const;

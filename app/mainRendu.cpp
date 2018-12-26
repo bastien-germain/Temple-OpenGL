@@ -9,6 +9,7 @@
 #include "moteurRendu/TrackballCamera.hpp"
 #include "moteurRendu/VBO.hpp"
 #include "moteurRendu/VAO.hpp"
+#include "moteurRendu/Light.hpp"
 #include "moteurRendu/Texture.hpp"
 #include "moteurRendu/ListTextures.hpp"
 #include "glimac/Sphere.hpp"
@@ -55,7 +56,7 @@ int main(int argc, char** argv) {
     FilePath applicationPath(argv[0]);
 
     Program program = loadProgram(applicationPath.dirPath() + "shaders/3D.vs.glsl",
-                              applicationPath.dirPath() + "shaders/directionallight.fs.glsl");
+                              applicationPath.dirPath() + "shaders/multiPointLight.fs.glsl");
     program.use();
 
     GLint uMVMatrix = glGetUniformLocation(program.getGLId(), "uMVMatrix");
@@ -63,12 +64,14 @@ int main(int argc, char** argv) {
     GLint uNormalMatrix = glGetUniformLocation(program.getGLId(), "uNormalMatrix");
     GLint uTexture = glGetUniformLocation(program.getGLId(), "uTexture");
 
+/*
     GLint uKd = glGetUniformLocation(program.getGLId(), "uKd");
     GLint uKs = glGetUniformLocation(program.getGLId(), "uKs");
     GLint uShininess = glGetUniformLocation(program.getGLId(), "uShininess");
     GLint uLightDir_vs = glGetUniformLocation(program.getGLId(), "uLightDir_vs");
+    GLint uLightPos_vs = glGetUniformLocation(program.getGLId(), "uLightPos_vs");
     GLint uLightIntensity = glGetUniformLocation(program.getGLId(), "uLightIntensity");
-    
+*/    
 
     glEnable(GL_DEPTH_TEST);
 
@@ -155,8 +158,8 @@ int main(int argc, char** argv) {
 
     //Création d'un objet Géométry et chargement du modèle, fichier obj, mtl et activation de la texture
     Geometry g;
-    bool loaded = g.loadOBJ(applicationPath.dirPath() + "/assets/models/cubeVert.obj",
-        applicationPath.dirPath() + "/assets/models/cubeVert.mtl",true);
+    bool loaded = g.loadOBJ(applicationPath.dirPath() + "/assets/models/corner.obj",
+        applicationPath.dirPath() + "/assets/models/corner.mtl",true);
 
     if(!loaded) 
     {
@@ -172,10 +175,18 @@ int main(int argc, char** argv) {
     triangle.sendData();
 
     //Génération des textures non fonctionnel sur les obj (seulement sur les formes de bases mais il faut changer le shader)
-    textureManager.generateTexture();
+    //textureManager.generateTexture();
 
-    t.paramTexture();
+    //t.paramTexture();
 
+    std::vector<Light> lights;
+
+    lights.push_back(Light(true, glm::vec3(2.0, 1.0, -10.0), glm::vec3(1.0, 0.0, 0.0), glm::vec3(1.0), 64, glm::vec3(1.0)));
+    lights.push_back(Light(true, glm::vec3(0.0, 1.0, -10.0), glm::vec3(0.0, 1.0, 0.0), glm::vec3(1.0), 64, glm::vec3(1.0)));
+    lights.push_back(Light(true, glm::vec3(-2.0, 1.0, -10.0), glm::vec3(0.0, 0.0, 1.0), glm::vec3(1.0), 64, glm::vec3(1.0)));
+    lights.push_back(Light(false, glm::vec3(10.0, 0.0, 20.0), glm::vec3(1.0, 0.7, 0.4), glm::vec3(1.0), 64, glm::vec3(1.0)));
+
+    glm::vec3 ambientLight = glm::vec3(0.2);
 
 
     // Application loop:
@@ -184,15 +195,15 @@ int main(int argc, char** argv) {
     while(!done) {
         // Event loop:
         SDL_Event e;
-        while(windowManager.pollEvent(e)) {
-            if(e.type == SDL_QUIT) {
+        while(windowManager.pollEvent(e)) 
+        {
+            if(e.type == SDL_QUIT) 
+            {
                 done = true; // Leave the loop after this iteration
             }
         }
-
-
-        if(e.key.type == SDL_KEYDOWN) {
-
+        if(e.key.type == SDL_KEYDOWN) 
+        {
             switch(e.key.keysym.sym)
             {
                 case SDLK_q:
@@ -213,7 +224,6 @@ int main(int argc, char** argv) {
                 case SDLK_e:
                     track.moveFront(-0.005f);
                     break;
-
                 default: 
                     break;
 
@@ -225,30 +235,34 @@ int main(int argc, char** argv) {
          *********************************/
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-
-
         triangle.vao().bind();
-        glUniform1i(uTexture,0); //texture
-        t.bind();
+        //glUniform1i(uTexture,0); //texture
+        //t.bind();
 
-        std::cout << "triangle Kd in main : " << triangle.geometry().getMaterials().m_Kd << std::endl;
-        std::cout << "triangle Kd in main : " << triangle.geometry().getMaterials().m_Ks << std::endl;
-        std::cout << "triangle Kd in main : " << triangle.geometry().getMaterials().m_Shininess << std::endl << std::endl;
-        //Envoie des valeurs de la geométry au shader (ne marche pas / valeurs randoms au chargement du mtl)
-        triangle.sendLightShader(uKd, uKs, uShininess, uLightDir_vs, uLightIntensity, track);
+        glUniform3f(glGetUniformLocation(program.getGLId(), "uAmbientLight"), ambientLight.x, ambientLight.y, ambientLight.z); 
 
-        // glm::mat4 earthMVMatrix = glm::rotate(trackMat*globalMVMatrix, windowManager.getTime(), glm::vec3(0,1,0));
+        std::string refLight = "uLights";
+
+        
+
+        glUniform1i(glGetUniformLocation(program.getGLId(), "uNbLights"), lights.size()); 
+
+        //glm::mat4 earthMVMatrix = glm::rotate(trackMat*globalMVMatrix, windowManager.getTime(), glm::vec3(0,1,0));
         glm::mat4 earthMVMatrix = glm::rotate(trackMat*globalMVMatrix, 0*windowManager.getTime(), glm::vec3(0,1,0));
         glUniformMatrix4fv(uMVMatrix , 1, GL_FALSE, glm::value_ptr(earthMVMatrix));
+        NormalMatrix = glm::transpose(glm::inverse(earthMVMatrix));
         glUniformMatrix4fv(uNormalMatrix , 1, GL_FALSE, glm::value_ptr(NormalMatrix));
         glUniformMatrix4fv(uMVPMatrix , 1, GL_FALSE, glm::value_ptr(ProjMatrix * earthMVMatrix));
 
-            
+        lights[0].sendLightShader(program, refLight, track);
+        lights[1].sendLightShader(program, refLight, track);
+        lights[2].sendLightShader(program, refLight, track);
+        lights[3].sendLightShader(program, refLight, track);
 
         triangle.draw();
 
 
-        t.debind();
+        //t.debind();
         triangle.vao().debind();
         // Update the display
         windowManager.swapBuffers();

@@ -31,9 +31,9 @@ public:
 
 		if (&toAssign != this) 
 		{
-		_obstacle = toAssign._obstacle;
-		_coins = toAssign._coins;
-		_model = toAssign._model;
+			_obstacle = toAssign._obstacle;
+			_coins = toAssign._coins;
+			_model = toAssign._model;
 		}
 
 		return *this;
