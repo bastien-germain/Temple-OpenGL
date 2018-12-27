@@ -83,6 +83,11 @@ int main(int argc, char** argv) {
     gCorridor.loadOBJ(applicationPath.dirPath() + "/assets/models/corridor.obj",
         applicationPath.dirPath() + "/assets/models/corridor.mtl",true);
 
+    //Corridor
+    Geometry gCorridorHole;
+    gCorridorHole.loadOBJ(applicationPath.dirPath() + "/assets/models/corridor_hole.obj",
+        applicationPath.dirPath() + "/assets/models/corridor_hole.mtl",true);
+
     //Player
     Geometry gPlayer;
     gPlayer.loadOBJ(applicationPath.dirPath() + "/assets/models/cube2.obj",
@@ -94,6 +99,9 @@ int main(int argc, char** argv) {
     VBO corridor(0,gCorridor);
     //Envoi à la carte graphique
     corridor.sendData();
+
+    VBO corridorHole(0, gCorridorHole);
+    corridorHole.sendData();
 
     VBO player(0,gPlayer);
     player.sendData();
@@ -173,21 +181,30 @@ int main(int argc, char** argv) {
 
         glm::mat4 tmpMatrix;
 
-        for (int i = 0; i < 5; ++i)
+        for (int i = 0; i < 10; ++i)
         {
-            if ((i+1)*positionOffSet > windowManager.getTime()*2)
-            {
-
+            if (((i+4)*positionOffSet > windowManager.getTime()*2) && i<6)
+            {   
                 tmpMatrix = glm::translate(corridorMVMatrix, glm::vec3(i*positionOffSet, 0, 0));
 
                 // fais avancer le corridor (defilement)
-                tmpMatrix = glm::translate(tmpMatrix, glm::vec3(std::max(-i*positionOffSet, -windowManager.getTime()*2), 0, 0));
+                tmpMatrix = glm::translate(tmpMatrix, glm::vec3(std::max(-(i+4)*positionOffSet, -windowManager.getTime()*2), 0, 0));
                 
                 glUniformMatrix4fv(uMVMatrix , 1, GL_FALSE, glm::value_ptr(tmpMatrix));
                 glUniformMatrix4fv(uNormalMatrix , 1, GL_FALSE, glm::value_ptr(NormalMatrix));
                 glUniformMatrix4fv(uMVPMatrix , 1, GL_FALSE, glm::value_ptr(ProjMatrix * tmpMatrix));
-                
-                corridor.draw();
+
+                if ((i+1)%3 == 0) 
+                {
+                    corridor.vao().debind();
+                    corridorHole.vao().bind();
+                    corridorHole.draw();
+                    corridorHole.vao().debind();
+                    corridor.vao().bind();
+
+                }
+                else 
+                    corridor.draw();
             }
         
         }
