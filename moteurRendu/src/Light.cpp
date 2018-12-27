@@ -17,7 +17,7 @@ Light::~Light()
 {
 }
 
-void Light::sendLightShader(Program &program, const std::string &uniformArrayName, TrackballCamera &track) const 
+void Light::sendLightShader(Program &program, const std::string &uniformArrayName) const 
 {
 	std::string uniformLightName =  uniformArrayName + "[" + std::to_string(_id) + "]";
 

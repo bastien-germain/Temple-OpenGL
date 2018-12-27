@@ -56,7 +56,7 @@ int main(int argc, char** argv) {
     FilePath applicationPath(argv[0]);
 
     Program program = loadProgram(applicationPath.dirPath() + "shaders/3D.vs.glsl",
-                              applicationPath.dirPath() + "shaders/multiPointLight.fs.glsl");
+                              applicationPath.dirPath() + "shaders/multiLights.fs.glsl");
     program.use();
 
     GLint uMVMatrix = glGetUniformLocation(program.getGLId(), "uMVMatrix");
@@ -158,8 +158,8 @@ int main(int argc, char** argv) {
 
     //Création d'un objet Géométry et chargement du modèle, fichier obj, mtl et activation de la texture
     Geometry g;
-    bool loaded = g.loadOBJ(applicationPath.dirPath() + "/assets/models/corner.obj",
-        applicationPath.dirPath() + "/assets/models/corner.mtl",true);
+    bool loaded = g.loadOBJ(applicationPath.dirPath() + "/assets/models/corridor_hole.obj",
+        applicationPath.dirPath() + "/assets/models/corridor_hole.mtl",true);
 
     if(!loaded) 
     {
@@ -184,7 +184,8 @@ int main(int argc, char** argv) {
     lights.push_back(Light(true, glm::vec3(2.0, 1.0, -10.0), glm::vec3(1.0, 0.0, 0.0), glm::vec3(1.0), 64, glm::vec3(1.0)));
     lights.push_back(Light(true, glm::vec3(0.0, 1.0, -10.0), glm::vec3(0.0, 1.0, 0.0), glm::vec3(1.0), 64, glm::vec3(1.0)));
     lights.push_back(Light(true, glm::vec3(-2.0, 1.0, -10.0), glm::vec3(0.0, 0.0, 1.0), glm::vec3(1.0), 64, glm::vec3(1.0)));
-    lights.push_back(Light(false, glm::vec3(10.0, 0.0, 20.0), glm::vec3(1.0, 0.7, 0.4), glm::vec3(1.0), 64, glm::vec3(1.0)));
+    lights.push_back(Light(false, glm::vec3(1.0, 0.0, 0.0), glm::vec3(0.0, 0.4, 0.9), glm::vec3(1.0), 16, glm::vec3(1.0)));
+    lights.push_back(Light(false, glm::vec3(0.0, 1.0, 0.0), glm::vec3(0.8, 0.1, 0.4), glm::vec3(1.0), 16, glm::vec3(1.0)));
 
     glm::vec3 ambientLight = glm::vec3(0.2);
 
@@ -254,11 +255,12 @@ int main(int argc, char** argv) {
         glUniformMatrix4fv(uNormalMatrix , 1, GL_FALSE, glm::value_ptr(NormalMatrix));
         glUniformMatrix4fv(uMVPMatrix , 1, GL_FALSE, glm::value_ptr(ProjMatrix * earthMVMatrix));
 
-        lights[0].sendLightShader(program, refLight, track);
-        lights[1].sendLightShader(program, refLight, track);
-        lights[2].sendLightShader(program, refLight, track);
-        lights[3].sendLightShader(program, refLight, track);
-
+        lights[0].sendLightShader(program, refLight);
+        lights[1].sendLightShader(program, refLight);
+        lights[2].sendLightShader(program, refLight);
+        lights[3].sendLightShader(program, refLight);
+        lights[4].sendLightShader(program, refLight);
+        
         triangle.draw();
 
 

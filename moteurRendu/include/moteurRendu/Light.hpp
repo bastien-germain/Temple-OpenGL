@@ -65,7 +65,7 @@ public:
 		return *this;
 	}
 
-	void sendLightShader(Program &program, const std::string &lightRef, TrackballCamera &track) const;
+	void sendLightShader(Program &program, const std::string &lightRef) const;
 
 private:
 	LightProperties _properties;

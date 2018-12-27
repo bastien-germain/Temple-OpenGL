@@ -38,7 +38,7 @@ int main(int argc, char** argv) {
     FilePath applicationPath(argv[0]);
 
     Program program = loadProgram(applicationPath.dirPath() + "shaders/3D.vs.glsl",
-                              applicationPath.dirPath() + "shaders/normals.fs.glsl");
+                              applicationPath.dirPath() + "shaders/multiLights.fs.glsl");
     program.use();
 
     GLint uMVMatrix = glGetUniformLocation(program.getGLId(), "uMVMatrix");
@@ -46,11 +46,14 @@ int main(int argc, char** argv) {
     GLint uNormalMatrix = glGetUniformLocation(program.getGLId(), "uNormalMatrix");
     GLint uTexture = glGetUniformLocation(program.getGLId(), "uTexture");
 
+    /*
     GLint uKd = glGetUniformLocation(program.getGLId(), "uKd");
     GLint uKs = glGetUniformLocation(program.getGLId(), "uKs");
     GLint uShininess = glGetUniformLocation(program.getGLId(), "uShininess");
     GLint uLightDir_vs = glGetUniformLocation(program.getGLId(), "uLightDir_vs");
-    GLint uLightIntensity = glGetUniformLocation(program.getGLId(), "uLightIntensity");    
+    GLint uLightIntensity = glGetUniformLocation(program.getGLId(), "uLightIntensity");   
+    */
+
 
     glEnable(GL_DEPTH_TEST);
 
@@ -60,6 +63,16 @@ int main(int argc, char** argv) {
     glm::mat4 ProjMatrix = glm::perspective(glm::radians(70.f), 1.f, 0.1f, 100.f);
     glm::mat4 globalMVMatrix = glm::translate(glm::mat4(), glm::vec3(0.f, 0.f, -3.f));
     glm::mat4 NormalMatrix = glm::transpose(glm::inverse(globalMVMatrix));
+
+    std::vector<Light> lights;
+
+    lights.push_back(Light(true, glm::vec3(2.0, 1.0, -10.0), glm::vec3(1.0, 0.0, 0.0), glm::vec3(1.0), 64, glm::vec3(1.0)));
+    lights.push_back(Light(true, glm::vec3(0.0, 1.0, -10.0), glm::vec3(0.0, 1.0, 0.0), glm::vec3(1.0), 64, glm::vec3(1.0)));
+    lights.push_back(Light(true, glm::vec3(-2.0, 1.0, -10.0), glm::vec3(0.0, 0.0, 1.0), glm::vec3(1.0), 64, glm::vec3(1.0)));
+    lights.push_back(Light(false, glm::vec3(1.0, 0.0, 0.0), glm::vec3(0.0, 0.4, 0.9), glm::vec3(1.0), 16, glm::vec3(1.0)));
+    lights.push_back(Light(false, glm::vec3(0.0, 1.0, 0.0), glm::vec3(0.8, 0.1, 0.4), glm::vec3(1.0), 16, glm::vec3(1.0)));
+
+    glm::vec3 ambientLight = glm::vec3(0.2);
 
     /*********************************
      * HERE SHOULD COME THE INITIALIZATION CODE
@@ -132,30 +145,54 @@ int main(int argc, char** argv) {
          *********************************/
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
+        // LIGHTS
+
+        glUniform3f(glGetUniformLocation(program.getGLId(), "uAmbientLight"), ambientLight.x, ambientLight.y, ambientLight.z); 
+        glUniform1i(glGetUniformLocation(program.getGLId(), "uNbLights"), lights.size()); 
+
+        std::string refLight = "uLights";
+
+        lights[0].sendLightShader(program, refLight);
+        lights[1].sendLightShader(program, refLight);
+        lights[2].sendLightShader(program, refLight);
+        lights[3].sendLightShader(program, refLight);
+        lights[4].sendLightShader(program, refLight);
 
         // COULOIR
 
+        float positionOffSet = 20.f;
+
         corridor.vao().bind();
 
-        //rotate le corridor
         glm::mat4 corridorMVMatrix = glm::rotate(trackMat*globalMVMatrix, glm::radians(20.f), glm::vec3(1,0,0));
+        //rotate le corridor
         corridorMVMatrix = glm::rotate(corridorMVMatrix, glm::radians(90.f), glm::vec3(0,1,0));
+        
         // descend le corridor
-        corridorMVMatrix = glm::translate(corridorMVMatrix, glm::vec3(10.f, -3, 0));
+        corridorMVMatrix = glm::translate(corridorMVMatrix, glm::vec3(0, -3, 0));
 
-        // fais avancer le corridor (defilement)
-        corridorMVMatrix = glm::translate(corridorMVMatrix, glm::vec3(-windowManager.getTime()*2, 0, 0));
+        glm::mat4 tmpMatrix;
 
-        glUniformMatrix4fv(uMVMatrix , 1, GL_FALSE, glm::value_ptr(corridorMVMatrix));
-        glUniformMatrix4fv(uNormalMatrix , 1, GL_FALSE, glm::value_ptr(NormalMatrix));
-        glUniformMatrix4fv(uMVPMatrix , 1, GL_FALSE, glm::value_ptr(ProjMatrix * corridorMVMatrix));
+        for (int i = 0; i < 5; ++i)
+        {
+            if ((i+1)*positionOffSet > windowManager.getTime()*2)
+            {
 
-            
-        corridor.draw();
+                tmpMatrix = glm::translate(corridorMVMatrix, glm::vec3(i*positionOffSet, 0, 0));
+
+                // fais avancer le corridor (defilement)
+                tmpMatrix = glm::translate(tmpMatrix, glm::vec3(std::max(-i*positionOffSet, -windowManager.getTime()*2), 0, 0));
+                
+                glUniformMatrix4fv(uMVMatrix , 1, GL_FALSE, glm::value_ptr(tmpMatrix));
+                glUniformMatrix4fv(uNormalMatrix , 1, GL_FALSE, glm::value_ptr(NormalMatrix));
+                glUniformMatrix4fv(uMVPMatrix , 1, GL_FALSE, glm::value_ptr(ProjMatrix * tmpMatrix));
+                
+                corridor.draw();
+            }
+        
+        }
 
         corridor.vao().debind();
-
-
 
         //PLAYER
 
@@ -166,12 +203,10 @@ int main(int argc, char** argv) {
         // descend le player
         playerMVMatrix = glm::translate(playerMVMatrix, glm::vec3(0, -1, 0));
 
-
-
         glUniformMatrix4fv(uMVMatrix , 1, GL_FALSE, glm::value_ptr(playerMVMatrix));
         glUniformMatrix4fv(uNormalMatrix , 1, GL_FALSE, glm::value_ptr(NormalMatrix));
         glUniformMatrix4fv(uMVPMatrix , 1, GL_FALSE, glm::value_ptr(ProjMatrix * playerMVMatrix));
-            
+
         player.draw();
 
         player.vao().debind();

@@ -67,5 +67,5 @@ vec3 blinnPhong()
 
 void main() 
 {	
-	fFragColor = uAmbientLight + blinnPhong();
+		fFragColor = uAmbientLight + blinnPhong();
 };
