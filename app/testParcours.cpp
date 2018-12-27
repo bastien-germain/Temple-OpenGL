@@ -69,8 +69,8 @@ int main(int argc, char** argv) {
     lights.push_back(Light(true, glm::vec3(2.0, 1.0, -10.0), glm::vec3(1.0, 0.0, 0.0), glm::vec3(1.0), 64, glm::vec3(1.0)));
     lights.push_back(Light(true, glm::vec3(0.0, 1.0, -10.0), glm::vec3(0.0, 1.0, 0.0), glm::vec3(1.0), 64, glm::vec3(1.0)));
     lights.push_back(Light(true, glm::vec3(-2.0, 1.0, -10.0), glm::vec3(0.0, 0.0, 1.0), glm::vec3(1.0), 64, glm::vec3(1.0)));
-    lights.push_back(Light(false, glm::vec3(1.0, 0.0, 0.0), glm::vec3(0.0, 0.4, 0.9), glm::vec3(1.0), 16, glm::vec3(1.0)));
-    lights.push_back(Light(false, glm::vec3(0.0, 1.0, 0.0), glm::vec3(0.8, 0.1, 0.4), glm::vec3(1.0), 16, glm::vec3(1.0)));
+    lights.push_back(Light(false, glm::vec3(1.0, 0.0, 0.0), glm::vec3(0.0, 0.4, 0.9), glm::vec3(1.0), 8, glm::vec3(1.0)));
+    lights.push_back(Light(false, glm::vec3(0.0, 1.0, 0.0), glm::vec3(0.8, 0.1, 0.4), glm::vec3(1.0), 8, glm::vec3(1.0)));
 
     glm::vec3 ambientLight = glm::vec3(0.2);
 
@@ -83,10 +83,15 @@ int main(int argc, char** argv) {
     gCorridor.loadOBJ(applicationPath.dirPath() + "/assets/models/corridor.obj",
         applicationPath.dirPath() + "/assets/models/corridor.mtl",true);
 
-    //Corridor
+    //CorridorHole
     Geometry gCorridorHole;
     gCorridorHole.loadOBJ(applicationPath.dirPath() + "/assets/models/corridor_hole.obj",
         applicationPath.dirPath() + "/assets/models/corridor_hole.mtl",true);
+
+    //Corner
+    Geometry gCorner;
+    gCorner.loadOBJ(applicationPath.dirPath() + "/assets/models/corner.obj",
+        applicationPath.dirPath() + "/assets/models/corner.mtl",true);
 
     //Player
     Geometry gPlayer;
@@ -103,9 +108,11 @@ int main(int argc, char** argv) {
     VBO corridorHole(0, gCorridorHole);
     corridorHole.sendData();
 
+    VBO corner(0, gCorner);
+    corner.sendData();
+
     VBO player(0,gPlayer);
     player.sendData();
-
 
     // Application loop:
     bool done = false;
@@ -124,16 +131,16 @@ int main(int argc, char** argv) {
             switch(e.key.keysym.sym)
             {
                 case SDLK_q:
-                    track.rotateLeft(0.005f);
+                    track.rotateLeft(0.01f);
                     break;
                 case SDLK_d:
-                    track.rotateLeft(-0.005f);
+                    track.rotateLeft(-0.01f);
                     break;
                 case SDLK_z:
-                    track.rotateUp(0.005f);
+                    track.rotateUp(0.01f);
                     break;
                 case SDLK_s:
-                    track.rotateUp(-0.005f);
+                    track.rotateUp(-0.01f);
                     break;
                 case SDLK_a:
                     track.moveFront(0.005f);
@@ -168,10 +175,6 @@ int main(int argc, char** argv) {
 
         // COULOIR
 
-        float positionOffSet = 20.f;
-
-        corridor.vao().bind();
-
         glm::mat4 corridorMVMatrix = glm::rotate(trackMat*globalMVMatrix, glm::radians(20.f), glm::vec3(1,0,0));
         //rotate le corridor
         corridorMVMatrix = glm::rotate(corridorMVMatrix, glm::radians(90.f), glm::vec3(0,1,0));
@@ -180,15 +183,19 @@ int main(int argc, char** argv) {
         corridorMVMatrix = glm::translate(corridorMVMatrix, glm::vec3(0, -3, 0));
 
         glm::mat4 tmpMatrix;
+        float positionOffSet = 20.f;
+        float speed = windowManager.getTime()*10;
+        
+        corridor.vao().bind();
 
         for (int i = 0; i < 10; ++i)
         {
-            if (((i+4)*positionOffSet > windowManager.getTime()*2) && i<6)
+            if (((i*positionOffSet - speed) > -5*positionOffSet) && ((i*positionOffSet - speed) < 5*positionOffSet))
             {   
                 tmpMatrix = glm::translate(corridorMVMatrix, glm::vec3(i*positionOffSet, 0, 0));
 
                 // fais avancer le corridor (defilement)
-                tmpMatrix = glm::translate(tmpMatrix, glm::vec3(std::max(-(i+4)*positionOffSet, -windowManager.getTime()*2), 0, 0));
+                tmpMatrix = glm::translate(tmpMatrix, glm::vec3(std::max(-(i+5)*positionOffSet, -speed), 0, 0));
                 
                 glUniformMatrix4fv(uMVMatrix , 1, GL_FALSE, glm::value_ptr(tmpMatrix));
                 glUniformMatrix4fv(uNormalMatrix , 1, GL_FALSE, glm::value_ptr(NormalMatrix));
@@ -203,8 +210,26 @@ int main(int argc, char** argv) {
                     corridor.vao().bind();
 
                 }
+
                 else 
-                    corridor.draw();
+                {
+                    if ((i+1)%7 == 0)
+                    {   
+                        if (speed == i*positionOffSet)
+                            globalMVMatrix = glm::rotate(globalMVMatrix, glm::radians(-90.f), glm::vec3(0,1,0));
+                        corridor.vao().debind();
+                        corner.vao().bind();
+                        corner.draw();
+                        corner.vao().debind();
+                        corridor.vao().bind();
+
+                    }
+                    else 
+                    {
+                        corridor.draw();                  
+                    }
+                }
+
             }
         
         }

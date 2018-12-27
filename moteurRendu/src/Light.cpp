@@ -3,13 +3,13 @@
 int Light::lightsCount = 0;
 
 Light::Light(const bool isPoint,
-		  const glm::vec3 &position,
+		  const glm::vec3 &posOrDir,
 		  const glm::vec3 &Kd,
 		  const glm::vec3 &Ks,
 		  const float &shininess, 
 		  const glm::vec3 &lightIntensity) : _id(lightsCount)
 {	
-	_properties = {isPoint, position, Kd, Ks, shininess, lightIntensity};
+	_properties = {isPoint, posOrDir, Kd, Ks, shininess, lightIntensity};
 	++lightsCount;
 }
 		

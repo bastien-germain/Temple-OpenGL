@@ -10,6 +10,8 @@
 #include "glimac/common.hpp"
 #include <glimac/Program.hpp>
 #include "moteurRendu/TrackballCamera.hpp"
+#include "../../moteurJeu/include/moteurJeu/Exception.hpp"
+
 
 
 using namespace glimac;
@@ -32,7 +34,7 @@ public:
 	};
 
 	Light(const bool isPoint = true, 
-		  const glm::vec3 &position = glm::vec3(0.0),
+		  const glm::vec3 &posOrDir = glm::vec3(0.0),
 		  const glm::vec3 &Kd = glm::vec3(0.0),
 		  const glm::vec3 &Ks = glm::vec3(0.0),
 		  const float &shininess = 0.0, 
@@ -50,6 +52,19 @@ public:
 		return _id;
 	}
 
+	inline void position(const glm::vec3 &position) {
+		if (_properties._isPoint)
+			_properties._posOrDir = position;
+		else 
+			THROW_EXCEPTION("ERROR : THIS LIGHT IS NOT A POINT LIGHT - CANNOT CHANGE POSITION : TRY USING .direction(aDirection)");
+	}
+
+	inline void direction(const glm::vec3 &direction) {
+		if (!_properties._isPoint)
+			_properties._posOrDir = direction;
+		else 
+			THROW_EXCEPTION("ERROR : THIS LIGHT IS A POINT LIGHT - CANNOT CHANGE DIRECTION : TRY USING .position(aPosition)");
+	}
 
 	inline Light &operator = (const Light &toAssign) 
 	{

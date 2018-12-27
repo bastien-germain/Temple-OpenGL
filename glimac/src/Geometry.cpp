@@ -25,29 +25,24 @@ bool Geometry::loadOBJ(const FilePath& filepath, const FilePath& mtlBasePath, bo
     std::vector<tinyobj::shape_t> shapes;
     std::vector<tinyobj::material_t> materials;
 
-    std::clog << "Load OBJ " << filepath << std::endl;
+    std::clog << "\nLoading OBJ " << filepath << "..." << std::endl;
     std::string objErr = tinyobj::LoadObj(shapes, materials,
         filepath.c_str(), mtlBasePath.c_str());
-
-    std::clog << "done." << std::endl;
 
     if (!objErr.empty()) {
         std::cerr << objErr << std::endl;
         return false;
     }
 
-    std::clog << "Load materials" << std::endl;
-
     m_Materials.reserve(m_Materials.size() + materials.size());
+
     for(auto& material: materials) {
         m_Materials.emplace_back();
         auto& m = m_Materials.back();
 
         m.m_Ka = glm::vec3(material.ambient[0], material.ambient[1], material.ambient[2]);
         m.m_Kd = glm::vec3(material.diffuse[0], material.diffuse[1], material.diffuse[2]);
-        std::cout << "Kd:  " << m.m_Kd << std::endl;
         m.m_Ks = glm::vec3(material.specular[0], material.specular[1], material.specular[2]);
-        std::cout << "Ks:  " << m.m_Ks << std::endl;
         m.m_Tr = glm::vec3(material.transmittance[0], material.transmittance[1], material.transmittance[2]);
         m.m_Le = glm::vec3(material.emission[0], material.emission[1], material.emission[2]);
         m.m_Shininess = material.shininess;
@@ -58,33 +53,28 @@ bool Geometry::loadOBJ(const FilePath& filepath, const FilePath& mtlBasePath, bo
             if(!material.ambient_texname.empty()) {
                 //std::replace(material.ambient_texname.begin(), material.ambient_texname.end(), '\\', '/');
                 FilePath texturePath = mtlBasePath + material.ambient_texname;
-                std::clog << "load " << texturePath << std::endl;
                 m.m_pKaMap = ImageManager::loadImage(texturePath);
             }
 
             if(!material.diffuse_texname.empty()) {
                 //std::replace(material.diffuse_texname.begin(), material.diffuse_texname.end(), '\\', '/');
                 FilePath texturePath = mtlBasePath + material.diffuse_texname;
-                std::clog << "load " << texturePath << std::endl;
                 m.m_pKdMap = ImageManager::loadImage(texturePath);
             }
 
             if(!material.specular_texname.empty()) {
                 //std::replace(material.specular_texname.begin(), material.specular_texname.end(), '\\', '/');
                 FilePath texturePath = mtlBasePath + material.specular_texname;
-                std::clog << "load " << texturePath << std::endl;
                 m.m_pKsMap = ImageManager::loadImage(texturePath);
             }
 
             if(!material.normal_texname.empty()) {
                 //std::replace(material.normal_texname.begin(), material.normal_texname.end(), '\\', '/');
                 FilePath texturePath = mtlBasePath + material.normal_texname;
-                std::clog << "load " << texturePath << std::endl;
                 m.m_pNormalMap = ImageManager::loadImage(texturePath);
             }
         }
     }
-    std::clog << "done." << std::endl;
 
     auto globalVertexOffset = m_VertexBuffer.size();
     auto globalIndexOffset = m_IndexBuffer.size();
