@@ -26,7 +26,7 @@ vec3 blinnPhong()
 	vec3 tmp = uKd*(dot(wi, vNormal)) + uKs*pow(dot(halfVector, vNormal), uShininess);
 	//vec3 tmp = uKd*(abs(dot(wi, vNormal))) + uKs*pow(abs(dot(halfVector, vNormal)), uShininess);
 	return (uLightIntensity != 0.0) ? uLightIntensity*tmp : tmp;
-};
+}
 
 void main() {
 	/*fFragColor = texture(uEarthTexture ,vTexCoords).rgb + texture(uCloudTexture ,vTexCoords).rgb;*/
@@ -34,4 +34,4 @@ void main() {
 	//fFragColor = blinnPhong() * texture(uTexture, vTexCoords).rgb;
 	fFragColor = blinnPhong();
 	
-};
+}

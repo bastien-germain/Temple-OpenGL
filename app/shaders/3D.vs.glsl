@@ -24,4 +24,4 @@ void main() {
 
     // Calcul de la position projetée
     gl_Position = uMVPMatrix * vertexPosition;
-};
+}

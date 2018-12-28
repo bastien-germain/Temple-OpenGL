@@ -73,5 +73,7 @@ void VBO::deleteBuf() const
 void VBO::draw() const
 {
     // glDrawElements(GL_TRIANGLES, _geo.getIndexCount(), GL_UNSIGNED_INT, 0);
+	_vao.bind();
     glDrawElements(GL_TRIANGLES, _ibo.size(), GL_UNSIGNED_INT, 0);
+	_vao.debind();
 }

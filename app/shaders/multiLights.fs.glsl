@@ -5,7 +5,7 @@ precision mediump int;
 
 in vec3 vPosition;
 in vec3 vNormal;
-in vec3 vTexCoords;
+in vec2 vTexCoords;
 
 out vec3 fFragColor;
 
@@ -62,10 +62,10 @@ vec3 blinnPhong()
 	}
 	
     return resultingLight;
-};
+}
 
 
 void main() 
 {	
 		fFragColor = uAmbientLight + blinnPhong();
-};
+}
