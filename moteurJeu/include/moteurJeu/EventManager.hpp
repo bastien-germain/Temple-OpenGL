@@ -5,6 +5,9 @@
 #include <SDL/SDL.h>
 #include <glimac/glm.hpp>
 #include <iostream>
+#include "Player.hpp"
+	#include "../../moteurRendu/include/moteurRendu/TrackballCamera.hpp"
+
 
 class EventManager
 {
@@ -13,7 +16,7 @@ public:
 
 	~EventManager();
   
-	void handleEvent(SDL_Event *);
+	void handleEvent(SDL_Event *event, Player &player, TrackballCamera &track);
 	
 	void onExit();
 private:

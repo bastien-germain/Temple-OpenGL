@@ -1,7 +1,8 @@
 #include "moteurRendu/TrackballCamera.hpp"
 #include <iostream>
 
-TrackballCamera::TrackballCamera() : _fDistance(5), _fAngleX(0), _fAngleY(0)
+TrackballCamera::TrackballCamera(const float &smoothness) 
+    : _fDistance(5), _fAngleX(0), _fAngleY(0), _smoothness(smoothness)
 {
 }
 

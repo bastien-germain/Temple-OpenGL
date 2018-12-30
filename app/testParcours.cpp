@@ -7,6 +7,8 @@
 #include <cstdlib>
 #include <iostream>
 #include "moteurRendu/TrackballCamera.hpp"
+#include "moteurJeu/EventManager.hpp"
+#include "moteurJeu/Player.hpp"
 #include "moteurRendu/VBO.hpp"
 #include "moteurRendu/VAO.hpp"
 #include "glimac/Sphere.hpp"
@@ -21,15 +23,20 @@
 
 using namespace glimac;
 
-int main(int argc, char** argv) {
+int main (int argc, char** argv) 
+{
      // Initialize SDL and open a window
     SDLWindowManager windowManager(800, 800, "GLImac");
-    TrackballCamera track;
-    
 
+    TrackballCamera track;
+    EventManager eManager;
+    Player player(0.002f, 0.0019f);
+    SDL_Event e;
+    
     // Initialize glew for OpenGL3+ support
     GLenum glewInitError = glewInit();
-    if(GLEW_OK != glewInitError) {
+    if (GLEW_OK != glewInitError) 
+    {
         std::cerr << glewGetErrorString(glewInitError) << std::endl;
         return EXIT_FAILURE;
     }
@@ -37,23 +44,13 @@ int main(int argc, char** argv) {
 
     FilePath applicationPath(argv[0]);
 
-    Program program = loadProgram(applicationPath.dirPath() + "shaders/3D.vs.glsl",
-                              applicationPath.dirPath() + "shaders/multiLights.fs.glsl");
+    Program program = loadProgram(applicationPath.dirPath() + "shaders/3D.vs.glsl", applicationPath.dirPath() + "shaders/multiLights.fs.glsl");
     program.use();
 
     GLint uMVMatrix = glGetUniformLocation(program.getGLId(), "uMVMatrix");
     GLint uMVPMatrix = glGetUniformLocation(program.getGLId(), "uMVPMatrix");
     GLint uNormalMatrix = glGetUniformLocation(program.getGLId(), "uNormalMatrix");
     GLint uTexture = glGetUniformLocation(program.getGLId(), "uTexture");
-
-    /*
-    GLint uKd = glGetUniformLocation(program.getGLId(), "uKd");
-    GLint uKs = glGetUniformLocation(program.getGLId(), "uKs");
-    GLint uShininess = glGetUniformLocation(program.getGLId(), "uShininess");
-    GLint uLightDir_vs = glGetUniformLocation(program.getGLId(), "uLightDir_vs");
-    GLint uLightIntensity = glGetUniformLocation(program.getGLId(), "uLightIntensity");   
-    */
-
 
     glEnable(GL_DEPTH_TEST);
 
@@ -62,21 +59,31 @@ int main(int argc, char** argv) {
 
     glm::mat4 ProjMatrix = glm::perspective(glm::radians(70.f), 1.f, 0.1f, 100.f);
     glm::mat4 globalMVMatrix = glm::translate(glm::mat4(), glm::vec3(0.f, 0.f, -3.f));
+    //globalMVMatrix = glm::rotate(globalMVMatrix, glm::radians(180.f), glm::vec3(0,1,0));
     glm::mat4 NormalMatrix = glm::transpose(glm::inverse(globalMVMatrix));
 
-    std::vector<Light> lights;
+        // LIGHTS
 
-    lights.push_back(Light(true, glm::vec3(2.0, 1.0, -10.0), glm::vec3(1.0, 0.0, 0.0), glm::vec3(1.0), 64, glm::vec3(1.0)));
-    lights.push_back(Light(true, glm::vec3(0.0, 1.0, -10.0), glm::vec3(0.0, 1.0, 0.0), glm::vec3(1.0), 64, glm::vec3(1.0)));
-    lights.push_back(Light(true, glm::vec3(-2.0, 1.0, -10.0), glm::vec3(0.0, 0.0, 1.0), glm::vec3(1.0), 64, glm::vec3(1.0)));
+    std::vector<Light> lights;
+    std::string refLight = "uLights";
+
+    lights.push_back(Light(true, glm::vec3(0.0, -3.0, -7.0), glm::vec3(1.0, 0.0, 0.0), glm::vec3(1.0), 64, glm::vec3(1.0)));
+    lights.push_back(Light(true, glm::vec3(0.0, 0.0, -5.0), glm::vec3(0.0, 1.0, 0.0), glm::vec3(1.0), 64, glm::vec3(1.0)));
+    lights.push_back(Light(true, glm::vec3(0.0, 0.0, -5.0), glm::vec3(0.0, 0.0, 1.0), glm::vec3(1.0), 64, glm::vec3(1.0)));
     lights.push_back(Light(false, glm::vec3(1.0, 0.0, 0.0), glm::vec3(0.0, 0.4, 0.9), glm::vec3(1.0), 8, glm::vec3(1.0)));
     lights.push_back(Light(false, glm::vec3(0.0, 1.0, 0.0), glm::vec3(0.8, 0.1, 0.4), glm::vec3(1.0), 8, glm::vec3(1.0)));
 
+    lights[0].sendLightShader(program, refLight);
+    lights[1].sendLightShader(program, refLight);
+    lights[2].sendLightShader(program, refLight);
+    lights[3].sendLightShader(program, refLight);
+    lights[4].sendLightShader(program, refLight);
+
     glm::vec3 ambientLight = glm::vec3(0.2);
 
-    /*********************************
-     * HERE SHOULD COME THE INITIALIZATION CODE
-     *********************************/
+    glUniform3f(glGetUniformLocation(program.getGLId(), "uAmbientLight"), ambientLight.x, ambientLight.y, ambientLight.z); 
+    glUniform1i(glGetUniformLocation(program.getGLId(), "uNbLights"), lights.size()); 
+
 
     //Corridor
     Geometry gCorridor;
@@ -95,430 +102,139 @@ int main(int argc, char** argv) {
 
     //Player
     Geometry gPlayer;
-    gPlayer.loadOBJ(applicationPath.dirPath() + "/assets/models/pcfusee.obj",
+    gPlayer.loadOBJ(applicationPath.dirPath() + "/assets/models/fauteuil.obj",
         applicationPath.dirPath() + "/assets/models/pcfusee.mtl",true);
-
 
     
     //Chargement des sommets dans l'objet vbo, ibo et vao
-    VBO corridor(0,gCorridor);
-    //Envoi à la carte graphique
-    corridor.sendData();
 
-    VBO corridorHole(0, gCorridorHole);
-    corridorHole.sendData();
+    VBO corridorVBO(0,gCorridor);
+    corridorVBO.sendData();
 
-    VBO corner(0, gCorner);
-    corner.sendData();
+    VBO corridorHoleVBO(0, gCorridorHole);
+    corridorHoleVBO.sendData();
 
-    VBO player(0,gPlayer);
-    player.sendData();
+    VBO cornerVBO(0, gCorner);
+    cornerVBO.sendData();
+
+    VBO playerVBO(0,gPlayer);
+    playerVBO.sendData();
 
     // Application loop:
     bool done = false;
-    // float animation = 0.01f;
-    
-    
 
+    float positionOffSet = -20.f;
+    float speedCamera = 100.0f;
     
-    while(!done) {
+    float balancement = 0.f;
+    float balancementSpeed = 0.005;
+
+    bool turned = false;
+
+    while (!done) 
+    {
         // Event loop:
-        SDL_Event e;
         
-        while(windowManager.pollEvent(e)) {
-            if(e.type == SDL_QUIT) {
-                done = true; // Leave the loop after this iteration
-            }
+        while (windowManager.pollEvent(e)) 
+        {
+            if (e.type == SDL_QUIT) 
+                done = true; // Leave the lsoop after this iteration
+
         }
-
-        float speedCamera = 100.0f;
-        
-        if(e.key.type == SDL_KEYDOWN) {
-
-            switch(e.key.keysym.sym)
-            {
-                case SDLK_q:
-                    track.rotateLeft(0.01f * speedCamera);
-                    break;
-                case SDLK_d:
-                    track.rotateLeft(-0.01f * speedCamera);
-                    break;
-                case SDLK_z:
-                    track.rotateUp(0.01f * speedCamera);
-                    break;
-                case SDLK_s:
-                    track.rotateUp(-0.01f * speedCamera);
-                    break;
-                case SDLK_a:
-                    track.moveFront(0.005f * speedCamera);
-                    break;
-                case SDLK_e:
-                    track.moveFront(-0.005f * speedCamera);
-                    break;
-
-                default: 
-                    break;
-
-            }
-        }
-        
+        glm::mat4 tmpMatrix = glm::mat4();
+        eManager.handleEvent(&e, player, track);
 
         glm::mat4 trackMat = track.getViewMatrix();
-        glm::mat4 tmpMatrix = glm::mat4();
         /*********************************
          * HERE SHOULD COME THE RENDERING CODE
          *********************************/
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        // LIGHTS
-
-        glUniform3f(glGetUniformLocation(program.getGLId(), "uAmbientLight"), ambientLight.x, ambientLight.y, ambientLight.z); 
-        glUniform1i(glGetUniformLocation(program.getGLId(), "uNbLights"), lights.size()); 
-
-        std::string refLight = "uLights";
-
-        lights[0].sendLightShader(program, refLight);
-        lights[1].sendLightShader(program, refLight);
-        lights[2].sendLightShader(program, refLight);
-        lights[3].sendLightShader(program, refLight);
-        lights[4].sendLightShader(program, refLight);
-
-        // COULOIR
-
-        // glm::mat4 corridorMVMatrix = glm::rotate(trackMat*globalMVMatrix, glm::radians(20.f), glm::vec3(1,0,0));
-        //rotate le corridor
-        // corridorMVMatrix = glm::rotate(corridorMVMatrix, glm::radians(90.f), glm::vec3(0,1,0));
-        
-        // descend le corridor
-        // corridorMVMatrix = glm::translate(corridorMVMatrix, glm::vec3(0, -3, 0));
-
-        // glm::mat4 tmpMatrix;
-        float positionOffSet = 20.f;
         float speed = windowManager.getTime() * 10;
-        std::cout << "time" << speed << std::endl;
+        //std::cout << "time" << speed << std::endl;
+        std::cout << "posX : " << player.posX() << std::endl;
+        std::cout << "posY : " << player.posY() << std::endl;
         
-
-       
-        //tmpMatrix = glm::translate(corridorMVMatrix, glm::vec3(0, 0, 0)) ;
+        /*if (speed > 95 && turned == false)
+        {
+            globalMVMatrix = glm::rotate(globalMVMatrix, glm::radians(90.f), glm::vec3(0,1,0));
+            turned = true;
+        }*/
 
         tmpMatrix = glm::translate(trackMat * globalMVMatrix, glm::vec3(0,-2,0));
-        tmpMatrix = glm::rotate( tmpMatrix, glm::radians(90.f) , glm::vec3(0,1,0));
         glm::mat4 matrixPlayer = tmpMatrix;
+
+        if (balancement > 25.f || balancement < -25.f)
+            balancementSpeed *= -1;
+
+        balancement += balancementSpeed;
+
+        matrixPlayer = glm::rotate(matrixPlayer, glm::radians(balancement), glm::vec3(1, 0, 0));
         
-
+        matrixPlayer = glm::translate(matrixPlayer, glm::vec3(player.posX(), player.posY(), 0));
+        glUniformMatrix4fv(uMVMatrix , 1, GL_FALSE, glm::value_ptr(matrixPlayer));
+        glUniformMatrix4fv(uNormalMatrix , 1, GL_FALSE, glm::value_ptr(NormalMatrix));
+        glUniformMatrix4fv(uMVPMatrix , 1, GL_FALSE, glm::value_ptr(ProjMatrix * matrixPlayer));
+        playerVBO.draw();
         
-
-        
-
-        if (e.key.state == SDL_PRESSED)
-        {
-            switch(e.key.keysym.sym)
-            {
-                case SDLK_c:
-                    matrixPlayer = glm::translate(matrixPlayer, glm::vec3(0,0,2));
-                    glUniformMatrix4fv(uMVMatrix , 1, GL_FALSE, glm::value_ptr(matrixPlayer));
-                    glUniformMatrix4fv(uNormalMatrix , 1, GL_FALSE, glm::value_ptr(NormalMatrix));
-                    glUniformMatrix4fv(uMVPMatrix , 1, GL_FALSE, glm::value_ptr(ProjMatrix * matrixPlayer));
-
-                    player.draw();
-                    matrixPlayer = glm::translate(matrixPlayer, glm::vec3(0,0,-2));
-
-                break;
-                case SDLK_w:
-                
-                    matrixPlayer = glm::translate(matrixPlayer, glm::vec3(0,0,-2));
-                    glUniformMatrix4fv(uMVMatrix , 1, GL_FALSE, glm::value_ptr(matrixPlayer));
-                    glUniformMatrix4fv(uNormalMatrix , 1, GL_FALSE, glm::value_ptr(NormalMatrix));
-                    glUniformMatrix4fv(uMVPMatrix , 1, GL_FALSE, glm::value_ptr(ProjMatrix * matrixPlayer));
-                    player.draw();
-                    matrixPlayer = glm::translate(matrixPlayer, glm::vec3(0,0,2));
-                   
-                break;
-                default:
-                    matrixPlayer = glm::translate(matrixPlayer, glm::vec3(0,0,0));
-                    glUniformMatrix4fv(uMVMatrix , 1, GL_FALSE, glm::value_ptr(matrixPlayer));
-                    glUniformMatrix4fv(uNormalMatrix , 1, GL_FALSE, glm::value_ptr(NormalMatrix));
-                    glUniformMatrix4fv(uMVPMatrix , 1, GL_FALSE, glm::value_ptr(ProjMatrix * matrixPlayer));
-                    player.draw();
-                    matrixPlayer = glm::translate(matrixPlayer, glm::vec3(0,0,0));
-                break;
-            }
-        }
-        else 
-        {
-            matrixPlayer = glm::translate(matrixPlayer, glm::vec3(0,0,0));
-            glUniformMatrix4fv(uMVMatrix , 1, GL_FALSE, glm::value_ptr(matrixPlayer));
-            glUniformMatrix4fv(uNormalMatrix , 1, GL_FALSE, glm::value_ptr(NormalMatrix));
-            glUniformMatrix4fv(uMVPMatrix , 1, GL_FALSE, glm::value_ptr(ProjMatrix * matrixPlayer));
-            player.draw();
-            matrixPlayer = glm::translate(matrixPlayer, glm::vec3(0,0,0));
-            // tmpMatrix = glm::translate(tmpMatrix, glm::vec3(8,0,0));
-
-
-        }
-        
-
-
         tmpMatrix = glm::translate(trackMat * globalMVMatrix, glm::vec3(0,-4,0));
-        tmpMatrix = glm::rotate( tmpMatrix, glm::radians(90.f) , glm::vec3(0,1,0));
-        tmpMatrix = glm::translate(tmpMatrix, glm::vec3(-speed,0,0));
-        
-        glUniformMatrix4fv(uMVMatrix , 1, GL_FALSE, glm::value_ptr(tmpMatrix));
-        glUniformMatrix4fv(uNormalMatrix , 1, GL_FALSE, glm::value_ptr(NormalMatrix));
-        glUniformMatrix4fv(uMVPMatrix , 1, GL_FALSE, glm::value_ptr(ProjMatrix * tmpMatrix));
-        
-        corridor.draw();
+        tmpMatrix = glm::translate(tmpMatrix, glm::vec3(0,0,speed));
 
-        tmpMatrix =  glm::translate(tmpMatrix  , glm::vec3(positionOffSet, 0, 0)) ;
-
-        glUniformMatrix4fv(uMVMatrix , 1, GL_FALSE, glm::value_ptr(tmpMatrix));
-        glUniformMatrix4fv(uNormalMatrix , 1, GL_FALSE, glm::value_ptr(NormalMatrix));
-        glUniformMatrix4fv(uMVPMatrix , 1, GL_FALSE, glm::value_ptr(ProjMatrix * tmpMatrix));
-        
-        corridor.draw();
-        
-tmpMatrix =  glm::translate(tmpMatrix  , glm::vec3(positionOffSet, 0, 0)) ;
-
-        glUniformMatrix4fv(uMVMatrix , 1, GL_FALSE, glm::value_ptr(tmpMatrix));
-        glUniformMatrix4fv(uNormalMatrix , 1, GL_FALSE, glm::value_ptr(NormalMatrix));
-        glUniformMatrix4fv(uMVPMatrix , 1, GL_FALSE, glm::value_ptr(ProjMatrix * tmpMatrix));
-        
-        corridor.draw();tmpMatrix =  glm::translate(tmpMatrix  , glm::vec3(positionOffSet, 0, 0)) ;
-
-        glUniformMatrix4fv(uMVMatrix , 1, GL_FALSE, glm::value_ptr(tmpMatrix));
-        glUniformMatrix4fv(uNormalMatrix , 1, GL_FALSE, glm::value_ptr(NormalMatrix));
-        glUniformMatrix4fv(uMVPMatrix , 1, GL_FALSE, glm::value_ptr(ProjMatrix * tmpMatrix));
-        
-        corridor.draw();tmpMatrix =  glm::translate(tmpMatrix  , glm::vec3(positionOffSet, 0, 0)) ;
-
-        glUniformMatrix4fv(uMVMatrix , 1, GL_FALSE, glm::value_ptr(tmpMatrix));
-        glUniformMatrix4fv(uNormalMatrix , 1, GL_FALSE, glm::value_ptr(NormalMatrix));
-        glUniformMatrix4fv(uMVPMatrix , 1, GL_FALSE, glm::value_ptr(ProjMatrix * tmpMatrix));
-        
-        corridor.draw();
-
-        // 
-
-
-        // tmpMatrix =  glm::translate(tmpMatrix  , glm::vec3(1*positionOffSet, 0, 0)) ;
-        
-        // glUniformMatrix4fv(uMVMatrix , 1, GL_FALSE, glm::value_ptr(tmpMatrix));
-        // glUniformMatrix4fv(uNormalMatrix , 1, GL_FALSE, glm::value_ptr(NormalMatrix));
-        // glUniformMatrix4fv(uMVPMatrix , 1, GL_FALSE, glm::value_ptr(ProjMatrix * tmpMatrix));
-        // corner.draw();
-
-
-        // tmpMatrix = glm::rotate(tmpMatrix, glm::radians(-90.f), glm::vec3(0,1,0));
-        // tmpMatrix = glm::translate(tmpMatrix, glm::vec3(1*positionOffSet, 0, 0)) ;
-
-        
-        // glUniformMatrix4fv(uMVMatrix , 1, GL_FALSE, glm::value_ptr(tmpMatrix));
-        // glUniformMatrix4fv(uNormalMatrix , 1, GL_FALSE, glm::value_ptr(NormalMatrix));
-        // glUniformMatrix4fv(uMVPMatrix , 1, GL_FALSE, glm::value_ptr(ProjMatrix * tmpMatrix));
-        
-        // corridor.draw();
-
-        // tmpMatrix = glm::translate(tmpMatrix, glm::vec3(1*positionOffSet, 0, 0)) ;
-
-        
-        // glUniformMatrix4fv(uMVMatrix , 1, GL_FALSE, glm::value_ptr(tmpMatrix));
-        // glUniformMatrix4fv(uNormalMatrix , 1, GL_FALSE, glm::value_ptr(NormalMatrix));
-        // glUniformMatrix4fv(uMVPMatrix , 1, GL_FALSE, glm::value_ptr(ProjMatrix * tmpMatrix));
-        
-        // corridor.draw();
-
-        // tmpMatrix = glm::translate(tmpMatrix, glm::vec3(1*positionOffSet, 0, 0)) ;
-
-        
-
-
-        // tmpMatrix = glm::translate(trackMat * globalMVMatrix, glm::vec3(0,-4,0));
-        // tmpMatrix = glm::rotate( tmpMatrix, glm::radians(90.f) , glm::vec3(0,1,0));
-        // tmpMatrix = glm::translate(tmpMatrix, glm::vec3(speed,0,0));
-
-        
-
-
-
-
-
-
-
-
-
-        //tmpMatrix = glm::translate(corridorMVMatrix, glm::vec3(-1*positionOffSet, 0, 0)) ;
-
-        /*for (int i = 0; i < 100; ++i)
+        for (int i = 0; i < 5; ++i)
         {
+
+            glUniformMatrix4fv(uMVMatrix , 1, GL_FALSE, glm::value_ptr(tmpMatrix));
+            glUniformMatrix4fv(uNormalMatrix , 1, GL_FALSE, glm::value_ptr(NormalMatrix));
+            glUniformMatrix4fv(uMVPMatrix , 1, GL_FALSE, glm::value_ptr(ProjMatrix * tmpMatrix));
             
-            //if (((i * positionOffSet - speed) > -5*positionOffSet) && ((i*positionOffSet - speed) < 5*positionOffSet))
-            //{
-                if ((i+1)%3 == 0) 
-                {
-                    tmpMatrix = glm::translate(tmpMatrix, glm::vec3(positionOffSet, 0, 0)) ;
-                    
-                    // tmpMatrix = glm::translate(tmpMatrix, glm::vec3(std::max(-(i+5)*positionOffSet, -speed), 0, 0));
+            corridorVBO.draw();
 
-                     
-                    glUniformMatrix4fv(uMVMatrix , 1, GL_FALSE, glm::value_ptr(tmpMatrix));
-                    glUniformMatrix4fv(uNormalMatrix , 1, GL_FALSE, glm::value_ptr(NormalMatrix));
-                    glUniformMatrix4fv(uMVPMatrix , 1, GL_FALSE, glm::value_ptr(ProjMatrix * tmpMatrix));
-                    corridorHole.draw();
-                }
-                else
-                {
-                    if ((i+1)%7 == 0)
-                    {
-                        tmpMatrix = glm::translate(tmpMatrix, glm::vec3(positionOffSet, 0, 0)) ;
-                        // tmpMatrix = glm::translate(tmpMatrix, glm::vec3(std::max(-(i+5)*positionOffSet, -speed), 0, 0));
-
-                        glUniformMatrix4fv(uMVMatrix , 1, GL_FALSE, glm::value_ptr(tmpMatrix));
-                        glUniformMatrix4fv(uNormalMatrix , 1, GL_FALSE, glm::value_ptr(NormalMatrix));
-                        glUniformMatrix4fv(uMVPMatrix , 1, GL_FALSE, glm::value_ptr(ProjMatrix * tmpMatrix));
-
-                        corner.draw();
-
-                        tmpMatrix = glm::rotate(tmpMatrix, glm::radians(-90.f), glm::vec3(0,1,0)) ;
-                    }
-                    else
-                    {
-                        tmpMatrix = glm::translate(tmpMatrix, glm::vec3(positionOffSet, 0, 0)) ;
-                        // tmpMatrix = glm::translate(tmpMatrix, glm::vec3(std::max(-(i+5)*positionOffSet, -speed), 0, 0));
-
-                        glUniformMatrix4fv(uMVMatrix , 1, GL_FALSE, glm::value_ptr(tmpMatrix));
-                        glUniformMatrix4fv(uNormalMatrix , 1, GL_FALSE, glm::value_ptr(NormalMatrix));
-                        glUniformMatrix4fv(uMVPMatrix , 1, GL_FALSE, glm::value_ptr(ProjMatrix * tmpMatrix));
-                        corridor.draw();
-                    }
-                }
-            //}
-
-            
-        }*/
-       
-        // tmpMatrix = glm::translate(tmpMatrix,glm::vec3(-speed * animation,0,0) );
-        // animation += 0.1f * windowManager.getTime();
+            tmpMatrix =  glm::translate(tmpMatrix  , glm::vec3(0, 0, positionOffSet));
+        }
         
+        glUniformMatrix4fv(uMVMatrix , 1, GL_FALSE, glm::value_ptr(tmpMatrix));
+        glUniformMatrix4fv(uNormalMatrix , 1, GL_FALSE, glm::value_ptr(NormalMatrix));
+        glUniformMatrix4fv(uMVPMatrix , 1, GL_FALSE, glm::value_ptr(ProjMatrix * tmpMatrix));
+
+        cornerVBO.draw();
+
+//////// AFTER CORNER 
+
+        tmpMatrix = glm::rotate(tmpMatrix, glm::radians(-90.f), glm::vec3(0,1,0));
+        tmpMatrix = glm::translate(tmpMatrix, glm::vec3(0, 0, positionOffSet));
 
         
+        glUniformMatrix4fv(uMVMatrix , 1, GL_FALSE, glm::value_ptr(tmpMatrix));
+        glUniformMatrix4fv(uNormalMatrix , 1, GL_FALSE, glm::value_ptr(NormalMatrix));
+        glUniformMatrix4fv(uMVPMatrix , 1, GL_FALSE, glm::value_ptr(ProjMatrix * tmpMatrix));
         
-        // corridor.vao().bind();
+        corridorVBO.draw();
 
-        // for (int i = 0; i < 10; ++i)
-        // {
-        //     if (((i * positionOffSet - speed) > -5*positionOffSet) && ((i*positionOffSet - speed) < 5*positionOffSet))
-        //     {   
-                
+        tmpMatrix = glm::translate(tmpMatrix, glm::vec3(0, 0, positionOffSet));
 
-        //         if ((i+1)%3 == 0) 
-        //         {
-
-        //             tmpMatrix = glm::translate(corridorMVMatrix, glm::vec3(i*positionOffSet, 0, 0)) ;
-
-        //             // fais avancer le corridor (defilement)
-        //             tmpMatrix = glm::translate(tmpMatrix, glm::vec3(std::max(-(i+5)*positionOffSet, -speed), 0, 0));
-                    
-
-        //             // tmpMatrix =  glm::rotate(tmpMatrix, glm::radians(-90.f), glm::vec3(0,1,0));
-        //             // tmpMatrix =  glm::rotate(corridorMVMatrix, glm::radians(-90.f), glm::vec3(0,1,0));
-
-        //             glUniformMatrix4fv(uMVMatrix , 1, GL_FALSE, glm::value_ptr(tmpMatrix));
-        //             glUniformMatrix4fv(uNormalMatrix , 1, GL_FALSE, glm::value_ptr(NormalMatrix));
-        //             glUniformMatrix4fv(uMVPMatrix , 1, GL_FALSE, glm::value_ptr(ProjMatrix * tmpMatrix));
-        //             // corridor.vao().debind();
-        //             // corridorHole.vao().bind();
-        //             corridorHole.draw();
-        //             // corridorHole.vao().debind();
-        //             // corridor.vao().bind();
-
-        //         }
-
-        //         else 
-        //         {
-        //             if ((i+1)%7 == 0)
-        //             {   
-
-
-        //                 // tmpMatrix = glm::rotate(glm::translate(corridorMVMatrix, glm::vec3(i*positionOffSet, 0, 0)) , glm::radians(90.f), glm::vec3(0,1,0));
-        //                 tmpMatrix =  glm::translate(glm::rotate(tmpMatrix, glm::radians(-90.f), glm::vec3(0,1,0))  , glm::vec3(i*positionOffSet, 0, 0)) ;
-        //                 // fais avancer le corridor (defilement)
-        //                 tmpMatrix = glm::translate(glm::rotate(tmpMatrix, glm::radians(-90.f), glm::vec3(0,1,0)), glm::vec3(std::max(-(i+5)*positionOffSet, -speed), 0, 0));
-                        
-
-                        
-        //                 // tmpMatrix =  glm::rotate(corridorMVMatrix, glm::radians(-90.f), glm::vec3(0,1,0));
-
-        //                 glUniformMatrix4fv(uMVMatrix , 1, GL_FALSE, glm::value_ptr(tmpMatrix));
-        //                 glUniformMatrix4fv(uNormalMatrix , 1, GL_FALSE, glm::value_ptr(NormalMatrix));
-        //                 glUniformMatrix4fv(uMVPMatrix , 1, GL_FALSE, glm::value_ptr(ProjMatrix * tmpMatrix));
-        //                 // if (speed == i*positionOffSet)
-        //                 // {
-        //                 //     // std::cout << "bonjour" << std::endl;
-                            
-        //                 // }
-                            
-        //                 // corridor.vao().debind();
-        //                 // corner.vao().bind();
-                        
-
-                        
-
-        //                 corner.draw();
-        //                 // tmpMatrix =  glm::rotate(tmpMatrix, glm::radians(-90.f), glm::vec3(0,1,0));
-        //                 // corner.vao().debind();
-        //                 // corridor.vao().bind();
-
-        //             }
-        //             else 
-        //             {
-
-
-        //                 tmpMatrix =glm::translate(corridorMVMatrix, glm::vec3(i*positionOffSet, 0, 0)) ;
-
-        //                 // fais avancer le corridor (defilement)
-        //                 tmpMatrix = glm::translate(tmpMatrix, glm::vec3(std::max(-(i+5)*positionOffSet, -speed), 0, 0));
-                        
-
-        //                 // tmpMatrix =  glm::rotate(tmpMatrix, glm::radians(-90.f), glm::vec3(0,1,0));
-        //                 // tmpMatrix =  glm::rotate(corridorMVMatrix, glm::radians(-90.f), glm::vec3(0,1,0));
-
-        //                 glUniformMatrix4fv(uMVMatrix , 1, GL_FALSE, glm::value_ptr(tmpMatrix));
-        //                 glUniformMatrix4fv(uNormalMatrix , 1, GL_FALSE, glm::value_ptr(NormalMatrix));
-        //                 glUniformMatrix4fv(uMVPMatrix , 1, GL_FALSE, glm::value_ptr(ProjMatrix * tmpMatrix));
-        //                 corridor.draw();                  
-        //             }
-        //         }
-        //         std::cout << tmpMatrix << std::endl;
-
-        //     }
         
-        // }
+        glUniformMatrix4fv(uMVMatrix , 1, GL_FALSE, glm::value_ptr(tmpMatrix));
+        glUniformMatrix4fv(uNormalMatrix , 1, GL_FALSE, glm::value_ptr(NormalMatrix));
+        glUniformMatrix4fv(uMVPMatrix , 1, GL_FALSE, glm::value_ptr(ProjMatrix * tmpMatrix));
+        
+        corridorVBO.draw();
 
-        // corridor.vao().debind();
+        tmpMatrix = glm::translate(tmpMatrix, glm::vec3(0, 0, positionOffSet)) ;
 
-        //PLAYER
 
-        // player.vao().bind();
+////////////////////
 
-        // rotate le player
-        // glm::mat4 playerMVMatrix = glm::rotate(trackMat * globalMVMatrix, glm::radians(20.f), glm::vec3(1,0,0));
-        // // descend le player
-        // playerMVMatrix = glm::translate(playerMVMatrix, glm::vec3(0, 1, 0));
+        
+        tmpMatrix = glm::translate(globalMVMatrix, glm::vec3(0,-4,0));
+        tmpMatrix = glm::rotate(tmpMatrix, glm::radians(90.f) , glm::vec3(0,1,0));
+        tmpMatrix = glm::translate(tmpMatrix, glm::vec3(0,0,-speed));
 
-        // glUniformMatrix4fv(uMVMatrix , 1, GL_FALSE, glm::value_ptr(playerMVMatrix));
-        // glUniformMatrix4fv(uNormalMatrix , 1, GL_FALSE, glm::value_ptr(NormalMatrix));
-        // glUniformMatrix4fv(uMVPMatrix , 1, GL_FALSE, glm::value_ptr(ProjMatrix * playerMVMatrix));
-
-        // player.draw();
-
-        // player.vao().debind();
-
-        // Update the display
         windowManager.swapBuffers();
     }
 
-    corridor.deleteBuf();
-    player.deleteBuf();
+    corridorVBO.deleteBuf();
+    playerVBO.deleteBuf();
+    cornerVBO.deleteBuf();
 
     return EXIT_SUCCESS;
 }
