@@ -26,7 +26,7 @@ int main(int argc, char const *argv[])
 
             /* Poll for events */
             while( SDL_PollEvent( &event ) ){
-            	manager.handleEvent(&event);
+            	//manager.handleEvent(&event);
             }
         }
 
