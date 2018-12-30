@@ -50,28 +50,39 @@ bool Geometry::loadOBJ(const FilePath& filepath, const FilePath& mtlBasePath, bo
         m.m_Dissolve = material.dissolve;
 
         if(loadTextures) {
+            std::cout << "load textures" << std::endl;
+            std::string s = filepath.str().substr(0, filepath.str().rfind(".") + 1) + "png";
+            std::cout << "path textures" << s << std::endl;
             if(!material.ambient_texname.empty()) {
-                //std::replace(material.ambient_texname.begin(), material.ambient_texname.end(), '\\', '/');
+                std::cout << "load texture ambient" << std::endl;
+                std::replace(material.ambient_texname.begin(), material.ambient_texname.end(), '\\', '/');
                 FilePath texturePath = mtlBasePath + material.ambient_texname;
-                m.m_pKaMap = ImageManager::loadImage(texturePath);
+                std::cout << "path " << texturePath << std::endl;
+                m.m_pKaMap = ImageManager::loadImage(s);
             }
 
             if(!material.diffuse_texname.empty()) {
-                //std::replace(material.diffuse_texname.begin(), material.diffuse_texname.end(), '\\', '/');
+                std::cout << "load texture diffuse" << std::endl;
+                std::replace(material.diffuse_texname.begin(), material.diffuse_texname.end(), '\\', '/');
                 FilePath texturePath = mtlBasePath + material.diffuse_texname;
-                m.m_pKdMap = ImageManager::loadImage(texturePath);
+                std::cout << "path " << texturePath << std::endl;
+                m.m_pKdMap = ImageManager::loadImage(s);
             }
 
             if(!material.specular_texname.empty()) {
-                //std::replace(material.specular_texname.begin(), material.specular_texname.end(), '\\', '/');
+                std::cout << "load texture specular" << std::endl;
+                std::replace(material.specular_texname.begin(), material.specular_texname.end(), '\\', '/');
                 FilePath texturePath = mtlBasePath + material.specular_texname;
-                m.m_pKsMap = ImageManager::loadImage(texturePath);
+                std::cout << "path " << texturePath << std::endl;
+                m.m_pKsMap = ImageManager::loadImage(s);
             }
 
             if(!material.normal_texname.empty()) {
-                //std::replace(material.normal_texname.begin(), material.normal_texname.end(), '\\', '/');
+                std::cout << "load texture normal" << std::endl;
+                std::replace(material.normal_texname.begin(), material.normal_texname.end(), '\\', '/');
                 FilePath texturePath = mtlBasePath + material.normal_texname;
-                m.m_pNormalMap = ImageManager::loadImage(texturePath);
+                std::cout << "path " << texturePath << std::endl;
+                m.m_pNormalMap = ImageManager::loadImage(s);
             }
         }
     }
@@ -115,6 +126,8 @@ bool Geometry::loadOBJ(const FilePath& filepath, const FilePath& mtlBasePath, bo
         }
         pVertexTmp = pVertex;
         if(shapes[i].mesh.normals.size()) {
+            std::cout << "coord normals attribue" << std::endl;
+
             for (auto j = 0u; j < shapes[i].mesh.normals.size(); j += 3) {
                 pVertexTmp->m_Normal.x = shapes[i].mesh.normals[j];
                 pVertexTmp->m_Normal.y = shapes[i].mesh.normals[j + 1];
@@ -122,19 +135,24 @@ bool Geometry::loadOBJ(const FilePath& filepath, const FilePath& mtlBasePath, bo
                 ++pVertexTmp;
             }
         } else {
+            std::cout << "other coord normals attribue" << std::endl;
+
             // should create normals from triangles...
         }
         pVertexTmp = pVertex;
         if(shapes[i].mesh.texcoords.size()) {
+            std::cout << "coord texture attribue" << std::endl;
             for (auto j = 0u; j < shapes[i].mesh.texcoords.size(); j += 2) {
                 pVertexTmp->m_TexCoords.x = shapes[i].mesh.texcoords[j];
                 pVertexTmp->m_TexCoords.y = shapes[i].mesh.texcoords[j + 1];
                 ++pVertexTmp;
             }
         } else {
+
+            std::cout << "other coord texture attribue" << std::endl;
             for (auto j = 0u; j < shapes[i].mesh.texcoords.size(); j += 2) {
                 pVertexTmp->m_TexCoords.x =  0.f;
-                pVertexTmp->m_TexCoords.x =  0.f;
+                pVertexTmp->m_TexCoords.y =  0.f;
                 ++pVertexTmp;
             }
         }

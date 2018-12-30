@@ -350,6 +350,9 @@ std::string LoadMtl (
       material.ambient[0] = r;
       material.ambient[1] = g;
       material.ambient[2] = b;
+      std::cout << material.ambient[0] << std::endl;
+      std::cout << material.ambient[1] << std::endl;
+      std::cout << material.ambient[2] << std::endl;
       continue;
     }
     
@@ -361,6 +364,10 @@ std::string LoadMtl (
       material.diffuse[0] = r;
       material.diffuse[1] = g;
       material.diffuse[2] = b;
+
+      std::cout << material.diffuse[0] << std::endl;
+      std::cout << material.diffuse[1] << std::endl;
+      std::cout << material.diffuse[2] << std::endl;
       continue;
     }
     
