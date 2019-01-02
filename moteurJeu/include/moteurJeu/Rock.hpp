@@ -2,7 +2,7 @@
 #ifndef __ROCK_HPP__
 #define __ROCK_HPP__
 
-#include "Obstacle.hpp"
+#include "moteurJeu/Obstacle.hpp"
 
 /// \class Rock
 /// \brief Class defining a Rock (specific type of Obstacle) - inherits Obstacle

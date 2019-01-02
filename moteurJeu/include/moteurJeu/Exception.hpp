@@ -1,9 +1,10 @@
 #pragma once
+#ifndef __EXCEPTION_HPP__
+#define __EXCEPTION_HPP__
 
 #include <exception>
 #include <string>
 #include <sstream>
-
 
 class Exception : public std::exception
 {
@@ -36,6 +37,6 @@ private:
 // Si elle n'est pas recopiée, __FILE__ et __LINE__ donneraient : "Exception.hpp" et "35"
 #define THROW_EXCEPTION(str) throw Exception(str, __FILE__, __LINE__)
 
-
+#endif
 
 

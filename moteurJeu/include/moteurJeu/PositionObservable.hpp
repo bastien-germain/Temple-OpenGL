@@ -4,11 +4,10 @@
 
 #include <vector>
 #include <algorithm>
-#include <moteurJeu/PositionObserver.hpp>
-#include <moteurJeu/Exception.hpp>
 #include <iostream>
 
-
+#include "moteurJeu/PositionObserver.hpp"
+#include "moteurJeu/Exception.hpp"
 
 class PositionObserver;
 

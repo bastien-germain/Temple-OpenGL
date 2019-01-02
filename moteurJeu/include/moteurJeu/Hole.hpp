@@ -2,7 +2,7 @@
 #ifndef __HOLE_HPP__
 #define __HOLE_HPP__
 
-#include "Obstacle.hpp"
+#include "moteurJeu/Obstacle.hpp"
 
 /// \class Hole
 /// \brief Class defining a Hole (specific type of Obstacle) - inherits Obstacle

@@ -4,13 +4,15 @@
 
 #include <cmath>
 
-#define MAX_X 2.f
 #define REGULAR_X 0.f
-#define MIN_X -2.f
+#define MAX_X (REGULAR_X + 2)
+#define MIN_X (REGULAR_X - 2)
+#define X_SMOOTHNESS 0.002
 
-#define MAX_Y 2.f
-#define REGULAR_Y 0.f
-#define MIN_Y -2.f
+#define REGULAR_Y 1.5f
+#define MAX_Y (REGULAR_Y + 2)
+#define MIN_Y (REGULAR_Y +- 2)
+#define Y_SMOOTHNESS 0.002
 
 #define REGULAR_Z 0.f
 
@@ -23,16 +25,14 @@ private:
 	float _posX; // -1 : left; 0 : middle; 1: right
 	float _posY; // -1 : down; 0 : regular; 1: up
 	float _posZ; // position of the player, to which the obstacle posZ will be compared
-	const float _xSmoothness;
-	const float _ySmoothness;
-
+	
 public:
 	bool _jumping;
 	bool _bending;
 	bool _landing;
 
 	/// \brief Constructor
-	Player(const float &xSmoothness = 0.002f, const float &ySmoothness = 0.002f);
+	Player();
 
 	/// \brief Destructor
 	~Player();

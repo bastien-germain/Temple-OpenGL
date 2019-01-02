@@ -1,8 +1,9 @@
 #include "moteurJeu/Player.hpp"
+
 #include <iostream>
 
-Player::Player(const float &xSmoothness, const float &ySmoothness) 
-	: _posX(REGULAR_X), _posY(REGULAR_Y), _posZ(REGULAR_Z), _xSmoothness(xSmoothness) ,_ySmoothness(ySmoothness), 
+Player::Player() 
+	: _posX(REGULAR_X), _posY(REGULAR_Y), _posZ(REGULAR_Z), 
 	_jumping(false), _landing(false), _bending(false)
 {
 }
@@ -16,21 +17,21 @@ Player::~Player()
 void Player::goRight() 
 {
 	if(_posX < MAX_X) 
-		_posX += _xSmoothness;
+		_posX += X_SMOOTHNESS;
 }
 
 void Player::goCenter() 
 {
 	if (_posX < REGULAR_X)
-		_posX += _xSmoothness;
+		_posX += X_SMOOTHNESS;
 	else
-		_posX -= _xSmoothness;
+		_posX -= X_SMOOTHNESS;
 }
 
 void Player::goLeft() 
 {
 	if(_posX > MIN_X) 
-		_posX -= _xSmoothness;
+		_posX -= X_SMOOTHNESS;
 }
 
 //// Y MOVE ////
@@ -38,7 +39,7 @@ void Player::goLeft()
 void Player::jump() 
 {	
 	if(_posY < MAX_Y) 
-		_posY += _ySmoothness;
+		_posY += Y_SMOOTHNESS;
 	else 
 	{
 		_jumping = false;
@@ -48,24 +49,26 @@ void Player::jump()
 
 void Player::land()
 {	
-	if (fabs(_posY - REGULAR_Y) <= _ySmoothness)
+	if (fabs(_posY - REGULAR_Y) <= Y_SMOOTHNESS)
 	{	
 		_landing = false;
 	}
 	else
 	{
 		if (_posY > REGULAR_Y)
-			_posY -= _ySmoothness;
-		if (_posY < REGULAR_Y)
-			_posY += _ySmoothness;
+			_posY -= Y_SMOOTHNESS;
+		else
+			_posY += Y_SMOOTHNESS;
 	}
 }
 
 void Player::bendDown() 
 {	
 	if(_posY > MIN_Y) 
-		_posY -= _ySmoothness;
+		_posY -= Y_SMOOTHNESS;
 	else
+	{	
 		_bending = false;
 		_landing = true;
+	}
 }

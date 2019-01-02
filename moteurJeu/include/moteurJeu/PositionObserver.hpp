@@ -4,8 +4,9 @@
 
 #include <vector>
 #include <algorithm>
-#include <moteurJeu/PositionObservable.hpp>
-#include <moteurJeu/Exception.hpp>
+
+#include "moteurJeu/PositionObservable.hpp"
+#include "moteurJeu/Exception.hpp"
 
 class PositionObservable;
 

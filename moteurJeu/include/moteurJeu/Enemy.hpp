@@ -2,7 +2,7 @@
 #ifndef __ENEMY_HPP__
 #define __ENEMY_HPP__
 
-#include <glimac/glm.hpp>
+#include "glimac/glm.hpp"
 
 /// \class Enemy
 /// \brief Enemy pursuing the player

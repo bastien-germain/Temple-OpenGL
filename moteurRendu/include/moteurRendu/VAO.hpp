@@ -4,8 +4,9 @@
 
 #include <vector>
 #include <cstdlib>
-#include <GL/glew.h>
 #include <iostream>
+
+#include <GL/glew.h>
 
 /// \class VAO
 /// \brief Specifies the buffer array of the class VBO

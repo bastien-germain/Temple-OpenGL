@@ -3,7 +3,8 @@
 #define __OBSTACLE_HPP__
 
 #include <glimac/glm.hpp>
-#include <moteurJeu/PositionObservable.hpp>
+
+#include "moteurJeu/PositionObservable.hpp"
 
 /// \class Obstacle
 /// \brief Class defining an Obstacle

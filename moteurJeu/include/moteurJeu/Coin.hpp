@@ -2,7 +2,7 @@
 #ifndef __COIN_HPP__
 #define __COIN_HPP__
 
-#include "LightingModel.hpp"
+#include "moteurRendu/LightingModel.hpp"
 
 /// \class Coin
 /// \brief things the player can collect on the way

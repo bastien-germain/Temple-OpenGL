@@ -2,7 +2,7 @@
 #ifndef __BARRIER_HPP__
 #define __BARRIER_HPP__
 
-#include "Obstacle.hpp"
+#include "moteurJeu/Obstacle.hpp"
 
 /// \class Barrier
 /// \brief Class defining a Barrier (specific type of Obstacle) - inherits Obstacle

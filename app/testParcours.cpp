@@ -1,22 +1,18 @@
-#include <glimac/SDLWindowManager.hpp>
 #include <GL/glew.h>
+
+#include <glimac/SDLWindowManager.hpp>
 #include <glimac/Program.hpp>
 #include <glimac/FilePath.hpp>
-#include <glimac/Image.hpp>
+
 #include <fstream>
 #include <cstdlib>
 #include <iostream>
-#include "moteurRendu/TrackballCamera.hpp"
-#include "moteurJeu/EventManager.hpp"
-#include "moteurJeu/Player.hpp"
-#include "moteurRendu/VBO.hpp"
-#include "moteurRendu/VAO.hpp"
-#include "glimac/Sphere.hpp"
-#include "glimac/Geometry.hpp"
+#include <cmath>
+
+#include "moteurJeu/GameManager.hpp"
 
 /* A FAIRE
 * intégrer la fabrique, les models pour gérer la mise en place du parcours
-* Intégrer la classe Player (voir comment gérer les déplacements)
 * Voir comment on gère les virages
 
 */
@@ -28,9 +24,7 @@ int main (int argc, char** argv)
      // Initialize SDL and open a window
     SDLWindowManager windowManager(800, 800, "GLImac");
 
-    TrackballCamera track;
-    EventManager eManager;
-    Player player(0.002f, 0.0019f);
+    GameManager gameManager;
     SDL_Event e;
     
     // Initialize glew for OpenGL3+ support
@@ -40,7 +34,6 @@ int main (int argc, char** argv)
         std::cerr << glewGetErrorString(glewInitError) << std::endl;
         return EXIT_FAILURE;
     }
-
 
     FilePath applicationPath(argv[0]);
 
@@ -65,7 +58,7 @@ int main (int argc, char** argv)
         // LIGHTS
 
     std::vector<Light> lights;
-    std::string refLight = "uLights";
+    const std::string refLight = "uLights";
 
     lights.push_back(Light(true, glm::vec3(0.0, -3.0, -7.0), glm::vec3(1.0, 0.0, 0.0), glm::vec3(1.0), 64, glm::vec3(1.0)));
     lights.push_back(Light(true, glm::vec3(0.0, 0.0, -5.0), glm::vec3(0.0, 1.0, 0.0), glm::vec3(1.0), 64, glm::vec3(1.0)));
@@ -84,46 +77,11 @@ int main (int argc, char** argv)
     glUniform3f(glGetUniformLocation(program.getGLId(), "uAmbientLight"), ambientLight.x, ambientLight.y, ambientLight.z); 
     glUniform1i(glGetUniformLocation(program.getGLId(), "uNbLights"), lights.size()); 
 
-
-    //Corridor
-    Geometry gCorridor;
-    gCorridor.loadOBJ(applicationPath.dirPath() + "/assets/models/corridor.obj",
-        applicationPath.dirPath() + "/assets/models/corridor.mtl",true);
-
-    //CorridorHole
-    Geometry gCorridorHole;
-    gCorridorHole.loadOBJ(applicationPath.dirPath() + "/assets/models/corridor_hole.obj",
-        applicationPath.dirPath() + "/assets/models/corridor_hole.mtl",true);
-
-    //Corner
-    Geometry gCorner;
-    gCorner.loadOBJ(applicationPath.dirPath() + "/assets/models/corner.obj",
-        applicationPath.dirPath() + "/assets/models/corner.mtl",true);
-
-    //Player
-    Geometry gPlayer;
-    gPlayer.loadOBJ(applicationPath.dirPath() + "/assets/models/fauteuil.obj",
-        applicationPath.dirPath() + "/assets/models/pcfusee.mtl",true);
-
-    
-    //Chargement des sommets dans l'objet vbo, ibo et vao
-
-    VBO corridorVBO(0,gCorridor);
-    corridorVBO.sendData();
-
-    VBO corridorHoleVBO(0, gCorridorHole);
-    corridorHoleVBO.sendData();
-
-    VBO cornerVBO(0, gCorner);
-    cornerVBO.sendData();
-
-    VBO playerVBO(0,gPlayer);
-    playerVBO.sendData();
+    float positionOffSet = 18.f;
 
     // Application loop:
     bool done = false;
 
-    float positionOffSet = -20.f;
     float speedCamera = 100.0f;
     
     float balancement = 0.f;
@@ -142,18 +100,16 @@ int main (int argc, char** argv)
 
         }
         glm::mat4 tmpMatrix = glm::mat4();
-        eManager.handleEvent(&e, player, track);
+        gameManager.handleEvent(&e);
 
-        glm::mat4 trackMat = track.getViewMatrix();
+        glm::mat4 trackMat = gameManager.trackball().getViewMatrix();
         /*********************************
          * HERE SHOULD COME THE RENDERING CODE
          *********************************/
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        float speed = windowManager.getTime() * 10;
+        float speed = windowManager.getTime() * 0.0005;
         //std::cout << "time" << speed << std::endl;
-        std::cout << "posX : " << player.posX() << std::endl;
-        std::cout << "posY : " << player.posY() << std::endl;
         
         /*if (speed > 95 && turned == false)
         {
@@ -163,7 +119,7 @@ int main (int argc, char** argv)
 
         tmpMatrix = glm::translate(trackMat * globalMVMatrix, glm::vec3(0,-2,0));
         glm::mat4 matrixPlayer = tmpMatrix;
-
+/*
         if (balancement > 25.f || balancement < -25.f)
             balancementSpeed *= -1;
 
@@ -177,26 +133,56 @@ int main (int argc, char** argv)
         glUniformMatrix4fv(uMVPMatrix , 1, GL_FALSE, glm::value_ptr(ProjMatrix * matrixPlayer));
         playerVBO.draw();
         
-        tmpMatrix = glm::translate(trackMat * globalMVMatrix, glm::vec3(0,-4,0));
-        tmpMatrix = glm::translate(tmpMatrix, glm::vec3(0,0,speed));
+        for (int i = 0; i < sections.size(); ++i)
+        {   
+            sections[i]->goOn(-speed);
+            if (fabs(sections[i]->posZ()) < 6*positionOffSet)
+            {
+                std::cout << "rotateIndicator : " << drawer.rotateIndicator() << std::endl;
+                switch (drawer.rotateIndicator()) 
+                {
+                    case 0:
+                        tmpMatrix =  glm::translate(tmpMatrix  , glm::vec3(0, 0, -sections[i]->posZ()));
+                        break;
+                    case 1:
+                        tmpMatrix =  glm::translate(tmpMatrix  , glm::vec3(sections[5]->posZ(), 0, (i-5)*positionOffSet));
+                        break;
+                    default:
+                        break;
+                }
 
-        for (int i = 0; i < 5; ++i)
-        {
+                glUniformMatrix4fv(uMVMatrix , 1, GL_FALSE, glm::value_ptr(tmpMatrix));
+                glUniformMatrix4fv(uNormalMatrix , 1, GL_FALSE, glm::value_ptr(NormalMatrix));
+                glUniformMatrix4fv(uMVPMatrix , 1, GL_FALSE, glm::value_ptr(ProjMatrix * tmpMatrix));
 
-            glUniformMatrix4fv(uMVMatrix , 1, GL_FALSE, glm::value_ptr(tmpMatrix));
-            glUniformMatrix4fv(uNormalMatrix , 1, GL_FALSE, glm::value_ptr(NormalMatrix));
-            glUniformMatrix4fv(uMVPMatrix , 1, GL_FALSE, glm::value_ptr(ProjMatrix * tmpMatrix));
-            
-            corridorVBO.draw();
+                switch (drawer.rotateIndicator()) 
+                {
+                    case 0:
+                        tmpMatrix =  glm::translate(tmpMatrix  , glm::vec3(0, 0, sections[i]->posZ()));
+                        break;
+                    case 1:
+                        tmpMatrix =  glm::translate(tmpMatrix  , glm::vec3(-sections[5]->posZ(), 0, -(i-5)*positionOffSet));
+                        break;
+                    default:
+                        break;
+                }
+                
+                sections[i]->model()->vbo().draw();
 
-            tmpMatrix =  glm::translate(tmpMatrix  , glm::vec3(0, 0, positionOffSet));
+                if (sections[i]->isCorner())
+                {   
+                    std::cout << "cornerDirection : " << sections[i]->cornerDirection() << std::endl;
+                    tmpMatrix = glm::rotate(tmpMatrix, glm::radians(sections[i]->cornerDirection() * 90.f), glm::vec3(0,1,0));
+                    drawer.rotated(sections[i]->cornerDirection());
+                    std::cout << "rotateIndicator : " << drawer.rotateIndicator() << std::endl;
+                }
+            }
         }
-        
-        glUniformMatrix4fv(uMVMatrix , 1, GL_FALSE, glm::value_ptr(tmpMatrix));
-        glUniformMatrix4fv(uNormalMatrix , 1, GL_FALSE, glm::value_ptr(NormalMatrix));
-        glUniformMatrix4fv(uMVPMatrix , 1, GL_FALSE, glm::value_ptr(ProjMatrix * tmpMatrix));
+        tmpMatrix = glm::rotate(tmpMatrix, glm::radians(drawer.rotateIndicator() * 90.f), glm::vec3(0,-1,0));
+        drawer.rotated(-drawer.rotateIndicator());
 
-        cornerVBO.draw();
+*/
+        /*
 
 //////// AFTER CORNER 
 
@@ -220,21 +206,10 @@ int main (int argc, char** argv)
         corridorVBO.draw();
 
         tmpMatrix = glm::translate(tmpMatrix, glm::vec3(0, 0, positionOffSet)) ;
-
-
-////////////////////
-
-        
-        tmpMatrix = glm::translate(globalMVMatrix, glm::vec3(0,-4,0));
-        tmpMatrix = glm::rotate(tmpMatrix, glm::radians(90.f) , glm::vec3(0,1,0));
-        tmpMatrix = glm::translate(tmpMatrix, glm::vec3(0,0,-speed));
+*/
 
         windowManager.swapBuffers();
     }
-
-    corridorVBO.deleteBuf();
-    playerVBO.deleteBuf();
-    cornerVBO.deleteBuf();
 
     return EXIT_SUCCESS;
 }

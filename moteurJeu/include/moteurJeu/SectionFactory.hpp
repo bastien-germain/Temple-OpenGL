@@ -4,13 +4,18 @@
 
 #include <iostream>
 #include <string>
-#include <moteurJeu/Exception.hpp>
-#include <moteurJeu/CornerSection.hpp>
-#include <moteurJeu/CorridorSection.hpp>
-#include <moteurJeu/TSection.hpp>
-#include <moteurJeu/Hole.hpp>
-#include <moteurJeu/Rock.hpp>
-#include <moteurJeu/Barrier.hpp>
+
+#include "moteurRendu/ModelLoader.hpp"
+
+#include "moteurJeu/Exception.hpp"
+
+#include "moteurJeu/CornerSection.hpp"
+#include "moteurJeu/CorridorSection.hpp"
+#include "moteurJeu/TSection.hpp"
+
+#include "moteurJeu/Hole.hpp"
+#include "moteurJeu/Rock.hpp"
+#include "moteurJeu/Barrier.hpp"
 
 /// \class SectionFactory
 /// \brief Creates Section from input s
@@ -18,16 +23,21 @@ class SectionFactory
 {
 
 private:
- 	float _obstacleInitialPosZ;
+ 	float _sectionInitialPosZ;
+ 	ModelLoader _modelLoader;
 public:
+ 	Model _corridorModel;
+ 	Model _cornerModel;
+ 	Model _playerModel;
+
 	/// \brief Default constructor
-	SectionFactory(const float &obstacleInitialPosZ = 0.0);
+	SectionFactory(const float &sectionInitialPosZ = 0.0);
 
 	/// \brief Destructor
 	~SectionFactory();
 
-	inline const float obstacleInitialPosZ() const {
-		return _obstacleInitialPosZ;
+	inline const float sectionInitialPosZ() const {
+		return _sectionInitialPosZ;
 	}
 
 	Obstacle obstacleBuiler(const std::string &key, PositionObserver *observer) const;

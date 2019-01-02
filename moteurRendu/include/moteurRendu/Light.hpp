@@ -2,15 +2,15 @@
 #ifndef __LIGHT_HPP__
 #define __LIGHT_HPP__
 
-#include "VAO.hpp"
 #include <vector>
 #include <cstdlib>
+
 #include <GL/glew.h>
+
 #include "glimac/glm.hpp"
-#include "glimac/common.hpp"
-#include <glimac/Program.hpp>
-#include "moteurRendu/TrackballCamera.hpp"
-#include "../../moteurJeu/include/moteurJeu/Exception.hpp"
+#include "glimac/Program.hpp"
+
+#include "moteurJeu/Exception.hpp"
 
 
 
@@ -83,9 +83,10 @@ public:
 	void sendLightShader(Program &program, const std::string &lightRef) const;
 
 private:
-	LightProperties _properties;
+	static int _lightsCount;
+protected:
 	const int _id;
-	static int lightsCount;
+	LightProperties _properties;
 
 };
 

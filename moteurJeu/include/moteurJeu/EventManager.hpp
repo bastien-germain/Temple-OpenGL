@@ -2,11 +2,15 @@
 #ifndef _EVENT_MANAGER_HPP
 #define _EVENT_MANAGER_HPP
 
-#include <SDL/SDL.h>
-#include <glimac/glm.hpp>
 #include <iostream>
-#include "Player.hpp"
-	#include "../../moteurRendu/include/moteurRendu/TrackballCamera.hpp"
+
+#include <SDL/SDL.h>
+
+#include "glimac/glm.hpp"
+
+#include "moteurJeu/Player.hpp"
+
+#include "moteurRendu/TrackballCamera.hpp"
 
 
 class EventManager

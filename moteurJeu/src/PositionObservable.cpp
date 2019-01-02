@@ -1,4 +1,4 @@
-#include <moteurJeu/PositionObservable.hpp>
+#include "moteurJeu/PositionObservable.hpp"
 
 PositionObservable::PositionObservable() 
 {

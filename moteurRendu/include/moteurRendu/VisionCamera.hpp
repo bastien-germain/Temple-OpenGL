@@ -3,6 +3,7 @@
 #define __VISION_CAMERA_HPP__
 
 #include <SDL/SDL.h>
+
 #include "glimac/glm.hpp"
 
 class VisionCamera 

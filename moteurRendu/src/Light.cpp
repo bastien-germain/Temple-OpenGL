@@ -1,16 +1,16 @@
 #include "moteurRendu/Light.hpp"
 
-int Light::lightsCount = 0;
+int Light::_lightsCount = 0;
 
 Light::Light(const bool isPoint,
 		  const glm::vec3 &posOrDir,
 		  const glm::vec3 &Kd,
 		  const glm::vec3 &Ks,
 		  const float &shininess, 
-		  const glm::vec3 &lightIntensity) : _id(lightsCount)
+		  const glm::vec3 &lightIntensity) : _id(_lightsCount)
 {	
 	_properties = {isPoint, posOrDir, Kd, Ks, shininess, lightIntensity};
-	++lightsCount;
+	++_lightsCount;
 }
 		
 Light::~Light() 

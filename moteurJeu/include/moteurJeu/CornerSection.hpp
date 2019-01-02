@@ -2,8 +2,8 @@
 #ifndef __CORNER_SECTION_HPP__
 #define __CORNER_SECTION_HPP__
 
-#include "Section.hpp"
-#include "Exception.hpp"
+#include "moteurJeu/Section.hpp"
+#include "moteurJeu/Exception.hpp"
 
 /// \class CornerSection
 /// \brief specific type of Section in which the player need to go in a specific side (right or left)
@@ -17,7 +17,7 @@ public:
 	/// \param model : the Model used for the CornerSection
 	/// \param cornerDirection : the direction of the corner in the CornerSection (left = -1, right = 1)
 	/// \exceptions INVALID_VALUE_ERROR : the value of _cornerDirection needs to be set to -1 (left) or 1 (right)
-	CornerSection(const Model &model, const int &cornerDirection);
+	CornerSection(const Model *model, const int &cornerDirection, const float &posZ = 0.f);
 
 	/// \brief Copy constructor using another CornerSection
 	/// \param copied : the copied CornerSection
@@ -26,6 +26,10 @@ public:
 	/// \brief Destructor
 	~CornerSection();
 
+	inline unsigned int cornerDirection() const 
+	{
+		return _cornerDirection;
+	}
 };
 
 #endif

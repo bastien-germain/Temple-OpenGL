@@ -1,6 +1,7 @@
 #include "moteurJeu/EventManager.hpp"
 
-EventManager::EventManager() : _mouseButtonDown(false), _lastClickPosition(glm::vec2(0)), _mouseMotionDelta(glm::vec2(0)) 
+EventManager::EventManager() 
+    : _mouseButtonDown(false), _lastClickPosition(glm::vec2(0)), _mouseMotionDelta(glm::vec2(0))
 {
 }
 
@@ -26,9 +27,16 @@ void EventManager::handleEvent(SDL_Event *event, Player &player, TrackballCamera
                     if (!player._jumping && !player._landing)
                         player._jumping = true;
                     break;
+                 case SDLK_UP:
+                    if (!player._jumping && !player._landing)
+                        player._jumping = true;
+                    break;
 
                 // MOVE LEFT
                 case SDLK_q:
+                    player.goLeft();
+                    break;
+                case SDLK_LEFT:
                     player.goLeft();
                     break;
 
@@ -37,9 +45,16 @@ void EventManager::handleEvent(SDL_Event *event, Player &player, TrackballCamera
                     if (!player._bending && !player._landing)
                         player._bending = true;
                     break;
+                case SDLK_DOWN:
+                    if (!player._bending && !player._landing)
+                        player._bending = true;
+                    break;
 
                 // MOVE RIGHT
                 case SDLK_d:
+                    player.goRight();
+                    break;
+                case SDLK_RIGHT:
                     player.goRight();
                     break;
 
@@ -49,7 +64,7 @@ void EventManager::handleEvent(SDL_Event *event, Player &player, TrackballCamera
                     track.moveFront(track.smoothness());
                     break;
                 case SDLK_e: 
-                    track.moveFront(track.smoothness());
+                    track.moveFront(-track.smoothness());
                     break;
 
                 default:
@@ -84,6 +99,8 @@ void EventManager::handleEvent(SDL_Event *event, Player &player, TrackballCamera
     			_mouseMotionDelta.x = event->button.x - _lastClickPosition.x;
     			_mouseMotionDelta.y = event->button.y - _lastClickPosition.y;
     			std::cout << "mouseMotionDelta X : " << _mouseMotionDelta.x << " | mouseMotionDelta Y : " << _mouseMotionDelta.y << std::endl;
+                track.rotateLeft(track.smoothness() * _mouseMotionDelta.x);
+                track.rotateUp(track.smoothness() * _mouseMotionDelta.y);
     		}
     		break;
     }

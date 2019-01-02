@@ -8,7 +8,7 @@ Parser::~Parser()
 {
 }
 
-std::vector<std::string> Parser::parse(const char * filePath) const 
+std::vector<std::string> Parser::parse(const std::string &filePath) const 
 {
 
   std::cout << "FILE PARSING STARTS..." << std::endl;

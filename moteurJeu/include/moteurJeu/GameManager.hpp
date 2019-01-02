@@ -2,6 +2,9 @@
 #ifndef __GAME_MANAGER_HPP__
 #define __GAME_MANAGER_HPP__
 
+#include <vector>
+#include <algorithm>
+
 #include "moteurJeu/Game.hpp"
 #include "moteurJeu/Player.hpp"
 #include "moteurJeu/Enemy.hpp"
@@ -9,8 +12,11 @@
 #include "moteurJeu/PositionObserver.hpp"
 #include "moteurJeu/SectionFactory.hpp"
 #include "moteurJeu/Parser.hpp"
-#include <vector>
-#include <algorithm>
+#include "moteurJeu/EventManager.hpp"
+
+#include "moteurRendu/Drawer.hpp"
+#include "moteurRendu/TrackballCamera.hpp"
+
 
 
 /// \class GameManager
@@ -19,33 +25,57 @@ class GameManager : public PositionObserver
 {
 
 private:
-	const char * _sectionsDataFilePath = "../Temple-OpenGL/moteurJeu/sectionsData/sectionsData.txt";
+	const std::string _sectionsDataFilePath = "../Temple-OpenGL/app/assets/sectionsData/sectionsData.txt";
+	
 	Game _game;
 	Player _player;
 	Enemy _enemy;
-	Parser _parser; 
+	Parser _parser;
+	Drawer _drawer;
+	EventManager _eventManager;
+	TrackballCamera _trackball;
 	SectionFactory _factory;
+
 	std::vector<Section> _sectionVec;
 	std::vector<std::vector<Section>> _sectionMat;
 	
 public:
-	GameManager(const float &obstacleInitialPosZ = 0.0);
+	GameManager(const float &sectionInitialPosZ = 0.0, const float &trackballSmoothness = 0.002);
 	~GameManager();
 
-	inline Enemy enemy() const {
+	inline Enemy enemy() const 
+	{
 		return _enemy;
 	}
 
-	inline Player player() const {
+	inline Player player() const
+	{
 		return _player;
 	}
 
-	inline std::vector<std::vector<Section>> sectionMat() const {
+	inline std::vector<std::vector<Section>> sectionMat() const 
+	{
 		return _sectionMat;
 	}
 
-	inline Game game() const {
+	inline Game game() const 
+	{
 		return _game;
+	}
+
+	inline Drawer drawer() const 
+	{
+		return _drawer;
+	}
+
+	inline EventManager eventManager() const 
+	{
+		return _eventManager;
+	}
+
+	inline TrackballCamera trackball() const 
+	{
+		return _trackball;
 	}
 
 	/// \brief fill the section vector with returns from the factory
@@ -65,6 +95,10 @@ public:
 
 	/// \brief test end of game
 	bool isOver() const;
+
+	inline void handleEvent(SDL_Event *event) {
+		_eventManager.handleEvent(event, _player, _trackball);
+	}
 };
 
 #endif

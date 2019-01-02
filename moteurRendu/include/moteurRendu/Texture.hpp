@@ -2,30 +2,32 @@
 #ifndef __TEXTURE_HPP__
 #define __TEXTURE_HPP__
 
-
-
 #include <cstdlib>
-#include <glimac/Image.hpp>
-#include <GL/glew.h>
-#include "moteurRendu/ListTextures.hpp"
+#include <iostream>
 #include <memory>
 
+#include <GL/glew.h>
 
-#include <iostream>
+#include "glimac/Image.hpp"
+
+#include "moteurRendu/TextureManager.hpp"
+
+
 /// \class Texture
-/// \brief Contains the texture of one object, there is one link to the unique object ListTextures which contains all the textures Image
+/// \brief Contains the texture of one object, there is one link to the unique object TextureManager which contains all the textures Image
 class Texture
 {
 private:
 
 	unsigned int _id;
-	//Lien vers l'object unique de l'application ListTextures
-	ListTextures* _lText;
+	//Lien vers l'object unique de l'application TextureManager
+	TextureManager* _lText;
 
+	static unsigned int _nbTextures;
 
 public:
 	Texture();
-	Texture(unsigned int id, ListTextures &lText );
+	Texture(TextureManager &lText );
 
 	/// \param copied : the Texture to copy into the current object
 	Texture(const Texture &copied);

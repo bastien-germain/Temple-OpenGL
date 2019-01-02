@@ -1,9 +1,10 @@
 #include "moteurJeu/TSection.hpp"
 
-TSection::TSection(const Model &model) : Section(model)
+TSection::TSection(const Model *model, const float &posZ) : Section(model, posZ)
 {
 	_isT = true;
 	_isCorridor = false;
+	_isCorner = false;
 
 }
 

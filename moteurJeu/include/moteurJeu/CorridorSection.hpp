@@ -2,8 +2,8 @@
 #ifndef __CORRIDOR_SECTION_HPP__
 #define __CORRIDOR_SECTION_HPP__
 
-#include <moteurJeu/Section.hpp>
-#include <moteurJeu/Coin.hpp>
+#include "moteurJeu/Section.hpp"
+#include "moteurJeu/Coin.hpp"
 #include <vector>
 
 /// \class CorridorSection
@@ -17,7 +17,12 @@ public:
 	/// \brief Constructor from a position and size
 	/// \param model : the Model used for the CorridorSection
 	/// \param obstacle : the Obstacle present in the CorridorSection
-	CorridorSection(const Model &model, const Obstacle &obstacle);
+	CorridorSection(const Model *model, const float &posZ, const Obstacle &obstacle = Obstacle());
+
+	/// \brief Constructor from a position and size
+	/// \param model : the Model used for the CorridorSection
+	/// \param obstacle : the Obstacle present in the CorridorSection
+	CorridorSection(const Model *model, const Obstacle &obstacle = Obstacle(), const float &posZ = 0.f);
 
 	/// \brief Constructor from a position and size
 	/// \param model : the Model used for the CorridorSection
@@ -27,18 +32,21 @@ public:
 	/// \brief Destructor
 	~CorridorSection();
 	
-	inline CorridorSection &operator = (const CorridorSection &toAssign) {
-
+	inline CorridorSection &operator = (const CorridorSection &toAssign) 
+	{
 		if (&toAssign != this) 
 		{
 			_obstacle = toAssign._obstacle;
 			_coins = toAssign._coins;
 			_model = toAssign._model;
 		}
-
 		return *this;
-
 	}
+
+	inline unsigned int cornerDirection() const {
+		return 0;
+	}
+
 
 };
 

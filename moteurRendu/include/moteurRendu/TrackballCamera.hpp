@@ -3,6 +3,7 @@
 #define __TRACKBALL_CAMERA_HPP__
 
 #include <SDL/SDL.h>
+
 #include "glimac/glm.hpp"
 
 class TrackballCamera 
@@ -16,7 +17,7 @@ private:
 
 public:
 
-	TrackballCamera(const float &smoothness = 0.00005f);
+	TrackballCamera(const float &smoothness = 0.005f);
     ~TrackballCamera();
 
     void moveFront(float delta); // delta > 0 --> camera goes forward

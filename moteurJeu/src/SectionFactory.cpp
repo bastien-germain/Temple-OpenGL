@@ -1,7 +1,12 @@
-#include <moteurJeu/SectionFactory.hpp>
+#include "moteurJeu/SectionFactory.hpp"
 
-SectionFactory::SectionFactory(const float &obstacleInitialPosZ) : _obstacleInitialPosZ(obstacleInitialPosZ) 
+SectionFactory::SectionFactory(const float &sectionInitialPosZ) : 
+	_sectionInitialPosZ(sectionInitialPosZ),
+	_modelLoader(3)
 {
+	_corridorModel = _modelLoader.loadModel("corridor");
+	_cornerModel = _modelLoader.loadModel("corner");
+	_playerModel = _modelLoader.loadModel("player");
 }
 
 SectionFactory::~SectionFactory() 
@@ -49,32 +54,32 @@ Obstacle SectionFactory::obstacleBuiler(const std::string &key, PositionObserver
 		case 'h':
 		{
 			std::cout << "Simple Hole" << std::endl;
-			return Hole(observer, obstaclePosition, _obstacleInitialPosZ, 1);
+			return Hole(observer, obstaclePosition, _sectionInitialPosZ, 1);
 		}
 		case 'H':
 		{
 			std::cout << "Large Hole" << std::endl;
-			return Hole(observer, obstaclePosition, _obstacleInitialPosZ, 3);
+			return Hole(observer, obstaclePosition, _sectionInitialPosZ, 3);
 		}
 		case 'b':
 		{
 			std::cout << "Simple Barrier" << std::endl;
-			return Barrier(observer, obstaclePosition, _obstacleInitialPosZ, 1);
+			return Barrier(observer, obstaclePosition, _sectionInitialPosZ, 1);
 		}
 		case 'B':
 		{
 			std::cout << "Large Barrier" << std::endl;
-			return Barrier(observer, obstaclePosition,_obstacleInitialPosZ, 3);
+			return Barrier(observer, obstaclePosition,_sectionInitialPosZ, 3);
 		}
 		case 'r':
 		{
 			std::cout << "Simple Rock" << std::endl;
-			return Rock(observer, obstaclePosition,_obstacleInitialPosZ, 1);
+			return Rock(observer, obstaclePosition,_sectionInitialPosZ, 1);
 		}
 		case 'R':
 		{
 			std::cout << "Large Rock" << std::endl;
-			return Rock(observer, obstaclePosition, _obstacleInitialPosZ, 3);
+			return Rock(observer, obstaclePosition, _sectionInitialPosZ, 3);
 		}
 		default:
 			THROW_EXCEPTION("FILE_READING_ERROR : Parser --> Invalid character for Obstacle describing");
@@ -87,8 +92,6 @@ Obstacle SectionFactory::obstacleBuiler(const std::string &key, PositionObserver
 Section SectionFactory::create(const std::string &key, PositionObserver *observer) const 
 {
 	std::cout << "SECTION_FACTORY.CREATE STARTS..." << std::endl;
-
-	Model model;
 		
 	std::cout << key << std::endl;
 
@@ -100,26 +103,28 @@ Section SectionFactory::create(const std::string &key, PositionObserver *observe
 			Obstacle obstacle(obstacleBuiler(key, observer));
 			std::cout << "SECTION_FACTORY.CREATE OBSTALCE_SIZE : " << obstacle.size() << "\n\n\n" << std::endl;
 			std::cout << "SECTION_FACTORY.CREATE ENDS" << "\n\n\n" << std::endl;
-			return CorridorSection(model, obstacle);
+			return CorridorSection(&_corridorModel, obstacle);
 		}
 		case 'J':
 		{
 			std::cout << "Left CornerSection" << std::endl;
 			std::cout << "SECTION_FACTORY.CREATE ENDS" << "\n\n\n" << std::endl;
-			return CornerSection(model, -1);
+			return CornerSection(&_cornerModel, -1);
 		}
 		case 'L':
 		{
 			std::cout << "Right CornerSection" << std::endl;
 			std::cout << "SECTION_FACTORY.CREATE ENDS" << "\n\n\n" << std::endl;
-			return CornerSection(model, 1);
+			return CornerSection(&_cornerModel, 1);
 		}
+		/*
 		case 'T':
 		{
 			std::cout << "TSection" << std::endl;
 			std::cout << "SECTION_FACTORY.CREATE ENDS" << "\n\n\n" << std::endl;
 			return TSection(model);
-		}	
+		}
+		*/	
 		default:
 			THROW_EXCEPTION("FILE_READING_ERROR : Parser --> Invalid character for Section describing");
 		break;

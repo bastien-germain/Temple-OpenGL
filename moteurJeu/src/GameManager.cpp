@@ -1,6 +1,9 @@
 #include "moteurJeu/GameManager.hpp"
 
-GameManager::GameManager(const float &obstacleInitialPosZ) : _player(Player()), _enemy(Enemy()), _parser(Parser()), _game(Game()), _factory(obstacleInitialPosZ)
+GameManager::GameManager(const float &sectionInitialPosZ, const float &trackballSmoothness) 
+	: _player(Player()), _enemy(Enemy()), _parser(Parser()), 
+	_game(Game()), _factory(sectionInitialPosZ), _drawer(Drawer()),
+	_eventManager(EventManager()), _trackball(TrackballCamera(trackballSmoothness))
 {
 	for (unsigned int i = 0; i < 3; i++)
  	{	
@@ -13,14 +16,6 @@ GameManager::~GameManager()
 {
 
 }
-
-/*
-void GameManager::fillSectionVec(const Section &newSec)
-{	
-	
-	_sectionVec.push_back(newSec);
-}
-*/
 
 void GameManager::fillSectionVec(std::vector<std::string> &sectionDataStrings)
 {	

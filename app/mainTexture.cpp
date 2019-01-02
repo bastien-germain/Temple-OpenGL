@@ -7,7 +7,7 @@
 #include <cstdlib>
 #include <iostream>
 #include "moteurRendu/Texture.hpp"
-#include "moteurRendu/ListTextures.hpp"
+#include "moteurRendu/TextureManager.hpp"
 #include "moteurRendu/TrackballCamera.hpp"
 #include "moteurRendu/VBO.hpp"
 #include "moteurRendu/VAO.hpp"
@@ -59,7 +59,7 @@ int main(int argc, char** argv) {
 
     glEnable(GL_DEPTH_TEST);
 
-    ListTextures textureManager(50);
+    TextureManager textureManager(50);
     // std::unique_ptr<Image> earth = loadImage(applicationPath.dirPath() + "../../GLImac-Template/assets/textures/EarthMap.jpg");
     Image* earth = ImageManager::loadImage(applicationPath.dirPath() + "/assets/models/cr.png");
     if(earth == NULL) {
@@ -67,8 +67,8 @@ int main(int argc, char** argv) {
     }
 
 
-    textureManager.addTexture( earth);
-    Texture t(0,textureManager);
+    textureManager.addTexture(*earth);
+    Texture t(textureManager);
 
     std::cout << "OpenGL Version : " << glGetString(GL_VERSION) << std::endl;
     std::cout << "GLEW Version : " << glewGetString(GLEW_VERSION) << std::endl;

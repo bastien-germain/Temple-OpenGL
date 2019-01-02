@@ -2,19 +2,24 @@
 #ifndef __VBO_HPP__
 #define __VBO_HPP__
 
-#include "VAO.hpp"
-#include "IBO.hpp"
-#include "VBO.hpp"
-#include "Light.hpp"
-#include "Texture.hpp"
-#include "TrackballCamera.hpp"
 #include <vector>
 #include <cstdlib>
 #include <string>
+
 #include <GL/glew.h>
+
 #include "glimac/glm.hpp"
 #include "glimac/common.hpp"
 #include "glimac/Geometry.hpp"
+
+#include "moteurRendu/VAO.hpp"
+#include "moteurRendu/IBO.hpp"
+#include "moteurRendu/VBO.hpp"
+#include "moteurRendu/Light.hpp"
+#include "moteurRendu/Texture.hpp"
+#include "moteurRendu/TrackballCamera.hpp"
+
+using namespace glimac;
 
 /// \class VBO
 /// \brief Contain the vertices of an object
@@ -25,7 +30,7 @@ private:
 	GLuint _id;
 	VAO _vao;
 	IBO _ibo;
-	glimac::Geometry _geo;
+	Geometry _geo;
 	size_t _nbVertices;
 	std::vector<glimac::ShapeVertex> _vertices;
 
@@ -35,11 +40,11 @@ public:
 	VBO();
 	/// \param vertices: Vector of a structure containing vertex, normal, texture
 	//NE sert pas 
-	VBO(const std::vector<glimac::ShapeVertex> &vertices, const GLuint &id, const size_t size, const uint32_t* indexes, const glimac::Geometry g);
+	VBO(const std::vector<ShapeVertex> &vertices, const GLuint &id, const size_t size, const uint32_t* indexes, const Geometry g);
 
 
 	//A utiliser pour afficher les obj
-	VBO(const GLuint &id,const glimac::Geometry &g);
+	VBO(const GLuint &id,const Geometry &g);
 
 	/// \param copied : The VBO to copy into the current object
 	VBO(const VBO &copied);
@@ -49,7 +54,6 @@ public:
 
 	/// \brief Allows to bind the buffer array
 	void bind() const;
-
 
 
 	inline VAO vao() const
@@ -62,8 +66,14 @@ public:
 		return _ibo;
 	}
 
-	inline glimac::Geometry geometry() const {
+	inline Geometry geometry() const 
+	{
 		return _geo;
+	}
+
+	inline size_t nbVertices() const  
+	{
+		return _nbVertices;
 	}
 
 	/// \brief  Unbinds the buffer
