@@ -22,7 +22,6 @@ private:
 	
 public:
 	VAO();
-	VAO(const GLuint &id);
 	~VAO();
 
 	/// \brief Gives spefications for the buffer
@@ -32,6 +31,11 @@ public:
 	void debind() const;
 	void bind() const;
 	void deleteBuf() const;
+
+	inline GLuint id() const 
+	{
+		return _id;
+	}
 
 };
 

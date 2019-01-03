@@ -1,19 +1,24 @@
-#include "moteurJeu/SectionFactory.hpp"
+#include "moteurJeu/Factory.hpp"
 
-SectionFactory::SectionFactory(const float &sectionInitialPosZ) : 
+Factory::Factory(const float &sectionInitialPosZ) : 
 	_sectionInitialPosZ(sectionInitialPosZ),
 	_modelLoader(3)
 {
+	std::cout << "Factory const" << std::endl;
 	_corridorModel = _modelLoader.loadModel("corridor");
 	_cornerModel = _modelLoader.loadModel("corner");
 	_playerModel = _modelLoader.loadModel("player");
+
+	std::cout << "player ibo size in fact" << _playerModel.vbo().ibo().size() << std::endl;
+	std::cout << "corner ibo size in fact" << _cornerModel.vbo().ibo().size() << std::endl;
+	std::cout << "corridor ibo size in fact" << _corridorModel.vbo().ibo().size() << std::endl;
 }
 
-SectionFactory::~SectionFactory() 
+Factory::~Factory() 
 {
 }
 
-Obstacle SectionFactory::obstacleBuiler(const std::string &key, PositionObserver *observer) const {
+Obstacle Factory::obstacleBuiler(const std::string &key, PositionObserver *observer) const {
 
 	std::cout << "SECTION_FACTORY.OBSTALCE_BUILDER STARTS..." << std::endl;
 	unsigned int obstaclePosition;
@@ -89,7 +94,7 @@ Obstacle SectionFactory::obstacleBuiler(const std::string &key, PositionObserver
 
 }
 
-Section SectionFactory::create(const std::string &key, PositionObserver *observer) const 
+Section Factory::create(const std::string &key, PositionObserver *observer) const 
 {
 	std::cout << "SECTION_FACTORY.CREATE STARTS..." << std::endl;
 		
@@ -129,4 +134,11 @@ Section SectionFactory::create(const std::string &key, PositionObserver *observe
 			THROW_EXCEPTION("FILE_READING_ERROR : Parser --> Invalid character for Section describing");
 		break;
 	}
+}
+
+void Factory::deleteModelBuffers() 
+{
+	_cornerModel.vbo().deleteBuf();
+	_corridorModel.vbo().deleteBuf();
+	_playerModel.vbo().deleteBuf();
 }

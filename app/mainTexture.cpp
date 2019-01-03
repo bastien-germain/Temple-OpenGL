@@ -106,11 +106,11 @@ int main(int argc, char** argv) {
 
     
     //Chargement des sommets dans l'objet vbo, ibo et vao
-    VBO corridor(0,gCorridor);
+    VBO corridor(gCorridor);
     //Envoi à la carte graphique
     corridor.sendData();
 
-    VBO corridorHole(0, gCorridorHole);
+    VBO corridorHole(gCorridorHole);
     corridorHole.sendData();
 
     

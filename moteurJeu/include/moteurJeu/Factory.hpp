@@ -1,6 +1,6 @@
 #pragma once
-#ifndef __SECTION_FACTORY_HPP__
-#define __SECTION_FACTORY_HPP__
+#ifndef __FACTORY_HPP__
+#define __FACTORY_HPP__
 
 #include <iostream>
 #include <string>
@@ -17,9 +17,9 @@
 #include "moteurJeu/Rock.hpp"
 #include "moteurJeu/Barrier.hpp"
 
-/// \class SectionFactory
-/// \brief Creates Section from input s
-class SectionFactory 
+/// \class Factory
+/// \brief Creates Section from input string
+class Factory 
 {
 
 private:
@@ -31,12 +31,13 @@ public:
  	Model _playerModel;
 
 	/// \brief Default constructor
-	SectionFactory(const float &sectionInitialPosZ = 0.0);
+	Factory(const float &sectionInitialPosZ = 0.0);
 
 	/// \brief Destructor
-	~SectionFactory();
+	~Factory();
 
-	inline const float sectionInitialPosZ() const {
+	inline const float sectionInitialPosZ() const 
+	{
 		return _sectionInitialPosZ;
 	}
 
@@ -45,6 +46,12 @@ public:
 	/// \brief 
 	Section create(const std::string &key, PositionObserver *observer) const;
 
+	void deleteModelBuffers();
+
+	inline Model *playerModel() 
+	{
+		return &_playerModel;
+	}
 };
 
 #endif

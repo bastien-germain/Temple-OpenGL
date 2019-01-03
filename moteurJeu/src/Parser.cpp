@@ -30,6 +30,6 @@ std::vector<std::string> Parser::parse(const std::string &filePath) const
       return out;
     }
 
-  else THROW_EXCEPTION("FILE_OPENING_ERROR : Check file name"); 
+    else THROW_EXCEPTION("FILE_OPENING_ERROR : Check file name"); 
   
 }

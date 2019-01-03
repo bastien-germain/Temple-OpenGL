@@ -4,6 +4,9 @@
 
 #include <cmath>
 
+#include "moteurRendu/ModelLoader.hpp"
+#include "moteurJeu/Factory.hpp"
+
 #define REGULAR_X 0.f
 #define MAX_X (REGULAR_X + 2)
 #define MIN_X (REGULAR_X - 2)
@@ -25,7 +28,7 @@ private:
 	float _posX; // -1 : left; 0 : middle; 1: right
 	float _posY; // -1 : down; 0 : regular; 1: up
 	float _posZ; // position of the player, to which the obstacle posZ will be compared
-	
+	Model *_model;
 public:
 	bool _jumping;
 	bool _bending;
@@ -58,6 +61,15 @@ public:
 	inline float posY() const 
 	{
 		return _posY;
+	}
+
+	inline Model *model() const 
+	{
+		return _model;
+	}
+
+	inline void model(Model *model) {
+		_model = model;
 	}
 
 };

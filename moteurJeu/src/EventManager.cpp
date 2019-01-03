@@ -11,8 +11,6 @@ EventManager::~EventManager()
 
 void EventManager::handleEvent(SDL_Event *event, Player &player, TrackballCamera &track)
 {
-    std::cout << "handleEvent()" << std::endl;
-
     switch (event->type)
     {
         case SDL_QUIT:

@@ -170,7 +170,7 @@ int main(int argc, char** argv) {
 
     
     //Chargement des sommets dans l'objet vbo, ibo et vao
-    VBO triangle(0,g);
+    VBO triangle(g);
     //Envoi à la carte graphique
     triangle.sendData();
 

@@ -40,11 +40,11 @@ public:
 	VBO();
 	/// \param vertices: Vector of a structure containing vertex, normal, texture
 	//NE sert pas 
-	VBO(const std::vector<ShapeVertex> &vertices, const GLuint &id, const size_t size, const uint32_t* indexes, const Geometry g);
+	VBO(const std::vector<ShapeVertex> &vertices, const size_t size, const uint32_t* indexes, const Geometry g);
 
 
 	//A utiliser pour afficher les obj
-	VBO(const GLuint &id,const Geometry &g);
+	VBO(const Geometry &g);
 
 	/// \param copied : The VBO to copy into the current object
 	VBO(const VBO &copied);
@@ -76,6 +76,10 @@ public:
 		return _nbVertices;
 	}
 
+	inline GLuint id() const 
+	{
+		return _id;
+	}
 	/// \brief  Unbinds the buffer
 	void debind() const;
 

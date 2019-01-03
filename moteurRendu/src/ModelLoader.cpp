@@ -21,7 +21,7 @@ const VBO ModelLoader::loadVBO(std::string modelName) const
     if (!geometry.loadOBJ(_modelsPath + (modelName + ".obj").c_str(), _modelsPath + (modelName + ".mtl" ).c_str() ))
         THROW_EXCEPTION("ERROR WHILE LOADING OBJ : MAKE SURE THE MODEL NAME CORRESPONDS TO OBJ AND MTL FILES NAMES");
 
-    return VBO(0, geometry);
+    return VBO(geometry);
 }
 
 const Texture ModelLoader::loadTexture( std::string modelName)

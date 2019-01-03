@@ -23,12 +23,11 @@ int main (int argc, char** argv)
 {
      // Initialize SDL and open a window
     SDLWindowManager windowManager(800, 800, "GLImac");
-
-    GameManager gameManager;
-    SDL_Event e;
-    
     // Initialize glew for OpenGL3+ support
     GLenum glewInitError = glewInit();
+
+    SDL_Event e;
+    
     if (GLEW_OK != glewInitError) 
     {
         std::cerr << glewGetErrorString(glewInitError) << std::endl;
@@ -40,11 +39,8 @@ int main (int argc, char** argv)
     Program program = loadProgram(applicationPath.dirPath() + "shaders/3D.vs.glsl", applicationPath.dirPath() + "shaders/multiLights.fs.glsl");
     program.use();
 
-    GLint uMVMatrix = glGetUniformLocation(program.getGLId(), "uMVMatrix");
-    GLint uMVPMatrix = glGetUniformLocation(program.getGLId(), "uMVPMatrix");
-    GLint uNormalMatrix = glGetUniformLocation(program.getGLId(), "uNormalMatrix");
-    GLint uTexture = glGetUniformLocation(program.getGLId(), "uTexture");
-
+    GameManager gameManager(program);
+    
     glEnable(GL_DEPTH_TEST);
 
     std::cout << "OpenGL Version : " << glGetString(GL_VERSION) << std::endl;

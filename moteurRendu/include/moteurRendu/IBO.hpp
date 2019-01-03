@@ -5,6 +5,7 @@
 
 #include <vector>
 #include <cstdlib>
+#include <iostream>
 
 #include <GL/glew.h>
 
@@ -28,9 +29,9 @@ public:
 	IBO();
 	/// \param vertices: Vector of a structure containing vertex, normal, texture
 
-	IBO(const size_t &size, const GLuint &id);
+	IBO(const size_t &size);
 
-	IBO(const size_t &size, const unsigned int* index, const GLuint &id);
+	IBO(const size_t &size, const unsigned int* index);
 
 	/// \param copied : The VBO to copy into the current object
 	IBO(const IBO &copied);

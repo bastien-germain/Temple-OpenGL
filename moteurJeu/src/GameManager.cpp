@@ -1,13 +1,18 @@
 #include "moteurJeu/GameManager.hpp"
 
-GameManager::GameManager(const float &sectionInitialPosZ, const float &trackballSmoothness) 
-	: _player(Player()), _enemy(Enemy()), _parser(Parser()), 
-	_game(Game()), _factory(sectionInitialPosZ), _drawer(Drawer()),
-	_eventManager(EventManager()), _trackball(TrackballCamera(trackballSmoothness))
+GameManager::GameManager(const Program &program ,const float &sectionInitialPosZ, const float &trackballSmoothness) 
+	: _enemy(Enemy()), _parser(Parser()), _game(Game()), 
+	_factory(sectionInitialPosZ), _drawer(Drawer(program)),
+	_eventManager(EventManager()), _player(Player()),
+	_trackball(TrackballCamera(trackballSmoothness))
+
 {
+	std::cout << "GM const" << std::endl;
+	_player.model(_factory.playerModel());
+
 	for (unsigned int i = 0; i < 3; i++)
  	{	
-	 	std::vector<Section> temp;
+	 	std::vector<Section*> temp;
 	 	_sectionMat.push_back(temp);
 	}
 }
@@ -45,7 +50,7 @@ void GameManager::fillSectionMat()
 	
 	for (unsigned int i = 0; i < _sectionVec.size(); i++) 
 	{
-		_sectionMat[0].push_back(_sectionVec[i]);
+		_sectionMat[0].push_back(&_sectionVec[i]);
 		std::cout << "\n SectionMat 0 size " <<_sectionMat[0].size() << "\n" << std::endl;
 
 		if (_sectionVec[i].isT())
@@ -56,13 +61,13 @@ void GameManager::fillSectionMat()
 
 			// On passe les 3 d'après à la deuxième ligne (côté gauche)
 			for (unsigned int j = i + 1; j < i + 4; j++)
-				_sectionMat[1].push_back(_sectionVec[j]);
+				_sectionMat[1].push_back(&_sectionVec[j]);
 
 			i+=3;
 
 			// On passe les 3 encore d'après à la troisième ligne (côté droit)
 			for (unsigned int j = i + 1; j < i + 4; j++)
-				_sectionMat[2].push_back(_sectionVec[j]);
+				_sectionMat[2].push_back(&_sectionVec[j]);
 
 			i+=3;
 

@@ -2,8 +2,8 @@
 #ifndef __LIGHTING_MODEL_HPP__
 #define __LIGHTING_MODEL_HPP__
 
-#include "../../moteurRendu/include/moteurRendu/Light.hpp"
-#include "Model.hpp"
+#include "moteurRendu/Light.hpp"
+#include "moteurRendu/Model.hpp"
 
 /// \class LightingModel
 /// \brief Class defining a LightingModel : inherits Model

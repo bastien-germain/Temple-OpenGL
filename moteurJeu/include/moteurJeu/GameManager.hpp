@@ -10,7 +10,7 @@
 #include "moteurJeu/Enemy.hpp"
 #include "moteurJeu/Section.hpp"
 #include "moteurJeu/PositionObserver.hpp"
-#include "moteurJeu/SectionFactory.hpp"
+#include "moteurJeu/Factory.hpp"
 #include "moteurJeu/Parser.hpp"
 #include "moteurJeu/EventManager.hpp"
 
@@ -34,13 +34,13 @@ private:
 	Drawer _drawer;
 	EventManager _eventManager;
 	TrackballCamera _trackball;
-	SectionFactory _factory;
+	Factory _factory;
 
 	std::vector<Section> _sectionVec;
-	std::vector<std::vector<Section>> _sectionMat;
+	std::vector<std::vector<Section*>> _sectionMat;
 	
 public:
-	GameManager(const float &sectionInitialPosZ = 0.0, const float &trackballSmoothness = 0.002);
+	GameManager(const Program &program, const float &sectionInitialPosZ = 0.0, const float &trackballSmoothness = 0.002);
 	~GameManager();
 
 	inline Enemy enemy() const 
@@ -53,7 +53,7 @@ public:
 		return _player;
 	}
 
-	inline std::vector<std::vector<Section>> sectionMat() const 
+	inline std::vector<std::vector<Section*>> sectionMat() const
 	{
 		return _sectionMat;
 	}
@@ -96,8 +96,13 @@ public:
 	/// \brief test end of game
 	bool isOver() const;
 
-	inline void handleEvent(SDL_Event *event) {
+	inline void handleEvent(SDL_Event *event) 
+	{
 		_eventManager.handleEvent(event, _player, _trackball);
+	}
+
+	inline void deleteModelBuffers() {
+		_factory.deleteModelBuffers();
 	}
 };
 

@@ -33,9 +33,9 @@ public:
 	/// \brief Destructor
 	~ModelLoader();
 
-	const Model loadModel( std::string modelName);
+	const Model loadModel(std::string modelName);
 
-	const VBO loadVBO( std::string modelName) const;
+	const VBO loadVBO(std::string modelName) const;
 
 	const Texture loadTexture(std::string modelName);
 

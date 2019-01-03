@@ -3,6 +3,7 @@
 
 int main(int argc, char const *argv[])
 {	
+	/*
 	std::cout << std::endl;
 	GameManager gameManager;
 	gameManager.loadSections();
@@ -32,6 +33,6 @@ int main(int argc, char const *argv[])
 		}
 	}
 
-
+*/
 	return 0;
 }
