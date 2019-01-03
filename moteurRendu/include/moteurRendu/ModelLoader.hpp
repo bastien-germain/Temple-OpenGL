@@ -5,6 +5,8 @@
 #include "glimac/FilePath.hpp"
 #include "glimac/Image.hpp"
 #include "glimac/Geometry.hpp"
+#include <cstdlib>
+#include <string>
 
 #include "moteurRendu/Model.hpp"
 #include "moteurRendu/TextureManager.hpp"
@@ -31,11 +33,11 @@ public:
 	/// \brief Destructor
 	~ModelLoader();
 
-	const Model loadModel(const char* modelName);
+	const Model loadModel( std::string modelName);
 
-	const VBO loadVBO(const char* modelName) const;
+	const VBO loadVBO( std::string modelName) const;
 
-	const Texture loadTexture(const char* modelName);
+	const Texture loadTexture(std::string modelName);
 
 };
 
