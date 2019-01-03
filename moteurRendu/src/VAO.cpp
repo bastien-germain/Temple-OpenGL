@@ -2,9 +2,7 @@
 
 VAO::VAO(): _VERTEX_POSITION(0), _VERTEX_NORMAL(1), _VERTEX_TEXTURE(2)
 {
-	std::cout << "vao construct" << std::endl;
 	glGenVertexArrays(1,&_id);
-	std::cout << _id << std::endl;
 }
 
 VAO::~VAO()

@@ -14,12 +14,8 @@ VBO::VBO(const Geometry &g) : _nbVertices(g.getVertexCount()), _geo(g)
         _vertices.push_back(g.getVertexBuffer()[i]);
     }
 	glGenBuffers(1,&_id);
-	std::cout << "vbo id in vbo const : " << _id << std::endl;
 	_vao = VAO();
-	std::cout << "vao id in vbo constr : " << _vao.id() << std::endl;
 	_ibo = IBO(g.getIndexCount(), g.getIndexBuffer());
-	std::cout << "ibo id in vbo constr : " << _ibo.id() << std::endl;
-	std::cout << "ibo size in vbo constr : " << _ibo.size() << std::endl;
 }
 
 VBO::VBO(const VBO &copied) 
@@ -76,8 +72,6 @@ void VBO::draw() const
 {
     // glDrawElements(GL_TRIANGLES, _geo.getIndexCount(), GL_UNSIGNED_INT, 0);
 	_vao.bind();
-	std::cout << "draw" << "vao id : " << _vao.id() << " | vbo id : " << _id << std::endl;
-	std::cout << "draw" << "ibo size : " << _ibo.size() << std::endl;
     glDrawElements(GL_TRIANGLES, _ibo.size(), GL_UNSIGNED_INT, 0);
 	_vao.debind();
 }

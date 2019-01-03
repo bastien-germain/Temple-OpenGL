@@ -4,14 +4,12 @@ Factory::Factory(const float &sectionInitialPosZ) :
 	_sectionInitialPosZ(sectionInitialPosZ),
 	_modelLoader(3)
 {
-	std::cout << "Factory const" << std::endl;
 	_corridorModel = _modelLoader.loadModel("corridor");
+	_corridorModel.vbo().sendData();
 	_cornerModel = _modelLoader.loadModel("corner");
+	_cornerModel.vbo().sendData();
 	_playerModel = _modelLoader.loadModel("player");
-
-	std::cout << "player ibo size in fact" << _playerModel.vbo().ibo().size() << std::endl;
-	std::cout << "corner ibo size in fact" << _cornerModel.vbo().ibo().size() << std::endl;
-	std::cout << "corridor ibo size in fact" << _corridorModel.vbo().ibo().size() << std::endl;
+	_playerModel.vbo().sendData();
 }
 
 Factory::~Factory() 

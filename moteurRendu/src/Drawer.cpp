@@ -20,14 +20,8 @@ void Drawer::draw(const float &time, const std::vector<std::vector<Section*>> &s
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	std::cout << "draw()" << std::endl;
 	for (int i = 0; i < sectionMat[0].size(); ++i)
 	{
-		std::cout << sectionMat[0][i]->isCorner() << std::endl;
-		std::cout << sectionMat[0][i]->isT() << std::endl;
-		std::cout << sectionMat[0][i]->isCorridor() << std::endl;
-		std::cout << sectionMat[0][i]->posZ() << std::endl;
-		std::cout << "mat0 size " << sectionMat[0].size() << std::endl;
 		_sections.push_back(sectionMat[0][i]);
 	}
 
@@ -58,7 +52,6 @@ void Drawer::draw(const float &time, const std::vector<std::vector<Section*>> &s
     glUniformMatrix4fv(_uNormalMatrix , 1, GL_FALSE, glm::value_ptr(_normalMatrix));
     glUniformMatrix4fv(_uMVPMatrix , 1, GL_FALSE, glm::value_ptr(_projMatrix * _playerMatrix));
     
-    std::cout << "drawer draw playe model id" << player.model()->vbo().id() << std::endl;;
     player.model()->vbo().draw();
     ////////////////////////////////////////
 
@@ -95,9 +88,7 @@ void Drawer::draw(const float &time, const std::vector<std::vector<Section*>> &s
                 default:
                     break;
             }
-            std::cout << "before drawing section" << std::endl;
             _sections[i]->model()->vbo().draw();
-            std::cout << "after drawing section" << std::endl;
 
             if (_sections[i]->isCorner())
             {   
