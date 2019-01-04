@@ -6,8 +6,7 @@
 #define WIN_HEIGHT 800
 
 #include <GL/glew.h>
-#include <SDL/SDL.h>
- #include <SDL/SDL_ttf.h>
+#include "moteurJeu/Button.hpp"
 
 
 /// \class Menu
@@ -16,22 +15,13 @@ class Menu
 {
 
 private:
-	bool _visible;
+	void drawButtons();
 
 public:
 	Menu();
 	~Menu();
 
-	inline bool visible() const
-	{
-		return _visible;
-	}
-
-	void show();
-	void hide();
-
-	void draw();
-    void drawButtons();
+	void draw();    
 };
 
 #endif
