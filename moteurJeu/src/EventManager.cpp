@@ -58,7 +58,6 @@ void EventManager::handleEvent(SDL_Event *event, Player &player, TrackballCamera
 
                 // ZOOM
                 case SDLK_a:
-                    std::cout << "track move front" << std::endl;
                     track.moveFront(track.smoothness());
                     break;
                 case SDLK_e: 
@@ -80,7 +79,6 @@ void EventManager::handleEvent(SDL_Event *event, Player &player, TrackballCamera
 	    		_mouseButtonDown = true;
 	    		_lastClickPosition = glm::vec2(event->button.x, event->button.y);
     		}
-	    	std::cout << _mouseButtonDown << std::endl;
     		break;
 
     	case SDL_MOUSEBUTTONUP:
@@ -96,7 +94,6 @@ void EventManager::handleEvent(SDL_Event *event, Player &player, TrackballCamera
     		{
     			_mouseMotionDelta.x = event->button.x - _lastClickPosition.x;
     			_mouseMotionDelta.y = event->button.y - _lastClickPosition.y;
-    			std::cout << "mouseMotionDelta X : " << _mouseMotionDelta.x << " | mouseMotionDelta Y : " << _mouseMotionDelta.y << std::endl;
                 track.rotateLeft(track.smoothness() * _mouseMotionDelta.x);
                 track.rotateUp(track.smoothness() * _mouseMotionDelta.y);
     		}

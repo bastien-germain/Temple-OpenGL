@@ -18,7 +18,7 @@ private:
 	std::vector<Coin> _coins;
 
 	const unsigned int _type; /*! 0 : corridor, 1 : corner, 2 : T */
-	const unsigned int _cornerDirection; /*! -1 : left, 0 : not a corner, 1 : right */
+	const int _cornerDirection; /*! -1 : left, 0 : not a corner, 1 : right */
 
 	float _posZ;
 
@@ -34,22 +34,9 @@ public:
 	Section(
 		const Model *model, 
 		const unsigned int type, 
-		const unsigned int cornerDirection, 
+		const int cornerDirection, 
 		const float &posZ, 
 		const Obstacle &obstacle = Obstacle()
-		);
-
-	/// \brief Constructor from a model and position
-	/// \param model : the model used for the Section
-	/// \param type : the type used for the Section
-	/// \param obstacle : the obstacle of the Section
-	/// \param posZ : the initial position of the Section
-	Section(
-		const Model *model, 
-		const unsigned int type = 0, 
-		const unsigned int cornerDirection = 0, 
-		const Obstacle &obstacle = Obstacle(), 
-		const float &posZ = 0.f
 		);
 
 	/// \brief Copy constructor
@@ -95,7 +82,7 @@ public:
 		_posZ += delta;
 	}
 
-	inline unsigned int cornerDirection() const 
+	inline int cornerDirection() const 
 	{
 		return _cornerDirection;
 	}

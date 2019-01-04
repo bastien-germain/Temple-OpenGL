@@ -10,9 +10,6 @@ Parser::~Parser()
 
 std::vector<std::string> Parser::parse(const std::string &filePath) const 
 {
-
-  std::cout << "FILE PARSING STARTS..." << std::endl;
-
   std::vector<std::string> out;
   std::string line;
 
@@ -26,7 +23,6 @@ std::vector<std::string> Parser::parse(const std::string &filePath) const
   
       }
       file.close();
-      std::cout << "FILE PARSING ENDS" << std::endl;
       return out;
     }
 

@@ -8,6 +8,13 @@ Player::Player()
 {
 }
 
+Player::Player(const Player &copied) 
+	: _posX(copied._posX), _posY(copied._posY), _posZ(copied._posZ),
+	_jumping(copied._jumping), _landing(copied._landing), _bending(copied._bending), 
+	_model(copied._model)
+{
+}
+
 Player::~Player() 
 {
 }

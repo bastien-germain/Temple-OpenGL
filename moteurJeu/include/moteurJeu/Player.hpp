@@ -37,6 +37,8 @@ public:
 	/// \brief Constructor
 	Player();
 
+	Player(const Player &copied);
+
 	/// \brief Destructor
 	~Player();
 

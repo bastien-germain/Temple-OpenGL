@@ -16,15 +16,9 @@ Drawer::~Drawer()
 {
 }
 
-void Drawer::draw(const float &time, const std::vector<std::vector<Section*>> &sectionMat, const glm::mat4 &trackMat, const Player &player) 
+void Drawer::draw(const float &time, std::vector<std::vector<Section*>> &sectionMat, const glm::mat4 &trackMat, const Player &player) 
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-	for (int i = 0; i < sectionMat[0].size(); ++i)
-	{
-		_sections.push_back(sectionMat[0][i]);
-	}
-
 
     _speed = time * 0.0005;
     
@@ -52,25 +46,25 @@ void Drawer::draw(const float &time, const std::vector<std::vector<Section*>> &s
     glUniformMatrix4fv(_uNormalMatrix , 1, GL_FALSE, glm::value_ptr(_normalMatrix));
     glUniformMatrix4fv(_uMVPMatrix , 1, GL_FALSE, glm::value_ptr(_projMatrix * _playerMatrix));
     
-    std::cout << "text id : " << player.model()->texture().id() << std::endl;
-    //player.model()->vbo().draw();
-    //player.model()->texture().debind();
+    glUniform1i(_uTexture, 0);
+    player.model()->texture().bind();
+    player.model()->vbo().draw();
+    player.model()->texture().debind();
 
     ////////////////////////////////////////
 
-    for (int i = 0; i < _sections.size(); ++i)
+    for (int i = 0; i < sectionMat[0].size(); ++i)
     {   
-        _sections[i]->goOn(-_speed);
-        if (fabs(_sections[i]->posZ()) < 6*POSITION_OFFSET_Z)
+        sectionMat[0][i]->goOn(-_speed);
+        if (fabs(sectionMat[0][i]->posZ()) < 6*POSITION_OFFSET_Z)
         {
-            std::cout << "rotateIndicator : " << _rotateIndicator << std::endl;
             switch (_rotateIndicator)
             {
                 case 0:
-                    _tmpMatrix =  glm::translate(_tmpMatrix  , glm::vec3(0, 0, -_sections[i]->posZ()));
+                    _tmpMatrix =  glm::translate(_tmpMatrix  , glm::vec3(0, 0, -sectionMat[0][i]->posZ()));
                     break;
                 case 1:
-                    _tmpMatrix =  glm::translate(_tmpMatrix  , glm::vec3(_sections[5]->posZ(), 0, (i-5)*POSITION_OFFSET_Z));
+                    _tmpMatrix =  glm::translate(_tmpMatrix  , glm::vec3(sectionMat[0][5]->posZ(), 0, (i-5)*POSITION_OFFSET_Z));
                     break;
                 default:
                     break;
@@ -83,26 +77,23 @@ void Drawer::draw(const float &time, const std::vector<std::vector<Section*>> &s
             switch (_rotateIndicator)
             {
                 case 0:
-                    _tmpMatrix =  glm::translate(_tmpMatrix  , glm::vec3(0, 0, _sections[i]->posZ()));
+                    _tmpMatrix =  glm::translate(_tmpMatrix  , glm::vec3(0, 0, sectionMat[0][i]->posZ()));
                     break;
                 case 1:
-                    _tmpMatrix =  glm::translate(_tmpMatrix  , glm::vec3(-_sections[5]->posZ(), 0, -(i-5)*POSITION_OFFSET_Z));
+                    _tmpMatrix =  glm::translate(_tmpMatrix  , glm::vec3(-sectionMat[0][5]->posZ(), 0, -(i-5)*POSITION_OFFSET_Z));
                     break;
                 default:
                     break;
             }
-    		std::cout << "text terrain id : " << _sections[i]->model()->texture().id() << std::endl;
-            //_sections[i]->model()->texture().bind();
-            _sections[i]->model()->vbo().draw();
-            //_sections[i]->model()->texture().debind();
+    		glUniform1i(_uTexture, 0);
+            sectionMat[0][i]->model()->texture().bind();
+            sectionMat[0][i]->model()->vbo().draw();
+            sectionMat[0][i]->model()->texture().debind();
 
-            std::cout << _sections[i]->isCorner() << std::endl;
-            if (_sections[i]->isCorner())
+            if (sectionMat[0][i]->isCorner())
             {   
-                std::cout << "cornerDirection : " << _sections[i]->cornerDirection() << std::endl;
-                _tmpMatrix = glm::rotate(_tmpMatrix, glm::radians(_sections[i]->cornerDirection() * 90.f), glm::vec3(0,1,0));
-                rotated(_sections[i]->cornerDirection());
-                std::cout << "rotateIndicator : " << _rotateIndicator << std::endl;
+                _tmpMatrix = glm::rotate(_tmpMatrix, glm::radians(sectionMat[0][i]->cornerDirection() * 90.f), glm::vec3(0,1,0));
+                rotated(sectionMat[0][i]->cornerDirection());
             }
         }
     }

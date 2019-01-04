@@ -26,6 +26,7 @@ public:
 	TextureManager(const unsigned int &size);
 	// TextureManager(const std::vector<glimac::Image> &map);
 	~TextureManager();
+	
 	inline unsigned int length() const
 	{
 		return _length;

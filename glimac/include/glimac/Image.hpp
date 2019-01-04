@@ -22,7 +22,10 @@ public:
     Image(const Image &copied): 
     m_nWidth(copied.m_nWidth), m_nHeight(copied.m_nHeight), m_Pixels(new glm::vec4[copied.m_nWidth * copied.m_nHeight]) 
     {
-
+        for (int i = 0; i < m_nWidth*m_nHeight; ++i)
+        {
+            m_Pixels[i] = copied.m_Pixels[i];
+        }
     }
 
     unsigned int getWidth() const {

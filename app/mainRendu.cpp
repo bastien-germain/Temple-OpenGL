@@ -95,7 +95,7 @@ int main(int argc, char** argv) {
     /*********************************
      * HERE SHOULD COME THE INITIALIZATION CODE
      *********************************/
-    Texture t(textureManager);
+    Texture t(&textureManager);
 
 
     // std::vector<ShapeVertex> v ;

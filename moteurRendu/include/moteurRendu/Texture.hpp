@@ -23,11 +23,10 @@ private:
 	//Lien vers l'object unique de l'application TextureManager
 	TextureManager* _lText;
 
-	static unsigned int _nbTextures;
-
 public:
+	static unsigned int _nbTextures;
 	Texture();
-	Texture(TextureManager &lText );
+	Texture(TextureManager *lText);
 
 	/// \param copied : the Texture to copy into the current object
 	Texture(const Texture &copied);

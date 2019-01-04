@@ -26,13 +26,13 @@ const VBO ModelLoader::loadVBO(std::string modelName) const
 
 const Texture ModelLoader::loadTexture( std::string modelName)
 {    
-	Image *image = ImageManager::loadImage(_texturesPath + (modelName + ".png").c_str());
+    Image *image = ImageManager::loadImage(_texturesPath + (modelName + ".png").c_str());
     
     if(image == NULL)
         THROW_EXCEPTION("ERROR WHILE LOADING TEXTURE : MAKE SURE THE FORMAT IS .png" );
 
     _textureManager.addTexture(*image);
-    Texture texture(_textureManager); 
+    Texture texture(&_textureManager); 
     texture.paramTexture();
 
     return texture;  

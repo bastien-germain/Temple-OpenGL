@@ -8,6 +8,12 @@ VAO::VAO(): _VERTEX_POSITION(0), _VERTEX_NORMAL(1), _VERTEX_TEXTURE(2)
 VAO::~VAO()
 {}
 
+VAO::VAO(const VAO &copied) : 
+	_id(copied._id), _VERTEX_POSITION(copied._VERTEX_POSITION),
+	_VERTEX_NORMAL(copied._VERTEX_NORMAL), _VERTEX_TEXTURE(copied._VERTEX_TEXTURE)
+{
+}
+
 void VAO::debind() const 
 {
 	glBindVertexArray(0);

@@ -22,6 +22,7 @@ private:
 	
 public:
 	VAO();
+	VAO(const VAO &copied);
 	~VAO();
 
 	/// \brief Gives spefications for the buffer

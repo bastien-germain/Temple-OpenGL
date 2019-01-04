@@ -15,6 +15,8 @@ private:
 	
 public:
 	Enemy();
+	Enemy(const Enemy &copied);
+	
 	~Enemy();
 
 	/// \brief Getter score

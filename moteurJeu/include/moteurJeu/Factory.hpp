@@ -23,10 +23,10 @@ class Factory
 private:
  	float _sectionInitialPosZ;
  	ModelLoader _modelLoader;
-public:
  	Model _corridorModel;
  	Model _cornerModel;
  	Model _playerModel;
+public:
 
 	/// \brief Default constructor
 	Factory(const float &sectionInitialPosZ = 0.0);

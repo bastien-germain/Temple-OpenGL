@@ -51,7 +51,7 @@ public:
 		_rotateIndicator = (_rotateIndicator + direction) % 4;
 	}
 
-	void draw(const float &time, const std::vector<std::vector<Section*>> &sectionMat, const glm::mat4 &trackMat, const Player &player);
+	void draw(const float &time, std::vector<std::vector<Section*>> &sectionMat, const glm::mat4 &trackMat, const Player &player);
 
 
 

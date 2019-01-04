@@ -17,7 +17,9 @@ private:
 
 public:
 
-	TrackballCamera(const float &smoothness = 0.005f);
+    TrackballCamera(const float &smoothness = 0.005f);
+	TrackballCamera(const TrackballCamera &copied);
+
     ~TrackballCamera();
 
     void moveFront(float delta); // delta > 0 --> camera goes forward

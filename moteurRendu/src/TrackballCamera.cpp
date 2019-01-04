@@ -5,6 +5,11 @@ TrackballCamera::TrackballCamera(const float &smoothness)
     : _fDistance(5), _fAngleX(0), _fAngleY(0), _smoothness(smoothness)
 {
 }
+TrackballCamera::TrackballCamera(const TrackballCamera &copied) 
+    : _fDistance(copied._fDistance), _fAngleX(copied._fAngleX), 
+    _fAngleY(copied._fAngleY), _smoothness(copied._smoothness)
+{
+}
 
 TrackballCamera::~TrackballCamera() 
 {
@@ -13,19 +18,16 @@ TrackballCamera::~TrackballCamera()
 void TrackballCamera::moveFront(float delta) 
 {
      _fDistance += delta;
-     std::cout << "move front by " << delta << std::endl;
 }
 
 void TrackballCamera::rotateLeft(float degree) 
 {
     _fAngleX += degree / 180 * M_PI;
-     std::cout << "rotate left by " << degree << std::endl;
 }
 
 void TrackballCamera::rotateUp(float degree)
 {
     _fAngleY += degree / 180 * M_PI;
-     std::cout << "rotate up by " << degree << std::endl;
 }
 
 glm::mat4 TrackballCamera::getViewMatrix() const

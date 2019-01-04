@@ -53,7 +53,7 @@ public:
 		return _player;
 	}
 
-	inline std::vector<std::vector<Section*>> sectionMat() const
+	inline std::vector<std::vector<Section*>> &sectionMat()
 	{
 		return _sectionMat;
 	}

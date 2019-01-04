@@ -106,19 +106,19 @@ Section Factory::create(const std::string &key, PositionObserver *observer) cons
 			Obstacle obstacle(obstacleBuiler(key, observer));
 			std::cout << "SECTION_FACTORY.CREATE OBSTALCE_SIZE : " << obstacle.size() << "\n\n\n" << std::endl;
 			std::cout << "SECTION_FACTORY.CREATE ENDS" << "\n\n\n" << std::endl;
-			return Section(&_corridorModel, 0, 0, obstacle);
+			return Section(&_corridorModel, 0, 0, _sectionInitialPosZ, obstacle);
 		}
 		case 'J':
 		{
 			std::cout << "Left CornerSection" << std::endl;
 			std::cout << "SECTION_FACTORY.CREATE ENDS" << "\n\n\n" << std::endl;
-			return Section(&_cornerModel, 1, -1);
+			return Section(&_cornerModel, 1, -1, _sectionInitialPosZ);
 		}
 		case 'L':
 		{
 			std::cout << "Right CornerSection" << std::endl;
 			std::cout << "SECTION_FACTORY.CREATE ENDS" << "\n\n\n" << std::endl;
-			return Section(&_cornerModel, 1, 1);
+			return Section(&_cornerModel, 1, 1, _sectionInitialPosZ);
 		}
 		/*
 		case 'T':

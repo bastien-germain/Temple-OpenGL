@@ -54,6 +54,11 @@ private:
     void generateNormals(unsigned int meshIndex);
 
 public:
+    Geometry();
+    Geometry(const Geometry &copied);
+
+    ~Geometry();
+    
     const ShapeVertex* getVertexBuffer() const {
         return m_VertexBuffer.data();
     }

@@ -5,6 +5,23 @@
 
 namespace glimac {
 
+Geometry::Geometry()
+{
+}
+
+Geometry::Geometry(const Geometry &copied)
+    : m_VertexBuffer(copied.m_VertexBuffer), 
+    m_IndexBuffer(copied.m_IndexBuffer),
+    m_MeshBuffer(copied.m_MeshBuffer),
+    m_Materials(copied.m_Materials),
+    m_BBox(copied.m_BBox)
+{
+}
+
+Geometry::~Geometry()
+{
+}
+
 void Geometry::generateNormals(unsigned int meshIndex) {
     auto indexOffset = m_MeshBuffer[meshIndex].m_nIndexOffset;
     for (auto j = 0u; j < m_MeshBuffer[meshIndex].m_nIndexCount; j += 3) {

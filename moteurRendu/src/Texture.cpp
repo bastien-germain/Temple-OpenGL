@@ -6,13 +6,13 @@ Texture::Texture()
 {
 }
 
-Texture::Texture(TextureManager &lText) :_id(_nbTextures)
+Texture::Texture(TextureManager *lText) :_id(_nbTextures)
 {
-	_lText = &lText;
+	_lText = lText;
 	++_nbTextures;
 }
 
-Texture::Texture(const Texture &copied) 
+Texture::Texture(const Texture &copied) : _id(copied._id), _lText(copied._lText)
 {
 }
 
@@ -34,7 +34,6 @@ void Texture::debind() const
 void Texture::paramTexture( ) const 
 {
 	// bind();
-	std::cout << "id : "<< _id << std::endl;
 
 	//std::unique_ptr<glimac::Image> earth( new glimac::Image( std::move(_lText->usedTextures()[_id]) ) );
 
