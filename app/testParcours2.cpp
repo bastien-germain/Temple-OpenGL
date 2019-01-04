@@ -45,17 +45,11 @@ int main (int argc, char** argv)
     std::vector<Light> lights;
     const std::string refLight = "uLights";
 
-    lights.push_back(Light(true, glm::vec3(0.0, -3.0, -7.0), glm::vec3(1.0, 0.0, 0.0), glm::vec3(1.0), 64, glm::vec3(1.0)));
-    lights.push_back(Light(true, glm::vec3(0.0, 0.0, -5.0), glm::vec3(0.0, 1.0, 0.0), glm::vec3(1.0), 64, glm::vec3(1.0)));
-    lights.push_back(Light(true, glm::vec3(0.0, 0.0, -5.0), glm::vec3(0.0, 0.0, 1.0), glm::vec3(1.0), 64, glm::vec3(1.0)));
-    lights.push_back(Light(false, glm::vec3(1.0, 0.0, 0.0), glm::vec3(0.0, 0.4, 0.9), glm::vec3(1.0), 8, glm::vec3(1.0)));
-    lights.push_back(Light(false, glm::vec3(0.0, 1.0, 0.0), glm::vec3(0.8, 0.1, 0.4), glm::vec3(1.0), 8, glm::vec3(1.0)));
+    lights.push_back(Light(false, glm::vec3(1.0, .0, 0.0), glm::vec3(1.0), glm::vec3(1.0), 8, glm::vec3(1.0)));
+    lights.push_back(Light(false, glm::vec3(0.0, 1.0, 0.0), glm::vec3(1.0), glm::vec3(1.0), 8, glm::vec3(1.0)));
 
     lights[0].sendLightShader(program, refLight);
     lights[1].sendLightShader(program, refLight);
-    lights[2].sendLightShader(program, refLight);
-    lights[3].sendLightShader(program, refLight);
-    lights[4].sendLightShader(program, refLight);
 
     glm::vec3 ambientLight = glm::vec3(0.2);
 

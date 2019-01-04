@@ -9,7 +9,7 @@
 #include "glimac/Program.hpp"
 #include <glm/glm.hpp>
 
-#define POSITION_OFFSET_Z 18.f
+#define POSITION_OFFSET_Z 20.f
 
 /// \class Drawer
 /// \brief Used to draw the world 
@@ -18,8 +18,8 @@ class Drawer
 {
 private:
 	int _rotateIndicator;
-	float _playerRotateX;
-	float _playerRotateXSpeed;
+	unsigned int _lastRotateIndex;
+
 	float _speed;
 
 	std::vector<Section*> _sections;
@@ -51,7 +51,7 @@ public:
 		_rotateIndicator = (_rotateIndicator + direction) % 4;
 	}
 
-	void draw(const float &time, std::vector<std::vector<Section*>> &sectionMat, const glm::mat4 &trackMat, const Player &player);
+	void draw(const float &time, std::vector<std::vector<Section*>> &sectionMat, const glm::mat4 &trackMat, Player &player);
 
 
 

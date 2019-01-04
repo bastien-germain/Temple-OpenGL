@@ -67,9 +67,5 @@ vec3 blinnPhong()
 
 void main() 
 {	
-		//fFragColor = uAmbientLight + blinnPhong() + (texture(uTexture ,vTexCoords).rgb);
-		//fFragColor = texture(uTexture ,vTexCoords);
 		fFragColor = uAmbientLight + blinnPhong() * (texture(uTexture ,vTexCoords).rgb);
-		// fFragColor = uAmbientLight + blinnPhong() ;
-		// fFragColor = texture(uTexture ,vTexCoords).rgb;
 }

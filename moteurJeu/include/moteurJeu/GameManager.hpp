@@ -48,7 +48,7 @@ public:
 		return _enemy;
 	}
 
-	inline Player player() const
+	inline Player &player()
 	{
 		return _player;
 	}

@@ -19,6 +19,9 @@
 
 #define REGULAR_Z 0.f
 
+#define ROTATE_X_SPEED 0.05f
+#define MAX_ROTATE_X 20.f
+
 /// \class Player
 /// \brief Class defining the main player
 class Player
@@ -28,6 +31,8 @@ private:
 	float _posX; // -1 : left; 0 : middle; 1: right
 	float _posY; // -1 : down; 0 : regular; 1: up
 	float _posZ; // position of the player, to which the obstacle posZ will be compared
+	float _rotateX;
+	bool _oppositeRotateX;
 	Model *_model;
 public:
 	bool _jumping;
@@ -63,6 +68,19 @@ public:
 	inline float posY() const 
 	{
 		return _posY;
+	}
+
+	inline float rotateX()
+	{
+		if (_rotateX > MAX_ROTATE_X || _rotateX < -MAX_ROTATE_X)
+        	_oppositeRotateX = !_oppositeRotateX;
+
+		if(_oppositeRotateX)
+			_rotateX -= ROTATE_X_SPEED;
+		else 
+			_rotateX += ROTATE_X_SPEED;
+
+		return _rotateX;
 	}
 
 	inline Model *model() const 

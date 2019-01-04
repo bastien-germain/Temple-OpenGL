@@ -3,7 +3,7 @@
 #include <iostream>
 
 Player::Player() 
-	: _posX(REGULAR_X), _posY(REGULAR_Y), _posZ(REGULAR_Z), 
+	: _posX(REGULAR_X), _posY(REGULAR_Y), _posZ(REGULAR_Z), _rotateX(0), _oppositeRotateX(0), 
 	_jumping(false), _landing(false), _bending(false)
 {
 }
@@ -11,7 +11,7 @@ Player::Player()
 Player::Player(const Player &copied) 
 	: _posX(copied._posX), _posY(copied._posY), _posZ(copied._posZ),
 	_jumping(copied._jumping), _landing(copied._landing), _bending(copied._bending), 
-	_model(copied._model)
+	_model(copied._model), _rotateX(copied._rotateX), _oppositeRotateX(copied._oppositeRotateX)
 {
 }
 
