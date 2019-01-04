@@ -2,9 +2,7 @@
 #ifndef __DRAWER_HPP__
 #define __DRAWER_HPP__
 
-#include "moteurJeu/CorridorSection.hpp"
-#include "moteurJeu/CornerSection.hpp"
-#include "moteurJeu/TSection.hpp"
+#include "moteurJeu/Section.hpp"
 
 #include "moteurJeu/Player.hpp"
 

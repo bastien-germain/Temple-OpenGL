@@ -12,8 +12,6 @@
 
 #include "moteurJeu/Exception.hpp"
 
-
-
 using namespace glimac;
 
 static const unsigned int MAX_POINT_LIGHTS  = 5;

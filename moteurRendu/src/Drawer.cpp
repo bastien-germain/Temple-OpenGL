@@ -52,7 +52,10 @@ void Drawer::draw(const float &time, const std::vector<std::vector<Section*>> &s
     glUniformMatrix4fv(_uNormalMatrix , 1, GL_FALSE, glm::value_ptr(_normalMatrix));
     glUniformMatrix4fv(_uMVPMatrix , 1, GL_FALSE, glm::value_ptr(_projMatrix * _playerMatrix));
     
-    player.model()->vbo().draw();
+    std::cout << "text id : " << player.model()->texture().id() << std::endl;
+    //player.model()->vbo().draw();
+    //player.model()->texture().debind();
+
     ////////////////////////////////////////
 
     for (int i = 0; i < _sections.size(); ++i)
@@ -88,8 +91,12 @@ void Drawer::draw(const float &time, const std::vector<std::vector<Section*>> &s
                 default:
                     break;
             }
+    		std::cout << "text terrain id : " << _sections[i]->model()->texture().id() << std::endl;
+            //_sections[i]->model()->texture().bind();
             _sections[i]->model()->vbo().draw();
+            //_sections[i]->model()->texture().debind();
 
+            std::cout << _sections[i]->isCorner() << std::endl;
             if (_sections[i]->isCorner())
             {   
                 std::cout << "cornerDirection : " << _sections[i]->cornerDirection() << std::endl;

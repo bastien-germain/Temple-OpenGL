@@ -9,7 +9,7 @@ Texture::Texture()
 Texture::Texture(TextureManager &lText) :_id(_nbTextures)
 {
 	_lText = &lText;
-	_nbTextures++;
+	++_nbTextures;
 }
 
 Texture::Texture(const Texture &copied) 

@@ -9,9 +9,7 @@
 
 #include "moteurJeu/Exception.hpp"
 
-#include "moteurJeu/CornerSection.hpp"
-#include "moteurJeu/CorridorSection.hpp"
-#include "moteurJeu/TSection.hpp"
+#include "moteurJeu/Section.hpp"
 
 #include "moteurJeu/Hole.hpp"
 #include "moteurJeu/Rock.hpp"
