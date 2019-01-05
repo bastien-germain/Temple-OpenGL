@@ -1,17 +1,8 @@
 #include "moteurJeu/Button.hpp"
 #include <iostream>
 
-
-// Default font size 80
-Button::Button(std::string text, unsigned int x, unsigned int y) 
-: _posX(x), _posY(y), _text(text), _fontSize(80), _textWidth(0), _textHeight(0), _isHovered(false)
-{
-
-}
-
-
 Button::Button(std::string text, unsigned int x, unsigned int y, unsigned int fontSize) 
-: _posX(x), _posY(y), _text(text), _fontSize(fontSize), _textWidth(0), _textHeight(0), _isHovered(false)
+: _posX(x), _posY(y), _text(text), _fontSize(fontSize), _textWidth(0), _textHeight(0), _textColor({0, 0, 0})
 {
 
 }
@@ -23,10 +14,6 @@ Button::~Button()
 
 void Button::draw()
 {
-	SDL_Color textColor = {0, 0, 0};
-	if (_isHovered)
-		textColor = {255, 0, 0};
-
 	TTF_Init();
  
     // Font loading
@@ -35,7 +22,7 @@ void Button::draw()
     if(NULL != font)
     {	
         SDL_Surface* text = TTF_RenderText_Blended(font,
-        _text.c_str(), textColor);
+        _text.c_str(), _textColor);
  
         // Free font
         TTF_CloseFont(font);
@@ -84,22 +71,27 @@ void Button::draw()
 }
 
 
-void Button::state(int x, int y)
-{
-
-    // if( 0 != (SDL_GetMouseState(&x, &y) & SDL_BUTTON(SDL_BUTTON_LEFT)) )
-    // {
-    //     std::cout << "clicked" << std::endl;
-    // }
-
-    // Si la souris est sur le bouton (pour l'instant au clic)
-    if(x > _posX - (_textWidth/2) && x < _posX + (_textWidth/2)
-       && y > _posY - (_textHeight/2) && y < _posY + (_textHeight/2))
+void Button::checkHovering(int x, int y)
+{ 
+    if(x > _posX - (_textWidth/2) && x < _posX + (_textWidth/2) 
+    	&& y > _posY - (_textHeight/2) && y < _posY + (_textHeight/2))
     {
-        _isHovered = true;
+        _textColor = {255, 0, 0};
     }
-    else {
-    	_isHovered = false;
+    else 
+    {
+        _textColor = {0, 0, 0};
     }
  
+}
+
+bool Button::checkClick(int x, int y) const
+{ 
+    if(x > _posX - (_textWidth/2) && x < _posX + (_textWidth/2) 
+    	&& y > _posY - (_textHeight/2) && y < _posY + (_textHeight/2))
+    {
+        return true;
+    }
+   
+    return false; 
 }

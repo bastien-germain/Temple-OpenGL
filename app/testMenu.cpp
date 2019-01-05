@@ -25,8 +25,8 @@ int main(int argc, char** argv) {
 
     Menu menu;
 
-    menu.addButton("Play", WIN_WIDTH/2, WIN_HEIGHT/2 + 100);
-    menu.addButton("Quit", WIN_WIDTH/2, WIN_HEIGHT/2 - 100);
+    menu.addButton("Play", WIN_WIDTH/2, WIN_HEIGHT/2 + 100, 80);
+    menu.addButton("Quit", WIN_WIDTH/2, WIN_HEIGHT/2 - 100, 80);
 
     // Application loop:
     bool done = false;
@@ -46,9 +46,19 @@ int main(int argc, char** argv) {
                 if (e.button.button == SDL_BUTTON_LEFT) 
                 {
                     // Inversion du y (0 en haut) !
-                    menu.checkButtonState(e.button.x, WIN_HEIGHT - e.button.y);
+                    if(menu.checkButtonClick(e.button.x, WIN_HEIGHT - e.button.y))
+                    {
+                        std::cout << "clicked" << std::endl;
+                    }
                 }
-            }            
+            }
+
+            if(e.type == SDL_MOUSEMOTION)
+            {
+                // Inversion du y (0 en haut) !
+                menu.checkButtonHovering(e.button.x, WIN_HEIGHT - e.button.y);
+
+            }             
           
         }
 

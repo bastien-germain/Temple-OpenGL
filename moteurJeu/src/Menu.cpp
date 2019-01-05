@@ -41,20 +41,33 @@ void Menu::drawButtons()
 	}
 }
 
-void Menu::addButton(std::string text, unsigned int x, unsigned int y)
+void Menu::addButton(std::string text, unsigned int x, unsigned int y, unsigned int fontSize)
 {	
-	Button button(text, x, y);
+	Button button(text, x, y, fontSize);
 	_buttons.push_back(button);
 }
 
 
-void Menu::checkButtonState(int x, int y)
+void Menu::checkButtonHovering(int x, int y)
 {
 	std::vector<Button>::iterator it;
 
 	for(it = _buttons.begin(); it != _buttons.end(); it++ )
 	{	
-		Button &button = *it;
-        button.state(x, y);
+        (*it).checkHovering(x, y);
 	}
+}
+
+bool Menu::checkButtonClick(int x, int y) const
+{
+	std::vector<Button>::const_iterator it;
+
+	for(it = _buttons.begin(); it != _buttons.end(); it++ )
+	{
+        if((*it).checkClick(x, y))
+        {
+        	return true;
+        }
+	}
+	return false;
 }

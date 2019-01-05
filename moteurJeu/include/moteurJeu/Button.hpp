@@ -15,20 +15,22 @@ class Button
 {
 
 private:
-	unsigned int _posX, _posY; 
+	unsigned int _posX, _posY; // position of the button center
 	std::string _text;
 	unsigned int _fontSize;
+	SDL_Color _textColor;;
 	int _textWidth, _textHeight;
-	bool _isHovered;
+
+	// à voir pour rajouter un attribut permettant d'identifier le bouton au clic
 
 public:
-	Button(std::string text, unsigned int x, unsigned int y);
     Button(std::string text, unsigned int x, unsigned int y, unsigned int fontSize);
     ~Button();
 
     void draw();
 
-    void state(int x, int y);
+    void checkHovering(int x, int y);
+    bool checkClick(int x, int y) const;
  
 };
  

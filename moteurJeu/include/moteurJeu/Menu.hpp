@@ -20,13 +20,17 @@ private:
 	std::vector<Button> _buttons;
 	void drawButtons();
 
+	// si plusieurs menus (debut ou pause par exemple)
+	// suffit de faire plusieurs vecteurs et de passer le bon en parametre de draw et des check
+
 public:
 	Menu();
 	~Menu();
 
-	void addButton(std::string text, unsigned int x, unsigned int y);
+	void addButton(std::string text, unsigned int x, unsigned int y, unsigned int fontSize);
 	void draw();
-	void checkButtonState(int x, int y);    
+	void checkButtonHovering(int x, int y);    
+	bool checkButtonClick(int x, int y) const;    
 };
 
 #endif
