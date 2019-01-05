@@ -24,7 +24,7 @@ void Menu::draw()
 
     glClearColor(0.5, 0.5, 0.8, 1);
 
-	this->drawButtons();
+	drawButtons();
 
     glFlush();
     SDL_GL_SwapBuffers();	
@@ -33,12 +33,28 @@ void Menu::draw()
 
 void Menu::drawButtons()
 {
-	Button test("test 1", 80, 100);
-	test.draw();
+	std::vector<Button>::iterator it;
 
-	Button test2("test 2", 200, 500, {200, 0, 60});
-	test2.draw();
+	for(it = _buttons.begin(); it != _buttons.end(); it++ )
+	{
+        (*it).draw();
+	}
+}
 
-	Button test3("test 3", WIN_WIDTH/2, WIN_HEIGHT/2, {255, 255, 255}, 100);	
-	test3.draw();
+void Menu::addButton(std::string text, unsigned int x, unsigned int y)
+{	
+	Button button(text, x, y);
+	_buttons.push_back(button);
+}
+
+
+void Menu::checkButtonState(int x, int y)
+{
+	std::vector<Button>::iterator it;
+
+	for(it = _buttons.begin(); it != _buttons.end(); it++ )
+	{	
+		Button &button = *it;
+        button.state(x, y);
+	}
 }

@@ -5,6 +5,8 @@
 #define WIN_WIDTH 800
 #define WIN_HEIGHT 800
 
+#include <vector>
+#include <string>
 #include <GL/glew.h>
 #include "moteurJeu/Button.hpp"
 
@@ -15,13 +17,16 @@ class Menu
 {
 
 private:
+	std::vector<Button> _buttons;
 	void drawButtons();
 
 public:
 	Menu();
 	~Menu();
 
-	void draw();    
+	void addButton(std::string text, unsigned int x, unsigned int y);
+	void draw();
+	void checkButtonState(int x, int y);    
 };
 
 #endif

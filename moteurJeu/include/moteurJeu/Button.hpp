@@ -17,16 +17,19 @@ class Button
 private:
 	unsigned int _posX, _posY; 
 	std::string _text;
-	SDL_Color _textColor;
 	unsigned int _fontSize;
+	int _textWidth, _textHeight;
+	bool _isHovered;
 
 public:
 	Button(std::string text, unsigned int x, unsigned int y);
-    Button(std::string text, unsigned int x, unsigned int y, SDL_Color textColor);
-    Button(std::string text, unsigned int x, unsigned int y, SDL_Color textColor, unsigned int fontSize);
+    Button(std::string text, unsigned int x, unsigned int y, unsigned int fontSize);
     ~Button();
 
     void draw();
+
+    void state(int x, int y);
+ 
 };
  
 #endif

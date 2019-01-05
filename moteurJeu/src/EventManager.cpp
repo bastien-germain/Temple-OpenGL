@@ -15,8 +15,10 @@ void EventManager::handleEvent(SDL_Event *event)
     	case SDL_QUIT:
     		onExit();
     		break;
+
     	case SDL_KEYDOWN:
-            switch(event->key.keysym.sym){
+            switch(event->key.keysym.sym)
+            {
 
             	// JUMP
                 case SDLK_z:
@@ -55,11 +57,11 @@ void EventManager::handleEvent(SDL_Event *event)
                 	std::cout << "ESCAPE" << std::endl;
                     break;
                 
-
                 default:
                     break;
-    	}
+    	    }
     		break;
+
     	case SDL_MOUSEBUTTONDOWN:
     		if (event->button.button == SDL_BUTTON_LEFT) 
     		{
@@ -68,6 +70,7 @@ void EventManager::handleEvent(SDL_Event *event)
     		}
 	    	std::cout << _mouseButtonDown << std::endl;
     		break;
+
     	case SDL_MOUSEBUTTONUP:
     		if (event->button.button == SDL_BUTTON_LEFT) 
     		{
@@ -75,6 +78,7 @@ void EventManager::handleEvent(SDL_Event *event)
 	    		_mouseMotionDelta = glm::vec2(0);
     		}
     		break;
+            
     	case SDL_MOUSEMOTION:
     		if (_mouseButtonDown) 
     		{

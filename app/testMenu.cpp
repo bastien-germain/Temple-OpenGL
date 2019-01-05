@@ -21,39 +21,35 @@ int main(int argc, char** argv) {
         return EXIT_FAILURE;
     }
 
-
     glEnable(GL_DEPTH_TEST);
 
     Menu menu;
 
-
-    /*********************************
-     * HERE SHOULD COME THE INITIALIZATION CODE
-     *********************************/
+    menu.addButton("Play", WIN_WIDTH/2, WIN_HEIGHT/2 + 100);
+    menu.addButton("Quit", WIN_WIDTH/2, WIN_HEIGHT/2 - 100);
 
     // Application loop:
     bool done = false;
-    while(!done) {
+    while(!done) 
+    {
         // Event loop:
         SDL_Event e;
-        while(windowManager.pollEvent(e)) {
-            if(e.type == SDL_QUIT) {
+        while(windowManager.pollEvent(e)) 
+        {
+            if(e.type == SDL_QUIT) 
+            {
                 done = true; // Leave the loop after this iteration
             }
-        }
 
-        if(e.key.type == SDL_KEYDOWN) {
-
-            switch(e.key.keysym.sym)
+            if(e.type == SDL_MOUSEBUTTONDOWN)
             {
-                case SDLK_q:
-                    done = true;
-                    break;
-
-                default: 
-                    break;
-
-            }
+                if (e.button.button == SDL_BUTTON_LEFT) 
+                {
+                    // Inversion du y (0 en haut) !
+                    menu.checkButtonState(e.button.x, WIN_HEIGHT - e.button.y);
+                }
+            }            
+          
         }
 
         /*********************************
