@@ -27,10 +27,10 @@ public:
 	Menu();
 	~Menu();
 
-	void addButton(std::string text, unsigned int x, unsigned int y, unsigned int fontSize);
+	void addButton(const std::string &text, const unsigned int x, const unsigned int y, const unsigned int fontSize);
 	void draw();
-	void checkButtonHovering(int x, int y);    
-	bool checkButtonClick(int x, int y) const;    
+	void checkButtonHovering(const int x, const int y);    
+	bool checkButtonClick(const int x, const int y) const;    
 };
 
 #endif

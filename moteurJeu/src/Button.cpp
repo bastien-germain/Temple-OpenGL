@@ -1,7 +1,7 @@
 #include "moteurJeu/Button.hpp"
 #include <iostream>
 
-Button::Button(std::string text, unsigned int x, unsigned int y, unsigned int fontSize) 
+Button::Button(const std::string &text, const unsigned int x, const unsigned int y, const unsigned int fontSize) 
 : _posX(x), _posY(y), _text(text), _fontSize(fontSize), _textWidth(0), _textHeight(0), _textColor({0, 0, 0})
 {
 
@@ -53,14 +53,10 @@ void Button::draw()
         glEnable(GL_TEXTURE_2D);
         glBegin(GL_QUADS);
         glColor3f(1.0, 1.0, 1.0);
-            glTexCoord2d(0, 1); glVertex2f( _posX - (_textWidth/2),
-                                WIN_HEIGHT - _posY + (_textHeight/2));
-            glTexCoord2d(0, 0); glVertex2f( _posX - (_textWidth/2),
-                                WIN_HEIGHT - _posY - (_textHeight/2));
-            glTexCoord2d(1, 0); glVertex2f( _posX + (_textWidth/2),
-                                WIN_HEIGHT - _posY - (_textHeight/2));
-            glTexCoord2d(1, 1); glVertex2f( _posX + (_textWidth/2),
-                                WIN_HEIGHT - _posY + (_textHeight/2));
+            glTexCoord2d(0, 1); glVertex2f( _posX, WIN_HEIGHT - _posY + _textHeight);
+            glTexCoord2d(0, 0); glVertex2f( _posX, WIN_HEIGHT - _posY);
+            glTexCoord2d(1, 0); glVertex2f( _posX + _textWidth, WIN_HEIGHT - _posY);
+            glTexCoord2d(1, 1); glVertex2f( _posX + _textWidth, WIN_HEIGHT - _posY + _textHeight);
         glEnd();
         glDisable(GL_TEXTURE_2D);
  
@@ -71,10 +67,9 @@ void Button::draw()
 }
 
 
-void Button::checkHovering(int x, int y)
+void Button::checkHovering(const int x, const int y)
 { 
-    if(x > _posX - (_textWidth/2) && x < _posX + (_textWidth/2) 
-    	&& y > _posY - (_textHeight/2) && y < _posY + (_textHeight/2))
+    if(x > _posX && x < _posX + _textWidth && y < _posY && y > _posY - _textHeight)
     {
         _textColor = {255, 0, 0};
     }
@@ -85,13 +80,17 @@ void Button::checkHovering(int x, int y)
  
 }
 
-bool Button::checkClick(int x, int y) const
+bool Button::checkClick(const int x, const int y) const
 { 
-    if(x > _posX - (_textWidth/2) && x < _posX + (_textWidth/2) 
-    	&& y > _posY - (_textHeight/2) && y < _posY + (_textHeight/2))
+    if(x > _posX && x < _posX + _textWidth && y < _posY && y > _posY - _textHeight)
     {
         return true;
     }
    
     return false; 
+}
+
+void Button::updateText(const std::string &newText)
+{
+	_text = newText;
 }
