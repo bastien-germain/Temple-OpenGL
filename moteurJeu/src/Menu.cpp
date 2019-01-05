@@ -25,9 +25,6 @@ void Menu::draw()
     glClearColor(0.5, 0.5, 0.8, 1);
 
 	drawButtons();
-
-    glFlush();
-    SDL_GL_SwapBuffers();	
 }
 
 
@@ -41,14 +38,14 @@ void Menu::drawButtons()
 	}
 }
 
-void Menu::addButton(std::string text, unsigned int x, unsigned int y, unsigned int fontSize)
+void Menu::addButton(const std::string &text, const unsigned int x, const unsigned int y, const unsigned int fontSize)
 {	
 	Button button(text, x, y, fontSize);
 	_buttons.push_back(button);
 }
 
 
-void Menu::checkButtonHovering(int x, int y)
+void Menu::checkButtonHovering(const int x, const int y)
 {
 	std::vector<Button>::iterator it;
 
@@ -58,7 +55,7 @@ void Menu::checkButtonHovering(int x, int y)
 	}
 }
 
-bool Menu::checkButtonClick(int x, int y) const
+bool Menu::checkButtonClick(const int x, const int y) const
 {
 	std::vector<Button>::const_iterator it;
 

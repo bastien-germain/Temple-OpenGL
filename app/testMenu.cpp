@@ -25,8 +25,14 @@ int main(int argc, char** argv) {
 
     Menu menu;
 
-    menu.addButton("Play", WIN_WIDTH/2, WIN_HEIGHT/2 + 100, 80);
-    menu.addButton("Quit", WIN_WIDTH/2, WIN_HEIGHT/2 - 100, 80);
+    menu.addButton("Play", WIN_WIDTH/2 - 50, WIN_HEIGHT/2 + 100, 80);
+    menu.addButton("Quit", WIN_WIDTH/2 - 50, WIN_HEIGHT/2 - 100, 80);
+
+    // Test affichage score
+    int score = 0;
+    std::string scoreText = "Score : " + std::to_string(score);
+
+    Button scoreButton(scoreText, 50, 700, 80);
 
     // Application loop:
     bool done = false;
@@ -67,8 +73,14 @@ int main(int argc, char** argv) {
          *********************************/
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-        // Draw here
         menu.draw();
+
+        // Score augmente
+        score += 1;
+        scoreText = "Score : " + std::to_string(score);
+        scoreButton.updateText(scoreText);
+
+        scoreButton.draw();
 
         // Update the display
         windowManager.swapBuffers();
