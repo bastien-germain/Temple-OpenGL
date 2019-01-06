@@ -12,6 +12,8 @@
 
 #include "moteurJeu/Exception.hpp"
 
+#define LIGHTS_SPACE 7.5f
+
 using namespace glimac;
 
 static const unsigned int MAX_POINT_LIGHTS  = 5;
@@ -45,23 +47,22 @@ public:
 		return _properties;
 	}
 
+	inline glm::vec3 &getPos()
+	{
+		return _properties._posOrDir;
+	}
+
+	inline void goOn(const float &value, const float &initialZ)
+	{
+		if (_properties._posOrDir.z < LIGHTS_SPACE)
+		 	_properties._posOrDir.z += value;
+		else 
+			_properties._posOrDir.z = initialZ;
+	}
+
 	inline const int id() const 
 	{
 		return _id;
-	}
-
-	inline void position(const glm::vec3 &position) {
-		if (_properties._isPoint)
-			_properties._posOrDir = position;
-		else 
-			THROW_EXCEPTION("ERROR : THIS LIGHT IS NOT A POINT LIGHT - CANNOT CHANGE POSITION : TRY USING .direction(aDirection)");
-	}
-
-	inline void direction(const glm::vec3 &direction) {
-		if (!_properties._isPoint)
-			_properties._posOrDir = direction;
-		else 
-			THROW_EXCEPTION("ERROR : THIS LIGHT IS A POINT LIGHT - CANNOT CHANGE DIRECTION : TRY USING .position(aPosition)");
 	}
 
 	inline Light &operator = (const Light &toAssign) 
@@ -78,7 +79,7 @@ public:
 		return *this;
 	}
 
-	void sendLightShader(Program &program, const std::string &lightRef) const;
+	void sendLightShader(const Program &program, const std::string &lightRef) const;
 
 private:
 	static int _lightsCount;

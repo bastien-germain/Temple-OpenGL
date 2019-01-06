@@ -34,34 +34,14 @@ int main (int argc, char** argv)
     program.use();
 
     GameManager gameManager(program);
-    std::cout << "gameManager ok" << std::endl;
+
     glEnable(GL_DEPTH_TEST);
 
     std::cout << "OpenGL Version : " << glGetString(GL_VERSION) << std::endl;
     std::cout << "GLEW Version : " << glewGetString(GLEW_VERSION) << std::endl;
 
-    // LIGHTS
-
-    std::vector<Light> lights;
-    const std::string refLight = "uLights";
-
-    lights.push_back(Light(false, glm::vec3(1.0, .0, 0.0), glm::vec3(1.0), glm::vec3(1.0), 8, glm::vec3(1.0)));
-    lights.push_back(Light(false, glm::vec3(0.0, 1.0, 0.0), glm::vec3(1.0), glm::vec3(1.0), 8, glm::vec3(1.0)));
-
-    lights[0].sendLightShader(program, refLight);
-    lights[1].sendLightShader(program, refLight);
-
-    glm::vec3 ambientLight = glm::vec3(0.2);
-
-    glUniform3f(glGetUniformLocation(program.getGLId(), "uAmbientLight"), ambientLight.x, ambientLight.y, ambientLight.z); 
-    glUniform1i(glGetUniformLocation(program.getGLId(), "uNbLights"), lights.size()); 
-
-    float positionOffSet = 18.f;
-
     // Application loop:
     bool done = false;
-
-    bool turned = false;
 
     gameManager.loadSections();
 
@@ -78,8 +58,6 @@ int main (int argc, char** argv)
         gameManager.handleEvent(&e);
 
         glm::mat4 trackMat = gameManager.trackball().getViewMatrix();
-
-        //std::cout << "time" << speed << std::endl;
         
         /*if (speed > 95 && turned == false)
         {
@@ -88,10 +66,10 @@ int main (int argc, char** argv)
         }*/
 
         gameManager.drawer().draw(
-            windowManager.getTime(), 
             gameManager.sectionMat(), 
             gameManager.trackball().getViewMatrix(), 
-            gameManager.player());
+            gameManager.player(), 
+            program);
 
         windowManager.swapBuffers();
     }

@@ -10,6 +10,9 @@
 #include <glm/glm.hpp>
 
 #define POSITION_OFFSET_Z 20.f
+#define DRAW_DISTANCE (6 * POSITION_OFFSET_Z)
+
+#define WORLD_SPEED 0.005f
 
 /// \class Drawer
 /// \brief Used to draw the world 
@@ -20,9 +23,7 @@ private:
 	int _rotateIndicator;
 	unsigned int _lastRotateIndex;
 
-	float _speed;
-
-	std::vector<Section*> _sections;
+	std::vector<Light> _lights;
 
 	glm::mat4  _projMatrix;
 	glm::mat4  _globalMVMatrix;
@@ -35,6 +36,10 @@ private:
 	GLint _uMVPMatrix;
     GLint _uNormalMatrix;
     GLint _uTexture;
+    GLint _uAmbiantLight;
+    GLint _uNbLights;
+
+    const std::string _refLight = "uLights";
 
 public:
 	/// \brief Default  constructor
@@ -51,7 +56,9 @@ public:
 		_rotateIndicator = (_rotateIndicator + direction) % 4;
 	}
 
-	void draw(const float &time, std::vector<std::vector<Section*>> &sectionMat, const glm::mat4 &trackMat, Player &player);
+	void initializeLights(const Program &program);
+
+	void draw(std::vector<std::vector<Section*>> &sectionMat, const glm::mat4 &trackMat, Player &player, const Program &program);
 
 
 

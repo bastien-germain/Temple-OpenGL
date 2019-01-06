@@ -24,7 +24,8 @@ private:
  	float _sectionInitialPosZ;
  	ModelLoader _modelLoader;
  	Model _corridorModel;
- 	Model _cornerModel;
+ 	Model _cornerLeftModel;
+ 	Model _cornerRightModel;
  	Model _playerModel;
 public:
 

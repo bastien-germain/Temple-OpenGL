@@ -14,6 +14,8 @@ GameManager::GameManager(const Program &program ,const float &sectionInitialPosZ
 	 	std::vector<Section*> temp;
 	 	_sectionMat.push_back(temp);
 	}
+
+	_drawer.initializeLights(program);
 }
 
 GameManager::~GameManager() 

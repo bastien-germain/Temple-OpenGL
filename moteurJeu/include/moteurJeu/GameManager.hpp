@@ -30,7 +30,7 @@ private:
 	Game _game;
 	Player _player;
 	Enemy _enemy;
-	Parser _parser;
+	const Parser _parser;
 	Drawer _drawer;
 	EventManager _eventManager;
 	TrackballCamera _trackball;
@@ -63,7 +63,7 @@ public:
 		return _game;
 	}
 
-	inline Drawer drawer() const 
+	inline Drawer &drawer() 
 	{
 		return _drawer;
 	}

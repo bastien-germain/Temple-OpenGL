@@ -4,10 +4,12 @@ Factory::Factory(const float &sectionInitialPosZ) :
 	_sectionInitialPosZ(sectionInitialPosZ),
 	_modelLoader(3)
 {
-	_corridorModel = _modelLoader.loadModel("corridor");
+	_corridorModel = _modelLoader.loadModel("corridorWall");
 	_corridorModel.vbo().sendData();
-	_cornerModel = _modelLoader.loadModel("corner");
-	_cornerModel.vbo().sendData();
+	_cornerLeftModel = _modelLoader.loadModel("cornerLeftWall");
+	_cornerLeftModel.vbo().sendData();
+	_cornerRightModel = _modelLoader.loadModel("cornerRightWall");
+	_cornerRightModel.vbo().sendData();
 	_playerModel = _modelLoader.loadModel("player");
 	_playerModel.vbo().sendData();
 }
@@ -112,13 +114,13 @@ Section Factory::create(const std::string &key, PositionObserver *observer) cons
 		{
 			std::cout << "Left CornerSection" << std::endl;
 			std::cout << "SECTION_FACTORY.CREATE ENDS" << "\n\n\n" << std::endl;
-			return Section(&_cornerModel, 1, -1, _sectionInitialPosZ);
+			return Section(&_cornerLeftModel, 1, -1, _sectionInitialPosZ);
 		}
 		case 'L':
 		{
 			std::cout << "Right CornerSection" << std::endl;
 			std::cout << "SECTION_FACTORY.CREATE ENDS" << "\n\n\n" << std::endl;
-			return Section(&_cornerModel, 1, 1, _sectionInitialPosZ);
+			return Section(&_cornerRightModel, 1, 1, _sectionInitialPosZ);
 		}
 		/*
 		case 'T':
@@ -136,7 +138,8 @@ Section Factory::create(const std::string &key, PositionObserver *observer) cons
 
 void Factory::deleteModelBuffers() 
 {
-	_cornerModel.vbo().deleteBuf();
+	_cornerRightModel.vbo().deleteBuf();
+	_cornerLeftModel.vbo().deleteBuf();
 	_corridorModel.vbo().deleteBuf();
 	_playerModel.vbo().deleteBuf();
 }

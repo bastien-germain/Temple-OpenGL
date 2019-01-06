@@ -9,7 +9,7 @@ in vec2 vTexCoords;
 
 out vec3 fFragColor;
 
-const int MAX_NB_LIGHTS = 10;
+const int MAX_NB_LIGHTS = 15;
 
 struct Light {
 	bool _isPoint;
@@ -21,6 +21,7 @@ struct Light {
 };
 
 uniform sampler2D uTexture;
+
 uniform Light uLights[MAX_NB_LIGHTS];
 uniform int uNbLights;
 uniform vec3 uAmbientLight;

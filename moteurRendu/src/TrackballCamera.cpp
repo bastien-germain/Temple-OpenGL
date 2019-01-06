@@ -2,7 +2,7 @@
 #include <iostream>
 
 TrackballCamera::TrackballCamera(const float &smoothness) 
-    : _fDistance(5), _fAngleX(0), _fAngleY(0), _smoothness(smoothness)
+    : _fDistance(5), _fAngleX(0), _fAngleY(glm::radians(15.f)), _smoothness(smoothness)
 {
 }
 TrackballCamera::TrackballCamera(const TrackballCamera &copied) 
