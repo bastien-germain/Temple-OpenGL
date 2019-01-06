@@ -7,6 +7,7 @@ add_definitions(-std=c++11)
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/CMake)
 
 find_package(SDL REQUIRED)
+find_package(SDL_ttf REQUIRED)
 find_package(OpenGL REQUIRED)
 find_package(GLEW REQUIRED)
 
