@@ -13,7 +13,7 @@
 #define POSITION_OFFSET_Z 20.f
 #define DRAW_DISTANCE (6 * POSITION_OFFSET_Z)
 
-#define WORLD_SPEED 0.009f
+#define WORLD_SPEED 0.03f
 
 /// \class Drawer
 /// \brief Used to draw the world 
@@ -34,6 +34,7 @@ private:
 	glm::mat4 _enemyMatrix;
 	glm::mat4 _objectMatrix;
 	glm::mat4 _worldMatrix;
+	glm::mat4 _tmpMatrix;
 
 	GLint _uMVMatrix;
 	GLint _uMVPMatrix;
@@ -60,6 +61,9 @@ public:
 	}
 
 	void initializeLights(const Program &program);
+
+	void drawPlayer(Player &player);
+	void drawEnemy(Enemy &enemy);
 
 	void draw(std::vector<std::vector<Section*>> &sectionMat, const glm::mat4 &trackMat, Player &player, Enemy &enemy, const Program &program);
 
