@@ -68,7 +68,8 @@ int main (int argc, char** argv)
         gameManager.drawer().draw(
             gameManager.sectionMat(), 
             gameManager.trackball().getViewMatrix(), 
-            gameManager.player(), 
+            gameManager.player(),
+            gameManager.enemy(), 
             program);
 
         windowManager.swapBuffers();

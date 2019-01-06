@@ -8,6 +8,7 @@ GameManager::GameManager(const Program &program ,const float &sectionInitialPosZ
 
 {
 	_player.model(_factory.playerModel());
+	_enemy.model(_factory.enemyModel());
 
 	for (unsigned int i = 0; i < 3; i++)
  	{	

@@ -58,9 +58,14 @@ public:
 
 	void deleteModelBuffers();
 
-	inline Model *playerModel() 
+	inline Model *playerModel()
 	{
 		return &_playerModel;
+	}
+
+	inline Model *enemyModel() 
+	{
+		return &_enemyModel;
 	}
 };
 

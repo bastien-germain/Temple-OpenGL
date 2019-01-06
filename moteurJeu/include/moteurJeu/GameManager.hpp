@@ -43,7 +43,7 @@ public:
 	GameManager(const Program &program, const float &sectionInitialPosZ = 0.0, const float &trackballSmoothness = 0.002);
 	~GameManager();
 
-	inline Enemy enemy() const 
+	inline Enemy &enemy() 
 	{
 		return _enemy;
 	}

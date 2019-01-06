@@ -7,7 +7,7 @@ Factory::Factory(const float &sectionInitialPosZ) :
 	_playerModel = _modelLoader.loadModel("player");
 	_playerModel.vbo().sendData();
 
-	_enemyModel = _modelLoader.loadModel("ennemy");
+	_enemyModel = _modelLoader.loadModel("enemy");
 	_enemyModel.vbo().sendData();
 
 	_corridorModel = _modelLoader.loadModel("corridorWall");

@@ -1,10 +1,10 @@
 #include "moteurJeu/Enemy.hpp"
 
-Enemy::Enemy() : _distanceToPlayer(2)
+Enemy::Enemy() : _distanceToPlayer(10)
 {
 }
 
-Enemy::Enemy(const Enemy &copied) : _distanceToPlayer(copied._distanceToPlayer)
+Enemy::Enemy(const Enemy &copied) : _model(copied._model), _distanceToPlayer(copied._distanceToPlayer)
 {
 }
 

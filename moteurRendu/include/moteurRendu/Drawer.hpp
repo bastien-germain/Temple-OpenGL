@@ -5,6 +5,7 @@
 #include "moteurJeu/Section.hpp"
 
 #include "moteurJeu/Player.hpp"
+#include "moteurJeu/Enemy.hpp"
 
 #include "glimac/Program.hpp"
 #include <glm/glm.hpp>
@@ -30,7 +31,7 @@ private:
 	glm::mat4  _normalMatrix;
 	glm::mat4 _playerMatrix;
 	glm::mat4 _worldMatrix;
-	glm::mat4 _tmpMatrix;
+	glm::mat4 _enemyMatrix;
 
 	GLint _uMVMatrix;
 	GLint _uMVPMatrix;
@@ -58,7 +59,7 @@ public:
 
 	void initializeLights(const Program &program);
 
-	void draw(std::vector<std::vector<Section*>> &sectionMat, const glm::mat4 &trackMat, Player &player, const Program &program);
+	void draw(std::vector<std::vector<Section*>> &sectionMat, const glm::mat4 &trackMat, Player &player, Enemy &enemy, const Program &program);
 
 
 

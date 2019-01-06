@@ -10,17 +10,14 @@
 #define REGULAR_X 0.f
 #define MAX_X (REGULAR_X + 2)
 #define MIN_X (REGULAR_X - 2)
-#define X_SMOOTHNESS 0.002
+#define X_SMOOTHNESS 0.009
 
-#define REGULAR_Y 1.5f
+#define REGULAR_Y 1.8f
 #define MAX_Y (REGULAR_Y + 2)
 #define MIN_Y (REGULAR_Y +- 2)
-#define Y_SMOOTHNESS 0.002
+#define Y_SMOOTHNESS 0.005
 
 #define REGULAR_Z 0.f
-
-#define ROTATE_X_SPEED 0.005f
-#define MAX_ROTATE_X 20.f
 
 /// \class Player
 /// \brief Class defining the main player
@@ -70,20 +67,7 @@ public:
 		return _posY;
 	}
 
-	inline float rotateX()
-	{
-		if (_rotateX > MAX_ROTATE_X || _rotateX < -MAX_ROTATE_X)
-        	_oppositeRotateX = !_oppositeRotateX;
-
-		if(_oppositeRotateX)
-			_rotateX -= ROTATE_X_SPEED;
-		else 
-			_rotateX += ROTATE_X_SPEED;
-
-		return _rotateX;
-	}
-
-	inline Model *model() const 
+	inline const Model *model() const 
 	{
 		return _model;
 	}

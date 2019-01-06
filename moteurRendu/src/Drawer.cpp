@@ -39,12 +39,12 @@ void Drawer::initializeLights(const Program &program)
     glUniform1i(_uNbLights, _lights.size()); 
 }
 
-void Drawer::draw(std::vector<std::vector<Section*>> &sectionMat, const glm::mat4 &trackMat, Player &player, const Program &program) 
+void Drawer::draw(std::vector<std::vector<Section*>> &sectionMat, const glm::mat4 &trackMat, Player &player, Enemy &enemy, const Program &program) 
 {
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    _worldMatrix = glm::translate(trackMat * _globalMVMatrix, glm::vec3(0,-3,2));
+    _worldMatrix = glm::translate(trackMat * _globalMVMatrix, glm::vec3(0,0,2));
 
  	for (int i = 1; i < _lights.size(); ++i)
     {
@@ -55,11 +55,9 @@ void Drawer::draw(std::vector<std::vector<Section*>> &sectionMat, const glm::mat
         _lights[i].getPos() = glm::vec3(glm::inverse(trackMat) * glm::vec4(_lights[i].getPos(), 1));
     }
 
-    /////////// RELATIVE TO PLAYER ///////////
+    /////////// RELATIVE TO PLAYER /////////
 
     _playerMatrix = _worldMatrix;
-
-    _playerMatrix = glm::rotate(_playerMatrix, glm::radians(player.rotateX()), glm::vec3(1, 0, 0));
     _playerMatrix = glm::translate(_playerMatrix, glm::vec3(player.posX(), player.posY(), 0));
 
     glUniformMatrix4fv(_uMVMatrix , 1, GL_FALSE, glm::value_ptr(_playerMatrix));
@@ -70,6 +68,36 @@ void Drawer::draw(std::vector<std::vector<Section*>> &sectionMat, const glm::mat
     player.model()->texture().bind();
     player.model()->vbo().draw();
     player.model()->texture().debind();
+
+    ////////////////////////////////////////
+    
+    /////////// RELATIVE TO ENEMY /////////
+
+    _enemyMatrix = _worldMatrix;
+    _enemyMatrix = glm::translate(_enemyMatrix, glm::vec3(0, REGULAR_Y, enemy.distanceToPlayer()));
+
+    glUniform1i(_uTexture, 0);
+    enemy.model()->texture().bind();
+
+    glUniformMatrix4fv(_uMVMatrix , 1, GL_FALSE, glm::value_ptr(_enemyMatrix));
+    glUniformMatrix4fv(_uNormalMatrix , 1, GL_FALSE, glm::value_ptr(_normalMatrix));
+    glUniformMatrix4fv(_uMVPMatrix , 1, GL_FALSE, glm::value_ptr(_projMatrix * _enemyMatrix));
+
+    enemy.model()->vbo().draw();
+
+    _enemyMatrix = glm::translate(_enemyMatrix, glm::vec3(-1, 0, 0));
+    glUniformMatrix4fv(_uMVMatrix , 1, GL_FALSE, glm::value_ptr(_enemyMatrix));
+    glUniformMatrix4fv(_uNormalMatrix , 1, GL_FALSE, glm::value_ptr(_normalMatrix));
+    glUniformMatrix4fv(_uMVPMatrix , 1, GL_FALSE, glm::value_ptr(_projMatrix * _enemyMatrix));
+    enemy.model()->vbo().draw();
+    
+    _enemyMatrix = glm::translate(_enemyMatrix, glm::vec3(2, 0, 0));
+    glUniformMatrix4fv(_uMVMatrix , 1, GL_FALSE, glm::value_ptr(_enemyMatrix));
+    glUniformMatrix4fv(_uNormalMatrix , 1, GL_FALSE, glm::value_ptr(_normalMatrix));
+    glUniformMatrix4fv(_uMVPMatrix , 1, GL_FALSE, glm::value_ptr(_projMatrix * _enemyMatrix));
+    enemy.model()->vbo().draw();
+
+    enemy.model()->texture().debind();
 
     ////////////////////////////////////////
 
