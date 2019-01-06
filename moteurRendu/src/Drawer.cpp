@@ -44,7 +44,7 @@ void Drawer::draw(std::vector<std::vector<Section*>> &sectionMat, const glm::mat
 
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    _worldMatrix = glm::translate(trackMat * _globalMVMatrix, glm::vec3(0,0,2));
+    _worldMatrix = glm::translate(trackMat * _globalMVMatrix, glm::vec3(0,-3,2));
 
  	for (int i = 1; i < _lights.size(); ++i)
     {

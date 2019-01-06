@@ -84,7 +84,7 @@ void GameManager::loadSections()
 
 void GameManager::observerUpdate(const PositionObservable *observable) const 
 {
-	
+	std::cout << "*** OBSERVER UPDATE : OBSTACLE AT POSITION " << observable->posZ() << " SENT NOTIFICATION" << std::endl;
 	if (observable->posZ() == _player.posZ()) 
 	{
 		std::cout << "*** OBSERVER UPDATE : OBSTACLE REACHED PLAYER POS_Z : " << std::endl;

@@ -80,6 +80,7 @@ public:
 	inline void goOn(const float &delta) 
 	{
 		_posZ += delta;
+		_obstacle.progress(delta);
 	}
 
 	inline int cornerDirection() const 

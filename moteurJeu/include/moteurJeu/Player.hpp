@@ -12,7 +12,7 @@
 #define MIN_X (REGULAR_X - 2)
 #define X_SMOOTHNESS 0.009
 
-#define REGULAR_Y 1.8f
+#define REGULAR_Y 1.7f
 #define MAX_Y (REGULAR_Y + 2)
 #define MIN_Y (REGULAR_Y +- 2)
 #define Y_SMOOTHNESS 0.005

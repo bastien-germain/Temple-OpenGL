@@ -25,13 +25,10 @@ Obstacle::~Obstacle()
 
 void Obstacle::progress(const float &delta) 
 {
-	std::cout << "*** OBSTACLE PROGRESS TRY" << std::endl;
-	std::cout << "*** SIZE : " << _size << std::endl;
 	if (_size != 0) 
 	{
 		std::cout << "*** OBSTACLE PROGRESS" << std::endl;
 		_posZ += delta;
-		std::cout << "*** POSITION CHANGED" << std::endl;
 		notify();
 	}
 }
