@@ -101,6 +101,8 @@ void Drawer::draw(std::vector<std::vector<Section*>> &sectionMat, const glm::mat
 
     ////////////////////////////////////////
 
+    _objectMatrix = _worldMatrix;
+
     for (int i = 0; i < sectionMat[0].size(); ++i)
     {   
         sectionMat[0][i]->goOn(WORLD_SPEED);
@@ -110,18 +112,18 @@ void Drawer::draw(std::vector<std::vector<Section*>> &sectionMat, const glm::mat
             switch (_rotateIndicator)
             {
                 case 0:
-                  	_worldMatrix =  glm::translate(_worldMatrix , glm::vec3(0, 0, sectionMat[0][i]->posZ() - i * POSITION_OFFSET_Z));
+                  	_objectMatrix =  glm::translate(_objectMatrix , glm::vec3(0, 0, sectionMat[0][i]->posZ() - i * POSITION_OFFSET_Z));
                     break;
                 case 1:
-                    _worldMatrix =  glm::translate(_worldMatrix , glm::vec3(sectionMat[0][_lastRotateIndex]->posZ() + _lastRotateIndex * POSITION_OFFSET_Z, 0, POSITION_OFFSET_Z));
+                    _objectMatrix =  glm::translate(_objectMatrix , glm::vec3(sectionMat[0][_lastRotateIndex]->posZ() + _lastRotateIndex * POSITION_OFFSET_Z, 0, POSITION_OFFSET_Z));
                     break;
                 default:
                     break;
             }
 
-            glUniformMatrix4fv(_uMVMatrix , 1, GL_FALSE, glm::value_ptr(_worldMatrix));
+            glUniformMatrix4fv(_uMVMatrix , 1, GL_FALSE, glm::value_ptr(_objectMatrix));
             glUniformMatrix4fv(_uNormalMatrix , 1, GL_FALSE, glm::value_ptr(_normalMatrix));
-            glUniformMatrix4fv(_uMVPMatrix , 1, GL_FALSE, glm::value_ptr(_projMatrix * _worldMatrix));
+            glUniformMatrix4fv(_uMVPMatrix , 1, GL_FALSE, glm::value_ptr(_projMatrix * _objectMatrix));
 
     		glUniform1i(_uTexture, 0);
             sectionMat[0][i]->model()->texture().bind();
@@ -129,20 +131,26 @@ void Drawer::draw(std::vector<std::vector<Section*>> &sectionMat, const glm::mat
             sectionMat[0][i]->model()->texture().debind();
 
             if (sectionMat[0][i]->obstacle().model() != NULL)
-            {
+            {	
+            	_objectMatrix = glm::translate(_objectMatrix, glm::vec3(sectionMat[0][i]->obstacle().posX(), 0, 0));
+            	glUniformMatrix4fv(_uMVMatrix , 1, GL_FALSE, glm::value_ptr(_objectMatrix));
+            	glUniformMatrix4fv(_uNormalMatrix , 1, GL_FALSE, glm::value_ptr(_normalMatrix));
+            	glUniformMatrix4fv(_uMVPMatrix , 1, GL_FALSE, glm::value_ptr(_projMatrix * _objectMatrix));
+
             	glUniform1i(_uTexture, 0);
 	            sectionMat[0][i]->obstacle().model()->texture().bind();
 	            sectionMat[0][i]->obstacle().model()->vbo().draw();
 	            sectionMat[0][i]->obstacle().model()->texture().debind();
+            	_objectMatrix = glm::translate(_objectMatrix, glm::vec3(-sectionMat[0][i]->obstacle().posX(), 0, 0));
             }
 
             switch (_rotateIndicator)
             {
                 case 0:
-                  	_worldMatrix =  glm::translate(_worldMatrix  , glm::vec3(0, 0, -sectionMat[0][i]->posZ() + i * POSITION_OFFSET_Z));
+                  	_objectMatrix =  glm::translate(_objectMatrix  , glm::vec3(0, 0, -sectionMat[0][i]->posZ() + i * POSITION_OFFSET_Z));
                     break;
                 case 1:
-                    _worldMatrix =  glm::translate(_worldMatrix  , glm::vec3(-sectionMat[0][_lastRotateIndex]->posZ() - _lastRotateIndex * POSITION_OFFSET_Z, 0, -POSITION_OFFSET_Z));
+                    _objectMatrix =  glm::translate(_objectMatrix  , glm::vec3(-sectionMat[0][_lastRotateIndex]->posZ() - _lastRotateIndex * POSITION_OFFSET_Z, 0, -POSITION_OFFSET_Z));
                     break;
                 default:
                     break;
@@ -150,7 +158,7 @@ void Drawer::draw(std::vector<std::vector<Section*>> &sectionMat, const glm::mat
 
             if (sectionMat[0][i]->isCorner())
             {   
-                _worldMatrix = glm::rotate(_worldMatrix, glm::radians(sectionMat[0][i]->cornerDirection() * 90.f), glm::vec3(0,1,0));
+                _objectMatrix = glm::rotate(_objectMatrix, glm::radians(sectionMat[0][i]->cornerDirection() * 90.f), glm::vec3(0,1,0));
                 rotated(sectionMat[0][i]->cornerDirection());
                 _lastRotateIndex = i;
 
@@ -161,7 +169,7 @@ void Drawer::draw(std::vector<std::vector<Section*>> &sectionMat, const glm::mat
             }
         }
     }
-    _worldMatrix = glm::rotate(_worldMatrix, glm::radians(_rotateIndicator * 90.f), glm::vec3(0,-1,0));
+    _objectMatrix = glm::rotate(_objectMatrix, glm::radians(_rotateIndicator * 90.f), glm::vec3(0,-1,0));
     rotated(-_rotateIndicator);
 
 }

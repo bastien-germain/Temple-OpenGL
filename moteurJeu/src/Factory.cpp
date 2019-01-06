@@ -49,27 +49,27 @@ Factory::~Factory()
 Obstacle Factory::obstacleBuiler(const std::string &key, PositionObserver *observer) const {
 
 	std::cout << "SECTION_FACTORY.OBSTALCE_BUILDER STARTS..." << std::endl;
-	unsigned int obstaclePosition;
+	int obstaclePosition;
 
 	switch (key[2])
 	{
 		case '1':
 		{
 			std::cout << "Gauche" << std::endl;
-			obstaclePosition = 1;
+			obstaclePosition = -1;
 			break;
 		}
 		case '2':
 		{
 			std::cout << "Milieu" << std::endl;
-			obstaclePosition = 2;
+			obstaclePosition = 0;
 			break;
 		}
 
 		case '3':
 		{
 			std::cout << "Droite" << std::endl;
-			obstaclePosition = 3;
+			obstaclePosition = 1;
 			break;
 		}
 		default:

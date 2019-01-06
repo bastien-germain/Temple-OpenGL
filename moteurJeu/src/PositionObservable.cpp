@@ -41,7 +41,7 @@ float PositionObservable::posZ() const
 {
 }
 
-unsigned int PositionObservable::posX() const
+int PositionObservable::posX() const
 {
 }
 

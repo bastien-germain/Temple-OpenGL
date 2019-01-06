@@ -13,7 +13,7 @@
 #define POSITION_OFFSET_Z 20.f
 #define DRAW_DISTANCE (6 * POSITION_OFFSET_Z)
 
-#define WORLD_SPEED 0.005f
+#define WORLD_SPEED 0.009f
 
 /// \class Drawer
 /// \brief Used to draw the world 
@@ -29,9 +29,11 @@ private:
 	glm::mat4  _projMatrix;
 	glm::mat4  _globalMVMatrix;
 	glm::mat4  _normalMatrix;
+
 	glm::mat4 _playerMatrix;
-	glm::mat4 _worldMatrix;
 	glm::mat4 _enemyMatrix;
+	glm::mat4 _objectMatrix;
+	glm::mat4 _worldMatrix;
 
 	GLint _uMVMatrix;
 	GLint _uMVPMatrix;

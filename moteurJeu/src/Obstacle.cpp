@@ -3,7 +3,7 @@
 Obstacle::Obstacle(
 	const Model *model, 
 	PositionObserver *observer, 
-	const unsigned int posX, 
+	const int posX, 
 	const float posZ, 
 	const unsigned int size) 
 	: _model(model), _posX(posX), _posZ(posZ), _size(size)

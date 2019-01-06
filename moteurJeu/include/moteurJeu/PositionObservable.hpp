@@ -24,7 +24,7 @@ public:
 	void removePositionObserver(const PositionObserver *observer);
 
 	virtual float posZ() const;
-	virtual unsigned int posX() const;
+	virtual int posX() const;
 
 	inline std::vector<PositionObserver*> observers() const 
 	{
