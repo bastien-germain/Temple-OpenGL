@@ -20,7 +20,7 @@ void Drawer::draw(const float &time, std::vector<std::vector<Section*>> &section
 {
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    _speed = time * 0.005;
+    _speed = time * 0.0005;
     
     _tmpMatrix = glm::translate(trackMat * _globalMVMatrix, glm::vec3(0,-2,0));
     

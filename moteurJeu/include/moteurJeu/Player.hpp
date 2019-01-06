@@ -19,7 +19,7 @@
 
 #define REGULAR_Z 0.f
 
-#define ROTATE_X_SPEED 0.05f
+#define ROTATE_X_SPEED 0.005f
 #define MAX_ROTATE_X 20.f
 
 /// \class Player
