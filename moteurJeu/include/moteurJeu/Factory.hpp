@@ -10,10 +10,7 @@
 #include "moteurJeu/Exception.hpp"
 
 #include "moteurJeu/Section.hpp"
-
-#include "moteurJeu/Hole.hpp"
-#include "moteurJeu/Rock.hpp"
-#include "moteurJeu/Barrier.hpp"
+#include "moteurJeu/Obstacle.hpp"
 
 /// \class Factory
 /// \brief Creates Section from input string
@@ -23,10 +20,24 @@ class Factory
 private:
  	float _sectionInitialPosZ;
  	ModelLoader _modelLoader;
+
+ 	Model _playerModel;
+ 	Model _enemyModel;
+
  	Model _corridorModel;
  	Model _cornerLeftModel;
  	Model _cornerRightModel;
- 	Model _playerModel;
+ 	Model _tModel;
+
+ 	Model _deambuleModel;
+ 	Model _clapTrapModel;
+ 	Model _chairsStackModel;
+ 	Model _brancardModel;
+
+ 	Model _skyboxModel;
+
+ 	Model _bonusModel;
+
 public:
 
 	/// \brief Default constructor

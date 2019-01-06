@@ -23,7 +23,7 @@ void Drawer::initializeLights(const Program &program)
 {
 	glUniform3f(_uAmbiantLight, 0.2, 0.2, 0.2);
 
-    _lights.push_back(Light(false, glm::vec3(0.0, 1.0, -5), glm::vec3(0.5, 0.5, 1.0), glm::vec3(0.0), 8, glm::vec3(0.2)));
+    _lights.push_back(Light(false, glm::vec3(0.0, 0.0, -5), glm::vec3(0.5, 0.7, 1.0), glm::vec3(0.0), 8, glm::vec3(0.4)));
 
     for (int i = 0; i < 4; ++i)
     {
@@ -99,6 +99,14 @@ void Drawer::draw(std::vector<std::vector<Section*>> &sectionMat, const glm::mat
             sectionMat[0][i]->model()->texture().bind();
             sectionMat[0][i]->model()->vbo().draw();
             sectionMat[0][i]->model()->texture().debind();
+
+            if (sectionMat[0][i]->obstacle().model() != NULL)
+            {
+            	glUniform1i(_uTexture, 0);
+	            sectionMat[0][i]->obstacle().model()->texture().bind();
+	            sectionMat[0][i]->obstacle().model()->vbo().draw();
+	            sectionMat[0][i]->obstacle().model()->texture().debind();
+            }
 
             switch (_rotateIndicator)
             {

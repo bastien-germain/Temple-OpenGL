@@ -1,8 +1,8 @@
-Ih2
+IC2
 IX1
-Ih2
-IX1
-Ih2
-IX1
-Lh3
-IH1
+IB2
+ID1
+ID2
+IC1
+LB3
+IC1

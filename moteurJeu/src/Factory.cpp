@@ -2,16 +2,44 @@
 
 Factory::Factory(const float &sectionInitialPosZ) : 
 	_sectionInitialPosZ(sectionInitialPosZ),
-	_modelLoader(3)
+	_modelLoader(11)
 {
-	_corridorModel = _modelLoader.loadModel("corridorWall");
-	_corridorModel.vbo().sendData();
-	_cornerLeftModel = _modelLoader.loadModel("cornerLeftWall");
-	_cornerLeftModel.vbo().sendData();
-	_cornerRightModel = _modelLoader.loadModel("cornerRightWall");
-	_cornerRightModel.vbo().sendData();
 	_playerModel = _modelLoader.loadModel("player");
 	_playerModel.vbo().sendData();
+
+	_enemyModel = _modelLoader.loadModel("ennemy");
+	_enemyModel.vbo().sendData();
+
+	_corridorModel = _modelLoader.loadModel("corridorWall");
+	_corridorModel.vbo().sendData();
+
+	_cornerLeftModel = _modelLoader.loadModel("cornerLeftWall");
+	_cornerLeftModel.vbo().sendData();
+
+	_cornerRightModel = _modelLoader.loadModel("cornerRightWall");
+	_cornerRightModel.vbo().sendData();
+
+	_tModel = _modelLoader.loadModel("tsectionWall");
+	_tModel.vbo().sendData();
+
+	_deambuleModel = _modelLoader.loadModel("deambuleObs");
+	_deambuleModel.vbo().sendData();
+
+	_clapTrapModel = _modelLoader.loadModel("clapTrap");
+	_clapTrapModel.vbo().sendData();
+
+	_chairsStackModel = _modelLoader.loadModel("chairsStack");
+	_chairsStackModel.vbo().sendData();
+
+	_brancardModel = _modelLoader.loadModel("brancardObs");
+	_brancardModel.vbo().sendData();
+
+	_skyboxModel = _modelLoader.loadModel("skybox");
+	_skyboxModel.vbo().sendData();
+
+	_bonusModel = _modelLoader.loadModel("bonus");
+	_bonusModel.vbo().sendData();
+
 }
 
 Factory::~Factory() 
@@ -56,35 +84,17 @@ Obstacle Factory::obstacleBuiler(const std::string &key, PositionObserver *obser
 			std::cout << "No Obstacle" << std::endl;
 			return Obstacle();
 		}
-		case 'h':
+		case 'C':
 		{
-			std::cout << "Simple Hole" << std::endl;
-			return Hole(observer, obstaclePosition, _sectionInitialPosZ, 1);
-		}
-		case 'H':
-		{
-			std::cout << "Large Hole" << std::endl;
-			return Hole(observer, obstaclePosition, _sectionInitialPosZ, 3);
-		}
-		case 'b':
-		{
-			std::cout << "Simple Barrier" << std::endl;
-			return Barrier(observer, obstaclePosition, _sectionInitialPosZ, 1);
+			return Obstacle(&_chairsStackModel, observer, obstaclePosition, _sectionInitialPosZ, 3);
 		}
 		case 'B':
 		{
-			std::cout << "Large Barrier" << std::endl;
-			return Barrier(observer, obstaclePosition,_sectionInitialPosZ, 3);
+			return Obstacle(&_brancardModel, observer, obstaclePosition,_sectionInitialPosZ, 3);
 		}
-		case 'r':
+		case 'D':
 		{
-			std::cout << "Simple Rock" << std::endl;
-			return Rock(observer, obstaclePosition,_sectionInitialPosZ, 1);
-		}
-		case 'R':
-		{
-			std::cout << "Large Rock" << std::endl;
-			return Rock(observer, obstaclePosition, _sectionInitialPosZ, 3);
+			return Obstacle(&_deambuleModel, observer, obstaclePosition,_sectionInitialPosZ, 1);
 		}
 		default:
 			THROW_EXCEPTION("FILE_READING_ERROR : Parser --> Invalid character for Obstacle describing");
@@ -138,8 +148,21 @@ Section Factory::create(const std::string &key, PositionObserver *observer) cons
 
 void Factory::deleteModelBuffers() 
 {
+	_playerModel.vbo().deleteBuf();
+	_enemyModel.vbo().deleteBuf();
+
 	_cornerRightModel.vbo().deleteBuf();
 	_cornerLeftModel.vbo().deleteBuf();
 	_corridorModel.vbo().deleteBuf();
-	_playerModel.vbo().deleteBuf();
+	_tModel.vbo().deleteBuf();
+
+	_deambuleModel.vbo().deleteBuf();
+	_clapTrapModel.vbo().deleteBuf();
+	_chairsStackModel.vbo().deleteBuf();
+	_brancardModel.vbo().deleteBuf();
+
+	_skyboxModel.vbo().deleteBuf();
+
+	_bonusModel.vbo().deleteBuf();
+
 }

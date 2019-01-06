@@ -6,6 +6,8 @@
 
 #include "moteurJeu/PositionObservable.hpp"
 
+#include "moteurRendu/Model.hpp"
+
 /// \class Obstacle
 /// \brief Class defining an Obstacle
 class Obstacle : public PositionObservable
@@ -15,12 +17,14 @@ private:
 	unsigned int _posX; /* X position of the Obstacle */
 	float _posZ; /* Z position of the Obstacle */
 	unsigned int _size; /*! Size of the Obstacle */
+
+	const Model *_model;
 	
 public:
 	/// \brief Constructor from a position and a size
 	/// \param position : the position of the Obstacle
 	/// \param size : the size of the Obstacle
-	Obstacle(PositionObserver *observer = NULL, const unsigned int posX = 0, const float posZ = 0, const unsigned int size = 0);
+	Obstacle(const Model *model = NULL, PositionObserver *observer = NULL, const unsigned int posX = 0, const float posZ = 0, const unsigned int size = 0);
 
 	/// \brief Copy constructor using another Obstacle
 	/// \param copied : the copied Obstacle
@@ -42,13 +46,27 @@ public:
 	~Obstacle();
 
 	/// \brief Getter : size getter
-	float size() const; 
+	inline float size() const
+	{
+		return _size;
+	} 
 
 	/// \brief Getter : posX getter
-	unsigned int posX() const;
+	inline unsigned int posX() const
+	{
+		return _posX;
+	}
 
 	/// \brief Getter : posZ getter
-	float posZ() const;
+	inline float posZ() const
+	{
+		return _posZ;
+	}
+	
+	inline const Model *model() const 
+	{
+		return _model;
+	}
 
 	/// \brief posZ modifier when the Obstalce progresses along Z axis
 	void progress(const float &delta);
