@@ -85,6 +85,38 @@ void Drawer::drawEnemy(Enemy &enemy)
     enemy.model()->texture().debind();
 }
 
+void Drawer::drawSection(Section *section, const float &posX, const float &posZ)
+{
+   	_tmpMatrix =  glm::translate(_tmpMatrix , glm::vec3(posX, 0, posZ));
+
+	glUniformMatrix4fv(_uMVMatrix , 1, GL_FALSE, glm::value_ptr(_tmpMatrix));
+    glUniformMatrix4fv(_uNormalMatrix , 1, GL_FALSE, glm::value_ptr(_normalMatrix));
+    glUniformMatrix4fv(_uMVPMatrix , 1, GL_FALSE, glm::value_ptr(_projMatrix * _tmpMatrix));
+
+	glUniform1i(_uTexture, 0);
+    section->model()->texture().bind();
+    section->model()->vbo().draw();
+    section->model()->texture().debind();
+
+    if (section->obstacle().model() != NULL)
+    {	
+    	_tmpMatrix = glm::translate(_tmpMatrix, glm::vec3(section->obstacle().posX(), 0, 0));
+
+    	glUniformMatrix4fv(_uMVMatrix , 1, GL_FALSE, glm::value_ptr(_tmpMatrix));
+    	glUniformMatrix4fv(_uNormalMatrix , 1, GL_FALSE, glm::value_ptr(_normalMatrix));
+    	glUniformMatrix4fv(_uMVPMatrix , 1, GL_FALSE, glm::value_ptr(_projMatrix * _tmpMatrix));
+
+    	glUniform1i(_uTexture, 0);
+        section->obstacle().model()->texture().bind();
+        section->obstacle().model()->vbo().draw();
+        section->obstacle().model()->texture().debind();
+
+    	_tmpMatrix = glm::translate(_tmpMatrix, glm::vec3(-section->obstacle().posX(), 0, 0));
+    }
+
+   	_tmpMatrix =  glm::translate(_tmpMatrix , glm::vec3(-posX, 0, -posZ));
+}
+
 void Drawer::draw(std::vector<std::vector<Section*>> &sectionMat, const glm::mat4 &trackMat, Player &player, Enemy &enemy, const Program &program) 
 {
 
@@ -115,45 +147,10 @@ void Drawer::draw(std::vector<std::vector<Section*>> &sectionMat, const glm::mat
             switch (_rotateIndicator)
             {
                 case 0:
-                  	_tmpMatrix =  glm::translate(_tmpMatrix , glm::vec3(0, 0, sectionMat[0][i]->posZ() - i * POSITION_OFFSET_Z));
+                  	drawSection(sectionMat[0][i], 0, sectionMat[0][i]->posZ() - i * POSITION_OFFSET_Z);
                     break;
                 case 1:
-                    _tmpMatrix =  glm::translate(_tmpMatrix , glm::vec3(sectionMat[0][_lastRotateIndex]->posZ() + _lastRotateIndex * POSITION_OFFSET_Z, 0, POSITION_OFFSET_Z));
-                    break;
-                default:
-                    break;
-            }
-
-            glUniformMatrix4fv(_uMVMatrix , 1, GL_FALSE, glm::value_ptr(_tmpMatrix));
-            glUniformMatrix4fv(_uNormalMatrix , 1, GL_FALSE, glm::value_ptr(_normalMatrix));
-            glUniformMatrix4fv(_uMVPMatrix , 1, GL_FALSE, glm::value_ptr(_projMatrix * _tmpMatrix));
-
-    		glUniform1i(_uTexture, 0);
-            sectionMat[0][i]->model()->texture().bind();
-            sectionMat[0][i]->model()->vbo().draw();
-            sectionMat[0][i]->model()->texture().debind();
-
-            if (sectionMat[0][i]->obstacle().model() != NULL)
-            {	
-            	_tmpMatrix = glm::translate(_tmpMatrix, glm::vec3(sectionMat[0][i]->obstacle().posX(), 0, 0));
-            	glUniformMatrix4fv(_uMVMatrix , 1, GL_FALSE, glm::value_ptr(_tmpMatrix));
-            	glUniformMatrix4fv(_uNormalMatrix , 1, GL_FALSE, glm::value_ptr(_normalMatrix));
-            	glUniformMatrix4fv(_uMVPMatrix , 1, GL_FALSE, glm::value_ptr(_projMatrix * _tmpMatrix));
-
-            	glUniform1i(_uTexture, 0);
-	            sectionMat[0][i]->obstacle().model()->texture().bind();
-	            sectionMat[0][i]->obstacle().model()->vbo().draw();
-	            sectionMat[0][i]->obstacle().model()->texture().debind();
-            	_tmpMatrix = glm::translate(_tmpMatrix, glm::vec3(-sectionMat[0][i]->obstacle().posX(), 0, 0));
-            }
-
-            switch (_rotateIndicator)
-            {
-                case 0:
-                  	_tmpMatrix =  glm::translate(_tmpMatrix  , glm::vec3(0, 0, -sectionMat[0][i]->posZ() + i * POSITION_OFFSET_Z));
-                    break;
-                case 1:
-                    _tmpMatrix =  glm::translate(_tmpMatrix  , glm::vec3(-sectionMat[0][_lastRotateIndex]->posZ() - _lastRotateIndex * POSITION_OFFSET_Z, 0, -POSITION_OFFSET_Z));
+                    drawSection(sectionMat[0][i], sectionMat[0][_lastRotateIndex]->posZ() + _lastRotateIndex * POSITION_OFFSET_Z, POSITION_OFFSET_Z);
                     break;
                 default:
                     break;

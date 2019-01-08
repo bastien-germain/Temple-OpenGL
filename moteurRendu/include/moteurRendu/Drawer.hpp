@@ -64,6 +64,7 @@ public:
 
 	void drawPlayer(Player &player);
 	void drawEnemy(Enemy &enemy);
+	void drawSection(Section *section, const float &posX, const float &posZ);
 
 	void draw(std::vector<std::vector<Section*>> &sectionMat, const glm::mat4 &trackMat, Player &player, Enemy &enemy, const Program &program);
 
