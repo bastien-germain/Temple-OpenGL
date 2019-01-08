@@ -4,10 +4,9 @@ Section::Section(
 	const Model *model, 
 	const unsigned int type,
 	const int cornerDirection,
-	const float &posZ, 
 	const Obstacle &obstacle) 
-	: _model(model), _obstacle(obstacle), _posZ(posZ), 
-	_type(type), _cornerDirection(cornerDirection)
+	: _model(model), _obstacle(obstacle), _posZ(0), 
+	_type(type), _cornerDirection(cornerDirection), _turned(false)
 {
 	if (_type > 2 || type < 0)
 		THROW_EXCEPTION("INVALID SECTION INITIALISATION : NO MATCH FOR THAT KIND OF SECTION");

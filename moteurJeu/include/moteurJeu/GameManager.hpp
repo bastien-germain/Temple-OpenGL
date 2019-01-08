@@ -40,7 +40,7 @@ private:
 	std::vector<std::vector<Section*>> _sectionMat;
 	
 public:
-	GameManager(const Program &program, const float &sectionInitialPosZ = 0.0, const float &trackballSmoothness = 0.002);
+	GameManager(const Program &program, const float &trackballSmoothness = 0.008);
 	~GameManager();
 
 	inline Enemy &enemy() 
@@ -56,6 +56,11 @@ public:
 	inline std::vector<std::vector<Section*>> &sectionMat()
 	{
 		return _sectionMat;
+	}
+
+	inline std::vector<Section> &sectionVec()
+	{
+		return _sectionVec;
 	}
 
 	inline Game game() const 

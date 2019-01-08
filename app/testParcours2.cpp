@@ -58,15 +58,9 @@ int main (int argc, char** argv)
         gameManager.handleEvent(&e);
 
         glm::mat4 trackMat = gameManager.trackball().getViewMatrix();
-        
-        /*if (speed > 95 && turned == false)
-        {
-            globalMVMatrix = glm::rotate(globalMVMatrix, glm::radians(90.f), glm::vec3(0,1,0));
-            turned = true;
-        }*/
 
         gameManager.drawer().draw(
-            gameManager.sectionMat(), 
+            gameManager.sectionVec(), 
             gameManager.trackball().getViewMatrix(), 
             gameManager.player(),
             gameManager.enemy(), 

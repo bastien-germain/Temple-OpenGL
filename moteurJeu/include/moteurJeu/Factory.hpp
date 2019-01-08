@@ -18,7 +18,6 @@ class Factory
 {
 
 private:
- 	float _sectionInitialPosZ;
  	ModelLoader _modelLoader;
 
  	Model _playerModel;
@@ -41,15 +40,10 @@ private:
 public:
 
 	/// \brief Default constructor
-	Factory(const float &sectionInitialPosZ = 0.0);
+	Factory();
 
 	/// \brief Destructor
 	~Factory();
-
-	inline const float sectionInitialPosZ() const 
-	{
-		return _sectionInitialPosZ;
-	}
 
 	Obstacle obstacleBuiler(const std::string &key, PositionObserver *observer) const;
 

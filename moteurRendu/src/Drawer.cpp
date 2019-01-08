@@ -1,7 +1,12 @@
 #include "moteurRendu/Drawer.hpp"
 
-Drawer::Drawer(const Program &program) : _rotateIndicator(0), _lastRotateIndex(0)
+Drawer::Drawer(const Program &program) : _localRotateIndicator(0), _globalRotateIndicator(0)
 {
+	for (int i = 0; i < 4; ++i)
+	{
+		_rotateIndex[i] = 0;
+	}
+
 	_projMatrix = glm::perspective(glm::radians(70.f), 1.f, 0.1f, 100.f);
 	_globalMVMatrix = glm::translate(glm::mat4(), glm::vec3(0.f, 0.f, -3.f));
 	_normalMatrix = glm::transpose(glm::inverse(_globalMVMatrix));
@@ -23,7 +28,7 @@ Drawer::~Drawer()
 
 void Drawer::initializeLights(const Program &program)
 {
-	glUniform3f(_uAmbiantLight, 0.2, 0.2, 0.2);
+	glUniform3f(_uAmbiantLight, 0.7, 0.7, 0.7);
 
     _lights.push_back(Light(false, glm::vec3(0.0, 0.0, -5), glm::vec3(0.5, 0.7, 1.0), glm::vec3(0.0), 8, glm::vec3(0.4)));
 
@@ -85,7 +90,7 @@ void Drawer::drawEnemy(Enemy &enemy)
     enemy.model()->texture().debind();
 }
 
-void Drawer::drawSection(Section *section, const float &posX, const float &posZ)
+void Drawer::drawSection(const Section &section, const float &posX, const float &posZ)
 {
    	_tmpMatrix =  glm::translate(_tmpMatrix , glm::vec3(posX, 0, posZ));
 
@@ -94,29 +99,164 @@ void Drawer::drawSection(Section *section, const float &posX, const float &posZ)
     glUniformMatrix4fv(_uMVPMatrix , 1, GL_FALSE, glm::value_ptr(_projMatrix * _tmpMatrix));
 
 	glUniform1i(_uTexture, 0);
-    section->model()->texture().bind();
-    section->model()->vbo().draw();
-    section->model()->texture().debind();
+    section.model()->texture().bind();
+    section.model()->vbo().draw();
+    section.model()->texture().debind();
 
-    if (section->obstacle().model() != NULL)
+    if (section.obstacle().model() != NULL)
     {	
-    	_tmpMatrix = glm::translate(_tmpMatrix, glm::vec3(section->obstacle().posX(), 0, 0));
+    	_tmpMatrix = glm::translate(_tmpMatrix, glm::vec3(section.obstacle().posX(), 0, 0));
 
     	glUniformMatrix4fv(_uMVMatrix , 1, GL_FALSE, glm::value_ptr(_tmpMatrix));
     	glUniformMatrix4fv(_uNormalMatrix , 1, GL_FALSE, glm::value_ptr(_normalMatrix));
     	glUniformMatrix4fv(_uMVPMatrix , 1, GL_FALSE, glm::value_ptr(_projMatrix * _tmpMatrix));
 
     	glUniform1i(_uTexture, 0);
-        section->obstacle().model()->texture().bind();
-        section->obstacle().model()->vbo().draw();
-        section->obstacle().model()->texture().debind();
+        section.obstacle().model()->texture().bind();
+        section.obstacle().model()->vbo().draw();
+        section.obstacle().model()->texture().debind();
 
-    	_tmpMatrix = glm::translate(_tmpMatrix, glm::vec3(-section->obstacle().posX(), 0, 0));
+    	_tmpMatrix = glm::translate(_tmpMatrix, glm::vec3(-section.obstacle().posX(), 0, 0));
     }
 
    	_tmpMatrix =  glm::translate(_tmpMatrix , glm::vec3(-posX, 0, -posZ));
 }
 
+
+void Drawer::draw(std::vector<Section> &sectionVec, const glm::mat4 &trackMat, Player &player, Enemy &enemy, const Program &program) 
+{
+
+	float x, z;
+
+    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+    _worldMatrix = glm::translate(trackMat * _globalMVMatrix, glm::vec3(0,-3,2));
+
+    drawPlayer(player);
+    drawEnemy(enemy);
+
+ 	for (int i = 1; i < _lights.size(); ++i)
+    {
+    	_lights[i].goOn(WORLD_SPEED, - (i%2) * LIGHTS_SPACE - 2 * LIGHTS_SPACE);
+
+        _lights[i].getPos() = glm::vec3(trackMat * glm::vec4(_lights[i].getPos(), 1));
+        _lights[i].sendLightShader(program, _refLight);
+        _lights[i].getPos() = glm::vec3(glm::inverse(trackMat) * glm::vec4(_lights[i].getPos(), 1));
+    }
+
+    _tmpMatrix = _worldMatrix * _objectMatrix;
+
+    for (int i = 0; i < 4; ++i)
+	{
+		_rotateIndex[i] = 0;
+	}
+
+    for (int i = 0; i < sectionVec.size(); ++i)
+    {   
+    	switch (_globalRotateIndicator) 
+    	{
+    		case 0:
+    		{
+    			switch(_localRotateIndicator)
+    			{
+    				case 0:
+						sectionVec[i].goOnZ(WORLD_SPEED);
+    					z = sectionVec[i].posZ();
+    					x = 0;
+    					break;
+    				case 1:
+    					z = - sectionVec[i].posZ();
+    					x = - sectionVec[_rotateIndex[0]].posZ();
+    					break;
+    				case 2:
+    					z = - sectionVec[_rotateIndex[0]].posZ() + sectionVec[i].posZ();
+    					x = sectionVec[_rotateIndex[1]].posZ();
+    					break;
+    				case 3:
+    					z = sectionVec[_rotateIndex[1]].posZ() - sectionVec[i].posZ();
+    					x = - sectionVec[_rotateIndex[2]].posZ() + sectionVec[_rotateIndex[0]].posZ();
+    				default:
+    					break;
+    			}
+       			break;
+    		}
+    		case 1:
+    		{
+    			switch(_localRotateIndicator)
+    			{
+    				case 0:
+    					z = sectionVec[i].posZ();
+    					x = - (sectionVec[_rotateIndex[0]+1].posZ() - sectionVec[_rotateIndex[0]].posZ());
+    					break;
+    				case 1:
+						sectionVec[i].goOnZ(WORLD_SPEED);
+    					z = - sectionVec[i].posZ();
+    					x = 0;
+    					break;
+    				default:
+    					break;
+    			}
+    			break;
+    		}
+    		case 2:
+    		{
+    			switch(_localRotateIndicator)
+    			{
+    				case 0:
+    					z = sectionVec[i].posZ();
+    					x = - (sectionVec[_rotateIndex[0]+1].posZ() - sectionVec[_rotateIndex[0]].posZ());
+    					break;
+    				case 1:
+						sectionVec[i].goOnZ(WORLD_SPEED);
+    					z = - sectionVec[i].posZ();
+    					x = 0;
+    					break;
+    				default:
+    					break;
+    			}
+    			break;
+    		}
+    		default:
+    			break;
+		}
+
+		drawSection(sectionVec[i], x, z);
+
+		if (sectionVec[i].isCorner())
+		{
+			rotated(sectionVec[i].cornerDirection(), _localRotateIndicator);
+            _tmpMatrix = glm::rotate(_tmpMatrix, glm::radians(90.f), glm::vec3(0,1,0));
+
+            switch (abs(_localRotateIndicator))
+            {
+            	case 1:
+            		_rotateIndex[0] = i;
+            		break;
+            	case 2:
+            		_rotateIndex[1] = i;
+            		break;
+            	case 3:
+            		_rotateIndex[2] = i;
+            		break;
+            	case 0:
+            		_rotateIndex[3] = i;
+            		break;
+            }
+
+            if (!sectionVec[i].hasTurned() && (fabs(sectionVec[i].posZ() - player.posZ()) <= WORLD_SPEED))
+            {
+            	rotated(sectionVec[i].cornerDirection(), _globalRotateIndicator);
+            	_objectMatrix = glm::rotate(_objectMatrix, glm::radians(_globalRotateIndicator * 90.f), glm::vec3(0,1,0));
+            	sectionVec[i].turned();
+            }
+		}
+    }
+    rotated(-_localRotateIndicator, _localRotateIndicator);
+
+}
+
+
+/*
 void Drawer::draw(std::vector<std::vector<Section*>> &sectionMat, const glm::mat4 &trackMat, Player &player, Enemy &enemy, const Program &program) 
 {
 
@@ -142,7 +282,7 @@ void Drawer::draw(std::vector<std::vector<Section*>> &sectionMat, const glm::mat
     {   
         sectionMat[0][i]->goOn(WORLD_SPEED);
 
-        if (fabs(sectionMat[0][i]->posZ()) < DRAW_DISTANCE)
+        //if (fabs(sectionMat[0][i]->posZ()) < DRAW_DISTANCE)
         {
             switch (_rotateIndicator)
             {
@@ -150,7 +290,7 @@ void Drawer::draw(std::vector<std::vector<Section*>> &sectionMat, const glm::mat
                   	drawSection(sectionMat[0][i], 0, sectionMat[0][i]->posZ() - i * POSITION_OFFSET_Z);
                     break;
                 case 1:
-                    drawSection(sectionMat[0][i], sectionMat[0][_lastRotateIndex]->posZ() + _lastRotateIndex * POSITION_OFFSET_Z, POSITION_OFFSET_Z);
+                    drawSection(sectionMat[0][i], sectionMat[0][_lastRotateIndexZ]->posZ() + _lastRotateIndexZ * POSITION_OFFSET_Z, POSITION_OFFSET_Z);
                     break;
                 default:
                     break;
@@ -160,7 +300,7 @@ void Drawer::draw(std::vector<std::vector<Section*>> &sectionMat, const glm::mat
             {   
                 _tmpMatrix = glm::rotate(_tmpMatrix, glm::radians(sectionMat[0][i]->cornerDirection() * 90.f), glm::vec3(0,1,0));
                 rotated(sectionMat[0][i]->cornerDirection());
-                _lastRotateIndex = i;
+                _lastRotateIndexZ = i;
 
                 if (sectionMat[0][i]->posZ() + i * POSITION_OFFSET_Z <= player.posZ())
                 {
@@ -173,3 +313,4 @@ void Drawer::draw(std::vector<std::vector<Section*>> &sectionMat, const glm::mat
     rotated(-_rotateIndicator);
 
 }
+*/

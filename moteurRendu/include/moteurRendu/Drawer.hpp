@@ -10,10 +10,11 @@
 #include "glimac/Program.hpp"
 #include <glm/glm.hpp>
 
-#define POSITION_OFFSET_Z 20.f
+#define POSITION_OFFSET_Z -20.f
+#define CORNER_OFFSET 13.f
 #define DRAW_DISTANCE (6 * POSITION_OFFSET_Z)
 
-#define WORLD_SPEED 0.03f
+#define WORLD_SPEED 0.005f
 
 /// \class Drawer
 /// \brief Used to draw the world 
@@ -21,8 +22,9 @@
 class Drawer 
 {
 private:
-	int _rotateIndicator;
-	unsigned int _lastRotateIndex;
+	int _globalRotateIndicator;
+	int _localRotateIndicator;
+	unsigned int _rotateIndex[4];
 
 	std::vector<Light> _lights;
 
@@ -52,21 +54,18 @@ public:
 	/// \brief Destructor
 	~Drawer();
 
-	inline int rotateIndicator() {
-		return _rotateIndicator;
-	}
-
-	inline void rotated(const int &direction) {
-		_rotateIndicator = (_rotateIndicator + direction) % 4;
+	inline void rotated(const int &direction, int &indicator) {
+		indicator = (indicator + direction) % 4;
 	}
 
 	void initializeLights(const Program &program);
 
 	void drawPlayer(Player &player);
 	void drawEnemy(Enemy &enemy);
-	void drawSection(Section *section, const float &posX, const float &posZ);
+	void drawSection(const Section &section, const float &posX, const float &posZ);
 
-	void draw(std::vector<std::vector<Section*>> &sectionMat, const glm::mat4 &trackMat, Player &player, Enemy &enemy, const Program &program);
+	void draw(std::vector<Section> &sectionVec, const glm::mat4 &trackMat, Player &player, Enemy &enemy, const Program &program);
+	//void draw(std::vector<std::vector<Section*>> &sectionMat, const glm::mat4 &trackMat, Player &player, Enemy &enemy, const Program &program);
 
 
 

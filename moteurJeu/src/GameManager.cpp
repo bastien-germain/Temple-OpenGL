@@ -1,8 +1,8 @@
 #include "moteurJeu/GameManager.hpp"
 
-GameManager::GameManager(const Program &program ,const float &sectionInitialPosZ, const float &trackballSmoothness) 
+GameManager::GameManager(const Program &program, const float &trackballSmoothness) 
 	: _enemy(), _parser(), _game(), 
-	_factory(sectionInitialPosZ), _drawer(program),
+	_factory(), _drawer(program),
 	_eventManager(), _player(),
 	_trackball(trackballSmoothness)
 
@@ -26,15 +26,22 @@ GameManager::~GameManager()
 void GameManager::fillSectionVec(std::vector<std::string> &sectionDataStrings)
 {	
 	std::vector<std::string>::iterator it;
+	unsigned int offsetPosZCount = 0;
 	
 	for (int i = 0; i < sectionDataStrings.size(); ++i)
 	{	
 		_sectionVec.push_back(_factory.create(sectionDataStrings[i], this));
+		_sectionVec[i].goOnZ(offsetPosZCount * POSITION_OFFSET_Z);
 		
-		if (_sectionVec[i].isCorridor()) 
-		{
-		}
+		if (!_sectionVec[i].isCorner()) 
+			offsetPosZCount++;
+		else 
+			offsetPosZCount = 0;
+
 	}
+
+	if (_sectionVec[0].isCorner())
+		THROW_EXCEPTION("ERROR : FIRST SECTION CANNOT BE CORNER");
 }
 
 void GameManager::fillSectionMat()

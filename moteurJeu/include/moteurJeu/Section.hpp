@@ -19,6 +19,7 @@ private:
 
 	const unsigned int _type; /*! 0 : corridor, 1 : corner, 2 : T */
 	const int _cornerDirection; /*! -1 : left, 0 : not a corner, 1 : right */
+	bool _turned;
 
 	float _posZ;
 
@@ -35,7 +36,6 @@ public:
 		const Model *model, 
 		const unsigned int type, 
 		const int cornerDirection, 
-		const float &posZ, 
 		const Obstacle &obstacle = Obstacle()
 		);
 
@@ -77,15 +77,25 @@ public:
 		return _posZ;
 	}
 
-	inline void goOn(const float &delta) 
+	inline void goOnZ(const float &delta) 
 	{
 		_posZ += delta;
-		_obstacle.progress(delta);
+		_obstacle.goOnZ(delta);
 	}
 
 	inline int cornerDirection() const 
 	{
 		return _cornerDirection;
+	}
+
+	inline bool hasTurned() const 
+	{
+		return _turned;
+	}
+
+	inline void turned()
+	{
+		_turned = true;
 	}
 
 };

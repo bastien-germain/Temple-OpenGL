@@ -1,8 +1,6 @@
 #include "moteurJeu/Factory.hpp"
 
-Factory::Factory(const float &sectionInitialPosZ) : 
-	_sectionInitialPosZ(sectionInitialPosZ),
-	_modelLoader(11)
+Factory::Factory() : _modelLoader(11)
 {
 	_playerModel = _modelLoader.loadModel("player");
 	_playerModel.vbo().sendData();
@@ -86,15 +84,15 @@ Obstacle Factory::obstacleBuiler(const std::string &key, PositionObserver *obser
 		}
 		case 'C':
 		{
-			return Obstacle(&_chairsStackModel, observer, obstaclePosition, _sectionInitialPosZ, 3);
+			return Obstacle(&_chairsStackModel, observer, obstaclePosition, 3);
 		}
 		case 'B':
 		{
-			return Obstacle(&_brancardModel, observer, obstaclePosition,_sectionInitialPosZ, 3);
+			return Obstacle(&_brancardModel, observer, obstaclePosition, 3);
 		}
 		case 'D':
 		{
-			return Obstacle(&_deambuleModel, observer, obstaclePosition,_sectionInitialPosZ, 1);
+			return Obstacle(&_deambuleModel, observer, obstaclePosition, 1);
 		}
 		default:
 			THROW_EXCEPTION("FILE_READING_ERROR : Parser --> Invalid character for Obstacle describing");
@@ -118,19 +116,19 @@ Section Factory::create(const std::string &key, PositionObserver *observer) cons
 			Obstacle obstacle(obstacleBuiler(key, observer));
 			std::cout << "SECTION_FACTORY.CREATE OBSTALCE_SIZE : " << obstacle.size() << "\n\n\n" << std::endl;
 			std::cout << "SECTION_FACTORY.CREATE ENDS" << "\n\n\n" << std::endl;
-			return Section(&_corridorModel, 0, 0, _sectionInitialPosZ, obstacle);
+			return Section(&_corridorModel, 0, 0, obstacle);
 		}
 		case 'J':
 		{
 			std::cout << "Left CornerSection" << std::endl;
 			std::cout << "SECTION_FACTORY.CREATE ENDS" << "\n\n\n" << std::endl;
-			return Section(&_cornerLeftModel, 1, -1, _sectionInitialPosZ);
+			return Section(&_cornerLeftModel, 1, -1);
 		}
 		case 'L':
 		{
 			std::cout << "Right CornerSection" << std::endl;
 			std::cout << "SECTION_FACTORY.CREATE ENDS" << "\n\n\n" << std::endl;
-			return Section(&_cornerRightModel, 1, 1, _sectionInitialPosZ);
+			return Section(&_cornerRightModel, 1, 1);
 		}
 		/*
 		case 'T':

@@ -69,8 +69,15 @@ public:
 	}
 
 	/// \brief posZ modifier when the Obstalce progresses along Z axis
-	void progress(const float &delta);
-
+	inline void goOnZ(const float &delta)
+	{
+		if (_size != 0) 
+		{
+		//std::cout << "*** OBSTACLE PROGRESS" << std::endl;
+		_posZ += delta;
+		//notify();
+		}
+	}
 };
 
 #endif

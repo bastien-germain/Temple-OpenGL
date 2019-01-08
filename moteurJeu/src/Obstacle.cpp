@@ -22,13 +22,3 @@ Obstacle::~Obstacle()
 {
 
 }
-
-void Obstacle::progress(const float &delta) 
-{
-	if (_size != 0) 
-	{
-		std::cout << "*** OBSTACLE PROGRESS" << std::endl;
-		_posZ += delta;
-		notify();
-	}
-}
