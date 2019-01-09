@@ -94,7 +94,10 @@ int main (int argc, char** argv)
             gameManager.enemy(), 
             program);
 
-        //gameManager.printPlayerPos();
+        if (gameManager.isOver())
+        {
+            std::cout << "game over" << std::endl;
+        }
 
         windowManager.swapBuffers();
     }

@@ -42,6 +42,10 @@ int PositionObservable::sizeX() const {}
 
 int PositionObservable::sizeY() const {}
 
+bool PositionObservable::hasCollided() const {}
+
+void PositionObservable::collide() {}
+
 void PositionObservable::notify()
 {
 	//std::cout << "*** OBSERVABLE NOTIFY " << std::endl;

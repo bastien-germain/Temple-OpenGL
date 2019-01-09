@@ -89,19 +89,25 @@ void GameManager::loadSections()
 	fillSectionMat();
 }
 
-void GameManager::observerUpdate(const PositionObservable *observable) const 
-{
-	if ((int)observable->posZ() > _player.posZ() && (int)observable->posZ() < _player.posZ() + 1.5) 
-	{	
-		if (_player.posX() > (observable->posX() - observable->sizeX()) && _player.posX() < (observable->posX() + observable->sizeX()))
-		{
-			if(_player.posY() < observable->sizeY())
+void GameManager::observerUpdate(PositionObservable *observable)
+{	
+	if (!observable->hasCollided())
+	{
+		if ((int)observable->posZ() > _player.posZ() - 1 && (int)observable->posZ() < _player.posZ() + 1.5) 
+		{	
+			if (_player.posX() > (observable->posX() - observable->sizeX()) && _player.posX() < (observable->posX() + observable->sizeX()))
 			{
-				std::cout << "collision !" << std::endl;
-			}	
-		}		
-		
+				if(_player.posY() < observable->sizeY())
+				{
+					std::cout << "collision !" << std::endl;
+					observable->collide();
+					if (_enemy.distanceToPlayer() > 0)
+						_enemy.bringCloser();
+				}	
+			}			
+		}
 	}
+	
 }
 
 bool GameManager::isOver() const

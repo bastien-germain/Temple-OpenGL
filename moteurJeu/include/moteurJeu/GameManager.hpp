@@ -43,15 +43,6 @@ public:
 	GameManager(const Program &program, const float &trackballSmoothness = 0.08);
 	~GameManager();
 
-	// POUR DEBUGGER
-	inline void printPlayerPos()
-	{
-		if (_player.posY() > 1.75f){
-			std::cout << "pos player (x, y, z) : " << _player.posX() << ", " << _player.posY() << ", " << _player.posZ() << std::endl;
-		}
-
-	}
-
 	inline Enemy &enemy() 
 	{
 		return _enemy;
@@ -105,7 +96,8 @@ public:
 	/// \brief load the sections data from the sectionDataFile
 	void loadSections();
 
-	void observerUpdate(const PositionObservable *observable) const;	
+	/// \brief observer on z position of obstacles, check collision with player
+	void observerUpdate(PositionObservable *observable);	
 
 	/// \brief test end of game
 	bool isOver() const;

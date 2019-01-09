@@ -18,6 +18,7 @@ private:
 	float _posZ; /* Z position of the Obstacle */
 	int _sizeY; /* height on Y axis */
 	int _sizeX; /* length on X axis Obstacle */ 
+	bool _hasCollided; /* true if the player has already collided the obstacle */ 
 
 	const Model *_model;
 	
@@ -69,6 +70,11 @@ public:
 	{
 		return _posZ;
 	}
+
+	inline bool hasCollided() const
+	{
+		return _hasCollided;
+	}
 	
 	inline const Model *model() const 
 	{
@@ -84,6 +90,8 @@ public:
 			notify();
 		}
 	}
+
+	void collide();
 };
 
 #endif

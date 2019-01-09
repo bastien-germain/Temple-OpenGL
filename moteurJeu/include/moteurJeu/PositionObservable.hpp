@@ -28,6 +28,9 @@ public:
 	virtual int sizeX() const;
 	virtual int sizeY() const;
 
+	virtual bool hasCollided() const;
+	virtual void collide();
+
 	inline std::vector<PositionObserver*> observers() const 
 	{
 		return _observers;

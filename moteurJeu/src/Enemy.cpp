@@ -13,3 +13,8 @@ Enemy::~Enemy()
 
 }
 
+void Enemy::bringCloser()
+{
+	_distanceToPlayer -= 5;
+}
+
