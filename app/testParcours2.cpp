@@ -64,6 +64,7 @@ int main (int argc, char** argv)
             gameManager.trackball().getViewMatrix(), 
             gameManager.player(),
             gameManager.enemy(), 
+            gameManager.skybox(),
             program);
 
         windowManager.swapBuffers();
