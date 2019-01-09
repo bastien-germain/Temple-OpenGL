@@ -6,6 +6,7 @@
 
 #include "moteurJeu/Player.hpp"
 #include "moteurJeu/Enemy.hpp"
+#include "moteurJeu/Skybox.hpp"
 
 #include "glimac/Program.hpp"
 #include <glm/glm.hpp>
@@ -42,8 +43,10 @@ private:
 	GLint _uMVPMatrix;
     GLint _uNormalMatrix;
     GLint _uTexture;
+    GLint _uTextureSkybox;
     GLint _uAmbiantLight;
     GLint _uNbLights;
+    GLint _uLightOn;
 
     const std::string _refLight = "uLights";
 
@@ -62,9 +65,10 @@ public:
 
 	void drawPlayer(Player &player);
 	void drawEnemy(Enemy &enemy);
+	void drawSkybox(Skybox &skybox);
 	void drawSection(const Section &section, const float &posX, const float &posZ);
 
-	void draw(std::vector<Section> &sectionVec, const glm::mat4 &trackMat, Player &player, Enemy &enemy, const Program &program);
+	void draw(std::vector<Section> &sectionVec, const glm::mat4 &trackMat, Player &player, Enemy &enemy, Skybox &skybox, const Program &program);
 	//void draw(std::vector<std::vector<Section*>> &sectionMat, const glm::mat4 &trackMat, Player &player, Enemy &enemy, const Program &program);
 
 

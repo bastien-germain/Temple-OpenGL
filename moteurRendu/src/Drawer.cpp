@@ -15,8 +15,11 @@ Drawer::Drawer(const Program &program) : _localRotateIndicator(0), _globalRotate
     _uMVPMatrix = glGetUniformLocation(program.getGLId(), "uMVPMatrix");
     _uNormalMatrix = glGetUniformLocation(program.getGLId(), "uNormalMatrix");
     _uTexture = glGetUniformLocation(program.getGLId(), "uTexture");
+
     _uAmbiantLight = glGetUniformLocation(program.getGLId(), "uAmbiantLight");
     _uNbLights = glGetUniformLocation(program.getGLId(), "uNbLights");
+    _uLightOn = glGetUniformLocation(program.getGLId(), "uLightOn");
+
 
     _objectMatrix = glm::mat4();
 
@@ -59,6 +62,23 @@ void Drawer::drawPlayer(Player &player)
     player.model()->texture().bind();
     player.model()->vbo().draw();
     player.model()->texture().debind();
+}
+
+void Drawer::drawSkybox(Skybox &skybox)
+{
+    _playerMatrix = _worldMatrix;
+    _playerMatrix = glm::translate(_playerMatrix, glm::vec3(skybox.posX(), skybox.posY(), 0));
+
+    glUniformMatrix4fv(_uMVMatrix , 1, GL_FALSE, glm::value_ptr(_playerMatrix));
+    glUniformMatrix4fv(_uNormalMatrix , 1, GL_FALSE, glm::value_ptr(_normalMatrix));
+    glUniformMatrix4fv(_uMVPMatrix , 1, GL_FALSE, glm::value_ptr(_projMatrix * _playerMatrix));
+    glUniform1i(_uLightOn, 0);
+
+    glUniform1i(_uTexture, 0);
+    skybox.model()->texture().bind();
+    skybox.model()->vbo().draw();
+    skybox.model()->texture().debind();
+    glUniform1i(_uLightOn, 1);
 }
 
 void Drawer::drawEnemy(Enemy &enemy)
@@ -123,17 +143,17 @@ void Drawer::drawSection(const Section &section, const float &posX, const float 
 }
 
 
-void Drawer::draw(std::vector<Section> &sectionVec, const glm::mat4 &trackMat, Player &player, Enemy &enemy, const Program &program) 
+void Drawer::draw(std::vector<Section> &sectionVec, const glm::mat4 &trackMat, Player &player, Enemy &enemy, Skybox &skybox, const Program &program) 
 {
 
 	float x, z;
-
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
     _worldMatrix = glm::translate(trackMat * _globalMVMatrix, glm::vec3(0,-3,2));
 
     drawPlayer(player);
     drawEnemy(enemy);
+    drawSkybox(skybox);
 
  	for (int i = 1; i < _lights.size(); ++i)
     {
