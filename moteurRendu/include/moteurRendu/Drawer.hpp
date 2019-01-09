@@ -12,7 +12,8 @@
 #include <glm/glm.hpp>
 
 #define POSITION_OFFSET_Z -20.f
-#define CORNER_OFFSET 13.f
+#define CORNER_OFFSET_Z 7.f
+#define CORNER_OFFSET_X 7.f
 #define DRAW_DISTANCE (6 * POSITION_OFFSET_Z)
 
 #define WORLD_SPEED 0.05f

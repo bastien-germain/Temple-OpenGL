@@ -17,12 +17,14 @@ Factory::Factory() : _modelLoader(11)
 	_cornerRightModel = _modelLoader.loadModel("cornerRightWall");
 	_cornerRightModel.vbo().sendData();
 
-	_tModel = _modelLoader.loadModel("tsectionWall");
-	_tModel.vbo().sendData();
+	// _tModel = _modelLoader.loadModel("tsectionWall");
+	// _tModel.vbo().sendData();
 
 	_skyboxModel = _modelLoader.loadModel("cubeSkybox");
 	_skyboxModel.vbo().sendData();
 
+	// _clapTrapModel = _modelLoader.loadModel("clapTrap");
+	// _clapTrapModel.vbo().sendData();
 
 
 	// _deambuleModel = _modelLoader.loadModel("deambuleObs");
@@ -157,14 +159,14 @@ void Factory::deleteModelBuffers()
 	_cornerRightModel.vbo().deleteBuf();
 	_cornerLeftModel.vbo().deleteBuf();
 	_corridorModel.vbo().deleteBuf();
-	_tModel.vbo().deleteBuf();
+	//_tModel.vbo().deleteBuf();
 
 	// _deambuleModel.vbo().deleteBuf();
 	// _clapTrapModel.vbo().deleteBuf();
 	// _chairsStackModel.vbo().deleteBuf();
 	_brancardModel.vbo().deleteBuf();
 
-	_skyboxModel.vbo().deleteBuf();
+	//_skyboxModel.vbo().deleteBuf();
 
 	// _bonusModel.vbo().deleteBuf();
 
