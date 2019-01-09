@@ -43,6 +43,15 @@ public:
 	GameManager(const Program &program, const float &trackballSmoothness = 0.08);
 	~GameManager();
 
+	// POUR DEBUGGER
+	inline void printPlayerPos()
+	{
+		if (_player.posY() > 1.75f){
+			std::cout << "pos player (x, y, z) : " << _player.posX() << ", " << _player.posY() << ", " << _player.posZ() << std::endl;
+		}
+
+	}
+
 	inline Enemy &enemy() 
 	{
 		return _enemy;

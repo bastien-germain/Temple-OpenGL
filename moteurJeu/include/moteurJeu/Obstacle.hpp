@@ -16,7 +16,8 @@ class Obstacle : public PositionObservable
 private:
 	int _posX; /* X position of the Obstacle */
 	float _posZ; /* Z position of the Obstacle */
-	unsigned int _size; /*! Size of the Obstacle */
+	unsigned int _sizeY; /* height on Y axis */
+	unsigned int _sizeX; /* length on X axis Obstacle */ 
 
 	const Model *_model;
 	
@@ -24,7 +25,7 @@ public:
 	/// \brief Constructor from a position and a size
 	/// \param position : the position of the Obstacle
 	/// \param size : the size of the Obstacle
-	Obstacle(const Model *model = NULL, PositionObserver *observer = NULL, const int posX = 0, const float posZ = 0, const unsigned int size = 0);
+	Obstacle(const Model *model = NULL, PositionObserver *observer = NULL, const int posX = 0, const float posZ = 0, const unsigned int sizeX = 0);
 
 	/// \brief Copy constructor using another Obstacle
 	/// \param copied : the copied Obstacle
@@ -36,7 +37,7 @@ public:
 		{	
 			_posX = toAssign._posX;
 			_posZ = toAssign._posZ;
-			_size = toAssign._size;
+			_sizeX = toAssign._sizeX;
 		}
 
 		return *this;
@@ -45,10 +46,16 @@ public:
 	/// \brief Destructor
 	~Obstacle();
 
-	/// \brief Getter : size getter
-	inline float size() const
+	/// \brief Getter : sizeX getter
+	inline unsigned int sizeX() const
 	{
-		return _size;
+		return _sizeX;
+	} 
+
+	/// \brief Getter : sizeY getter
+	inline unsigned int sizeY() const
+	{
+		return _sizeY;
 	} 
 
 	/// \brief Getter : posX getter
@@ -71,11 +78,10 @@ public:
 	/// \brief posZ modifier when the Obstalce progresses along Z axis
 	inline void goOnZ(const float &delta)
 	{
-		if (_size != 0) 
+		if (_sizeX != 0) 
 		{
-		//std::cout << "*** OBSTACLE PROGRESS" << std::endl;
-		_posZ += delta;
-		//notify();
+			_posZ += delta;
+			notify();
 		}
 	}
 };
