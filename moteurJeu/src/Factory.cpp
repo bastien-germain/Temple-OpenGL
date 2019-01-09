@@ -20,6 +20,11 @@ Factory::Factory() : _modelLoader(11)
 	_tModel = _modelLoader.loadModel("tsectionWall");
 	_tModel.vbo().sendData();
 
+	_skyboxModel = _modelLoader.loadModel("cubeSkybox");
+	_skyboxModel.vbo().sendData();
+
+
+
 	// _deambuleModel = _modelLoader.loadModel("deambuleObs");
 	// _deambuleModel.vbo().sendData();
 
@@ -159,7 +164,7 @@ void Factory::deleteModelBuffers()
 	// _chairsStackModel.vbo().deleteBuf();
 	_brancardModel.vbo().deleteBuf();
 
-	// _skyboxModel.vbo().deleteBuf();
+	_skyboxModel.vbo().deleteBuf();
 
 	// _bonusModel.vbo().deleteBuf();
 

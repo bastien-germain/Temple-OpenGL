@@ -7,7 +7,8 @@ GameManager::GameManager(const Program &program, const float &trackballSmoothnes
 	_trackball(trackballSmoothness)
 
 {
-	_player.model(_factory.playerModel());
+	_player.model(_factory.playerModel());	
+	_skybox.model(_factory.skyboxModel());	
 	_enemy.model(_factory.enemyModel());
 
 	for (unsigned int i = 0; i < 3; i++)

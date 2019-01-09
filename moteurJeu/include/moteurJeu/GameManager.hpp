@@ -7,6 +7,7 @@
 
 #include "moteurJeu/Game.hpp"
 #include "moteurJeu/Player.hpp"
+#include "moteurJeu/Skybox.hpp"
 #include "moteurJeu/Enemy.hpp"
 #include "moteurJeu/Section.hpp"
 #include "moteurJeu/PositionObserver.hpp"
@@ -29,6 +30,7 @@ private:
 	
 	Game _game;
 	Player _player;
+	Skybox _skybox;
 	Enemy _enemy;
 	const Parser _parser;
 	Drawer _drawer;
@@ -60,6 +62,10 @@ public:
 	inline Player &player()
 	{
 		return _player;
+	}
+	inline Skybox &skybox()
+	{
+		return _skybox;
 	}
 
 	inline std::vector<std::vector<Section*>> &sectionMat()

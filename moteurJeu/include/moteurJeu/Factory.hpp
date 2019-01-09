@@ -35,6 +35,7 @@ private:
 
  	Model _skyboxModel;
 
+
  	Model _bonusModel;
 
 public:
@@ -55,6 +56,11 @@ public:
 	inline Model *playerModel()
 	{
 		return &_playerModel;
+	}
+
+	inline Model *skyboxModel()
+	{
+		return &_skyboxModel;
 	}
 
 	inline Model *enemyModel() 
