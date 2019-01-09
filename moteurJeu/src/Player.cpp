@@ -29,9 +29,9 @@ void Player::goRight()
 
 void Player::goCenter() 
 {
-	if (_posX < REGULAR_X)
+	if (_posX < REGULAR_X - 0.1)
 		_posX += X_SMOOTHNESS;
-	else
+	else if (_posX > REGULAR_X + 0.1)
 		_posX -= X_SMOOTHNESS;
 }
 
@@ -45,8 +45,19 @@ void Player::goLeft()
 	
 void Player::jump() 
 {	
-	if(_posY < MAX_Y) 
+	if(_posY < MAX_Y - 2)
+	{
+		_posY += Y_SMOOTHNESS * 1.5;
+	} 
+	else if (_posY < MAX_Y - 1)
+	{
 		_posY += Y_SMOOTHNESS;
+	}
+	else if (_posY < MAX_Y)
+	{
+		// Ralentit le saut lorsqu'il s'approche de son point culminant
+		_posY += Y_SMOOTHNESS * 0.8;
+	}
 	else 
 	{
 		_jumping = false;
@@ -62,9 +73,18 @@ void Player::land()
 	}
 	else
 	{
-		if (_posY > REGULAR_Y)
-			_posY -= Y_SMOOTHNESS;
-		else
-			_posY += Y_SMOOTHNESS;
+		if (_posY > REGULAR_Y + 2)
+		{
+			_posY -= Y_SMOOTHNESS * 0.8;
+		} 
+		else if (_posY > REGULAR_Y + 1)
+		{
+			_posY -= Y_SMOOTHNESS;			
+		}
+		else 
+		{
+			_posY -= Y_SMOOTHNESS * 1.5;
+		}
+		
 	}
 }

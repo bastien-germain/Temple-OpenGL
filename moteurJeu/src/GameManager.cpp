@@ -91,16 +91,17 @@ void GameManager::loadSections()
 
 void GameManager::observerUpdate(const PositionObservable *observable) const 
 {
-
-	if ((int)observable->posZ() == _player.posZ()) 
+	if ((int)observable->posZ() > _player.posZ() && (int)observable->posZ() < _player.posZ() + 1.5) 
 	{	
-
 		if (_player.posX() > (observable->posX() - observable->sizeX()) && _player.posX() < (observable->posX() + observable->sizeX()))
-		std::cout << "posX obstacle : " << observable->posX() << std::endl;
-		std::cout << "posZ obstacle : " << observable->posZ() << std::endl;
-		std::cout << "posZ player : " << _player.posZ() << std::endl;
+		{
+			if(_player.posY() < observable->sizeY())
+			{
+				std::cout << "collision !" << std::endl;
+			}	
+		}		
+		
 	}
-
 }
 
 bool GameManager::isOver() const

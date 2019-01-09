@@ -16,8 +16,8 @@ class Obstacle : public PositionObservable
 private:
 	int _posX; /* X position of the Obstacle */
 	float _posZ; /* Z position of the Obstacle */
-	unsigned int _sizeY; /* height on Y axis */
-	unsigned int _sizeX; /* length on X axis Obstacle */ 
+	int _sizeY; /* height on Y axis */
+	int _sizeX; /* length on X axis Obstacle */ 
 
 	const Model *_model;
 	
@@ -25,7 +25,7 @@ public:
 	/// \brief Constructor from a position and a size
 	/// \param position : the position of the Obstacle
 	/// \param size : the size of the Obstacle
-	Obstacle(const Model *model = NULL, PositionObserver *observer = NULL, const int posX = 0, const float posZ = 0, const unsigned int sizeX = 0);
+	Obstacle(const Model *model = NULL, PositionObserver *observer = NULL, const int posX = 0, const float posZ = 0, const int sizeX = 0, const int sizeY = 0);
 
 	/// \brief Copy constructor using another Obstacle
 	/// \param copied : the copied Obstacle
@@ -47,13 +47,13 @@ public:
 	~Obstacle();
 
 	/// \brief Getter : sizeX getter
-	inline unsigned int sizeX() const
+	inline int sizeX() const
 	{
 		return _sizeX;
 	} 
 
 	/// \brief Getter : sizeY getter
-	inline unsigned int sizeY() const
+	inline int sizeY() const
 	{
 		return _sizeY;
 	} 

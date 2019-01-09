@@ -25,7 +25,8 @@ public:
 
 	virtual float posZ() const;
 	virtual int posX() const;
-	virtual unsigned int sizeX() const;
+	virtual int sizeX() const;
+	virtual int sizeY() const;
 
 	inline std::vector<PositionObserver*> observers() const 
 	{

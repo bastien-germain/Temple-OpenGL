@@ -38,7 +38,9 @@ float PositionObservable::posZ() const {}
 
 int PositionObservable::posX() const {}
 
-unsigned int PositionObservable::sizeX() const {}
+int PositionObservable::sizeX() const {}
+
+int PositionObservable::sizeY() const {}
 
 void PositionObservable::notify()
 {
