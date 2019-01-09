@@ -25,7 +25,11 @@ public:
 
 	virtual float posZ() const;
 	virtual int posX() const;
-	virtual unsigned int sizeX() const;
+	virtual int sizeX() const;
+	virtual int sizeY() const;
+
+	virtual bool hasCollided() const;
+	virtual void collide();
 
 	inline std::vector<PositionObserver*> observers() const 
 	{

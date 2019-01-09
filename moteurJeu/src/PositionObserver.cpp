@@ -28,7 +28,6 @@ void PositionObserver::removePositionObservable(const PositionObservable *observ
   		THROW_EXCEPTION("OBJECT_NOT_FOUND_ERROR : Can't remove PositionObservable from this PositionObservable (does not exist)");
 }
 
-void PositionObserver::observerUpdate(const PositionObservable *observable) const 
+void PositionObserver::observerUpdate(PositionObservable *observable)
 {
-	//std::cout << "*** OBSERVER UPDATE " << std::endl;	
 }

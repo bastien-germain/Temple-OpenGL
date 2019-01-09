@@ -22,7 +22,7 @@ public:
 	void addPositionObservable(PositionObservable *observable);
 	void removePositionObservable(const PositionObservable *observable);
 
-	virtual void observerUpdate(const PositionObservable *observable) const;
+	virtual void observerUpdate(PositionObservable *observable);
 
 	inline std::vector<PositionObservable*> observables() const 
 	{

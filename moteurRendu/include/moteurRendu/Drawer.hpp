@@ -15,7 +15,7 @@
 #define CORNER_OFFSET 13.f
 #define DRAW_DISTANCE (6 * POSITION_OFFSET_Z)
 
-#define WORLD_SPEED 0.005f
+#define WORLD_SPEED 0.05f
 
 /// \class Drawer
 /// \brief Used to draw the world 

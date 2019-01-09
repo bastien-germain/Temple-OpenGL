@@ -22,7 +22,7 @@ public:
 	
 	~Enemy();
 
-	/// \brief Getter score
+	/// \brief Getter distance
 	inline unsigned int distanceToPlayer() const 
 	{
 		return _distanceToPlayer;
@@ -37,6 +37,9 @@ public:
 	{
 		_model = model;
 	}
+
+	/// \brief bring Enemy closer to Player
+	void bringCloser();
 
 };
 

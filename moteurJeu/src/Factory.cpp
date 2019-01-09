@@ -93,7 +93,7 @@ Obstacle Factory::obstacleBuiler(const std::string &key, PositionObserver *obser
 		// }
 		case 'B':
 		{
-			return Obstacle(&_brancardModel, observer, 0, 0, 3);
+			return Obstacle(&_brancardModel, observer, 0, 0, 3, 3);
 		}
 		// case 'D':
 		// {
