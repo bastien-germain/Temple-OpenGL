@@ -38,16 +38,6 @@ void EventManager::handleEvent(SDL_Event *event, Player &player, TrackballCamera
                     player.goLeft();
                     break;
 
-                // LOWER
-                case SDLK_s:
-                    if (!player._bending && !player._landing)
-                        player._bending = true;
-                    break;
-                case SDLK_DOWN:
-                    if (!player._bending && !player._landing)
-                        player._bending = true;
-                    break;
-
                 // MOVE RIGHT
                 case SDLK_d:
                     player.goRight();
@@ -104,8 +94,6 @@ void EventManager::handleEvent(SDL_Event *event, Player &player, TrackballCamera
         player.jump();
     if (player._landing)
         player.land();
-    if (player._bending)
-        player.bendDown();
 }
 
 void EventManager::onExit() {
