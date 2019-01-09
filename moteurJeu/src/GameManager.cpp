@@ -4,7 +4,8 @@ GameManager::GameManager(const Program &program, const float &trackballSmoothnes
 	: _enemy(), _parser(), _game(), 
 	_factory(), _drawer(program),
 	_eventManager(), _player(),
-	_trackball(trackballSmoothness)
+	_trackball(trackballSmoothness), 
+	_fly(trackballSmoothness)
 
 {
 	_player.model(_factory.playerModel());	

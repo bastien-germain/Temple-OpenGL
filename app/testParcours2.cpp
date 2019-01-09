@@ -56,14 +56,23 @@ int main (int argc, char** argv)
 
         }
         gameManager.handleEvent(&e);
-
-        glm::mat4 trackMat = gameManager.trackball().getViewMatrix();
+        glm::mat4 matCamera;
+        if (gameManager.eventManager().camTrack())
+        {
+            matCamera = gameManager.trackball().getViewMatrix();
+        }
+        else
+        {
+            matCamera = gameManager.fly().getViewMatrix();
+        }
+         
 
         gameManager.drawer().draw(
             gameManager.sectionVec(), 
-            gameManager.trackball().getViewMatrix(), 
+            matCamera, 
             gameManager.player(),
             gameManager.enemy(), 
+            gameManager.skybox(),
             program);
 
         windowManager.swapBuffers();

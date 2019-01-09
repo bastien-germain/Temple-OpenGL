@@ -3,13 +3,16 @@
 #define __CAMERA_MANAGER_HPP__
 
 #include "moteurRendu/TrackballCamera.hpp"
+#include "moteurRendu/FreeflyCamera.hpp"
 #include "moteurRendu/VisionCamera.hpp"
+
 
 class CameraManager
 {
 
 private:
 	TrackballCamera _track;
+	FreeflyCamera _fly;
 	VisionCamera _vision;
 	bool _isTrackCurrent; // Keep track of the current used cam
 	bool _isCamLocked;

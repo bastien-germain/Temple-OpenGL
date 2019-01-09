@@ -11,6 +11,7 @@
 #include "moteurJeu/Player.hpp"
 
 #include "moteurRendu/TrackballCamera.hpp"
+#include "moteurRendu/FreeflyCamera.hpp"
 
 
 class EventManager
@@ -20,13 +21,20 @@ public:
 
 	~EventManager();
   
-	void handleEvent(SDL_Event *event, Player &player, TrackballCamera &track);
+	void handleEvent(SDL_Event *event, Player &player, TrackballCamera &track, FreeflyCamera &fly);
 	
 	void onExit();
+	inline bool camTrack()
+	{
+		return _camTrack;
+	}
 private:
 	bool _mouseButtonDown;
+	bool _camTrack;
 	glm::vec2 _lastClickPosition;
 	glm::vec2 _mouseMotionDelta;
+
+	
 };
 
 #endif

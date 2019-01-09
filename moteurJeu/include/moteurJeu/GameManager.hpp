@@ -17,6 +17,7 @@
 
 #include "moteurRendu/Drawer.hpp"
 #include "moteurRendu/TrackballCamera.hpp"
+#include "moteurRendu/FreeflyCamera.hpp"
 
 
 
@@ -36,6 +37,7 @@ private:
 	Drawer _drawer;
 	EventManager _eventManager;
 	TrackballCamera _trackball;
+	FreeflyCamera _fly;
 	Factory _factory;
 
 	std::vector<Section> _sectionVec;
@@ -89,6 +91,13 @@ public:
 		return _trackball;
 	}
 
+	inline FreeflyCamera fly() const 
+	{
+		return _fly;
+	}
+
+	
+
 	/// \brief fill the section vector with returns from the factory
 	void fillSectionVec(std::vector<std::string> &sectionDataStrings);
 
@@ -110,7 +119,7 @@ public:
 
 	inline void handleEvent(SDL_Event *event) 
 	{
-		_eventManager.handleEvent(event, _player, _trackball);
+		_eventManager.handleEvent(event, _player, _trackball, _fly);
 	}
 
 	inline void deleteModelBuffers() {
