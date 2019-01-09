@@ -14,7 +14,7 @@
 
 #define REGULAR_Y 1.7f
 #define MAX_Y (REGULAR_Y + 2)
-#define MIN_Y (REGULAR_Y +- 2)
+#define MIN_Y (REGULAR_Y + 2)
 #define Y_SMOOTHNESS 0.005
 
 #define REGULAR_Z 0.f
@@ -33,7 +33,6 @@ private:
 	Model *_model;
 public:
 	bool _jumping;
-	bool _bending;
 	bool _landing;
 
 	/// \brief Constructor
@@ -50,7 +49,6 @@ public:
 
 	void jump();
 	void land();
-	void bendDown();
 
 	inline float posZ() const 
 	{

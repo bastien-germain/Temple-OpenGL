@@ -4,13 +4,13 @@
 
 Player::Player() 
 	: _posX(REGULAR_X), _posY(REGULAR_Y), _posZ(REGULAR_Z), _rotateX(0), _oppositeRotateX(0), 
-	_jumping(false), _landing(false), _bending(false)
+	_jumping(false), _landing(false)
 {
 }
 
 Player::Player(const Player &copied) 
 	: _posX(copied._posX), _posY(copied._posY), _posZ(copied._posZ),
-	_jumping(copied._jumping), _landing(copied._landing), _bending(copied._bending), 
+	_jumping(copied._jumping), _landing(copied._landing), 
 	_model(copied._model), _rotateX(copied._rotateX), _oppositeRotateX(copied._oppositeRotateX)
 {
 }
@@ -66,16 +66,5 @@ void Player::land()
 			_posY -= Y_SMOOTHNESS;
 		else
 			_posY += Y_SMOOTHNESS;
-	}
-}
-
-void Player::bendDown() 
-{	
-	if(_posY > MIN_Y) 
-		_posY -= Y_SMOOTHNESS;
-	else
-	{	
-		_bending = false;
-		_landing = true;
 	}
 }

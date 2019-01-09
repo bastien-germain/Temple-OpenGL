@@ -34,22 +34,20 @@ void PositionObservable::removePositionObserver(const PositionObserver *observer
   	}
 }
 
-float PositionObservable::posZ() const 
-{
-}
+float PositionObservable::posZ() const {}
 
-int PositionObservable::posX() const
-{
-}
+int PositionObservable::posX() const {}
+
+unsigned int PositionObservable::sizeX() const {}
 
 void PositionObservable::notify()
 {
-	std::cout << "*** OBSERVABLE NOTIFY " << std::endl;
+	//std::cout << "*** OBSERVABLE NOTIFY " << std::endl;
 	std::vector<PositionObserver*>::iterator it;
 
 	for (it = _observers.begin(); it!= _observers.end(); ++it) 
 	{
-		std::cout << "*** OBSERVABLE NOTIFY LAUNCHES UPDATE " << std::endl;
+		//std::cout << "*** OBSERVABLE NOTIFY LAUNCHES UPDATE " << std::endl;
 		(*it)->observerUpdate(this);
 	}	
 }
