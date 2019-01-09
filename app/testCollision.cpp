@@ -94,7 +94,7 @@ int main (int argc, char** argv)
             gameManager.enemy(), 
             program);
 
-        //gameManager.printPlayerPos();
+        gameManager.printPlayerPos();
 
         windowManager.swapBuffers();
     }

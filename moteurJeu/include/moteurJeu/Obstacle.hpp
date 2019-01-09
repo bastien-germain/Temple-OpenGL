@@ -16,7 +16,8 @@ class Obstacle : public PositionObservable
 private:
 	int _posX; /* X position of the Obstacle */
 	float _posZ; /* Z position of the Obstacle */
-	unsigned int _sizeX; /*! length on X axis Obstacle */ 
+	unsigned int _sizeY; /* height on Y axis */
+	unsigned int _sizeX; /* length on X axis Obstacle */ 
 
 	const Model *_model;
 	
@@ -45,10 +46,16 @@ public:
 	/// \brief Destructor
 	~Obstacle();
 
-	/// \brief Getter : size getter
+	/// \brief Getter : sizeX getter
 	inline unsigned int sizeX() const
 	{
 		return _sizeX;
+	} 
+
+	/// \brief Getter : sizeY getter
+	inline unsigned int sizeY() const
+	{
+		return _sizeY;
 	} 
 
 	/// \brief Getter : posX getter
