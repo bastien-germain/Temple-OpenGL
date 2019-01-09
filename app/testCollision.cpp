@@ -91,7 +91,8 @@ int main (int argc, char** argv)
             gameManager.sectionVec(), 
             gameManager.trackball().getViewMatrix(), 
             gameManager.player(),
-            gameManager.enemy(), 
+            gameManager.enemy(),
+            gameManager.skybox(),
             program);
 
         if (gameManager.isOver())

@@ -24,6 +24,7 @@ uniform sampler2D uTexture;
 
 uniform Light uLights[MAX_NB_LIGHTS];
 uniform int uNbLights;
+uniform int uLightOn;
 uniform vec3 uAmbientLight;
 
 
@@ -68,5 +69,9 @@ vec3 blinnPhong()
 
 void main() 
 {	
-		fFragColor = uAmbientLight + blinnPhong() * (texture(uTexture ,vTexCoords).rgb);
+	if (uLightOn == 1)
+		fFragColor = (uAmbientLight + blinnPhong() ) * (texture(uTexture ,vTexCoords).rgb);
+	else 
+		fFragColor = texture(uTexture ,vTexCoords).rgb;
+
 }
