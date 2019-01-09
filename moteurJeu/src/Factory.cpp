@@ -20,23 +20,23 @@ Factory::Factory() : _modelLoader(11)
 	_tModel = _modelLoader.loadModel("tsectionWall");
 	_tModel.vbo().sendData();
 
-	_deambuleModel = _modelLoader.loadModel("deambuleObs");
-	_deambuleModel.vbo().sendData();
+	// _deambuleModel = _modelLoader.loadModel("deambuleObs");
+	// _deambuleModel.vbo().sendData();
 
-	_clapTrapModel = _modelLoader.loadModel("clapTrap");
-	_clapTrapModel.vbo().sendData();
+	// _clapTrapModel = _modelLoader.loadModel("clapTrap");
+	// _clapTrapModel.vbo().sendData();
 
-	_chairsStackModel = _modelLoader.loadModel("chairsStack");
-	_chairsStackModel.vbo().sendData();
+	// _chairsStackModel = _modelLoader.loadModel("chairsStack");
+	// _chairsStackModel.vbo().sendData();
 
 	_brancardModel = _modelLoader.loadModel("brancardObs");
 	_brancardModel.vbo().sendData();
 
-	_skyboxModel = _modelLoader.loadModel("skybox");
-	_skyboxModel.vbo().sendData();
+	// _skyboxModel = _modelLoader.loadModel("skybox");
+	// _skyboxModel.vbo().sendData();
 
-	_bonusModel = _modelLoader.loadModel("bonus");
-	_bonusModel.vbo().sendData();
+	// _bonusModel = _modelLoader.loadModel("bonus");
+	// _bonusModel.vbo().sendData();
 
 }
 
@@ -82,18 +82,18 @@ Obstacle Factory::obstacleBuiler(const std::string &key, PositionObserver *obser
 			std::cout << "No Obstacle" << std::endl;
 			return Obstacle();
 		}
-		case 'C':
-		{
-			return Obstacle(&_chairsStackModel, observer, 0, 3);
-		}
+		// case 'C':
+		// {
+		// 	return Obstacle(&_chairsStackModel, observer, 0, 3);
+		// }
 		case 'B':
 		{
-			return Obstacle(&_brancardModel, observer, 0, 3);
+			return Obstacle(&_brancardModel, observer, 0, 0, 3);
 		}
-		case 'D':
-		{
-			return Obstacle(&_deambuleModel, observer, obstaclePosition, 1);
-		}
+		// case 'D':
+		// {
+		// 	return Obstacle(&_deambuleModel, observer, obstaclePosition, 1);
+		// }
 		default:
 			THROW_EXCEPTION("FILE_READING_ERROR : Parser --> Invalid character for Obstacle describing");
 		break;
@@ -114,7 +114,7 @@ Section Factory::create(const std::string &key, PositionObserver *observer) cons
 		{
 			std::cout << "CorridorSection" << std::endl;
 			Obstacle obstacle(obstacleBuiler(key, observer));
-			std::cout << "SECTION_FACTORY.CREATE OBSTALCE_SIZE : " << obstacle.size() << "\n\n\n" << std::endl;
+			std::cout << "SECTION_FACTORY.CREATE OBSTALCE_SIZE : " << obstacle.sizeX() << "\n\n\n" << std::endl;
 			std::cout << "SECTION_FACTORY.CREATE ENDS" << "\n\n\n" << std::endl;
 			return Section(&_corridorModel, 0, 0, obstacle);
 		}
@@ -154,13 +154,13 @@ void Factory::deleteModelBuffers()
 	_corridorModel.vbo().deleteBuf();
 	_tModel.vbo().deleteBuf();
 
-	_deambuleModel.vbo().deleteBuf();
-	_clapTrapModel.vbo().deleteBuf();
-	_chairsStackModel.vbo().deleteBuf();
+	// _deambuleModel.vbo().deleteBuf();
+	// _clapTrapModel.vbo().deleteBuf();
+	// _chairsStackModel.vbo().deleteBuf();
 	_brancardModel.vbo().deleteBuf();
 
-	_skyboxModel.vbo().deleteBuf();
+	// _skyboxModel.vbo().deleteBuf();
 
-	_bonusModel.vbo().deleteBuf();
+	// _bonusModel.vbo().deleteBuf();
 
 }
