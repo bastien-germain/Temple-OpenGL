@@ -32,18 +32,6 @@ public:
 	/// \param copied : the copied Obstacle
 	Obstacle(const Obstacle &copied);
 
-	inline Obstacle &operator = (const Obstacle &toAssign) {
-
-		if (&toAssign != 	this) 
-		{	
-			_posX = toAssign._posX;
-			_posZ = toAssign._posZ;
-			_sizeX = toAssign._sizeX;
-		}
-
-		return *this;
-	}
-
 	/// \brief Destructor
 	~Obstacle();
 
@@ -96,6 +84,20 @@ public:
 		_posZ = value;
 	}
 
+	inline Obstacle &operator = (const Obstacle &toAssign) {
+
+		if (&toAssign != this) 
+		{	
+			_posX = toAssign._posX;
+			_posZ = toAssign._posZ;
+			_sizeX = toAssign._sizeX;
+			_sizeY = toAssign._sizeY;
+			_hasCollided = toAssign._hasCollided;
+			_model = toAssign._model;
+		}
+
+		return *this;
+	}
 
 	void collide();
 };

@@ -35,6 +35,8 @@ public:
 	WorldGenerator();
 	~WorldGenerator();
 
+	float _popCounter;
+	
 	inline std::vector<Section> &sectionVec()
 	{
 		return _sectionVec;

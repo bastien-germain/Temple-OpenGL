@@ -3,7 +3,7 @@
 WorldGenerator::WorldGenerator() : 
 	_offsetPosZCount(0), _lastRotateIndex(0), 
 	_rotateIndicator(0), _lastCornerRight(false), 
-	_penultimateCornerRight(false)
+	_penultimateCornerRight(false), _popCounter(0)
 {
 }
 

@@ -2,11 +2,11 @@
 
 Game::Game(Program &program) : _maxScore(0), _currentGameScore(0), _gameManager(GameManager(program))
 {	
-    /*
-    _gameManager.worldGenerator().generateInitialSections(
+    
+    /*_gameManager.worldGenerator().generateInitialSections(
         &_gameManager, 
-        _gameManager.factory());
-    */
+        _gameManager.factory());*/
+    
     
     _gameManager.worldGenerator().generateSectionsFromFile(
         &_gameManager, 
@@ -43,6 +43,14 @@ bool Game::processGame(SDL_Event *event, Program &program)
          _gameManager.enemy(), 
          _gameManager.skybox(),
          program);
+
+    _gameManager.worldGenerator()._popCounter += WORLD_SPEED;
+
+    if (fabs(_gameManager.worldGenerator()._popCounter -  POSITION_OFFSET_Z) < WORLD_SPEED)
+    {
+        _gameManager.worldGenerator().sectionVec().erase(_gameManager.worldGenerator().sectionVec().begin());
+        _gameManager.worldGenerator().generateSection(&_gameManager, _gameManager.factory());
+    }
 
     if (over)
     {

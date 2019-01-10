@@ -3,7 +3,7 @@
 Drawer::Drawer(const Program &program) : 
 	_localRotateIndicator(0), _globalRotateIndicator(0), 
 	_lastGlobalRotateDirection(0), _rotateProgress(0),
-	_corner(false)
+	_corner(false), _counter(0)
 {
 
 	_projMatrix = glm::perspective(glm::radians(70.f), 1.f, 0.1f, 600.f);
@@ -376,8 +376,6 @@ bool Drawer::draw(std::vector<Section> &sectionVec, const glm::mat4 &trackMat, P
 	    			break;
 			}
     	}
-    	else
-    		std::cout << "pas corner" << std::endl;
 
 		drawSection(*it, it->posX(), it->posZ());
 
@@ -416,13 +414,15 @@ bool Drawer::draw(std::vector<Section> &sectionVec, const glm::mat4 &trackMat, P
 	    	}
 	    	else
 	    	{
-	    		if (fabs((it->posZ() - POSITION_OFFSET_Z) - REGULAR_Z) <= WORLD_SPEED)
+	    		if (_counter > TIME_TO_TURN)
 	    		{
 	    			return false;
 	    			std::cout << "end" << std::endl;
 	    		}
+	    		else
+	    			_counter += 0.0002;
 	    	}
-	    }
+		}
     }
 
     rotated(-_localRotateIndicator, _localRotateIndicator);

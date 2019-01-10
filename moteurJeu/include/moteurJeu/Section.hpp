@@ -17,8 +17,8 @@ private:
 	Obstacle _obstacle; /*! The Obstacle present in the CorridorSection */
 	std::vector<Coin> _coins;
 
-	const unsigned int _type; /*! 0 : corridor, 1 : corner, 2 : T */
-	const int _cornerDirection; /*! -1 : left, 0 : not a corner, 1 : right */
+	unsigned int _type; /*! 0 : corridor, 1 : corner, 2 : T */
+	int _cornerDirection; /*! -1 : left, 0 : not a corner, 1 : right */
 	bool _turned;
 
 	float _posZ;
@@ -118,6 +118,24 @@ public:
 	inline void turned()
 	{
 		_turned = true;
+	}
+
+	inline Section &operator = (const Section &toAssign) {
+
+		if (&toAssign != this) 
+		{
+			_model = toAssign._model;
+			_obstacle = toAssign._obstacle;
+			_type = toAssign._type;
+			_coins = toAssign._coins;
+			_cornerDirection = toAssign._cornerDirection;
+			_turned = toAssign._turned;
+			_posZ = toAssign._posZ;
+			_posX = toAssign._posX;
+
+		}
+
+		return *this;
 	}
 
 };

@@ -21,7 +21,6 @@ GameManager::~GameManager()
 
 void GameManager::observerUpdate(PositionObservable *observable)
 {	
-	std::cout << (int)observable->posZ() << std::endl;
 	if (!observable->hasCollided())
 	{
 		if ((int)observable->posZ() > _player.posZ() - 1 && (int)observable->posZ() < _player.posZ() + 1.5) 

@@ -22,6 +22,7 @@
 #define WORLD_SPEED 0.01f
 
 #define ROTATE_SMOOTH 0.005f
+#define TIME_TO_TURN 1
 
 /// \class Drawer
 /// \brief Used to draw the world 
@@ -34,6 +35,7 @@ private:
 	float _rotateProgress;
 	int _lastGlobalRotateDirection;
 	bool _corner;
+	float _counter;
 
 	std::vector<Light> _lights;
 
