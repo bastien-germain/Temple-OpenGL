@@ -21,24 +21,36 @@ Player::~Player()
 
 //// X MOVE ////
 
-void Player::goRight() 
+void Player::goRight(FreeflyCamera &fly) 
 {
 	if(_posX < MAX_X) 
+	{
+		fly.moveSide(X_SMOOTHNESS);
 		_posX += X_SMOOTHNESS;
+	}
 }
 
-void Player::goCenter() 
+void Player::goCenter(FreeflyCamera &fly) 
 {
 	if (_posX < REGULAR_X - 0.1)
+	{
+		fly.moveSide(X_SMOOTHNESS);
 		_posX += X_SMOOTHNESS;
+	}
 	else if (_posX > REGULAR_X + 0.1)
+	{
+		fly.moveSide(-X_SMOOTHNESS);
 		_posX -= X_SMOOTHNESS;
+	}
 }
 
-void Player::goLeft() 
+void Player::goLeft(FreeflyCamera &fly) 
 {
 	if(_posX > MIN_X) 
+	{
+		fly.moveSide(-X_SMOOTHNESS);
 		_posX -= X_SMOOTHNESS;
+	}
 }
 
 //// Y MOVE ////

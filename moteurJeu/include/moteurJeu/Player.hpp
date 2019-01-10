@@ -45,9 +45,9 @@ public:
 	/// \brief Destructor
 	~Player();
 
-	void goRight();
-	void goCenter();
-	void goLeft();
+	void goRight(FreeflyCamera &fly);
+	void goCenter(FreeflyCamera &fly);
+	void goLeft(FreeflyCamera &fly);
 
 	void jump(FreeflyCamera &fly);
 	void land(FreeflyCamera &fly);

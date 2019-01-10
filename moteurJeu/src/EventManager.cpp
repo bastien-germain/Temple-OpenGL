@@ -1,7 +1,7 @@
 #include "moteurJeu/EventManager.hpp"
 
 EventManager::EventManager() 
-    : _mouseButtonDown(false), _lastClickPosition(glm::vec2(0)), _mouseMotionDelta(glm::vec2(0)), _camTrack(true), _changeCam(true)
+    : _mouseButtonDown(false), _lastClickPosition(glm::vec2(0)), _mouseMotionDelta(glm::vec2(0)), _camTrack(true), _changeCam(true), _tempLock(true), _camLocked(false)
 {
 }
 
@@ -25,6 +25,7 @@ void EventManager::handleEvent(SDL_Event *event, Player &player, TrackballCamera
                     if (!player._jumping && !player._landing)
                         player._jumping = true;
                     break;
+                    
                  case SDLK_UP:
                     if (!player._jumping && !player._landing)
                         player._jumping = true;
@@ -32,46 +33,55 @@ void EventManager::handleEvent(SDL_Event *event, Player &player, TrackballCamera
 
                 // MOVE LEFT
                 case SDLK_q:
-                    player.goLeft();
+                    player.goLeft(fly);
                     player._turningLeft = true;
                     break;
+
                 case SDLK_LEFT:
-                    player.goLeft();
+                    player.goLeft(fly);
                     player._turningLeft = true;
                     break;
 
                 // MOVE RIGHT
                 case SDLK_d:
-                    player.goRight();
+                    player.goRight(fly);
                     player._turningRight = true;
                     break;
+
                 case SDLK_RIGHT:
-                    player.goRight();
+                    player.goRight(fly);
                     player._turningRight = true;
                     break;
 
                 // ZOOM
                 case SDLK_a:
-                    if (_camTrack)
+                    if (_camTrack && !_camLocked)
                     {
                         track.moveFront(track.smoothness());
                     }
                     break;
+
                 case SDLK_e: 
-                    if(_camTrack)
+                    if(_camTrack && !_camLocked)
                     {
                         track.moveFront(-track.smoothness());
                     }
                     break;
 
+                case SDLK_l:
+                    if (_tempLock)
+                    {
+                        _camLocked = !_camLocked;
+                        _tempLock = false;
+                    }                    
+                    break;
+
                 case SDLK_c:
-                    std::cout << "Changement de caméra" << std::endl;
                     if (_changeCam)
                     {
                         _camTrack = !_camTrack;
                         _changeCam = false;
-                    }
-                    
+                    }                    
                     break;
 
                 default:
@@ -81,7 +91,8 @@ void EventManager::handleEvent(SDL_Event *event, Player &player, TrackballCamera
 
         case SDL_KEYUP:
             _changeCam = true;
-            player.goCenter();
+            _tempLock = true;
+            player.goCenter(fly);
             player._turningRight = false;
             player._turningLeft = false;
             break;
@@ -103,22 +114,24 @@ void EventManager::handleEvent(SDL_Event *event, Player &player, TrackballCamera
     		break;
 
     	case SDL_MOUSEMOTION:
-    		if (_mouseButtonDown) 
-    		{
-    			_mouseMotionDelta.x = event->button.x - _lastClickPosition.x;
-    			_mouseMotionDelta.y = event->button.y - _lastClickPosition.y;
-                if (_camTrack)
-                {
-                    track.rotateLeft(track.smoothness() * _mouseMotionDelta.x);
-                    track.rotateUp(track.smoothness() * _mouseMotionDelta.y);
-                }
-                else
-                {
-                    std::cout << "utilsiation cam fly" << std::endl;
-                    fly.rotateLeft(fly.smoothness() * _mouseMotionDelta.x);
-                    fly.rotateUp(fly.smoothness() * _mouseMotionDelta.y);
-                }
-    		}
+            if (!_camLocked)
+            {
+        		if (_mouseButtonDown) 
+        		{
+        			_mouseMotionDelta.x = event->button.x - _lastClickPosition.x;
+        			_mouseMotionDelta.y = event->button.y - _lastClickPosition.y;
+                    if (_camTrack)
+                    {
+                        track.rotateLeft(track.smoothness() * _mouseMotionDelta.x);
+                        track.rotateUp(track.smoothness() * _mouseMotionDelta.y);
+                    }
+                    else
+                    {
+                        fly.rotateLeft(fly.smoothness() * _mouseMotionDelta.x);
+                        fly.rotateUp(fly.smoothness() * _mouseMotionDelta.y);
+                    }
+        		}
+            }
     		break;
     }
 
