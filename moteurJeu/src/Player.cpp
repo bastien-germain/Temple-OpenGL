@@ -4,7 +4,7 @@
 
 Player::Player() 
 	: _posX(REGULAR_X), _posY(REGULAR_Y), _posZ(REGULAR_Z), _rotateX(0), _oppositeRotateX(0), 
-	_jumping(false), _landing(false)
+	_jumping(false), _landing(false), _turningRight(false), _turningLeft(false)
 {
 }
 

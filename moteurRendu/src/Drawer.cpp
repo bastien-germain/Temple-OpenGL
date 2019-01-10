@@ -30,14 +30,14 @@ Drawer::~Drawer()
 
 void Drawer::initializeLights(const Program &program)
 {
-	glUniform3f(_uAmbiantLight, 0.7, 0.7, 0.7);
+	glUniform3f(_uAmbiantLight, 0.1, 0.1, 0.1);
 
-    _lights.push_back(Light(false, glm::vec3(0.0, 0.0, -5), glm::vec3(0.5, 0.7, 1.0), glm::vec3(1.0), 8, glm::vec3(1)));
+    _lights.push_back(Light(false, glm::vec3(0.0, 0.0, -5), glm::vec3(0.5, 0.7, 1.0), glm::vec3(0.0), 8, glm::vec3(0.3)));
 
     for (int i = 0; i < 4; ++i)
     {
-        _lights.push_back(Light(true, glm::vec3(-2.0, 4.5, - i * LIGHTS_SPACE), glm::vec3(0.5, 0.7, 1.0), glm::vec3(0), 8, glm::vec3(4.0)));
-        _lights.push_back(Light(true, glm::vec3(2.0, 4.5, - i * LIGHTS_SPACE), glm::vec3(0.5, 0.7, 1.0), glm::vec3(0), 8, glm::vec3(4.0)));
+        _lights.push_back(Light(true, glm::vec3(-2.0, 4.5, - i * LIGHTS_SPACE), glm::vec3(0.5, 0.7, 1.0), glm::vec3(0.5), 8, glm::vec3(4.0)));
+        _lights.push_back(Light(true, glm::vec3(2.0, 4.5, - i * LIGHTS_SPACE), glm::vec3(0.5, 0.7, 1.0), glm::vec3(0.5), 8, glm::vec3(4.0)));
     }
 
     for (int i = 0; i < _lights.size(); ++i)

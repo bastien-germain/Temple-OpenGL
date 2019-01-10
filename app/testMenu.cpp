@@ -41,23 +41,6 @@ int main(int argc, char** argv) {
 
     Game game(program);
 
-    // LIGHTS
-
-    std::vector<Light> lights;
-    const std::string refLight = "uLights";
-
-    lights.push_back(Light(false, glm::vec3(1.0, .0, 0.0), glm::vec3(1.0), glm::vec3(1.0), 8, glm::vec3(1.0)));
-    lights.push_back(Light(false, glm::vec3(0.0, 1.0, 0.0), glm::vec3(1.0), glm::vec3(1.0), 8, glm::vec3(1.0)));
-
-    lights[0].sendLightShader(program, refLight);
-    lights[1].sendLightShader(program, refLight);
-
-    glm::vec3 ambientLight = glm::vec3(0.2);
-
-    glUniform3f(glGetUniformLocation(program.getGLId(), "uAmbientLight"), ambientLight.x, ambientLight.y, ambientLight.z); 
-    glUniform1i(glGetUniformLocation(program.getGLId(), "uNbLights"), lights.size());
-
-
     // MENU
     bool isMenuDisplayed = false;
 
