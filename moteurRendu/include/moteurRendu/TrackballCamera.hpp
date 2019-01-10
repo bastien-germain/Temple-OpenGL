@@ -17,7 +17,7 @@ private:
 
 public:
 
-    TrackballCamera(const float &smoothness = 0.005f);
+    TrackballCamera(const float &smoothness = 0.001f);
 	TrackballCamera(const TrackballCamera &copied);
 
     ~TrackballCamera();

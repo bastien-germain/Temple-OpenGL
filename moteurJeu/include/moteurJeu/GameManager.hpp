@@ -4,6 +4,7 @@
 
 #include <vector>
 #include <algorithm>
+#include <random>
 
 #include "moteurJeu/Player.hpp"
 #include "moteurJeu/Skybox.hpp"
@@ -13,6 +14,7 @@
 #include "moteurJeu/Factory.hpp"
 #include "moteurJeu/Parser.hpp"
 #include "moteurJeu/EventManager.hpp"
+#include "moteurJeu/WorldGenerator.hpp"
 
 #include "moteurRendu/Drawer.hpp"
 #include "moteurRendu/TrackballCamera.hpp"
@@ -25,21 +27,21 @@
 class GameManager : public PositionObserver
 {
 
-private:
-	const std::string _sectionsDataFilePath = "../Temple-OpenGL/app/assets/sectionsData/sectionsData.txt";
-	
+private:	
+	Game _game;
+
 	Player _player;
-	Skybox _skybox;
 	Enemy _enemy;
-	Parser _parser;
+	Skybox _skybox;
+
+	const Parser _parser;
+	WorldGenerator _worldGenerator;
+	Factory _factory;
 	Drawer _drawer;
+	
 	EventManager _eventManager;
 	TrackballCamera _trackball;
 	FreeflyCamera _fly;
-	Factory _factory;
-
-	std::vector<Section> _sectionVec;
-	std::vector<std::vector<Section*>> _sectionMat;
 	
 public:
 	GameManager();
@@ -60,16 +62,10 @@ public:
 		return _skybox;
 	}
 
-	inline std::vector<std::vector<Section*>> &sectionMat()
+	inline Game game() const 
 	{
-		return _sectionMat;
+		return _game;
 	}
-
-	inline std::vector<Section> &sectionVec()
-	{
-		return _sectionVec;
-	}
-
 
 	inline Drawer &drawer() 
 	{
@@ -95,17 +91,21 @@ public:
 
 	/// \brief fill the section vector with returns from the factory
 	void fillSectionVec(std::vector<std::string> &sectionDataStrings);
+	inline WorldGenerator &worldGenerator() 
+	{
+		return _worldGenerator;
+	}
 
-	/// \brief read section vector and fill the matrix handling T section
-	void fillSectionMat();
+	inline const Factory &factory() const 
+	{
+		return _factory;
+	}
 
-	/// \brief update section matrix when player has chosen a side
-	/// \param isLeft : boolean, test if chosen side is left
-	void updateSectionMat(const bool isLeft);
-
-	/// \brief load the sections data from the sectionDataFile
-	void loadSections();
-
+	inline const Parser &parser() const 
+	{
+		return _parser;
+	}
+	
 	/// \brief observer on z position of obstacles, check collision with player
 	void observerUpdate(PositionObservable *observable);	
 

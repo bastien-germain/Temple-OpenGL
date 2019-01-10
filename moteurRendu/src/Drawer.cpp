@@ -1,15 +1,11 @@
 #include "moteurRendu/Drawer.hpp"
 
-Drawer::Drawer() {}
-
-Drawer::Drawer(const Program &program) : _localRotateIndicator(0), _globalRotateIndicator(0)
+Drawer::Drawer(const Program &program) : 
+	_localRotateIndicator(0), _globalRotateIndicator(0), 
+	_lastGlobalRotateDirection(0), _rotateProgress(0)
 {
-	for (int i = 0; i < 4; ++i)
-	{
-		_rotateIndex[i] = 0;
-	}
 
-	_projMatrix = glm::perspective(glm::radians(70.f), 1.f, 0.1f, 200.f);
+	_projMatrix = glm::perspective(glm::radians(70.f), 1.f, 0.1f, 600.f);
 	_globalMVMatrix = glm::translate(glm::mat4(), glm::vec3(0.f, 0.f, -3.f));
 	_normalMatrix = glm::transpose(glm::inverse(_globalMVMatrix));
 
@@ -68,7 +64,7 @@ void Drawer::drawPlayer(Player &player)
 
 void Drawer::drawSkybox(Skybox &skybox)
 {
-    _playerMatrix = _worldMatrix;
+    _playerMatrix = glm::scale(_worldMatrix, glm::vec3(4));
     _playerMatrix = glm::translate(_playerMatrix, glm::vec3(skybox.posX(), skybox.posY(), 0));
 
     glUniformMatrix4fv(_uMVMatrix , 1, GL_FALSE, glm::value_ptr(_playerMatrix));
@@ -168,39 +164,34 @@ void Drawer::draw(std::vector<Section> &sectionVec, const glm::mat4 &trackMat, P
 
     _tmpMatrix = _worldMatrix * _objectMatrix;
 
-    for (int i = 0; i < 4; ++i)
-	{
-		_rotateIndex[i] = 0;
-	}
-
-    for (int i = 0; i < sectionVec.size(); ++i)
+    for (std::vector<Section>::iterator it = sectionVec.begin(); it != sectionVec.end(); ++it)
     {   
     	switch (_globalRotateIndicator) 
-    	{
+    	{	
     		case 0:
     		{
     			switch(_localRotateIndicator)
     			{
     				case 0:
-                        sectionVec[i].goOnZ(WORLD_SPEED);
+                        it->goOnZ(WORLD_SPEED);
                         break;
                     case 1:
-                        sectionVec[i].goOnX(WORLD_SPEED);
+                        it->goOnX(WORLD_SPEED);
                         break;
                     case 2:
-                        sectionVec[i].goOnZ(-WORLD_SPEED);
+                        it->goOnZ(-WORLD_SPEED);
                         break;
                     case 3:
-						sectionVec[i].goOnX(-WORLD_SPEED);
+						it->goOnX(-WORLD_SPEED);
                         break;
                     case -1:
-                        sectionVec[i].goOnX(-WORLD_SPEED);
+                        it->goOnX(-WORLD_SPEED);
                         break;
                     case -2:
-                        sectionVec[i].goOnZ(WORLD_SPEED);
+                        it->goOnZ(-WORLD_SPEED);
                         break;
                     case -3:
-                        sectionVec[i].goOnX(WORLD_SPEED);
+                        it->goOnX(WORLD_SPEED);
                         break;
     				default:
     					break;
@@ -212,133 +203,203 @@ void Drawer::draw(std::vector<Section> &sectionVec, const glm::mat4 &trackMat, P
     			switch(_localRotateIndicator)
     			{
     				case 0:
-    					z = sectionVec[i].posZ();
-    					x = - (sectionVec[_rotateIndex[0]+1].posZ() - sectionVec[_rotateIndex[0]].posZ());
-    					break;
-    				case 1:
-						sectionVec[i].goOnZ(WORLD_SPEED);
-    					z = - sectionVec[i].posZ();
-    					x = 0;
-    					break;
+                        it->goOnX(-WORLD_SPEED);
+                        break;
+                    case 1:
+                        it->goOnZ(WORLD_SPEED);
+                        break;
+                    case 2:
+                        it->goOnX(WORLD_SPEED);
+                        break;
+                    case 3:
+						it->goOnZ(-WORLD_SPEED);
+                        break;
+                    case -1:
+                        it->goOnZ(-WORLD_SPEED);
+                        break;
+                    case -2:
+                        it->goOnX(WORLD_SPEED);
+                        break;
+                    case -3:
+                        it->goOnZ(WORLD_SPEED);
+                        break;
     				default:
     					break;
     			}
-    			break;
+       			break;
     		}
     		case 2:
     		{
     			switch(_localRotateIndicator)
     			{
     				case 0:
-    					z = sectionVec[i].posZ();
-    					x = - (sectionVec[_rotateIndex[0]+1].posZ() - sectionVec[_rotateIndex[0]].posZ());
-    					break;
-    				case 1:
-						sectionVec[i].goOnZ(WORLD_SPEED);
-    					z = - sectionVec[i].posZ();
-    					x = 0;
-    					break;
+                        it->goOnZ(-WORLD_SPEED);
+                        break;
+                    case 1:
+                        it->goOnX(-WORLD_SPEED);
+                        break;
+                    case 2:
+                        it->goOnZ(WORLD_SPEED);
+                        break;
+                    case 3:
+						it->goOnX(WORLD_SPEED);
+                        break;
+                    case -1:
+                        it->goOnX(WORLD_SPEED);
+                        break;
+                    case -2:
+                        it->goOnZ(WORLD_SPEED);
+                        break;
+                    case -3:
+                        it->goOnX(-WORLD_SPEED);
+                        break;
     				default:
     					break;
     			}
     			break;
     		}
+    		case 3:
+    			switch(_localRotateIndicator)
+    			{
+    				case 0:
+                        it->goOnX(WORLD_SPEED);
+                        break;
+                    case 1:
+                        it->goOnZ(-WORLD_SPEED);
+                        break;
+                    case 2:
+                        it->goOnX(-WORLD_SPEED);
+                        break;
+                    case 3:
+						it->goOnZ(WORLD_SPEED);
+                        break;
+                    case -1:
+                        it->goOnZ(WORLD_SPEED);
+                        break;
+                    case -2:
+                        it->goOnX(-WORLD_SPEED);
+                        break;
+                    case -3:
+                        it->goOnZ(-WORLD_SPEED);
+                        break;
+    				default:
+    					break;
+    			}
+    			break;
+    		case -1: 
+    			switch(_localRotateIndicator)
+    			{
+    				case 0:
+                        it->goOnX(WORLD_SPEED);
+                        break;
+                    case 1:
+                        it->goOnZ(-WORLD_SPEED);
+                        break;
+                    case 2:
+						it->goOnX(-WORLD_SPEED);
+                        break;
+                    case 3:
+                        it->goOnZ(WORLD_SPEED);
+                        break;
+                    case -1:
+                        it->goOnZ(WORLD_SPEED);
+                        break;
+                    case -2:
+                        it->goOnX(-WORLD_SPEED);
+                        break;
+                    case -3:
+                        it->goOnZ(-WORLD_SPEED);
+                        break;
+    				default:
+    					break;
+    			}
+    			break;
+    		case -2:
+    			switch(_localRotateIndicator)
+    			{
+    				case 0:
+                        it->goOnZ(-WORLD_SPEED);
+                        break;
+                    case 1:
+                        it->goOnX(-WORLD_SPEED);
+                        break;
+                    case 2:
+                        it->goOnZ(WORLD_SPEED);
+                        break;
+                    case 3:
+						it->goOnX(WORLD_SPEED);
+                        break;
+                    case -1:
+                        it->goOnX(WORLD_SPEED);
+                        break;
+                    case -2:
+                        it->goOnZ(WORLD_SPEED);
+                        break;
+                    case -3:
+                        it->goOnX(-WORLD_SPEED);
+                        break;
+    				default:
+    					break;
+    			}
+       			break;
+    		case -3:
+    			switch(_localRotateIndicator)
+    			{
+    				case 0:
+                        it->goOnX(-WORLD_SPEED);
+                        break;
+                    case 1:
+                        it->goOnZ(WORLD_SPEED);
+                        break;
+                    case 2:
+						it->goOnX(WORLD_SPEED);
+                        break;
+                    case 3:
+                        it->goOnZ(-WORLD_SPEED);
+                        break;
+                    case -1:
+                        it->goOnZ(-WORLD_SPEED);
+                        break;
+                    case -2:
+                        it->goOnX(WORLD_SPEED);
+                        break;
+                    case -3:
+                        it->goOnZ(WORLD_SPEED);
+                        break;
+    				default:
+    					break;
+    			}
     		default:
     			break;
 		}
 
-		drawSection(sectionVec[i], sectionVec[i].posX(), sectionVec[i].posZ());
+		drawSection(*it, it->posX(), it->posZ());
 
-		if (sectionVec[i].isCorner())
+		if (it->isCorner())
 		{
-			rotated(sectionVec[i].cornerDirection(), _localRotateIndicator);
-            _tmpMatrix = glm::rotate(_tmpMatrix, glm::radians(sectionVec[i].cornerDirection() * -90.f), glm::vec3(0,1,0));
+			rotated(it->cornerDirection(), _localRotateIndicator);
+            _tmpMatrix = glm::rotate(_tmpMatrix, glm::radians(it->cornerDirection() * -90.f), glm::vec3(0,1,0));
 
-            switch (abs(_localRotateIndicator))
-            {
-            	case 1:
-            		_rotateIndex[0] = i;
-            		break;
-            	case 2:
-            		_rotateIndex[1] = i;
-            		break;
-            	case 3:
-            		_rotateIndex[2] = i;
-            		break;
-            	case 0:
-            		_rotateIndex[3] = i;
-            		break;
+            if (
+            	!it->hasTurned() && 
+            	(fabs((it->posZ() - SECTION_WIDTH) - REGULAR_Z) <= WORLD_SPEED) &&
+            	(fabs((it->posX())) <= 5 * WORLD_SPEED)
+            	)
+            {	
+            	_lastGlobalRotateDirection = it->cornerDirection();
+            	rotated(_lastGlobalRotateDirection, _globalRotateIndicator);
+            	it->turned();
+            	_rotateProgress = 0;
             }
-            /*
-            if (!sectionVec[i].hasTurned() && (fabs(sectionVec[i].posZ() - player.posZ()) <= WORLD_SPEED))
-            {
-            	rotated(sectionVec[i].cornerDirection(), _globalRotateIndicator);
-            	_objectMatrix = glm::rotate(_objectMatrix, glm::radians(_globalRotateIndicator * 90.f), glm::vec3(0,1,0));
-            	sectionVec[i].turned();
-            }
-            */
 		}
     }
+
+    if (_rotateProgress <= glm::radians(90.f))
+    {
+    	_rotateProgress += ROTATE_SMOOTH;	
+    	_objectMatrix = glm::rotate(_objectMatrix, _lastGlobalRotateDirection * ROTATE_SMOOTH, glm::vec3(0,1,0));
+    }	
+
     rotated(-_localRotateIndicator, _localRotateIndicator);
 
 }
-
-
-/*
-void Drawer::draw(std::vector<std::vector<Section*>> &sectionMat, const glm::mat4 &trackMat, Player &player, Enemy &enemy, const Program &program) 
-{
-
-    glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-
-    _worldMatrix = glm::translate(trackMat * _globalMVMatrix, glm::vec3(0,-3,2));
-
-    drawPlayer(player);
-    drawEnemy(enemy);
-
- 	for (int i = 1; i < _lights.size(); ++i)
-    {
-    	_lights[i].goOn(WORLD_SPEED, - (i%2) * LIGHTS_SPACE - 2 * LIGHTS_SPACE);
-
-        _lights[i].getPos() = glm::vec3(trackMat * glm::vec4(_lights[i].getPos(), 1));
-        _lights[i].sendLightShader(program, _refLight);
-        _lights[i].getPos() = glm::vec3(glm::inverse(trackMat) * glm::vec4(_lights[i].getPos(), 1));
-    }
-
-    _tmpMatrix = _worldMatrix * _objectMatrix;
-
-    for (int i = 0; i < sectionMat[0].size(); ++i)
-    {   
-        sectionMat[0][i]->goOn(WORLD_SPEED);
-
-        //if (fabs(sectionMat[0][i]->posZ()) < DRAW_DISTANCE)
-        {
-            switch (_rotateIndicator)
-            {
-                case 0:
-                  	drawSection(sectionMat[0][i], 0, sectionMat[0][i]->posZ() - i * POSITION_OFFSET_Z);
-                    break;
-                case 1:
-                    drawSection(sectionMat[0][i], sectionMat[0][_lastRotateIndexZ]->posZ() + _lastRotateIndexZ * POSITION_OFFSET_Z, POSITION_OFFSET_Z);
-                    break;
-                default:
-                    break;
-            }
-
-            if (sectionMat[0][i]->isCorner())
-            {   
-                _tmpMatrix = glm::rotate(_tmpMatrix, glm::radians(sectionMat[0][i]->cornerDirection() * 90.f), glm::vec3(0,1,0));
-                rotated(sectionMat[0][i]->cornerDirection());
-                _lastRotateIndexZ = i;
-
-                if (sectionMat[0][i]->posZ() + i * POSITION_OFFSET_Z <= player.posZ())
-                {
-                	_objectMatrix = glm::rotate(_objectMatrix, glm::radians(sectionMat[0][i]->cornerDirection() * 90.f), glm::vec3(0,1,0));
-                }
-            }
-        }
-    }
-    _tmpMatrix = glm::rotate(_tmpMatrix, glm::radians(_rotateIndicator * 90.f), glm::vec3(0,-1,0));
-    rotated(-_rotateIndicator);
-
-}
-*/

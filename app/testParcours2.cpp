@@ -43,7 +43,15 @@ int main (int argc, char** argv)
     // Application loop:
     bool done = false;
 
-    gameManager.loadSections();
+    gameManager.worldGenerator().generateInitialSections(
+        &gameManager, 
+        gameManager.factory());
+    /*
+    gameManager.worldGenerator().generateSectionsFromFile(
+        &gameManager, 
+        gameManager.factory(), 
+        gameManager.parser());
+    */
 
     while (!done) 
     {
@@ -68,7 +76,7 @@ int main (int argc, char** argv)
          
 
         gameManager.drawer().draw(
-            gameManager.sectionVec(), 
+            gameManager.worldGenerator().sectionVec(), 
             matCamera, 
             gameManager.player(),
             gameManager.enemy(), 

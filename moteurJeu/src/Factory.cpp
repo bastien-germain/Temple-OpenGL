@@ -129,7 +129,7 @@ Section Factory::create(const std::string &key, PositionObserver *observer) cons
 		{
 			std::cout << "Left CornerSection" << std::endl;
 			std::cout << "SECTION_FACTORY.CREATE ENDS" << "\n\n\n" << std::endl;
-			return Section(&_cornerLeftModel, 1, -1);
+			return Section(&_cornerRightModel, 1, -1);
 		}
 		case 'L':
 		{

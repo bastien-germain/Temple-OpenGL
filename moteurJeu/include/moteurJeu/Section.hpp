@@ -94,12 +94,22 @@ public:
 		_posX += delta;
 	}
 
+	inline void setZ(const float &value)
+	{
+		_posZ = value;
+	}
+
+	inline void setX(const float &value)
+	{
+		_posX = value;
+	}
+
 	inline int cornerDirection() const 
 	{
 		return _cornerDirection;
 	}
 
-	inline bool hasTurned() const 
+	inline const bool hasTurned() const 
 	{
 		return _turned;
 	}

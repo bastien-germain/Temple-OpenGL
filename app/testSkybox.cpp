@@ -44,8 +44,12 @@ int main (int argc, char** argv)
 
     // Application loop:
     bool done = false;
-
-    gameManager.loadSections();
+    /*
+    gameManager.worldGenerator().generateSectionsFromFile(
+        &gameManager, 
+        gameManager.factory(), 
+        gameManager.parser().parse("../Temple-OpenGL/app/assets/sectionsData/sectionsData.txt"));
+    */
 
     while (!done) 
     {
@@ -61,15 +65,15 @@ int main (int argc, char** argv)
 
         glm::mat4 trackMat = gameManager.trackball().getViewMatrix();
 
-        gameManager.drawer().draw(
-            gameManager.sectionVec(), 
+        /*gameManager.drawer().draw(
+            gameManager.worldGenerator().sectionVec(), 
             gameManager.trackball().getViewMatrix(), 
             gameManager.player(),
             gameManager.enemy(),
             gameManager.skybox(),
             program);
 
-        windowManager.swapBuffers();
+        windowManager.swapBuffers();*/
     }
 
     gameManager.deleteModelBuffers();

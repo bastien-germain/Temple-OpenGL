@@ -12,11 +12,16 @@
 #include <glm/glm.hpp>
 
 #define POSITION_OFFSET_Z -20.f
-#define CORNER_OFFSET_Z 7.f
-#define CORNER_OFFSET_X 7.f
+
+#define CORRIDOR_WIDTH 6.f
+#define WALL_WIDTH 1.f
+#define SECTION_WIDTH (WALL_WIDTH + CORRIDOR_WIDTH)
+
 #define DRAW_DISTANCE (6 * POSITION_OFFSET_Z)
 
-#define WORLD_SPEED 0.05f
+#define WORLD_SPEED 0.008f
+
+#define ROTATE_SMOOTH 0.01f
 
 /// \class Drawer
 /// \brief Used to draw the world 
@@ -26,7 +31,8 @@ class Drawer
 private:
 	int _globalRotateIndicator;
 	int _localRotateIndicator;
-	unsigned int _rotateIndex[4];
+	float _rotateProgress;
+	int _lastGlobalRotateDirection;
 
 	std::vector<Light> _lights;
 

@@ -84,7 +84,7 @@ int main (int argc, char** argv)
             gameManager.player(),
             gameManager.enemy(),
             gameManager.skybox(),
-            program);
+            program);*/
 
         if (gameManager.isOver())
         {

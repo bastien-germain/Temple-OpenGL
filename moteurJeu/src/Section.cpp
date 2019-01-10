@@ -5,7 +5,7 @@ Section::Section(
 	const unsigned int type,
 	const int cornerDirection,
 	const Obstacle &obstacle) 
-	: _model(model), _obstacle(obstacle), _posZ(0), _posX(5), 
+	: _model(model), _obstacle(obstacle), _posZ(0), _posX(0), 
 	_type(type), _cornerDirection(cornerDirection), _turned(false)
 {
 	if (_type > 2 || type < 0)
@@ -20,7 +20,7 @@ Section::Section(
 
 Section::Section(const Section &copied) 
 	: _model(copied._model), _obstacle(copied._obstacle), _posZ(copied._posZ), _posX(copied._posX),
-	_type(copied._type), _cornerDirection(copied._cornerDirection), _coins(copied._coins)
+	_type(copied._type), _cornerDirection(copied._cornerDirection), _coins(copied._coins), _turned(copied._turned)
 {
 }
 
