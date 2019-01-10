@@ -167,212 +167,217 @@ bool Drawer::draw(std::vector<Section> &sectionVec, const glm::mat4 &trackMat, P
 
     for (std::vector<Section>::iterator it = sectionVec.begin(); it != sectionVec.end(); ++it)
     {   
-    	switch (_globalRotateIndicator) 
-    	{	
-    		case 0:
-    		{
-    			switch(_localRotateIndicator)
-    			{
-    				case 0:
-                        it->goOnZ(WORLD_SPEED);
-                        break;
-                    case 1:
-                        it->goOnX(WORLD_SPEED);
-                        break;
-                    case 2:
-                        it->goOnZ(-WORLD_SPEED);
-                        break;
-                    case 3:
-						it->goOnX(-WORLD_SPEED);
-                        break;
-                    case -1:
-                        it->goOnX(-WORLD_SPEED);
-                        break;
-                    case -2:
-                        it->goOnZ(-WORLD_SPEED);
-                        break;
-                    case -3:
-                        it->goOnX(WORLD_SPEED);
-                        break;
-    				default:
-    					break;
-    			}
-       			break;
-    		}
-    		case 1:
-    		{
-    			switch(_localRotateIndicator)
-    			{
-    				case 0:
-                        it->goOnX(-WORLD_SPEED);
-                        break;
-                    case 1:
-                        it->goOnZ(WORLD_SPEED);
-                        break;
-                    case 2:
-                        it->goOnX(WORLD_SPEED);
-                        break;
-                    case 3:
-						it->goOnZ(-WORLD_SPEED);
-                        break;
-                    case -1:
-                        it->goOnZ(-WORLD_SPEED);
-                        break;
-                    case -2:
-                        it->goOnX(WORLD_SPEED);
-                        break;
-                    case -3:
-                        it->goOnZ(WORLD_SPEED);
-                        break;
-    				default:
-    					break;
-    			}
-       			break;
-    		}
-    		case 2:
-    		{
-    			switch(_localRotateIndicator)
-    			{
-    				case 0:
-                        it->goOnZ(-WORLD_SPEED);
-                        break;
-                    case 1:
-                        it->goOnX(-WORLD_SPEED);
-                        break;
-                    case 2:
-                        it->goOnZ(WORLD_SPEED);
-                        break;
-                    case 3:
-						it->goOnX(WORLD_SPEED);
-                        break;
-                    case -1:
-                        it->goOnX(WORLD_SPEED);
-                        break;
-                    case -2:
-                        it->goOnZ(WORLD_SPEED);
-                        break;
-                    case -3:
-                        it->goOnX(-WORLD_SPEED);
-                        break;
-    				default:
-    					break;
-    			}
-    			break;
-    		}
-    		case 3:
-    			switch(_localRotateIndicator)
-    			{
-    				case 0:
-                        it->goOnX(WORLD_SPEED);
-                        break;
-                    case 1:
-                        it->goOnZ(-WORLD_SPEED);
-                        break;
-                    case 2:
-                        it->goOnX(-WORLD_SPEED);
-                        break;
-                    case 3:
-						it->goOnZ(WORLD_SPEED);
-                        break;
-                    case -1:
-                        it->goOnZ(WORLD_SPEED);
-                        break;
-                    case -2:
-                        it->goOnX(-WORLD_SPEED);
-                        break;
-                    case -3:
-                        it->goOnZ(-WORLD_SPEED);
-                        break;
-    				default:
-    					break;
-    			}
-    			break;
-    		case -1: 
-    			switch(_localRotateIndicator)
-    			{
-    				case 0:
-                        it->goOnX(WORLD_SPEED);
-                        break;
-                    case 1:
-                        it->goOnZ(-WORLD_SPEED);
-                        break;
-                    case 2:
-						it->goOnX(-WORLD_SPEED);
-                        break;
-                    case 3:
-                        it->goOnZ(WORLD_SPEED);
-                        break;
-                    case -1:
-                        it->goOnZ(WORLD_SPEED);
-                        break;
-                    case -2:
-                        it->goOnX(-WORLD_SPEED);
-                        break;
-                    case -3:
-                        it->goOnZ(-WORLD_SPEED);
-                        break;
-    				default:
-    					break;
-    			}
-    			break;
-    		case -2:
-    			switch(_localRotateIndicator)
-    			{
-    				case 0:
-                        it->goOnZ(-WORLD_SPEED);
-                        break;
-                    case 1:
-                        it->goOnX(-WORLD_SPEED);
-                        break;
-                    case 2:
-                        it->goOnZ(WORLD_SPEED);
-                        break;
-                    case 3:
-						it->goOnX(WORLD_SPEED);
-                        break;
-                    case -1:
-                        it->goOnX(WORLD_SPEED);
-                        break;
-                    case -2:
-                        it->goOnZ(WORLD_SPEED);
-                        break;
-                    case -3:
-                        it->goOnX(-WORLD_SPEED);
-                        break;
-    				default:
-    					break;
-    			}
-       			break;
-    		case -3:
-    			switch(_localRotateIndicator)
-    			{
-    				case 0:
-                        it->goOnX(-WORLD_SPEED);
-                        break;
-                    case 1:
-                        it->goOnZ(WORLD_SPEED);
-                        break;
-                    case 2:
-						it->goOnX(WORLD_SPEED);
-                        break;
-                    case 3:
-                        it->goOnZ(-WORLD_SPEED);
-                        break;
-                    case -1:
-                        it->goOnZ(-WORLD_SPEED);
-                        break;
-                    case -2:
-                        it->goOnX(WORLD_SPEED);
-                        break;
-                    case -3:
-                        it->goOnZ(WORLD_SPEED);
-                        break;
-    				default:
-    					break;
-    			}
-    		default:
-    			break;
-		}
+    	if (!_corner)
+    	{
+	    	switch (_globalRotateIndicator) 
+	    	{	
+	    		case 0:
+	    		{
+	    			switch(_localRotateIndicator)
+	    			{
+	    				case 0:
+	                        it->goOnZ(WORLD_SPEED);
+	                        break;
+	                    case 1:
+	                        it->goOnX(WORLD_SPEED);
+	                        break;
+	                    case 2:
+	                        it->goOnZ(-WORLD_SPEED);
+	                        break;
+	                    case 3:
+							it->goOnX(-WORLD_SPEED);
+	                        break;
+	                    case -1:
+	                        it->goOnX(-WORLD_SPEED);
+	                        break;
+	                    case -2:
+	                        it->goOnZ(-WORLD_SPEED);
+	                        break;
+	                    case -3:
+	                        it->goOnX(WORLD_SPEED);
+	                        break;
+	    				default:
+	    					break;
+	    			}
+	       			break;
+	    		}
+	    		case 1:
+	    		{
+	    			switch(_localRotateIndicator)
+	    			{
+	    				case 0:
+	                        it->goOnX(-WORLD_SPEED);
+	                        break;
+	                    case 1:
+	                        it->goOnZ(WORLD_SPEED);
+	                        break;
+	                    case 2:
+	                        it->goOnX(WORLD_SPEED);
+	                        break;
+	                    case 3:
+							it->goOnZ(-WORLD_SPEED);
+	                        break;
+	                    case -1:
+	                        it->goOnZ(-WORLD_SPEED);
+	                        break;
+	                    case -2:
+	                        it->goOnX(WORLD_SPEED);
+	                        break;
+	                    case -3:
+	                        it->goOnZ(WORLD_SPEED);
+	                        break;
+	    				default:
+	    					break;
+	    			}
+	       			break;
+	    		}
+	    		case 2:
+	    		{
+	    			switch(_localRotateIndicator)
+	    			{
+	    				case 0:
+	                        it->goOnZ(-WORLD_SPEED);
+	                        break;
+	                    case 1:
+	                        it->goOnX(-WORLD_SPEED);
+	                        break;
+	                    case 2:
+	                        it->goOnZ(WORLD_SPEED);
+	                        break;
+	                    case 3:
+							it->goOnX(WORLD_SPEED);
+	                        break;
+	                    case -1:
+	                        it->goOnX(WORLD_SPEED);
+	                        break;
+	                    case -2:
+	                        it->goOnZ(WORLD_SPEED);
+	                        break;
+	                    case -3:
+	                        it->goOnX(-WORLD_SPEED);
+	                        break;
+	    				default:
+	    					break;
+	    			}
+	    			break;
+	    		}
+	    		case 3:
+	    			switch(_localRotateIndicator)
+	    			{
+	    				case 0:
+	                        it->goOnX(WORLD_SPEED);
+	                        break;
+	                    case 1:
+	                        it->goOnZ(-WORLD_SPEED);
+	                        break;
+	                    case 2:
+	                        it->goOnX(-WORLD_SPEED);
+	                        break;
+	                    case 3:
+							it->goOnZ(WORLD_SPEED);
+	                        break;
+	                    case -1:
+	                        it->goOnZ(WORLD_SPEED);
+	                        break;
+	                    case -2:
+	                        it->goOnX(-WORLD_SPEED);
+	                        break;
+	                    case -3:
+	                        it->goOnZ(-WORLD_SPEED);
+	                        break;
+	    				default:
+	    					break;
+	    			}
+	    			break;
+	    		case -1: 
+	    			switch(_localRotateIndicator)
+	    			{
+	    				case 0:
+	                        it->goOnX(WORLD_SPEED);
+	                        break;
+	                    case 1:
+	                        it->goOnZ(-WORLD_SPEED);
+	                        break;
+	                    case 2:
+							it->goOnX(-WORLD_SPEED);
+	                        break;
+	                    case 3:
+	                        it->goOnZ(WORLD_SPEED);
+	                        break;
+	                    case -1:
+	                        it->goOnZ(WORLD_SPEED);
+	                        break;
+	                    case -2:
+	                        it->goOnX(-WORLD_SPEED);
+	                        break;
+	                    case -3:
+	                        it->goOnZ(-WORLD_SPEED);
+	                        break;
+	    				default:
+	    					break;
+	    			}
+	    			break;
+	    		case -2:
+	    			switch(_localRotateIndicator)
+	    			{
+	    				case 0:
+	                        it->goOnZ(-WORLD_SPEED);
+	                        break;
+	                    case 1:
+	                        it->goOnX(-WORLD_SPEED);
+	                        break;
+	                    case 2:
+	                        it->goOnZ(WORLD_SPEED);
+	                        break;
+	                    case 3:
+							it->goOnX(WORLD_SPEED);
+	                        break;
+	                    case -1:
+	                        it->goOnX(WORLD_SPEED);
+	                        break;
+	                    case -2:
+	                        it->goOnZ(WORLD_SPEED);
+	                        break;
+	                    case -3:
+	                        it->goOnX(-WORLD_SPEED);
+	                        break;
+	    				default:
+	    					break;
+	    			}
+	       			break;
+	    		case -3:
+	    			switch(_localRotateIndicator)
+	    			{
+	    				case 0:
+	                        it->goOnX(-WORLD_SPEED);
+	                        break;
+	                    case 1:
+	                        it->goOnZ(WORLD_SPEED);
+	                        break;
+	                    case 2:
+							it->goOnX(WORLD_SPEED);
+	                        break;
+	                    case 3:
+	                        it->goOnZ(-WORLD_SPEED);
+	                        break;
+	                    case -1:
+	                        it->goOnZ(-WORLD_SPEED);
+	                        break;
+	                    case -2:
+	                        it->goOnX(WORLD_SPEED);
+	                        break;
+	                    case -3:
+	                        it->goOnZ(WORLD_SPEED);
+	                        break;
+	    				default:
+	    					break;
+	    			}
+	    		default:
+	    			break;
+			}
+    	}
+    	else
+    		std::cout << "pas corner" << std::endl;
 
 		drawSection(*it, it->posX(), it->posZ());
 

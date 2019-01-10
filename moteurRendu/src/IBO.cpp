@@ -1,12 +1,12 @@
 #include "moteurRendu/IBO.hpp"
 
-IBO::IBO(): _id(0)
+IBO::IBO(): _id(-1), _indexes(nullptr), _size(-1)
 {
 }
 
 IBO::IBO(const size_t &size): _size(size)
 {
-	_indexes = new unsigned int[ size ];
+	_indexes = new unsigned int[size];
 	glGenBuffers(1, &_id);
 
 }

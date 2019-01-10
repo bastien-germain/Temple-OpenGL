@@ -10,7 +10,7 @@ ModelLoader::~ModelLoader()
 {
 }
 
-const Model ModelLoader::loadModel( std::string modelName)
+const Model ModelLoader::loadModel(std::string modelName)
 {
 	return Model(loadVBO(modelName), loadTexture(modelName));
 }
@@ -18,17 +18,18 @@ const Model ModelLoader::loadModel( std::string modelName)
 const VBO ModelLoader::loadVBO(std::string modelName) const
 {
 	Geometry geometry;
+    
     if (!geometry.loadOBJ(_modelsPath + (modelName + ".obj").c_str(), _modelsPath + (modelName + ".mtl" ).c_str() ))
         THROW_EXCEPTION("ERROR WHILE LOADING OBJ : MAKE SURE THE MODEL NAME CORRESPONDS TO OBJ AND MTL FILES NAMES");
 
     return VBO(geometry);
 }
 
-const Texture ModelLoader::loadTexture( std::string modelName)
+const Texture ModelLoader::loadTexture(std::string modelName)
 {    
     Image *image = ImageManager::loadImage(_texturesPath + (modelName + ".png").c_str());
     
-    if(image == NULL)
+    if(image == nullptr)
         THROW_EXCEPTION("ERROR WHILE LOADING TEXTURE : MAKE SURE THE FORMAT IS .png" );
 
     _textureManager.addTexture(*image);

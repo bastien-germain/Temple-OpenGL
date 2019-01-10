@@ -2,7 +2,7 @@
 #include <iostream>
 
 
-VBO::VBO() : _id(0)
+VBO::VBO() : _id(-1), _nbVertices(-1)
 {
 	std::cout << " *** VBO DEFAULT CONSTRUCTOR" << std::endl;
 }

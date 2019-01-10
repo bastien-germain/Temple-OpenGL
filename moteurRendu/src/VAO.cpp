@@ -24,8 +24,6 @@ void VAO::bind() const
 	glBindVertexArray(_id);
 }
 
-
-
 void VAO::specifyAttributes() const
 {
 	glEnableVertexAttribArray(_VERTEX_POSITION);

@@ -54,10 +54,10 @@ public:
 		return _indexes;
 	};*/
 
-	inline void indexes( unsigned int* ind) 
+	/*inline void indexes(unsigned int* ind) 
 	{
 		_indexes = ind;
-	};
+	};*/
 
 	/// \brief Allows to bind the buffer array
 	void bind() const;
