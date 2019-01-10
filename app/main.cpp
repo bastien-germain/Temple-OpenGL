@@ -18,7 +18,7 @@ using namespace glimac;
 
 int main(int argc, char** argv) {
      // Initialize SDL and open a window
-    SDLWindowManager windowManager(800, 800, "test menu");
+    SDLWindowManager windowManager(800, 800, "Will-chair Run");
     
 
     // Initialize glew for OpenGL3+ support
