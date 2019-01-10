@@ -76,6 +76,13 @@ void FreeflyCamera::moveTop(float distance)
 	computeDirectionVectors();
 }
 
+void FreeflyCamera::moveSide(float distance)
+{
+	m_Position.x = m_Position.x + distance;
+
+	computeDirectionVectors();
+}
+
 glm::mat4 FreeflyCamera::getViewMatrix() const
 {
 	return glm::lookAt(m_Position, m_Position + m_FrontVector, m_UpVector);

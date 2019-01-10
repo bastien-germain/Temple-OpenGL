@@ -32,6 +32,7 @@ class FreeflyCamera {
 		void rotateUp(float degrees);
 		void rotateLeft(float degrees);
 		void moveTop(float distance);
+		void moveSide(float distance);
 		glm::mat4 getViewMatrix() const;
 		
 		inline const float smoothness() const {

@@ -33,23 +33,23 @@ void EventManager::handleEvent(SDL_Event *event, Player &player, TrackballCamera
 
                 // MOVE LEFT
                 case SDLK_q:
-                    player.goLeft();
+                    player.goLeft(fly);
                     player._turningLeft = true;
                     break;
 
                 case SDLK_LEFT:
-                    player.goLeft();
+                    player.goLeft(fly);
                     player._turningLeft = true;
                     break;
 
                 // MOVE RIGHT
                 case SDLK_d:
-                    player.goRight();
+                    player.goRight(fly);
                     player._turningRight = true;
                     break;
 
                 case SDLK_RIGHT:
-                    player.goRight();
+                    player.goRight(fly);
                     player._turningRight = true;
                     break;
 
@@ -92,7 +92,7 @@ void EventManager::handleEvent(SDL_Event *event, Player &player, TrackballCamera
         case SDL_KEYUP:
             _changeCam = true;
             _tempLock = true;
-            player.goCenter();
+            player.goCenter(fly);
             player._turningRight = false;
             player._turningLeft = false;
             break;
