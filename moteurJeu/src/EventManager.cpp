@@ -1,7 +1,7 @@
 #include "moteurJeu/EventManager.hpp"
 
 EventManager::EventManager() 
-    : _mouseButtonDown(false), _lastClickPosition(glm::vec2(0)), _mouseMotionDelta(glm::vec2(0)), _camTrack(true)
+    : _mouseButtonDown(false), _lastClickPosition(glm::vec2(0)), _mouseMotionDelta(glm::vec2(0)), _camTrack(true), _changeCam(true)
 {
 }
 
@@ -62,7 +62,12 @@ void EventManager::handleEvent(SDL_Event *event, Player &player, TrackballCamera
 
                 case SDLK_c:
                     std::cout << "Changement de caméra" << std::endl;
-                    _camTrack = !_camTrack;
+                    if (_changeCam)
+                    {
+                        _camTrack = !_camTrack;
+                        _changeCam = false;
+                    }
+                    
                     break;
 
                 default:
@@ -71,6 +76,7 @@ void EventManager::handleEvent(SDL_Event *event, Player &player, TrackballCamera
     	   break;
 
         case SDL_KEYUP:
+            _changeCam = true;
             player.goCenter();
             break;
 
@@ -111,9 +117,9 @@ void EventManager::handleEvent(SDL_Event *event, Player &player, TrackballCamera
     }
 
     if (player._jumping)
-        player.jump();
+        player.jump(fly);
     if (player._landing)
-        player.land();
+        player.land(fly);
 }
 
 void EventManager::onExit() {

@@ -43,20 +43,23 @@ void Player::goLeft()
 
 //// Y MOVE ////
 	
-void Player::jump() 
+void Player::jump(FreeflyCamera &fly) 
 {	
 	if(_posY < MAX_Y - 2)
 	{
 		_posY += Y_SMOOTHNESS * 1.5;
+		fly.moveTop(Y_SMOOTHNESS * 1.5);
 	} 
 	else if (_posY < MAX_Y - 1)
 	{
 		_posY += Y_SMOOTHNESS;
+		fly.moveTop(Y_SMOOTHNESS );
 	}
 	else if (_posY < MAX_Y)
 	{
 		// Ralentit le saut lorsqu'il s'approche de son point culminant
 		_posY += Y_SMOOTHNESS * 0.8;
+		fly.moveTop(Y_SMOOTHNESS * 0.8);
 	}
 	else 
 	{
@@ -65,7 +68,7 @@ void Player::jump()
 	}
 }
 
-void Player::land()
+void Player::land(FreeflyCamera &fly)
 {	
 	if (fabs(_posY - REGULAR_Y) <= Y_SMOOTHNESS)
 	{	
@@ -76,14 +79,17 @@ void Player::land()
 		if (_posY > REGULAR_Y + 2)
 		{
 			_posY -= Y_SMOOTHNESS * 0.8;
+			fly.moveTop(-Y_SMOOTHNESS * 0.8);
 		} 
 		else if (_posY > REGULAR_Y + 1)
 		{
-			_posY -= Y_SMOOTHNESS;			
+			_posY -= Y_SMOOTHNESS;	
+			fly.moveTop(-Y_SMOOTHNESS);		
 		}
 		else 
 		{
 			_posY -= Y_SMOOTHNESS * 1.5;
+			fly.moveTop(-Y_SMOOTHNESS * 1.5);
 		}
 		
 	}

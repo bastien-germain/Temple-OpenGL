@@ -4,7 +4,7 @@
 
 
 FreeflyCamera::FreeflyCamera(const float &smoothness) : 
-m_Position(0, 0, 1), m_fPhi(180), m_fTheta(0), _smoothness(smoothness)
+m_Position(0, 0, -1), m_fPhi(180), m_fTheta(0), _smoothness(smoothness)
 {
 	computeDirectionVectors();
 }
@@ -39,7 +39,7 @@ void FreeflyCamera::rotateLeft(float degrees)
 
 	if(m_fPhi >= 90 && m_fPhi <= 270)
 	{
-		m_fPhi += 10*glm::radians(degrees);
+		m_fPhi += 10*glm::radians(-degrees);
 	}
 	else if (m_fPhi < 90)
 	{
@@ -56,7 +56,7 @@ void FreeflyCamera::rotateUp(float degrees)
 {
 	if(m_fTheta >= -90 && m_fTheta <= 90)
 	{
-		m_fTheta += 10*glm::radians(degrees);
+		m_fTheta += 10*glm::radians(-degrees);
 	}
 	else if (m_fTheta < -90)
 	{
@@ -67,6 +67,13 @@ void FreeflyCamera::rotateUp(float degrees)
 		m_fTheta = 90;
 	}
 	computeDirectionVectors();	
+}
+
+void FreeflyCamera::moveTop(float distance)
+{
+	m_Position.y = m_Position.y + distance;
+
+	computeDirectionVectors();
 }
 
 glm::mat4 FreeflyCamera::getViewMatrix() const

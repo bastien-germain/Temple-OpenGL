@@ -5,6 +5,7 @@
 #include <cmath>
 
 #include "moteurRendu/ModelLoader.hpp"
+#include "moteurRendu/FreeflyCamera.hpp"
 #include "moteurJeu/Factory.hpp"
 
 #define REGULAR_X 0.f
@@ -46,8 +47,8 @@ public:
 	void goCenter();
 	void goLeft();
 
-	void jump();
-	void land();
+	void jump(FreeflyCamera &fly);
+	void land(FreeflyCamera &fly);
 
 	inline float posZ() const 
 	{

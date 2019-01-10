@@ -31,6 +31,7 @@ public:
 private:
 	bool _mouseButtonDown;
 	bool _camTrack;
+	bool _changeCam;
 	glm::vec2 _lastClickPosition;
 	glm::vec2 _mouseMotionDelta;
 
