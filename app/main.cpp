@@ -30,7 +30,7 @@ int main(int argc, char** argv) {
 
     FilePath applicationPath(argv[0]);
 
-    Program program = loadProgram(applicationPath.dirPath() + "shaders/3D.vs.glsl", applicationPath.dirPath() + "shaders/textureTest.fs.glsl");
+    Program program = loadProgram(applicationPath.dirPath() + "shaders/3D.vs.glsl", applicationPath.dirPath() + "shaders/texture.fs.glsl");
     
     glEnable(GL_DEPTH_TEST);
 
