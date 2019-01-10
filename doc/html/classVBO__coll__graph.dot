@@ -1,0 +1,7 @@
+digraph "VBO"
+{
+  bgcolor="transparent";
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node1 [label="{VBO\n||+ VBO()\l+ VBO()\l+ VBO()\l+ VBO()\l+ ~VBO()\l+ bind()\l+ vao()\l+ ibo()\l+ geometry()\l+ nbVertices()\l+ id()\l+ debind()\l+ specifyVAO()\l+ sendData()\l+ deleteBuf()\l+ draw()\l}",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+}

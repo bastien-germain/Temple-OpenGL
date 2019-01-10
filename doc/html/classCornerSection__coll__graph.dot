@@ -1,0 +1,18 @@
+digraph "CornerSection"
+{
+  edge [fontname="Helvetica",fontsize="10",labelfontname="Helvetica",labelfontsize="10"];
+  node [fontname="Helvetica",fontsize="10",shape=record];
+  Node2 [label="CornerSection",height=0.2,width=0.4,color="black", fillcolor="grey75", style="filled", fontcolor="black"];
+  Node3 -> Node2 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node3 [label="Section",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classSection.html",tooltip="part of the path crossed by the player "];
+  Node4 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" _model" ,fontname="Helvetica"];
+  Node4 [label="Model",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classModel.html",tooltip="Class defining a Model. "];
+  Node5 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" _texture" ,fontname="Helvetica"];
+  Node5 [label="Texture",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classTexture.html",tooltip="Contains the texture of one object, there is one link to the unique object ListTextures which contain..."];
+  Node6 -> Node4 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" _vbo" ,fontname="Helvetica"];
+  Node6 [label="VBO",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classVBO.html",tooltip="Contain the vertices of an object. "];
+  Node7 -> Node3 [dir="back",color="darkorchid3",fontsize="10",style="dashed",label=" _obstacle" ,fontname="Helvetica"];
+  Node7 [label="Obstacle",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classObstacle.html",tooltip="Class defining an Obstacle. "];
+  Node8 -> Node7 [dir="back",color="midnightblue",fontsize="10",style="solid",fontname="Helvetica"];
+  Node8 [label="PositionObservable",height=0.2,width=0.4,color="black", fillcolor="white", style="filled",URL="$classPositionObservable.html"];
+}
