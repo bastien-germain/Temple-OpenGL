@@ -2,15 +2,17 @@
 
 Game::Game(Program &program) : _maxScore(0), _currentGameScore(0), _gameManager(GameManager(program))
 {	
+    /*
     _gameManager.worldGenerator().generateInitialSections(
         &_gameManager, 
         _gameManager.factory());
-    /*
-    gameManager.worldGenerator().generateSectionsFromFile(
-        &gameManager, 
-        gameManager.factory(), 
-        gameManager.parser());
     */
+    
+    _gameManager.worldGenerator().generateSectionsFromFile(
+        &_gameManager, 
+        _gameManager.factory(), 
+        _gameManager.parser());
+    
 }
 
 Game::~Game()
@@ -25,7 +27,7 @@ void Game::launchGame()
 
 bool Game::processGame(SDL_Event *event, Program &program)
 {
-	std::cout << "Jeu affiché" << std::endl;
+    bool over = false;
     _gameManager.handleEvent(event);
 
     glm::mat4 matCamera;
@@ -35,17 +37,15 @@ bool Game::processGame(SDL_Event *event, Program &program)
     else
         matCamera = _gameManager.fly().getViewMatrix();
 
-    _gameManager.drawer().draw(
-            _gameManager.worldGenerator().sectionVec(), 
-            matCamera, 
-            _gameManager.player(),
-            _gameManager.enemy(), 
-            _gameManager.skybox(),
-            program);
+    over = !_gameManager.drawer().draw(_gameManager.worldGenerator().sectionVec(), 
+        matCamera,
+         _gameManager.player(), 
+         _gameManager.enemy(), 
+         _gameManager.skybox(),
+         program);
 
-    if (_gameManager.isOver())
+    if (over)
     {
-        std::cout << "game over" << std::endl;
         return true;
     }
     return false;

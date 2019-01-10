@@ -33,6 +33,7 @@ private:
 	int _localRotateIndicator;
 	float _rotateProgress;
 	int _lastGlobalRotateDirection;
+	bool _corner;
 
 	std::vector<Light> _lights;
 
@@ -77,7 +78,7 @@ public:
 	void drawSkybox(Skybox &skybox);
 	void drawSection(const Section &section, const float &posX, const float &posZ);
 
-	void draw(std::vector<Section> &sectionVec, const glm::mat4 &trackMat, Player &player, Enemy &enemy, Skybox &skybox, const Program &program);
+	bool draw(std::vector<Section> &sectionVec, const glm::mat4 &trackMat, Player &player, Enemy &enemy, Skybox &skybox, const Program &program);
 	//void draw(std::vector<std::vector<Section*>> &sectionMat, const glm::mat4 &trackMat, Player &player, Enemy &enemy, const Program &program);
 
 

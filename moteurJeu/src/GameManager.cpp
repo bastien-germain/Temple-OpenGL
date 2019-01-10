@@ -21,6 +21,7 @@ GameManager::~GameManager()
 
 void GameManager::observerUpdate(PositionObservable *observable)
 {	
+	std::cout << (int)observable->posZ() << std::endl;
 	if (!observable->hasCollided())
 	{
 		if ((int)observable->posZ() > _player.posZ() - 1 && (int)observable->posZ() < _player.posZ() + 1.5) 
@@ -38,12 +39,4 @@ void GameManager::observerUpdate(PositionObservable *observable)
 		}
 	}
 	
-}
-
-bool GameManager::isOver() const
-{
-	if(_enemy.distanceToPlayer() == 0)
-		return true;
-	else
-		return false;
 }

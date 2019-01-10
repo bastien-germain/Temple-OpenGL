@@ -2,7 +2,8 @@
 
 Drawer::Drawer(const Program &program) : 
 	_localRotateIndicator(0), _globalRotateIndicator(0), 
-	_lastGlobalRotateDirection(0), _rotateProgress(0)
+	_lastGlobalRotateDirection(0), _rotateProgress(0),
+	_corner(false)
 {
 
 	_projMatrix = glm::perspective(glm::radians(70.f), 1.f, 0.1f, 600.f);
@@ -141,7 +142,7 @@ void Drawer::drawSection(const Section &section, const float &posX, const float 
 }
 
 
-void Drawer::draw(std::vector<Section> &sectionVec, const glm::mat4 &trackMat, Player &player, Enemy &enemy, Skybox &skybox, const Program &program) 
+bool Drawer::draw(std::vector<Section> &sectionVec, const glm::mat4 &trackMat, Player &player, Enemy &enemy, Skybox &skybox, const Program &program) 
 {
 
 	float x, z;
@@ -386,20 +387,40 @@ void Drawer::draw(std::vector<Section> &sectionVec, const glm::mat4 &trackMat, P
             	(fabs((it->posX())) <= 5 * WORLD_SPEED)
             	)
             {	
+            	_corner = true;
             	_lastGlobalRotateDirection = it->cornerDirection();
-            	rotated(_lastGlobalRotateDirection, _globalRotateIndicator);
             	it->turned();
             	_rotateProgress = 0;
             }
 		}
     }
 
-    if (_rotateProgress <= glm::radians(90.f))
-    {
-    	_rotateProgress += ROTATE_SMOOTH;	
-    	_objectMatrix = glm::rotate(_objectMatrix, _lastGlobalRotateDirection * ROTATE_SMOOTH, glm::vec3(0,1,0));
-    }	
+    if (_corner)
+    {	
+    	if ((_lastGlobalRotateDirection == 1 && player._turningRight) || (_lastGlobalRotateDirection == -1 && player._turningLeft))
+    	{
+    		if (_rotateProgress <= glm::radians(90.f))
+    		{	
+    			_rotateProgress += ROTATE_SMOOTH;	
+    			_objectMatrix = glm::rotate(_objectMatrix, _lastGlobalRotateDirection * ROTATE_SMOOTH, glm::vec3(0,1,0));
+    		}
+    		else 
+    		{
+    			rotated(_lastGlobalRotateDirection, _globalRotateIndicator);
+    			_corner = false;
+    		}
+    	}
+    	else
+    	{
+    		std::cout << "end" << std::endl;
+    		return false;
+    	}
+    }
 
     rotated(-_localRotateIndicator, _localRotateIndicator);
 
+    if(enemy.distanceToPlayer() == 0)
+		return false;
+
+	return true;
 }

@@ -79,10 +79,6 @@ public:
 		return _fly;
 	}
 
-	
-
-	/// \brief fill the section vector with returns from the factory
-	void fillSectionVec(std::vector<std::string> &sectionDataStrings);
 	inline WorldGenerator &worldGenerator() 
 	{
 		return _worldGenerator;
@@ -100,9 +96,6 @@ public:
 	
 	/// \brief observer on z position of obstacles, check collision with player
 	void observerUpdate(PositionObservable *observable);	
-
-	/// \brief test end of game
-	bool isOver() const;
 
 	inline void handleEvent(SDL_Event *event) 
 	{

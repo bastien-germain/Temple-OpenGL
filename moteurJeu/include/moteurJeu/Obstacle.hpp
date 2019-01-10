@@ -91,6 +91,12 @@ public:
 		}
 	}
 
+	inline void setZ(const float &value)
+	{
+		_posZ = value;
+	}
+
+
 	void collide();
 };
 

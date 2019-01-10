@@ -97,6 +97,7 @@ public:
 	inline void setZ(const float &value)
 	{
 		_posZ = value;
+		_obstacle.setZ(value);
 	}
 
 	inline void setX(const float &value)
