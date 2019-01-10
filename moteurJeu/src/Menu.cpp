@@ -22,7 +22,7 @@ void Menu::draw()
  
     glClear(GL_COLOR_BUFFER_BIT);
 
-    glClearColor(0.5, 0.5, 0.8, 1);
+    glClearColor(0.8, 0.5, 0.2, 1);
 
 	drawButtons();
 }

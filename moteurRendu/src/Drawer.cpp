@@ -1,5 +1,7 @@
 #include "moteurRendu/Drawer.hpp"
 
+Drawer::Drawer() {}
+
 Drawer::Drawer(const Program &program) : _localRotateIndicator(0), _globalRotateIndicator(0)
 {
 	for (int i = 0; i < 4; ++i)

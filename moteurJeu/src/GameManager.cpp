@@ -1,7 +1,10 @@
 #include "moteurJeu/GameManager.hpp"
 
+GameManager::GameManager() {}
+
+
 GameManager::GameManager(const Program &program, const float &trackballSmoothness) 
-	: _enemy(), _parser(), _game(), 
+	: _enemy(), _parser(), 
 	_factory(), _drawer(program),
 	_eventManager(), _player(),
 	_trackball(trackballSmoothness)

@@ -52,6 +52,8 @@ private:
 
 public:
 	/// \brief Default  constructor
+	Drawer();
+
 	Drawer(const Program &program);
 
 	/// \brief Destructor

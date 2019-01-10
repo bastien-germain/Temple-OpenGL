@@ -1,49 +1,67 @@
 #include "moteurJeu/Game.hpp"
 
-Game::Game() : _score(0), _distance(0), _coins(0), _speed(0), _pausedSpeed(0)
-{
+Game::Game(Program &program) : _maxScore(0), _currentGameScore(0), _gameManager(GameManager(program))
+{	
+    _gameManager.loadSections();
 }
 
-Game::~Game() 
+Game::~Game()
 {
+	
 }
 
-void Game::start() 
-{
-	_speed = 1;
+void Game::launchGame()
+{	
+	// start le defilement du decor
 }
 
-void Game::speedUp() 
+bool Game::processGame(SDL_Event *event, Program &program)
 {
-	_speed ++;
+	std::cout << "Jeu affiché" << std::endl;
+    _gameManager.handleEvent(event);
+
+    glm::mat4 trackMat = _gameManager.trackball().getViewMatrix();
+
+    _gameManager.drawer().draw(
+        _gameManager.sectionVec(), 
+        _gameManager.trackball().getViewMatrix(), 
+        _gameManager.player(),
+        _gameManager.enemy(),
+        _gameManager.skybox(),
+        program);
+
+    if (_gameManager.isOver())
+    {
+        std::cout << "game over" << std::endl;
+        return true;
+    }
+    return false;
+}
+
+void Game::endGame()
+{
+	updateMaxScore();
+	// do something to end the game
+}
+
+void Game::updateMaxScore() 
+{
+	if (_currentGameScore > _maxScore) 
+		_maxScore = _currentGameScore;	
 }
 
 void Game::updateScore() 
 {
-	_score = _coins * 10 + _distance;
+	
 }
 
-void Game::updateDistance() 
+
+void Game::pause()
 {
-	_distance += _speed;
-	updateScore();
+
 }
 
-void Game::addCoins(const unsigned int quantity) 
+void Game::resume()
 {
-	_coins += quantity;
-	updateScore();
+	
 }
-
-void Game::pause() 
-{
-	_pausedSpeed = _speed;
-	// stop the game
-	_speed = 0;
-}
-
-void Game::resume() 
-{
-	_speed = _pausedSpeed;
-}
-

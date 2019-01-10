@@ -5,7 +5,6 @@
 #include <vector>
 #include <algorithm>
 
-#include "moteurJeu/Game.hpp"
 #include "moteurJeu/Player.hpp"
 #include "moteurJeu/Skybox.hpp"
 #include "moteurJeu/Enemy.hpp"
@@ -28,11 +27,10 @@ class GameManager : public PositionObserver
 private:
 	const std::string _sectionsDataFilePath = "../Temple-OpenGL/app/assets/sectionsData/sectionsData.txt";
 	
-	Game _game;
 	Player _player;
 	Skybox _skybox;
 	Enemy _enemy;
-	const Parser _parser;
+	Parser _parser;
 	Drawer _drawer;
 	EventManager _eventManager;
 	TrackballCamera _trackball;
@@ -42,6 +40,7 @@ private:
 	std::vector<std::vector<Section*>> _sectionMat;
 	
 public:
+	GameManager();
 	GameManager(const Program &program, const float &trackballSmoothness = 0.08);
 	~GameManager();
 
@@ -69,10 +68,6 @@ public:
 		return _sectionVec;
 	}
 
-	inline Game game() const 
-	{
-		return _game;
-	}
 
 	inline Drawer &drawer() 
 	{
