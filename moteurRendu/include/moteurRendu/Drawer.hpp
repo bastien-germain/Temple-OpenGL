@@ -19,9 +19,9 @@
 
 #define DRAW_DISTANCE (6 * POSITION_OFFSET_Z)
 
-#define WORLD_SPEED 0.008f
+#define WORLD_SPEED 0.01f
 
-#define ROTATE_SMOOTH 0.01f
+#define ROTATE_SMOOTH 0.005f
 
 /// \class Drawer
 /// \brief Used to draw the world 

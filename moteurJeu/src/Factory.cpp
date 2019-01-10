@@ -1,27 +1,27 @@
 #include "moteurJeu/Factory.hpp"
 
-Factory::Factory() 
-	: _modelLoader(11),
-	_playerModel(_modelLoader.loadModel("player")),
-	_enemyModel(_modelLoader.loadModel("enemy")),
-	_corridorModel(_modelLoader.loadModel("corridorWall")),
-	_cornerLeftModel(_modelLoader.loadModel("cornerLeftWall")),
-	_cornerRightModel(_modelLoader.loadModel("cornerRightWall")),
-	_skyboxModel(_modelLoader.loadModel("cubeSkybox")),
-	_brancardModel(_modelLoader.loadModel("brancardObs"))
-
+Factory::Factory() : _modelLoader(7)
 {
+	_playerModel = _modelLoader.loadModel("player");
 	_playerModel.vbo().sendData();
+
+	_enemyModel = _modelLoader.loadModel("enemy");
 	_enemyModel.vbo().sendData();
+
+	_corridorModel = _modelLoader.loadModel("corridorWall");
 	_corridorModel.vbo().sendData();
+
+	_cornerLeftModel = _modelLoader.loadModel("cornerLeftWall");
 	_cornerLeftModel.vbo().sendData();
+
+	_cornerRightModel = _modelLoader.loadModel("cornerRightWall");
 	_cornerRightModel.vbo().sendData();
-	_skyboxModel.vbo().sendData();
-	_brancardModel.vbo().sendData();
 
 	// _tModel = _modelLoader.loadModel("tsectionWall");
 	// _tModel.vbo().sendData();
 
+	_skyboxModel = _modelLoader.loadModel("cubeSkybox");
+	_skyboxModel.vbo().sendData();
 
 	// _clapTrapModel = _modelLoader.loadModel("clapTrap");
 	// _clapTrapModel.vbo().sendData();
@@ -36,7 +36,8 @@ Factory::Factory()
 	// _chairsStackModel = _modelLoader.loadModel("chairsStack");
 	// _chairsStackModel.vbo().sendData();
 
-	
+	_brancardModel = _modelLoader.loadModel("brancardObs");
+	_brancardModel.vbo().sendData();
 
 	// _skyboxModel = _modelLoader.loadModel("skybox");
 	// _skyboxModel.vbo().sendData();

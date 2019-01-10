@@ -49,16 +49,6 @@ public:
 		return _size;
 	}
 
-	/*inline uint32_t* indexes() const
-	{
-		return _indexes;
-	};*/
-
-	/*inline void indexes(unsigned int* ind) 
-	{
-		_indexes = ind;
-	};*/
-
 	/// \brief Allows to bind the buffer array
 	void bind() const;
 

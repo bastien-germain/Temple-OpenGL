@@ -398,28 +398,31 @@ bool Drawer::draw(std::vector<Section> &sectionVec, const glm::mat4 &trackMat, P
             	_rotateProgress = 0;
             }
 		}
-    }
 
-    if (_corner)
-    {	
-    	if ((_lastGlobalRotateDirection == 1 && player._turningRight) || (_lastGlobalRotateDirection == -1 && player._turningLeft))
-    	{
-    		if (_rotateProgress <= glm::radians(90.f))
-    		{	
-    			_rotateProgress += ROTATE_SMOOTH;	
-    			_objectMatrix = glm::rotate(_objectMatrix, _lastGlobalRotateDirection * ROTATE_SMOOTH, glm::vec3(0,1,0));
-    		}
-    		else 
-    		{
-    			rotated(_lastGlobalRotateDirection, _globalRotateIndicator);
-    			_corner = false;
-    		}
-    	}
-    	else
-    	{
-    		std::cout << "end" << std::endl;
-    		return false;
-    	}
+	    if (_corner)
+	    {	
+	    	if ((_lastGlobalRotateDirection == 1 && player._turningRight) || (_lastGlobalRotateDirection == -1 && player._turningLeft))
+	    	{
+	    		if (_rotateProgress <= glm::radians(90.f))
+	    		{	
+	    			_rotateProgress += ROTATE_SMOOTH;	
+	    			_objectMatrix = glm::rotate(_objectMatrix, _lastGlobalRotateDirection * ROTATE_SMOOTH, glm::vec3(0,1,0));
+	    		}
+	    		else 
+	    		{
+	    			rotated(_lastGlobalRotateDirection, _globalRotateIndicator);
+	    			_corner = false;
+	    		}
+	    	}
+	    	else
+	    	{
+	    		if (fabs((it->posZ() - POSITION_OFFSET_Z) - REGULAR_Z) <= WORLD_SPEED)
+	    		{
+	    			return false;
+	    			std::cout << "end" << std::endl;
+	    		}
+	    	}
+	    }
     }
 
     rotated(-_localRotateIndicator, _localRotateIndicator);

@@ -80,6 +80,7 @@ public:
 	{
 		return _id;
 	}
+
 	/// \brief  Unbinds the buffer
 	void debind() const;
 
