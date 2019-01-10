@@ -2,7 +2,7 @@
 #include <iostream>
 
 TrackballCamera::TrackballCamera(const float &smoothness) 
-    : _fDistance(5), _fAngleX(0), _fAngleY(glm::radians(15.f)), _smoothness(smoothness)
+    : _fDistance(5), _fAngleX(0), _fAngleY(glm::radians(0.f)), _smoothness(smoothness)
 {
 }
 TrackballCamera::TrackballCamera(const TrackballCamera &copied) 
@@ -32,6 +32,7 @@ void TrackballCamera::rotateUp(float degree)
 
 glm::mat4 TrackballCamera::getViewMatrix() const
 {
+
     glm::mat4 MatrixId = glm::mat4(1.0);
 
     glm::mat4 matrixMoveFront = glm::translate( MatrixId, glm::vec3(0.0f, 0.0f, -_fDistance) ); // z translate

@@ -22,6 +22,7 @@ private:
 	bool _turned;
 
 	float _posZ;
+	float _posX;
 
 public:
 	/// \brief Default  constructor
@@ -77,10 +78,20 @@ public:
 		return _posZ;
 	}
 
+	inline float posX() const 
+	{
+		return _posX;
+	}
+
 	inline void goOnZ(const float &delta) 
 	{
 		_posZ += delta;
 		_obstacle.goOnZ(delta);
+	}
+
+	inline void goOnX(const float &delta)
+	{
+		_posX += delta;
 	}
 
 	inline int cornerDirection() const 

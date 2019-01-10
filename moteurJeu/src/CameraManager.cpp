@@ -1,7 +1,7 @@
 #include "moteurJeu/CameraManager.hpp"
 #include <iostream>
 
-CameraManager::CameraManager() : _track(TrackballCamera()), _vision(VisionCamera()), _isTrackCurrent(true), _isCamLocked(false)
+CameraManager::CameraManager() : _fly(FreeflyCamera()), _track(TrackballCamera()), _vision(VisionCamera()), _isTrackCurrent(true), _isCamLocked(false)
 {
 }
 
@@ -49,11 +49,29 @@ void CameraManager::moveCam(const unsigned int action, const float value)
 		}
 		else
 		{
-			// Only y rotation on vision cam
-			if(action == 1)
+
+			switch(action)
 			{
-				_vision.rotateLeft(value);
+				case 0 : 
+				{
+					break;
+				}
+				case 1 :
+				{
+					_fly.rotateLeft(value);
+					break;
+				}
+				case 2 :
+				{
+					_fly.rotateUp(value);
+					break;
+				}
 			}
+			// Only y rotation on vision cam
+			// if(action == 1)
+			// {
+			// 	_vision.rotateLeft(value);
+			// }
 		}
 	}
 }
@@ -63,7 +81,7 @@ glm::mat4 CameraManager::getViewMatrix() const
 	if(_isTrackCurrent)
 		return _track.getViewMatrix();
 	else
-		return _vision.getViewMatrix();
+		return _fly.getViewMatrix();
 }
 
 

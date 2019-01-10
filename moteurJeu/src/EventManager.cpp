@@ -1,7 +1,7 @@
 #include "moteurJeu/EventManager.hpp"
 
 EventManager::EventManager() 
-    : _mouseButtonDown(false), _lastClickPosition(glm::vec2(0)), _mouseMotionDelta(glm::vec2(0))
+    : _mouseButtonDown(false), _lastClickPosition(glm::vec2(0)), _mouseMotionDelta(glm::vec2(0)), _camTrack(true), _changeCam(true)
 {
 }
 
@@ -9,7 +9,7 @@ EventManager::~EventManager()
 {
 }
 
-void EventManager::handleEvent(SDL_Event *event, Player &player, TrackballCamera &track)
+void EventManager::handleEvent(SDL_Event *event, Player &player, TrackballCamera &track, FreeflyCamera &fly)
 {
     switch (event->type)
     {
@@ -48,10 +48,26 @@ void EventManager::handleEvent(SDL_Event *event, Player &player, TrackballCamera
 
                 // ZOOM
                 case SDLK_a:
-                    track.moveFront(track.smoothness());
+                    if (_camTrack)
+                    {
+                        track.moveFront(track.smoothness());
+                    }
                     break;
                 case SDLK_e: 
-                    track.moveFront(-track.smoothness());
+                    if(_camTrack)
+                    {
+                        track.moveFront(-track.smoothness());
+                    }
+                    break;
+
+                case SDLK_c:
+                    std::cout << "Changement de caméra" << std::endl;
+                    if (_changeCam)
+                    {
+                        _camTrack = !_camTrack;
+                        _changeCam = false;
+                    }
+                    
                     break;
 
                 default:
@@ -60,6 +76,7 @@ void EventManager::handleEvent(SDL_Event *event, Player &player, TrackballCamera
     	   break;
 
         case SDL_KEYUP:
+            _changeCam = true;
             player.goCenter();
             break;
 
@@ -84,16 +101,25 @@ void EventManager::handleEvent(SDL_Event *event, Player &player, TrackballCamera
     		{
     			_mouseMotionDelta.x = event->button.x - _lastClickPosition.x;
     			_mouseMotionDelta.y = event->button.y - _lastClickPosition.y;
-                track.rotateLeft(track.smoothness() * _mouseMotionDelta.x);
-                track.rotateUp(track.smoothness() * _mouseMotionDelta.y);
+                if (_camTrack)
+                {
+                    track.rotateLeft(track.smoothness() * _mouseMotionDelta.x);
+                    track.rotateUp(track.smoothness() * _mouseMotionDelta.y);
+                }
+                else
+                {
+                    std::cout << "utilsiation cam fly" << std::endl;
+                    fly.rotateLeft(fly.smoothness() * _mouseMotionDelta.x);
+                    fly.rotateUp(fly.smoothness() * _mouseMotionDelta.y);
+                }
     		}
     		break;
     }
 
     if (player._jumping)
-        player.jump();
+        player.jump(fly);
     if (player._landing)
-        player.land();
+        player.land(fly);
 }
 
 void EventManager::onExit() {
