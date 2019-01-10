@@ -28,8 +28,6 @@ class GameManager : public PositionObserver
 {
 
 private:	
-	Game _game;
-
 	Player _player;
 	Enemy _enemy;
 	Skybox _skybox;
@@ -44,7 +42,6 @@ private:
 	FreeflyCamera _fly;
 	
 public:
-	GameManager();
 	GameManager(const Program &program, const float &trackballSmoothness = 0.08);
 	~GameManager();
 
@@ -60,11 +57,6 @@ public:
 	inline Skybox &skybox()
 	{
 		return _skybox;
-	}
-
-	inline Game game() const 
-	{
-		return _game;
 	}
 
 	inline Drawer &drawer() 

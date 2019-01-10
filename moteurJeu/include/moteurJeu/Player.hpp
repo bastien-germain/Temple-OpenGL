@@ -34,6 +34,8 @@ private:
 public:
 	bool _jumping;
 	bool _landing;
+	bool _turningLeft;
+	bool _turningRight;
 
 	/// \brief Constructor
 	Player();

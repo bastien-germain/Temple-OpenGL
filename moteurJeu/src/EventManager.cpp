@@ -33,17 +33,21 @@ void EventManager::handleEvent(SDL_Event *event, Player &player, TrackballCamera
                 // MOVE LEFT
                 case SDLK_q:
                     player.goLeft();
+                    player._turningLeft = true;
                     break;
                 case SDLK_LEFT:
                     player.goLeft();
+                    player._turningLeft = true;
                     break;
 
                 // MOVE RIGHT
                 case SDLK_d:
                     player.goRight();
+                    player._turningRight = true;
                     break;
                 case SDLK_RIGHT:
                     player.goRight();
+                    player._turningRight = true;
                     break;
 
                 // ZOOM
@@ -72,21 +76,23 @@ void EventManager::handleEvent(SDL_Event *event, Player &player, TrackballCamera
 
                 default:
                     break;
-    	   }
-    	   break;
+           }
+           break;
 
         case SDL_KEYUP:
             _changeCam = true;
             player.goCenter();
+            player._turningRight = false;
+            player._turningLeft = false;
             break;
 
-    	case SDL_MOUSEBUTTONDOWN:
-    		if (event->button.button == SDL_BUTTON_LEFT) 
-    		{
-	    		_mouseButtonDown = true;
-	    		_lastClickPosition = glm::vec2(event->button.x, event->button.y);
-    		}
-    		break;
+        case SDL_MOUSEBUTTONDOWN:
+            if (event->button.button == SDL_BUTTON_LEFT) 
+            {
+                _mouseButtonDown = true;
+                _lastClickPosition = glm::vec2(event->button.x, event->button.y);
+            }
+            break;
 
     	case SDL_MOUSEBUTTONUP:
     		if (event->button.button == SDL_BUTTON_LEFT) 
