@@ -24,6 +24,7 @@ public:
 	void handleEvent(SDL_Event *event, Player &player, TrackballCamera &track, FreeflyCamera &fly);
 	
 	void onExit();
+
 	inline bool camTrack()
 	{
 		return _camTrack;
@@ -31,6 +32,8 @@ public:
 private:
 	bool _mouseButtonDown;
 	bool _camTrack;
+	bool _camLocked;
+	bool _tempLock;
 	bool _changeCam;
 	glm::vec2 _lastClickPosition;
 	glm::vec2 _mouseMotionDelta;
