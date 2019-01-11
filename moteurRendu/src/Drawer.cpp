@@ -165,6 +165,7 @@ bool Drawer::draw(std::vector<Section> &sectionVec, const glm::mat4 &trackMat, P
 
     _tmpMatrix = _worldMatrix * _objectMatrix;
 
+    _counter += WORLD_SPEED;
     for (std::vector<Section>::iterator it = sectionVec.begin(); it != sectionVec.end(); ++it)
     {   
     	if (!_corner)
@@ -377,7 +378,9 @@ bool Drawer::draw(std::vector<Section> &sectionVec, const glm::mat4 &trackMat, P
 			}
     	}
 
-		drawSection(*it, it->posX(), it->posZ());
+    	if((it - sectionVec.begin()) * (- POSITION_OFFSET_Z) - DRAW_DISTANCE < _counter && 
+    		_counter < (it - sectionVec.begin()) * (- POSITION_OFFSET_Z) + DRAW_DISTANCE)
+			drawSection(*it, it->posX(), it->posZ());
 
 		if (it->isCorner())
 		{

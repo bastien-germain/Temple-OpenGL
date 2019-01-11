@@ -17,11 +17,10 @@
 #define WALL_WIDTH 1.f
 #define SECTION_WIDTH (WALL_WIDTH + CORRIDOR_WIDTH)
 
-#define DRAW_DISTANCE (6 * POSITION_OFFSET_Z)
-
 #define WORLD_SPEED 0.01f
 
-#define ROTATE_SMOOTH 0.005f
+#define DRAW_DISTANCE (-6  * POSITION_OFFSET_Z)
+#define ROTATE_SMOOTH 0.001f
 #define TIME_TO_TURN 1
 
 /// \class Drawer
