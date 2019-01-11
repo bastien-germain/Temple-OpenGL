@@ -15,7 +15,7 @@
 
 #define REGULAR_Y 1.7f
 #define MAX_Y (REGULAR_Y + 3)
-#define Y_SMOOTHNESS 0.005
+#define Y_SMOOTHNESS 0.01
 
 #define REGULAR_Z 0.f
 

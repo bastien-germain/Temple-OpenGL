@@ -377,11 +377,12 @@ bool Drawer::draw(std::vector<Section> &sectionVec, const glm::mat4 &trackMat, P
 	    			break;
 			}
     	}
-
+    	
     	if((it - sectionVec.begin()) * (- POSITION_OFFSET_Z) - DRAW_DISTANCE < _counter && 
     		_counter < (it - sectionVec.begin()) * (- POSITION_OFFSET_Z) + DRAW_DISTANCE)
 			drawSection(*it, it->posX(), it->posZ());
-
+	
+		//drawSection(*it, it->posX(), it->posZ());
 		if (it->isCorner())
 		{
 			rotated(it->cornerDirection(), _localRotateIndicator);

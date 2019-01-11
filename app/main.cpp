@@ -4,6 +4,8 @@
 #include <iostream>
 #include <cmath>
 
+#include <SDL/SDL_mixer.h>
+
 #include <glimac/SDLWindowManager.hpp>
 #include <glimac/Program.hpp>
 #include <glimac/FilePath.hpp>
@@ -28,10 +30,18 @@ int main(int argc, char** argv) {
         return EXIT_FAILURE;
     }
 
+    if(Mix_OpenAudio(22050, MIX_DEFAULT_FORMAT, 2, 1024) == -1)
+                Mix_AllocateChannels(2);
+        std::cout << Mix_GetError() << std::endl;
+
+    Mix_Music *music;
+
     FilePath applicationPath(argv[0]);
 
     Program program = loadProgram(applicationPath.dirPath() + "shaders/3D.vs.glsl", applicationPath.dirPath() + "shaders/texture.fs.glsl");
     
+    music = Mix_LoadMUS((applicationPath.dirPath() + "assets/soundtrack.mp3").c_str());
+
     glEnable(GL_DEPTH_TEST);
 
     std::cout << "OpenGL Version : " << glGetString(GL_VERSION) << std::endl;
@@ -53,6 +63,9 @@ int main(int argc, char** argv) {
     std::string scoreText = "Score : " + std::to_string(score);
 
     Button scoreButton(scoreText, 50, 700, 80);
+
+    Mix_PlayMusic(music, -1);
+    Mix_VolumeMusic(MIX_MAX_VOLUME);
 
     // Application loop:
     bool done = false;
@@ -117,6 +130,9 @@ int main(int argc, char** argv) {
         // Update the display
         windowManager.swapBuffers();
     }
+
+    Mix_FreeMusic(music);
+    Mix_CloseAudio();
 
     return EXIT_SUCCESS;
 }

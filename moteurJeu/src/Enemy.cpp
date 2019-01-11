@@ -1,6 +1,6 @@
 #include "moteurJeu/Enemy.hpp"
 
-Enemy::Enemy() : _distanceToPlayer(10)
+Enemy::Enemy() : _distanceToPlayer(14)
 {
 }
 
@@ -15,6 +15,6 @@ Enemy::~Enemy()
 
 void Enemy::bringCloser()
 {
-	_distanceToPlayer -= 5;
+	_distanceToPlayer -= 7;
 }
 
