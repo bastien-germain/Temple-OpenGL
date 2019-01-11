@@ -28,7 +28,7 @@ private:
 
 public:
 	/// \brief Default  constructor
-	ModelLoader(const unsigned int nbTexturesUsed);
+	ModelLoader(const unsigned int nbTexturesUsed, const FilePath &applicationPath);
 
 	/// \brief Destructor
 	~ModelLoader();

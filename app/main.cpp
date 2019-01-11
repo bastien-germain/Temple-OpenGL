@@ -49,7 +49,7 @@ int main(int argc, char** argv) {
 
     program.use(); 
 
-    Game game(program);
+    Game game(program, applicationPath);
 
     // MENU
     bool isMenuDisplayed = false;

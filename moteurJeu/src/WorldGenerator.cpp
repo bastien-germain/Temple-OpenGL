@@ -1,9 +1,10 @@
 #include "moteurJeu/WorldGenerator.hpp"
 
-WorldGenerator::WorldGenerator() : 
+WorldGenerator::WorldGenerator(const FilePath &applicationPath) : 
 	_offsetPosZCount(0), _lastRotateIndex(0), 
 	_rotateIndicator(0), _lastCornerRight(false), 
-	_penultimateCornerRight(false), _popCounter(0)
+	_penultimateCornerRight(false), _popCounter(0), 
+	_sectionDataFilePath(applicationPath.dirPath() + "assets/sectionsData/sectionsData.txt")
 {
 }
 

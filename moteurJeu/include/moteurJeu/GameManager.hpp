@@ -42,7 +42,7 @@ private:
 	FreeflyCamera _fly;
 	
 public:
-	GameManager(const Program &program, const float &trackballSmoothness = 0.08);
+	GameManager(const Program &program, const FilePath &applicationPath, const float &trackballSmoothness = 0.08);
 	~GameManager();
 
 	inline Enemy &enemy() 

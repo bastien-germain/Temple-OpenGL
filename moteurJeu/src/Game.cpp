@@ -1,6 +1,6 @@
 #include "moteurJeu/Game.hpp"
 
-Game::Game(Program &program) : _maxScore(0), _currentGameScore(0), _gameManager(GameManager(program))
+Game::Game(Program &program, const FilePath &applicationPath) : _maxScore(0), _currentGameScore(0), _gameManager(GameManager(program, applicationPath))
 {	
     
     /*_gameManager.worldGenerator().generateInitialSections(

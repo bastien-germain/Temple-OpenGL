@@ -41,7 +41,7 @@ private:
 public:
 
 	/// \brief Default constructor
-	Factory();
+	Factory(const FilePath &applicationPath);
 
 	/// \brief Destructor
 	~Factory();

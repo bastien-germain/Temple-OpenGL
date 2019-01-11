@@ -1,7 +1,8 @@
 #include "moteurRendu/ModelLoader.hpp"
 
-ModelLoader::ModelLoader(const unsigned int nbTexturesUsed) 
-	: _nbTexturesUsed(nbTexturesUsed), _textureManager(TextureManager(nbTexturesUsed))
+ModelLoader::ModelLoader(const unsigned int nbTexturesUsed, const FilePath &applicationPath) 
+	: _nbTexturesUsed(nbTexturesUsed), _textureManager(TextureManager(nbTexturesUsed)),
+    _modelsPath(applicationPath.dirPath() + "assets/models/"), _texturesPath(applicationPath.dirPath() + "assets/textures/")
 {
 	_textureManager.generateTexture(nbTexturesUsed);
 }

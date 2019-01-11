@@ -1,6 +1,6 @@
 #include "moteurJeu/Factory.hpp"
 
-Factory::Factory() : _modelLoader(7)
+Factory::Factory(const FilePath &applicationPath) : _modelLoader(7, applicationPath)
 {
 	_playerModel = _modelLoader.loadModel("player");
 	_playerModel.vbo().sendData();

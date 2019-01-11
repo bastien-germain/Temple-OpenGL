@@ -1,11 +1,11 @@
 #include "moteurJeu/GameManager.hpp"
 
-GameManager::GameManager(const Program &program, const float &trackballSmoothness) 
+GameManager::GameManager(const Program &program, const FilePath &applicationPath, const float &trackballSmoothness) 
 	: _enemy(), _parser(), 
-	_factory(), _drawer(program),
+	_factory(applicationPath), _drawer(program),
 	_eventManager(), _player(),
 	_fly(trackballSmoothness),
-	_trackball(trackballSmoothness), _worldGenerator()
+	_trackball(trackballSmoothness), _worldGenerator(applicationPath)
 
 {
 	_player.model(_factory.playerModel());	

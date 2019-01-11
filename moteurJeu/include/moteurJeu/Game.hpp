@@ -17,7 +17,7 @@ private:
 	GameManager _gameManager;
 	
 public:
-	Game(Program &program);
+	Game(Program &program, const FilePath &applicationPath);
 	~Game();
 
 	/// \brief Launch a new game

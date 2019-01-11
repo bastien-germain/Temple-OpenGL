@@ -29,10 +29,10 @@ private:
 
 	std::vector<Section> _sectionVec;
 
-	const std::string _sectionDataFilePath = "../Temple-OpenGL/app/assets/sectionsData/sectionsData.txt";
+	const std::string _sectionDataFilePath;
 
 public:
-	WorldGenerator();
+	WorldGenerator(const FilePath &applicationPath);
 	~WorldGenerator();
 
 	float _popCounter;
